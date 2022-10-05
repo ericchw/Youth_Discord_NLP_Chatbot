@@ -8,7 +8,7 @@ from torch.utils.data import Dataset, DataLoader
 
 from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
-
+import jieba 
 with open('intents.json', 'r',encoding='utf-8') as f:
     intents = json.load(f)
 
@@ -22,7 +22,8 @@ for intent in intents['intents']:
     tags.append(tag)
     for pattern in intent['patterns']:
         # tokenize each word in the sentence
-        w = tokenize(pattern)
+        single=jieba.cut(pattern)
+        w=sorted(set(single))
         # add to our words list
         all_words.extend(w)
         # add to xy pair
