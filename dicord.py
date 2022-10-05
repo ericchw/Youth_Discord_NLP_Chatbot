@@ -1,6 +1,6 @@
 import os, discord
 from discord.ui import Button, View, button
-import emotion
+import chat
 
 
 
@@ -45,9 +45,6 @@ async def button2(ctx): # a slash command will be created with the name "ping"
 #get massages
 @bot.event
 async def on_message(message):
-    text=message.content
-    print(text)
-    ans=emotion.transform(text)
     if(message.author.name!='2try'):
         ans=chat.outp(message.content)
         await message.channel.send(ans) 
