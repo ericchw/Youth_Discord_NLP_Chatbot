@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-from nltk_utils import bag_of_words, tokenize, stem
+from nltk_utils import bag_of_words, stem
 from model import NeuralNet
 import jieba 
 with open('intents.json', 'r',encoding='utf-8') as f:
