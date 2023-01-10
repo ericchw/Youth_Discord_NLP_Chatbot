@@ -48,16 +48,17 @@ class EventModel(Modal):
             label="Minium members:",
             placeholder="members"
             ))
-    @button(label="Button 1", style=discord.ButtonStyle.blurple, emoji="😊")
-    async def callback1(self, button, interaction):
-        await interaction.response.edit_message(content=f"Hi from Button 1", view=self)
-        await interaction.followup.send(f"This is a followup message from Button 1.")
     async def callback(self,interaction:discord.InputText):
         embed=discord.Embed(title="User Details",color=discord.Colour.brand_red())
         embed.add_field(name="Event_type",value=self.children[0].value,inline=False)
         embed.add_field(name="d&t",value=self.children[1].value,inline=False)
         embed.add_field(name="members",value=self.children[2].value,inline=False)
-        await interaction.response.send_message(embed=embed)
+        m=await interaction.response.send_message(embed=embed)
+        
+        
+
+
+
 
 
 @bot.event
@@ -72,27 +73,34 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
-    
-    
-
 #event
 @bot.command(name="create_event")
 async def event(ctx):
     modal=EventModel(title="Create a Event")
     await ctx.send_modal(modal)
+    
+
+
+
+
+
 
 #polling
 @bot.command()
 async def poll(ctx, *, question):
-    await ctx.channel.purge(limit=3)
+    #limit of polling
+    await ctx.channel.purge(limit=2)
     message = await ctx.send(f"New poll: \n✅ = Yes**\n**❎ = No**")
     await message.add_reaction('❎')
     await message.add_reaction('✅')
 
- 
+
 @bot.event
 async def on_message(message):
     print(message)
+    #type=<MessageType.application_command: 20>
+    if(message.type[1]==20):
+        await message.add_reaction('✅')
     if(message.author.name!='CyberU'):
         ans=chat.outp(message.content)
         await message.channel.send(ans) 
