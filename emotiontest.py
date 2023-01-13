@@ -9,7 +9,7 @@ from googletrans import LANGUAGES
 
 emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
 
-def transform(text):
+def emtransform(text):
     # translat = google_translator()
     translat = Translator()
     # for lang in LANGUAGES:

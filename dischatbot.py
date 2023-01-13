@@ -2,7 +2,7 @@ from logging import PlaceHolder
 import os, discord
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText
-import emotion
+from emotiontest import emtransform
 import chat
 
 intents = discord.Intents.default()
@@ -102,7 +102,10 @@ async def on_message(message):
     if(message.type[1]==20):
         await message.add_reaction('✅')
     if(message.author.name!='CyberU'):
-        ans=chat.outp(message.content)
+        text=message.content
+        ans=emtransform(text)
+        print(ans)
+        # ans=chat.outp(ans)
         await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
