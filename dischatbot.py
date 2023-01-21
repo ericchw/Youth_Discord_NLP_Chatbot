@@ -1,8 +1,8 @@
 from logging import PlaceHolder
 import os, discord
 from turtle import title
-from discord.ui import Button, View, button, Modal, InputText
-import emotion
+from discord.ui import Button, View, button, Modal, InputText, Select
+from emotiontest import emtransform
 import chat
 
 intents = discord.Intents.default()
@@ -94,6 +94,63 @@ async def poll(ctx, *, question):
     await message.add_reaction('❎')
     await message.add_reaction('✅')
 
+@bot.command()  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
+async def hello(ctx):
+    select1 = Select( 
+        min_values=2,
+        max_values=4,
+        placeholder= "Choose a game",
+        options = [
+        discord.SelectOption(
+            label="Apex", 
+            description="Apex",
+            ),
+        discord.SelectOption(
+            label="Rainbow_six", 
+            description="Rainbow Six Seige",
+            default= True),
+        discord.SelectOption(
+            label="pubg", 
+            description="PUBG (COMP)",
+            ),
+        discord.SelectOption(
+            label="brawlhalla", 
+            description="Brawlhalla",
+            ),
+        discord.SelectOption(
+            label="others", 
+            description="Others",
+            )
+
+    ],
+    row = 2)
+    select2 = Select( 
+        placeholder= "Choose a game",
+        options = [
+        discord.SelectOption(
+            label="Apex", 
+            description="Apex",
+            default= True),
+        discord.SelectOption(
+            label="Rainbow_six", 
+            description="Rainbow Six Seige")
+    ])
+    async def my_callback(interaction):
+        select1.disabled = True
+        if "others"  in select1.values:
+            select1.add_option()
+            select1.append_option(discord.SelectOption(
+            label="new_game_1", 
+            description="New Game_1",
+            ))
+        await interaction.response.send_message(f"Game chosen: {select1.values}")
+    select1.callback = my_callback
+    # select.callback = my_callback
+    view = View()
+    view.add_item(select1)
+    view.add_item(select2)
+    await ctx.send("Choose a game", view = view)
+
 
 @bot.event
 async def on_message(message):
@@ -102,7 +159,10 @@ async def on_message(message):
     if(message.type[1]==20):
         await message.add_reaction('✅')
     if(message.author.name!='CyberU'):
-        ans=chat.outp(message.content)
+        text=message.content
+        ans=emtransform(text)
+        print(ans)
+        # ans=chat.outp(ans)
         await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
