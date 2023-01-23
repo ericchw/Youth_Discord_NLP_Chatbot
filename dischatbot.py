@@ -1,9 +1,10 @@
 from logging import PlaceHolder
-import os, discord
+import os, discord, requests
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat
+from bs4 import BeautifulSoup
 
 intents = discord.Intents.default()
 intents.members = True
@@ -163,6 +164,38 @@ async def on_message(message):
         ans=emtransform(text)
         print(ans)
         # ans=chat.outp(ans)
+        if message.content == 'contact': #if there is keyword with contacts
+            response = requests.get("https://www.cyberyouth.sjs.org.hk")
+
+            soup = BeautifulSoup(response.text,'html.parser')
+            info = [p.text for p in soup.find_all('span')]
+            # Tel = soup.body.find_all(string=re.compile('.*{0}.*'.format('Tel')), recursive=True)
+            # Address = soup.body.find_all(string=re.compile('.*{0}.*'.format('Address')), recursive=True)
+            # time = soup.body.find_all(string=re.compile('.*{0}.*'.format('服務時間')), recursive=True)
+            # print(Tel)
+            # print(time)
+            # print(info)
+            temp =[]
+            
+
+            # info = response.text
+            for i in info:
+                if '地址：' in i:
+                    temp.append(i)
+                elif '電話' in i:
+                    temp.append(i)
+                elif '傳真' in i:
+                    temp.append(i)
+                elif '電郵' in i:
+                    temp.append(i)
+                elif '5933' in i and len(i)<15:
+                    string = "Whatsapp: " + i
+                    temp.append(string)
+            temp = "\n".join(temp)
+            await message.channel.send(temp)
+            # await message.channel.send()
+            # Send the information to the Discord channel
+            # client.send_message("DISCORD_CHANNEL_ID", info)
         await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
