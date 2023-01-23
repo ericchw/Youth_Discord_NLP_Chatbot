@@ -196,6 +196,18 @@ async def on_message(message):
             # await message.channel.send()
             # Send the information to the Discord channel
             # client.send_message("DISCORD_CHANNEL_ID", info)
+        elif 'activity' in message.content:
+            response = requests.get("https://www.cyberyouth.sjs.org.hk")
+
+            soup = BeautifulSoup(response.text,'html.parser')
+            temp = []
+            for p in soup.find_all('a',href=True):
+                if 'drive.google.com' in p['href']:
+                    string = '最新活動可在此連結: '+ "\n" + p['href'] 
+                    temp.append(string)
+            
+            temp = "\n".join(temp)
+            await message.channel.send(temp)
         await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
