@@ -165,12 +165,21 @@ async def on_message(message):
         print(ans)
         # ans=chat.outp(ans)
         string = faq.faq(message.content)
-        await message.channel.send(string)
+        if string != None:
+            await message.channel.send(string)
         if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
         if ans[0]['label'] == 'sadness':
             user = message.author
             await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
+            global user_id 
+            user_id = user.id
+        elif message.channel.type == discord.ChannelType.private:
+        # check if the message is from the user you are expecting a response from
+            if message.author.id == user_id:
+                # handle the user's response
+                response = message.content
+                print(response)
         # await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")

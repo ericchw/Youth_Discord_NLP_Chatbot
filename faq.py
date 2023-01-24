@@ -42,4 +42,6 @@ def faq(text):
         
         temp = "\n".join(temp)
         return temp
+    else:
+        return None
     
