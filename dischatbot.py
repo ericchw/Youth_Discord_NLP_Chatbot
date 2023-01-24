@@ -193,9 +193,6 @@ async def on_message(message):
                     temp.append(string)
             temp = "\n".join(temp)
             await message.channel.send(temp)
-            # await message.channel.send()
-            # Send the information to the Discord channel
-            # client.send_message("DISCORD_CHANNEL_ID", info)
         elif 'activity' in message.content:
             response = requests.get("https://www.cyberyouth.sjs.org.hk")
 
