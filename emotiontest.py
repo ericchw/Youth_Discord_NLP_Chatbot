@@ -14,7 +14,7 @@ def emtransform(text):
     translat = Translator()
     # for lang in LANGUAGES:
     #     print(f'{lang} - {LANGUAGES[lang]}')
-    trans = translat.translate('text')
+    trans = translat.translate(text)
     # trans = translat.translate('他真的是白痴',lang_src='zh-tw', lang_tgt='en')
     # print(trans.text)
     emotion_labels = emotion(trans.text)
