@@ -3,7 +3,7 @@ import os, discord, requests
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
-import chat
+import chat, faq
 from bs4 import BeautifulSoup
 
 intents = discord.Intents.default()
@@ -164,50 +164,11 @@ async def on_message(message):
         ans=emtransform(text)
         print(ans)
         # ans=chat.outp(ans)
-        if message.content == 'contact': #if there is keyword with contacts
-            response = requests.get("https://www.cyberyouth.sjs.org.hk")
-
-            soup = BeautifulSoup(response.text,'html.parser')
-            info = [p.text for p in soup.find_all('span')]
-            # Tel = soup.body.find_all(string=re.compile('.*{0}.*'.format('Tel')), recursive=True)
-            # Address = soup.body.find_all(string=re.compile('.*{0}.*'.format('Address')), recursive=True)
-            # time = soup.body.find_all(string=re.compile('.*{0}.*'.format('服務時間')), recursive=True)
-            # print(Tel)
-            # print(time)
-            # print(info)
-            temp =[]
-            
-
-            # info = response.text
-            for i in info:
-                if '地址：' in i:
-                    temp.append(i)
-                elif '電話' in i:
-                    temp.append(i)
-                elif '傳真' in i:
-                    temp.append(i)
-                elif '電郵' in i:
-                    temp.append(i)
-                elif '5933' in i and len(i)<15:
-                    string = "Whatsapp: " + i
-                    temp.append(string)
-            temp = "\n".join(temp)
-            await message.channel.send(temp)
-        elif 'activity' in message.content:
-            response = requests.get("https://www.cyberyouth.sjs.org.hk")
-
-            soup = BeautifulSoup(response.text,'html.parser')
-            temp = []
-            for p in soup.find_all('a',href=True):
-                if 'drive.google.com' in p['href']:
-                    string = '最新活動可在此連結: '+ "\n" + p['href'] 
-                    temp.append(string)
-            
-            temp = "\n".join(temp)
-            await message.channel.send(temp)
-        elif 'working hours' in message.content:
+        string = faq.faq(message.content)
+        await message.channel.send(string)
+        if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
-        elif ans[0]['label'] == 'sadness':
+        if ans[0]['label'] == 'sadness':
             user = message.author
             await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
         # await message.channel.send(ans) 
