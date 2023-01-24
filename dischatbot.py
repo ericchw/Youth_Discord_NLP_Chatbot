@@ -208,6 +208,8 @@ async def on_message(message):
             
             temp = "\n".join(temp)
             await message.channel.send(temp)
+        elif 'working hours' in message.content:
+            await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
         await message.channel.send(ans) 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
