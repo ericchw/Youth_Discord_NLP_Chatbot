@@ -6,6 +6,7 @@ from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
 
+responses= {}
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -162,7 +163,7 @@ async def on_message(message):
     if(message.author.name!='CyberU'):
         text=message.content
         ans=emtransform(text)
-        print(ans)
+        # print(ans)
         # ans=chat.outp(ans)
         string = faq.faq(message.content)
         if string != None:
@@ -171,8 +172,17 @@ async def on_message(message):
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
         if ans[0]['label'] == 'sadness':
             user = message.author
-            await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
-            global user_id 
+            embed = discord.Embed(title="Select an option", color=discord.Color.blue())
+            embed.add_field(name="👍", value="Agree", inline=True)
+            embed.add_field(name="👎", value="Disagree", inline=True)
+            # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
+            message_to_send = await user.send(embed=embed)
+            await message_to_send.add_reaction("👍")
+            await message_to_send.add_reaction("👎")
+            responses[user.id] = None
+            # await msg.add_reaction("👍")
+            # await user.respond("Hello!", view=MyView())
+            global user_id
             user_id = user.id
         elif message.channel.type == discord.ChannelType.private:
         # check if the message is from the user you are expecting a response from
@@ -182,4 +192,14 @@ async def on_message(message):
                 print(response)
         # await message.channel.send(ans) 
 
+@bot.event
+async def on_reaction_add(reaction, user):
+    # check if the user's id is in the dictionary
+    if user.id in responses:
+        if str(reaction) == "👍":
+            responses[user.id] = "Agree"
+        elif str(reaction) == "👎":
+            responses[user.id] = "Disagree"
+        # print the user's response
+        print(f'{user.name} responded with {responses[user.id]}')
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
