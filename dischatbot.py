@@ -166,7 +166,12 @@ async def on_message(message):
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
-        await message.channel.send(ans)
+        if ans:
+            await message.channel.send(ans)
+        else:
+            if emotion[0]['label'] == 'anger':
+                string = "大家冷靜d"
+                await message.channel.send(string)
         # string = faq.faq(message.content)
         # if string != None:
         #     await message.channel.send(string)
@@ -197,6 +202,8 @@ async def on_message(message):
                 #     responses[user.id] = "Disagree"
                 response = message.content
                 print(response)
+        
+        
         # await message.channel.send(ans) 
 
 @bot.event
@@ -205,12 +212,10 @@ async def on_reaction_add(reaction, user):
     if user.id in responses:
         if str(reaction) == "👍":
             responses[user.id] = "Agree"
-            # bandson = 
-            # BANDSON#5877
-            # 
             # await user.send("Hello! This is a private message.")
-            user1 = bot.get_user(792305150429233152)
-            await user1.send("Hello! This is a private message.")
+            # user1 = bot.get_user(792305150429233152)
+            user1 = bot.get_user(315836714029416449)
+            await user1.send("有個人需要幫手，麻煩請關注")
         elif str(reaction) == "👎":
             responses[user.id] = "Disagree"
         # print the user's response

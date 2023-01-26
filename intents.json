@@ -3,7 +3,9 @@
       {
         "tag": "6pm_contact",
         "patterns": [
-          "contact"
+          "contact",
+          "6pm 聯絡方法",
+          "6pm contact"
         ],
         "responses": [
             {
@@ -21,7 +23,9 @@
       {
         "tag": "6pm_activity",
         "patterns": [
-          "activity"
+          "activity",
+          "6pm 重點活動",
+          "6pm activity"
         ],
         "responses": [
             {
