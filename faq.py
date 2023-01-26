@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 def faq(text):
-    if text  == 'contact': #if there is keyword with contacts
+    if 'contact' in text: #if there is keyword with contacts
         response = requests.get("https://www.cyberyouth.sjs.org.hk")
 
         soup = BeautifulSoup(response.text,'html.parser')

@@ -19,5 +19,5 @@ def emtransform(text):
     # print(trans.text)
     emotion_labels = emotion(trans.text)
 
-    print(emotion_labels)
+    # print(emotion_labels)
     return emotion_labels

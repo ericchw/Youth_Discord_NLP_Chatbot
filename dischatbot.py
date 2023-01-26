@@ -162,19 +162,22 @@ async def on_message(message):
         await message.add_reaction('✅')
     if(message.author.name!='CyberU'):
         text=message.content
-        ans=emtransform(text)
+        emotion=emtransform(text)
         # print(ans)
-        # ans=chat.outp(ans)
-        string = faq.faq(message.content)
-        if string != None:
-            await message.channel.send(string)
+        ans=chat.outp(text)
+        # print(ans)
+        await message.channel.send(ans)
+        # string = faq.faq(message.content)
+        # if string != None:
+        #     await message.channel.send(string)
         if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
-        if ans[0]['label'] == 'sadness':
+        if emotion[0]['label'] == 'sadness':
             user = message.author
-            embed = discord.Embed(title="Select an option", color=discord.Color.blue())
-            embed.add_field(name="👍", value="Agree", inline=True)
-            embed.add_field(name="👎", value="Disagree", inline=True)
+            embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+            # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
+            embed.add_field(name="👍", value="需要", inline=True)
+            embed.add_field(name="👎", value="不需要", inline=True)
             # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
             message_to_send = await user.send(embed=embed)
             await message_to_send.add_reaction("👍")
@@ -188,6 +191,10 @@ async def on_message(message):
         # check if the message is from the user you are expecting a response from
             if message.author.id == user_id:
                 # handle the user's response
+                # if str(reaction) == "👍":
+                #     responses[user.id] = "Agree"
+                # elif str(reaction) == "👎":
+                #     responses[user.id] = "Disagree"
                 response = message.content
                 print(response)
         # await message.channel.send(ans) 
@@ -198,6 +205,12 @@ async def on_reaction_add(reaction, user):
     if user.id in responses:
         if str(reaction) == "👍":
             responses[user.id] = "Agree"
+            # bandson = 
+            # BANDSON#5877
+            # 
+            # await user.send("Hello! This is a private message.")
+            user1 = bot.get_user(792305150429233152)
+            await user1.send("Hello! This is a private message.")
         elif str(reaction) == "👎":
             responses[user.id] = "Disagree"
         # print the user's response
