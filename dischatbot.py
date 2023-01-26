@@ -163,14 +163,17 @@ async def on_message(message):
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
+        #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
         if ans:
-            await message.channel.send(ans)
+            # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
+                await message.channel.send(ans)
         else:
             if emotion[0]['label'] == 'anger':
                 string = "大家冷靜d"
+                # SQL: save message to database "大家冷靜d"
                 await message.channel.send(string)
         # string = faq.faq(message.content)
         # if string != None:
@@ -180,9 +183,11 @@ async def on_message(message):
         if emotion[0]['label'] == 'sadness':
             user = message.author
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+            # SQL: save message to database "你感覺如何啊？需要幫你轉介去社工嗎？" (ANOTHER TABLE 1?)
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
             embed.add_field(name="👍", value="需要", inline=True)
             embed.add_field(name="👎", value="不需要", inline=True)
+            # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
             # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
             message_to_send = await user.send(embed=embed)
             await message_to_send.add_reaction("👍")
@@ -201,6 +206,7 @@ async def on_message(message):
                 # elif str(reaction) == "👎":
                 #     responses[user.id] = "Disagree"
                 response = message.content
+                # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                 print(response)
         
         
@@ -209,6 +215,7 @@ async def on_message(message):
 @bot.event
 async def on_reaction_add(reaction, user):
     # check if the user's id is in the dictionary
+    # bug found to fix: DM and public like message also will redirect to socail worker
     if user.id in responses:
         if str(reaction) == "👍":
             responses[user.id] = "Agree"
