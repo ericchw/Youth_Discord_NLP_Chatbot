@@ -5,6 +5,7 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
+from dischatbot import connectDB
 
 responses= {}
 intents = discord.Intents.default()

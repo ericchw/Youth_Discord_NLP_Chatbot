@@ -1,0 +1,72 @@
+CREATE TABLE IF NOT EXISTS account
+(
+    aid SERIAL PRIMARY KEY,
+	  email VARCHAR,
+	  pwd VARCHAR,
+	  username VARCHAR
+);
+
+CREATE TABLE IF NOT EXISTS chatlog
+(
+    cid SERIAL PRIMARY KEY,
+	  senderId VARCHAR,
+	  receiverId VARCHAR,
+	  message VARCHAR,
+	  label VARCHAR,
+	  timestamp TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Event_Header(
+    eHdrId SERIAL PRIMARY KEY,
+    eHdrTitle VARCHAR,
+    eStatus VARCHAR,
+    eHdrDesc VARCHAR,
+    eHdrDate TIMESTAMP,
+    eHdrCreateDate TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Event_Detail(
+    eDtlId SERIAL PRIMARY KEY,
+    eDtlOptTitle VARCHAR,
+    eDtlHdrId INTEGER,
+    eDtlUsername VARCHAR,
+    eDtlGameId VARCHAR,
+    CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
+);
+
+CREATE TABLE IF NOT EXISTS games
+(
+    gid SERIAL PRIMARY KEY,
+	gname VARCHAR,
+    gname_zh VARCHAR
+);
+
+CREATE TABLE IF NOT EXISTS information
+(
+    iId VARCHAR PRIMARY KEY,
+    countrycode VARCHAR(3),
+    phoneNumber VARCHAR,
+    whatsapp VARCHAR,
+    website VARCHAR,
+    instagram VARCHAR,
+    discord VARCHAR,
+    servicehours VARCHAR
+);
+
+INSERT INTO account(email, pwd, username) VALUES ('cyberyouth@sjs.org.hk', 'sjs', 'sjs');
+INSERT INTO information VALUES ('聖雅各福群會6PM網上青年支援隊', '852', '26093228', '5933 3711', 'https://www.cyberyouth.sjs.org.hk/', 'https://www.instagram.com/6pm.hk/', 'https://discord.gg/6pm', 'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png');
+INSERT INTO games VALUES
+	(1, 'Other', '其他'),
+	(2, 'League of Legends', '英雄聯盟'),
+	(3, 'Apex Leagues', 'Apex 英雄'),
+	(4, 'Fall Guys', '糖豆人'),
+	(5, 'PUBG: Battlegrounds', '絕地求生'),
+	(6, 'PUBG MOBILE', '絕地求生M'),
+	(7, 'Brawlhalla', '英靈神殿大亂鬥'),
+	(8, 'Talesrunner', '跑Online'),
+	(9, 'Among Us', '太空狼人殺'),
+	(10, 'Rummikub', '魔力橋'),
+	(11, 'Board Game Arena', '桌遊競技場'),
+	(12, 'Arena of Valor', '傳說對決'),
+	(13, 'Honor of Kings', '王者榮耀')
+;
