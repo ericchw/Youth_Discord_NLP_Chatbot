@@ -1,4 +1,4 @@
-nextcord
+discord
 turtle
 bs4
 nrclex
