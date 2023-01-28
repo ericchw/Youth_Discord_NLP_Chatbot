@@ -5,7 +5,8 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
-from dischatbot import connectDB
+from db import connectDB
+from datetime import datetime, timezone
 
 responses= {}
 intents = discord.Intents.default()
@@ -165,6 +166,7 @@ async def on_message(message):
         text=message.content
         emotion=emtransform(text)
         #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.id}', '{message.author.id}', '{message.content}', '{emotion[0]['label']}', '{datetime.now(timezone.utc)}')")
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
