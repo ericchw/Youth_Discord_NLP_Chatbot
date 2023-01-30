@@ -68,6 +68,15 @@ class EventModel(Modal):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
+#     schedule.every().week.at("12:00").do(job)
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
+
+# def job():
+#     channel = bot.get_channel(995158826347143309)
+#     message = "Hello! This is a message posted every week."
+#     bot.loop.create_task(channel.send(message))
     
 @bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
 async def ping(ctx): # a slash command will be created with the name "ping"
@@ -188,7 +197,7 @@ async def on_message(message):
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
             # SQL: save message to database "你感覺如何啊？需要幫你轉介去社工嗎？" (ANOTHER TABLE 1?)
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-            embed.add_field(name="👍", value="需要", inline=True)
+            embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
             embed.add_field(name="👎", value="不需要", inline=True)
             # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
             # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
@@ -210,6 +219,9 @@ async def on_message(message):
                 #     responses[user.id] = "Disagree"
                 response = message.content
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
+                if response == 'yes':
+                    user1 = bot.get_user(315836714029416449)
+                    await user1.send("有個人需要幫手，麻煩請關注")
                 print(response)
         
         
@@ -219,15 +231,17 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     # check if the user's id is in the dictionary
     # bug found to fix: DM and public like message also will redirect to socail worker
-    if user.id in responses:
-        if str(reaction) == "👍":
-            responses[user.id] = "Agree"
-            # await user.send("Hello! This is a private message.")
-            # user1 = bot.get_user(792305150429233152)
-            user1 = bot.get_user(315836714029416449)
-            await user1.send("有個人需要幫手，麻煩請關注")
-        elif str(reaction) == "👎":
-            responses[user.id] = "Disagree"
-        # print the user's response
-        print(f'{user.name} responded with {responses[user.id]}')
+    message = reaction.message
+    if isinstance(message.channel, discord.DMChannel):
+        if user.id in responses:
+            if reaction.emoji == "👍":
+                responses[user.id] = "Agree"
+                # await user.send("Hello! This is a private message.")
+                # user1 = bot.get_user(792305150429233152)
+                user1 = bot.get_user(315836714029416449)
+                await user1.send("有個人需要幫手，麻煩請關注")
+            elif str(reaction) == "👎":
+                responses[user.id] = "Disagree"
+            # print the user's response
+            print(f'{user.name} responded with {responses[user.id]}')
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
