@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS chatlog
 (
     cid SERIAL PRIMARY KEY,
 	  senderId VARCHAR,
-	  receiverId VARCHAR,
 	  message VARCHAR,
 	  label VARCHAR,
 	  timestamp TIMESTAMP
@@ -72,7 +71,7 @@ CREATE TABLE IF NOT EXISTS games
 
 CREATE TABLE IF NOT EXISTS information
 (
-    iId VARCHAR PRIMARY KEY,
+    name VARCHAR PRIMARY KEY,
     countrycode VARCHAR(3),
     phoneNumber VARCHAR,
     whatsapp VARCHAR,
@@ -83,7 +82,7 @@ CREATE TABLE IF NOT EXISTS information
 );
 
 INSERT INTO account(email, pwd, username) VALUES ('cyberyouth@sjs.org.hk', 'sjs', 'sjs');
-INSERT INTO information VALUES ('聖雅各福群會6PM網上青年支援隊', '852', '26093228', '5933 3711', 'https://www.cyberyouth.sjs.org.hk/', 'https://www.instagram.com/6pm.hk/', 'https://discord.gg/6pm', 'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png');
+INSERT INTO information VALUES ('聖雅各福群會6PM網上青年支援隊', '852', '26093228', '59333711', 'https://www.cyberyouth.sjs.org.hk/', 'https://www.instagram.com/6pm.hk/', 'https://discord.gg/6pm', 'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png');
 INSERT INTO games VALUES
 	(1, 'Other', '其他'),
 	(2, 'League of Legends', '英雄聯盟'),

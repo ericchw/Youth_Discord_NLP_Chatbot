@@ -1,6 +1,6 @@
 import psycopg2
 
-def connectDB(sqlStatement):
+def connectDB(sqlStatement, mode):
     try:
         connection = psycopg2.connect(user="admin",
                                     password="admin",
@@ -11,7 +11,14 @@ def connectDB(sqlStatement):
         print("PostgreSQL connection is established.")
 
         cursor.execute(sqlStatement)
-        connection.commit()
+
+        column_names = [desc[0] for desc in cursor.description]
+        
+        if mode == "r":
+             record = cursor.fetchall()
+             return column_names, record
+        else:
+            connection.commit()
 
     except (Exception, psycopg2.Error) as error:
         print("Error while fetching data from PostgreSQL", error)
@@ -22,6 +29,8 @@ def connectDB(sqlStatement):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
+
+
 
 
     ###################SEARCH######################

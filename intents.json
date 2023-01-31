@@ -9,15 +9,8 @@
         ],
         "responses": [
             {
-              "name": "聖雅各福群會6PM網上青年支援隊",
-              "phoneNumber": "26093228",
-              "whatsapp": "5933 3711",
-              "countryCode": "852",
-              "website": "https://www.cyberyouth.sjs.org.hk/",
-              "instagram": "https://www.instagram.com/6pm.hk/",
-              "discord": "https://discord.gg/6pm",
-              "serviceHours": "https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png"
-          }
+              "sql": "SELECT * FROM information"
+            }
         ]
       },
       {

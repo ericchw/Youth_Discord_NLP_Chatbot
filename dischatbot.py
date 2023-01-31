@@ -174,14 +174,36 @@ async def on_message(message):
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
+        text = text.replace("'", "''")
         #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.id}', '{message.author.id}', '{message.content}', '{emotion[0]['label']}', '{datetime.now(timezone.utc)}')")
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.now(timezone.utc)}')", "u")
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
         if ans:
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
-                await message.channel.send(ans)
+            # print(ans.keys())
+            for key in ans.keys():
+                if key == 'sql':
+                    # print(key)
+                    val1 = connectDB(ans['sql'], "r")
+                    res = []
+                    temp = []
+                    # print(val1[1])
+                    for value in val1[1]:
+                        for x in value:
+                            print(value)
+                            temp.append(x)
+                    for key in val1[0]:
+                        print(key)
+                        for value in temp:
+                            string = key +": " + value
+                            res.append(string)
+                            temp.remove(value)
+                            break
+                    print(res)
+                    res = "\n".join(res)
+                    await message.channel.send(res)
         else:
             if emotion[0]['label'] == 'anger':
                 string = "大家冷靜d"
