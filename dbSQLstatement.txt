@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS account
 	  username VARCHAR
 );
 
-DROP TABLE chatlog;
 CREATE TABLE IF NOT EXISTS chatlog
 (
     cid SERIAL PRIMARY KEY,
