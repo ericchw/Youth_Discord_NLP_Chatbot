@@ -1,4 +1,5 @@
 import psycopg2
+from datetime import datetime, timezone
 
 def connectDB(sqlStatement, mode):
     try:
@@ -11,13 +12,12 @@ def connectDB(sqlStatement, mode):
         print("PostgreSQL connection is established.")
 
         cursor.execute(sqlStatement)
-
-        column_names = [desc[0] for desc in cursor.description]
         
         if mode == "r":
+             column_names = [desc[0] for desc in cursor.description]
              record = cursor.fetchall()
              return column_names, record
-        else:
+        else: # c = create, u = update, d = delete
             connection.commit()
 
     except (Exception, psycopg2.Error) as error:
@@ -51,3 +51,6 @@ def connectDB(sqlStatement, mode):
     # cursor.execute(create_table_query)
     # connection.commit()
     # print("Table created successfully in PostgreSQL ")
+# test
+# connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{'test'}', '{'chatbot'}', '{datetime.now(timezone.utc)}')", "u")
+  
