@@ -34,30 +34,6 @@ class MyView(View):
         await interaction.response.send_message(f"Hi from Button 3")
         await interaction.followup.send(f"This is a followup message from Button 3.")
 
-class EventModel(Modal):
-    def __init__(self,*args,**kwargs):
-        super().__init__(*args,**kwargs)
-
-        self.add_item(InputText(
-            label="Event type:",
-            placeholder="Event_type"
-            ))
-        self.add_item(InputText(
-            label="Date & time:",
-            placeholder="d&t"
-            ))
-        self.add_item(InputText(
-            label="Minium members:",
-            placeholder="members"
-            ))
-    async def callback(self,interaction:discord.InputText):
-        embed=discord.Embed(title="User Details",color=discord.Colour.brand_red())
-        embed.add_field(name="Event_type",value=self.children[0].value,inline=False)
-        embed.add_field(name="d&t",value=self.children[1].value,inline=False)
-        embed.add_field(name="members",value=self.children[2].value,inline=False)
-        m=await interaction.response.send_message(embed=embed)
-        
-        
 
 #event
 @bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
@@ -107,15 +83,16 @@ async def event(ctx):
     view.add_item(sle_event)
     view.add_item(time)
     view.add_item(join)
+    '''message=join.interaction.response.send_message(f"New poll:{sle_event.values[0]} \n✅ = Yes**\n**❎ = No**")
+    await message.add_reaction('❎')
+    await message.add_reaction('✅')'''
     async def my_callback(interaction):
         message=await interaction.response.send_message(f"New poll: \n✅ = Yes**\n**❎ = No**")
         await message.add_reaction('❎')
         await message.add_reaction('✅')
     join.callback = my_callback
-    '''message=join.interaction.response.send_message(f"New poll:{sle_event.values[0]} \n✅ = Yes**\n**❎ = No**")
-    await message.add_reaction('❎')
-    await message.add_reaction('✅')'''
     await ctx.send("Choose a game", view = view)
+
 
 
 @bot.event
