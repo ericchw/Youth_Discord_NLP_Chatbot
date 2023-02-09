@@ -5,6 +5,8 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
+from db import connectDB    
+from datetime import datetime, timezone
 
 responses= {}
 intents = discord.Intents.default()
@@ -156,13 +158,14 @@ async def on_message(message):
                     for key in val1[0]:
                         print(key)
                         for value in temp:
-                            string = key +": " + value
+                            string = key.replace("name","名稱").replace("phonenumber","電話").replace("whatsapp","Whatsapp").replace("website","網站").replace("instagram","Instagram").replace("discord","Discord").replace("servicehours","服務時間") + ": " + value
                             res.append(string)
                             temp.remove(value)
                             break
                     print(res)
                     res = "\n".join(res)
                     await message.channel.send(res)
+                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{res}', '{'query'}', '{datetime.now(timezone.utc)}')", "u")
         else:
             if emotion[0]['label'] == 'anger':
                 string = "大家冷靜d"
