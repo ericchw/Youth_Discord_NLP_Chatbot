@@ -5,7 +5,7 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
-from db import connectDB    
+from db import connectDB
 from datetime import datetime, timezone
 
 responses= {}
@@ -36,11 +36,82 @@ class MyView(View):
         await interaction.response.send_message(f"Hi from Button 3")
         await interaction.followup.send(f"This is a followup message from Button 3.")
 
+class EventModel(Modal):
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
 
+        self.add_item(InputText(
+            label="Event type:",
+            placeholder="Event_type"
+            ))
+        self.add_item(InputText(
+            label="Date & time:",
+            placeholder="d&t"
+            ))
+        self.add_item(InputText(
+            label="Minium members:",
+            placeholder="members"
+            ))
+    async def callback(self,interaction:discord.InputText):
+        embed=discord.Embed(title="User Details",color=discord.Colour.brand_red())
+        embed.add_field(name="Event_type",value=self.children[0].value,inline=False)
+        embed.add_field(name="d&t",value=self.children[1].value,inline=False)
+        embed.add_field(name="members",value=self.children[2].value,inline=False)
+        m=await interaction.response.send_message(embed=embed)
+        
+        
+
+
+
+
+
+@bot.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(bot))
+#     schedule.every().week.at("12:00").do(job)
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
+
+# def job():
+#     channel = bot.get_channel(995158826347143309)
+#     message = "Hello! This is a message posted every week."
+#     bot.loop.create_task(channel.send(message))
+    
+@bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
+async def ping(ctx): # a slash command will be created with the name "ping"
+    await ctx.respond(f"Pong! Latency is {bot.latency}")
+
+
+@bot.command()
+async def button2(ctx): # a slash command will be created with the name "ping"
+    await ctx.respond("Hello!", view=MyView())
 #event
-@bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
+@bot.command(name="create_event")
 async def event(ctx):
-    sle_event = Select( 
+    modal=EventModel(title="Create a Event")
+    await ctx.send_modal(modal)
+    
+
+
+
+
+
+
+#polling
+@bot.command()
+async def poll(ctx, *, question):
+    #limit of polling
+    await ctx.channel.purge(limit=2)
+    message = await ctx.send(f"New poll: \n✅ = Yes**\n**❎ = No**")
+    await message.add_reaction('❎')
+    await message.add_reaction('✅')
+
+@bot.command()  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
+async def hello(ctx):
+    select1 = Select( 
+        min_values=2,
+        max_values=4,
         placeholder= "Choose a game",
         options = [
         discord.SelectOption(
@@ -65,65 +136,33 @@ async def event(ctx):
             )
 
     ],
-    row = 0)
-    time = Select( 
-        placeholder= "Choose a time",
+    row = 2)
+    select2 = Select( 
+        placeholder= "Choose a game",
         options = [
         discord.SelectOption(
-            label="morning", 
-            description="morning",
+            label="Apex", 
+            description="Apex",
             default= True),
         discord.SelectOption(
-            label="afternoon",  
-            description="afternoon",),
-        discord.SelectOption(
-            label="night",  
-            description="night")
-    ],row = 1)
-    join=Button(label="join!", style=discord.ButtonStyle.red,row = 2)
-    view = View()
-    view.add_item(sle_event)
-    view.add_item(time)
-    view.add_item(join)
-    '''message=join.interaction.response.send_message(f"New poll:{sle_event.values[0]} \n✅ = Yes**\n**❎ = No**")
-    await message.add_reaction('❎')
-    await message.add_reaction('✅')'''
+            label="Rainbow_six", 
+            description="Rainbow Six Seige")
+    ])
     async def my_callback(interaction):
-        message=await interaction.response.send_message(f"New poll: \n✅ = Yes**\n**❎ = No**")
-        await message.add_reaction('❎')
-        await message.add_reaction('✅')
-    join.callback = my_callback
+        select1.disabled = True
+        if "others"  in select1.values:
+            select1.add_option()
+            select1.append_option(discord.SelectOption(
+            label="new_game_1", 
+            description="New Game_1",
+            ))
+        await interaction.response.send_message(f"Game chosen: {select1.values}")
+    select1.callback = my_callback
+    # select.callback = my_callback
+    view = View()
+    view.add_item(select1)
+    view.add_item(select2)
     await ctx.send("Choose a game", view = view)
-
-
-
-@bot.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(bot))
-    
-@bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
-async def ping(ctx): # a slash command will be created with the name "ping"
-    await ctx.respond(f"Pong! Latency is {bot.latency}")
-
-
-@bot.command()
-async def button2(ctx): # a slash command will be created with the name "ping"
-    await ctx.respond("Hello!", view=MyView())
-
-
-
-
-
-#polling
-@bot.command()
-async def poll(ctx, *, question):
-    #limit of polling
-    await ctx.channel.purge(limit=2)
-    message = await ctx.send(f"New poll: \n✅ = Yes**\n**❎ = No**")
-    await message.add_reaction('❎')
-    await message.add_reaction('✅')
-
-
 
 
 @bot.event
@@ -136,7 +175,7 @@ async def on_message(message):
         text=message.content
         emotion=emtransform(text)
         text = text.replace("'", "''")
-        #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
+            #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.now(timezone.utc)}')", "u")
         # print(ans)
         ans=chat.outp(text)
@@ -171,8 +210,8 @@ async def on_message(message):
                         res = "\n".join(res)
                         await message.channel.send(res)
                         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{res}', '{'query'}', '{datetime.now(timezone.utc)}')", "u")
-                    if key == 'serviceHours':
-                        await message.channel.send(file=discord.File(ans))
+                    # if key == 'serviceHours':
+                    #     await message.channel.send(file=discord.File(ans))
         else:
             if emotion[0]['label'] == 'anger':
                 string = "大家冷靜d"
@@ -189,7 +228,7 @@ async def on_message(message):
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
             # SQL: save message to database "你感覺如何啊？需要幫你轉介去社工嗎？" (ANOTHER TABLE 1?)
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-            embed.add_field(name="👍", value="需要", inline=True)
+            embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
             embed.add_field(name="👎", value="不需要", inline=True)
             # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
             # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
@@ -211,6 +250,9 @@ async def on_message(message):
                 #     responses[user.id] = "Disagree"
                 response = message.content
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
+                if response == 'yes':
+                    user1 = bot.get_user(315836714029416449)
+                    await user1.send("有個人需要幫手，麻煩請關注")
                 print(response)
         
         
@@ -220,15 +262,17 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     # check if the user's id is in the dictionary
     # bug found to fix: DM and public like message also will redirect to socail worker
-    if user.id in responses:
-        if str(reaction) == "👍":
-            responses[user.id] = "Agree"
-            # await user.send("Hello! This is a private message.")
-            # user1 = bot.get_user(792305150429233152)
-            user1 = bot.get_user(315836714029416449)
-            await user1.send("有個人需要幫手，麻煩請關注")
-        elif str(reaction) == "👎":
-            responses[user.id] = "Disagree"
-        # print the user's response
-        print(f'{user.name} responded with {responses[user.id]}')
+    message = reaction.message
+    if isinstance(message.channel, discord.DMChannel):
+        if user.id in responses:
+            if reaction.emoji == "👍":
+                responses[user.id] = "Agree"
+                # await user.send("Hello! This is a private message.")
+                # user1 = bot.get_user(792305150429233152)
+                user1 = bot.get_user(315836714029416449)
+                await user1.send("有個人需要幫手，麻煩請關注")
+            elif str(reaction) == "👎":
+                responses[user.id] = "Disagree"
+            # print the user's response
+            print(f'{user.name} responded with {responses[user.id]}')
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
