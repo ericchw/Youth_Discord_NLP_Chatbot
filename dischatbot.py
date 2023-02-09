@@ -168,7 +168,6 @@ async def on_message(message):
                 string = "大家冷靜d"
                 # SQL: save message to database "大家冷靜d"
                 await message.channel.send(string)
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{string}', '{'Solve'}', '{datetime.now(timezone.utc)}')", "u")
         # string = faq.faq(message.content)
         # if string != None:
         #     await message.channel.send(string)

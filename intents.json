@@ -5,9 +5,7 @@
         "patterns": [
           "contact",
           "6pm 聯絡方法",
-          "6pm contact",
-          "聯絡資料",
-          "聯絡方法"
+          "6pm contact"
         ],
         "responses": [
             {
