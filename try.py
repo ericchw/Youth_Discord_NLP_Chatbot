@@ -5,24 +5,27 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
+bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) 
+
+bot.event_variable = ""
+
 
 class Event(View):
-
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
-        m="List:\n"+str(interaction.user)+"\nPlease select "
-        await interaction.response.edit_message(content=f"{m}", view=self)
+        bot.event_variable=bot.event_variable+str(interaction.user)
+        await interaction.response.edit_message(content=f"List:\n{bot.event_variable}\nPlease select ", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
     async def callback2(self, button, interaction):
-        m="List:\n"+str(interaction.user)+"\nPlease select "
-        await interaction.response.edit_message(content=f"Hi from Button 1", view=self)
+        bot.event_variable=bot.event_variable+str(interaction.user)
+        await interaction.response.edit_message(content=f"List:\n{bot.event_variable}\nPlease select ", view=self)
 
     @button(label="3:LOL", style=discord.ButtonStyle.red)
     async def callback3(self, button, interaction):
-        m="List:\n"+str(interaction.user)+"\nPlease select "
-        await interaction.response.edit_message(content=f"Hi from Button 1", view=self)
+        bot.event_variable=bot.event_variable+str(interaction.user)
+        await interaction.response.edit_message(content=f"List:\n{bot.event_variable}\nPlease select ", view=self)
 
-bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) 
+
 #event
 @bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
 async def event(ctx):
