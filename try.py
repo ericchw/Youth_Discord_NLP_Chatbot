@@ -6,7 +6,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 
-class MyView(View):
+class Event(View):
 
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
@@ -32,7 +32,7 @@ async def event(ctx):
         color=discord.Color.red()
     )
     await ctx.send(embed=embed)
-    await ctx.send("List:\nPlease select ", view=MyView())
+    await ctx.send("List:\nPlease select ", view=Event())
 
 
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
