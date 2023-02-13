@@ -6,7 +6,7 @@ from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 responses= {}
 intents = discord.Intents.default()
@@ -176,7 +176,7 @@ async def on_message(message):
         emotion=emtransform(text)
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.now(timezone.utc)}')", "u")
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
@@ -185,7 +185,7 @@ async def on_message(message):
             # print(type(ans))
             if type(ans) == str:
                 await message.channel.send(ans)
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{ans}', '{'chatbot'}', '{datetime.now(timezone.utc)}')", "u")
+                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             else:
                 # print(ans.keys())
                 for key in ans.keys():
@@ -209,7 +209,7 @@ async def on_message(message):
                         # print(res)
                         res = "\n".join(res)
                         await message.channel.send(res)
-                        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{res}', '{'query'}', '{datetime.now(timezone.utc)}')", "u")
+                        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{res}', '{'query'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
@@ -217,7 +217,7 @@ async def on_message(message):
                 string = "大家冷靜d"
                 await message.channel.send(string)
                 # SQL: save message to database "大家冷靜d"
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT,'{'CyberU'}', '{string}', '{'Solve'}', '{datetime.now(timezone.utc)}')", "u")
+                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # string = faq.faq(message.content)
         # if string != None:
         #     await message.channel.send(string)
@@ -226,11 +226,9 @@ async def on_message(message):
         if emotion[0]['label'] == 'sadness':
             user = message.author
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
-            # SQL: save message to database "你感覺如何啊？需要幫你轉介去社工嗎？" (ANOTHER TABLE 1?)
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
             embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
             embed.add_field(name="👎", value="不需要", inline=True)
-            # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
             # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
             message_to_send = await user.send(embed=embed)
             await message_to_send.add_reaction("👍")
@@ -268,11 +266,15 @@ async def on_reaction_add(reaction, user):
             if reaction.emoji == "👍":
                 responses[user.id] = "Agree"
                 # await user.send("Hello! This is a private message.")
+                # send need help to social worker
                 # user1 = bot.get_user(792305150429233152)
                 user1 = bot.get_user(315836714029416449)
                 await user1.send("有個人需要幫手，麻煩請關注")
+                connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             elif str(reaction) == "👎":
                 responses[user.id] = "Disagree"
             # print the user's response
             print(f'{user.name} responded with {responses[user.id]}')
+
+#run bot by token
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
