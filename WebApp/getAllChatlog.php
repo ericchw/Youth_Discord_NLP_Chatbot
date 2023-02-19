@@ -16,15 +16,8 @@
             echo '<td class="desc">' . $result[2] . '</td>';
             echo '<td>' . $result[3] . '</td>';
             echo '<td><span class="status--process">' . $result[4] . '</span></td>';
-            echo '<td>
-                    <div class="table-data-feature">
-                        <form action="viewEvent_page.php" method="POST">
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="View" name="eventId" value="' . $result[0] . '">
-                                <i class="zmdi zmdi-assignment"></i>
-                            </button>
-                        </form>
-                    </div>
-                </td><tr class="spacer"></tr>';
+            echo '<td>' . $result[5] . '</td>';
+            echo '<tr class="spacer"></tr>';
         }
 
         echo '</tbody>';

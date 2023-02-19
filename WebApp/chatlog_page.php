@@ -204,11 +204,11 @@ include 'checkCookie.php';
                 <table class="table table-data2">
                   <thead>
                     <tr>
+                      <th>User Discord Name</th>
                       <th>User Discord Id</th>
                       <th>Message</th>
                       <th>Label</th>
                       <th>Send Time</th>
-                      <th></th>
                     </tr>
                   </thead>
                   <?php
