@@ -46,5 +46,5 @@ def outp(massage):
         for intent in intents['intents']:
             if tag == intent["tag"]:
                 return random.choice(intent['responses'])
-    else:
-        return "I do not understand..."
+    # else:
+    #     return "I do not understand..."
