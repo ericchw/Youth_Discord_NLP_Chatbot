@@ -44,40 +44,50 @@ temp_intent = {
             
         ]
     }
-# Open the input file
+
 with open('WikiQA-dev.txt', 'r') as f:
-    # Read the first line of the file
 
     counter = 1
+    current = ""
     for line in f:
         # Extract the first sentence before the tab space
         pattern = line.split('\t')[0].strip('.!?')
         response = line.split('\t')[1].strip('.!?')
-        lower_case = pattern.lower()
-        tokens = nltk.word_tokenize(lower_case)
-        tags = nltk.pos_tag(tokens)
-        for tag in tags:
-            if 'VBP' or 'NN' or 'NNS' or 'NNP' in tag:
-                temp_intent['patterns'].append(tag[0])
-            print(tag)
-                # break
+        if current != pattern:
+            data['intents'].append(temp_intent)
+            temp_intent = {
+                "tag": '',
+                "patterns": [
+                ],
+                "responses": [
+                ]
+            }
+            temp_intent['tag'] = str(counter)
+            counter += 1
+            current = pattern
+            lower_case = pattern.lower()
+            tokens = nltk.word_tokenize(lower_case)
+            tags = nltk.pos_tag(tokens)
+            for tag in tags:
+                if 'VBP' or 'NN' or 'NNS' or 'NNP' in tag:
+                    temp_intent['patterns'].append(tag[0])
+                print(tag)
+                    # break
+            temp_intent['responses'].append(response)
+        else:
+            temp_intent['responses'].append(response)
         
-        temp_intent['tag'] = str(counter)
-        counter += 1
+        
+        
+        
         # temp_intent['patterns'].append(pattern)
-        temp_intent['responses'].append(response)
-        data['intents'].append(temp_intent)
-        temp_intent = {
-            "tag": '',
-            "patterns": [
-            ],
-            "responses": [
-            ]
-        }
+        
+        
+        
         with open("intents.json", "w",encoding='utf-8') as file:
             # Write the modified data back to the file
             json.dump(data, file, indent=4)
             # file.write(new_data)
-        # if counter == 30:
+        # if counter == 3:
         #     print(data['intents'])
         #     break
