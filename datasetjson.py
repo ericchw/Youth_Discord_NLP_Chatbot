@@ -86,7 +86,7 @@ with open('WikiQA-dev.txt', 'r') as f:
         
         with open("intents.json", "w",encoding='utf-8') as file:
             # Write the modified data back to the file
-            json.dump(data, file, indent=4)
+            json.dump(data, file, ensure_ascii=False, indent=4)
             # file.write(new_data)
         # if counter == 3:
         #     print(data['intents'])

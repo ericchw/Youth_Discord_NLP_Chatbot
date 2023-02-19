@@ -1,51 +1,49 @@
 {
     "intents": [
-      {
-        "tag": "6pm_contact",
-        "patterns": [
-          "contact",
-          "6pm 聯絡方法",
-          "6pm contact"
-        ],
-        "responses": [
-            {
-              "sql": "SELECT * FROM information"
-            }
-        ]
-      },
-      {
-        "tag": "6pm_activity",
-        "patterns": [
-          "activity",
-          "6pm 重點活動",
-          "6pm activity"
-        ],
-        "responses": [
-            
-              "https://drive.google.com/file/d/1qJq1T4i5dpRgpCcETe5XZ73BOEWfCP_j/view"
-          
-        ]
-      },
-      {
-        "tag": "greeting",
-        "patterns": [
-          "hi",
-          "你好",
-          "Hey",
-          "How are you",
-          "Is anyone there?",
-          "Hello",
-          "Good day"
-        ],
-        "responses": [
-          "Hey :-)",
-          "Hello, thanks for visiting",
-          "Hi there, what can I do for you?",
-          "Hi there, how can I help?"
-        ]
-      },
-      {
-        "tag": "goodbye",
+        {
+            "tag": "6pm_contact",
+            "patterns": [
+                "contact",
+                "6pm 聯絡方法",
+                "6pm contact"
+            ],
+            "responses": [
+                {
+                    "sql": "SELECT * FROM information"
+                }
+            ]
+        },
+        {
+            "tag": "6pm_activity",
+            "patterns": [
+                "activity",
+                "6pm 重點活動",
+                "6pm activity"
+            ],
+            "responses": [
+                "https://drive.google.com/file/d/1qJq1T4i5dpRgpCcETe5XZ73BOEWfCP_j/view"
+            ]
+        },
+        {
+            "tag": "greeting",
+            "patterns": [
+                "hi",
+                "你好",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, thanks for visiting",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?"
+            ]
+        },
+        {
+            "tag": "goodbye",
             "patterns": [
                 "Bye",
                 "See you later",
@@ -163,7 +161,7 @@
             "responses": [
                 "BMC Software , Inc. is an American company specializing in Business Service Management ( BSM ) software ",
                 "Headquartered in Houston , Texas , BMC develops , markets and sells software used for multiple functions , including IT service management , data center automation , performance management , virtualization lifecycle management and cloud computing management ",
-                "The name `` BMC '' is taken from the surnames of its three founders\u2014Scott Boulette , John Moores , and Dan Cloer ",
+                "The name `` BMC '' is taken from the surnames of its three founders—Scott Boulette , John Moores , and Dan Cloer ",
                 "Employing over 6,000 , BMC is often credited with pioneering the BSM concept as a way to help better align IT operations with business needs ",
                 "For 2011 , the company recorded an annual revenue of $ 2.1 billion , making it the # 20 largest software company in terms of revenue for that year "
             ]
@@ -184,7 +182,7 @@
             "responses": [
                 "I Love Lucy is an American television sitcom starring Lucille Ball , Desi Arnaz , Vivian Vance , and William Frawley ",
                 "The black-and-white series originally ran from October 15 , 1951 , to May 6 , 1957 , on the Columbia Broadcasting System ( CBS ) ",
-                "After the series ended in 1957 , however , a modified version continued for three more seasons with 13 one-hour specials , running from 1957 to 1960 , known first as The Lucille Ball-Desi Arnaz Show and later in reruns as The Lucy\u2013Desi Comedy Hour ",
+                "After the series ended in 1957 , however , a modified version continued for three more seasons with 13 one-hour specials , running from 1957 to 1960 , known first as The Lucille Ball-Desi Arnaz Show and later in reruns as The Lucy–Desi Comedy Hour ",
                 "I Love Lucy was the most watched show in the United States in four of its six seasons , and was the first to end its run at the top of the Nielsen ratings ( an accomplishment later matched by The Andy Griffith Show and Seinfeld ) ",
                 "I Love Lucy is still syndicated in dozens of languages across the world ",
                 "The show was the first scripted television program to be shot on 35 mm film in front of a studio audience , and won five Emmy Awards and received numerous nominations ",
@@ -205,7 +203,7 @@
                 "famous"
             ],
             "responses": [
-                "Armando P\u00e9rez ( born January 15 , 1981 ) , better known by his stage name Pitbull , is an American rapper , songwriter , and record producer ",
+                "Armando Pérez ( born January 15 , 1981 ) , better known by his stage name Pitbull , is an American rapper , songwriter , and record producer ",
                 "His first recorded performance was from the Lil Jon album Kings of Crunk in 2002 ",
                 "In 2004 , he released his debut album titled M.I.A.M.I . ( short for Money Is A Major Issue ) under TVT Records ",
                 "Since then , he has released three other albums under the label : El Mariel in 2006 , The Boatlift in 2007 , and Planet Pit in 2011 ",
@@ -217,11 +215,11 @@
                 "Rebelution went on to sell over 7.5 million worldwide digital singles and albums combined ",
                 "Nevertheless , he dropped a smash called `` Give Me Everything '' which reached # 1 worldwide , and featured artists Ne-yo , Nayer , and Afrojack ",
                 "He has also performed as a featured artist in the remixes of many other hit songs , like Tik Tok , Scream & Shout , Lo Hecho Esta Hecho , Bad , Papi , Diamonds , How Low , Tonight ( I 'm Lovin ' You ) , Video Phone , Over To You Now and Bumpy Ride ",
-                "P\u00e9rez is also the host of his own Spanish-language program on the cable channel Mun2 titled La Esquina ( Spanish for The Corner ) ",
-                "In 2005 P\u00e9rez and rapper Sean 'Diddy ' Combs co-founded Bad Boy Latino , a subsidiary of Combs ' Bad Boy Records label ",
+                "Pérez is also the host of his own Spanish-language program on the cable channel Mun2 titled La Esquina ( Spanish for The Corner ) ",
+                "In 2005 Pérez and rapper Sean 'Diddy ' Combs co-founded Bad Boy Latino , a subsidiary of Combs ' Bad Boy Records label ",
                 "It primarily focuses on Latin hip hop , Latin soul , Latin pop and other Tropical music , and has offices in New York and Miami , Florida ",
-                "Along with co-founding it , P\u00e9rez currently heads the A & R division of the label ",
-                "P\u00e9rez has become a product endorser , representing alongside Drake , Rihanna , and Trey Songz the \u201cSo Kodak\u201d campaign for the Kodak brand and embarking on a partnership with the soft drink giant Dr Pepper as part of the campaign \u201c Vida 23 \u201d for which he recorded the song specifically featured on his album Armando ",
+                "Along with co-founding it , Pérez currently heads the A & R division of the label ",
+                "Pérez has become a product endorser , representing alongside Drake , Rihanna , and Trey Songz the “So Kodak” campaign for the Kodak brand and embarking on a partnership with the soft drink giant Dr Pepper as part of the campaign “ Vida 23 ” for which he recorded the song specifically featured on his album Armando ",
                 "Pitbull also announced he has become the spokesperson for Voli Vodka , in which he holds a majority equity stake , and Budweiser has chosen Pitbull to promote its Bud Light line of beer ",
                 "The commercials currently highlight Pitbull dancing and gyrating on stage holding up a bottle of Bud Light ",
                 "Pitbull has also purchased an equity stake in Miami Subs Pizza and Grill "
@@ -447,7 +445,7 @@
             ],
             "responses": [
                 "Biblical judges",
-                "A biblical judge ( Hebrew : sh\u00f4phaat\u00eem or shoftim \u05e9\u05d5\u05e4\u05d8\u05d9\u05dd ) is `` a ruler or a military leader , as well as someone who presided over legal hearings . ''",
+                "A biblical judge ( Hebrew : shôphaatîm or shoftim שופטים ) is `` a ruler or a military leader , as well as someone who presided over legal hearings . ''",
                 "Following the conquest of Canaan by Joshua until the formation of the first Kingdom of Israel ( ca . 1150-1025 BC ) , the Israelite Tribes formed a loose confederation ",
                 "No central government existed in this confederation and in times of crisis , the people were led by ad hoc leaders known as judges "
             ]
@@ -462,12 +460,12 @@
                 "floyd"
             ],
             "responses": [
-                "Roger Keith `` Syd '' Barrett ( 6 January 1946 \u2013 7 July 2006 ) was an English singer , songwriter , guitarist , and painter , best remembered as a founder member of the band Pink Floyd ",
+                "Roger Keith `` Syd '' Barrett ( 6 January 1946 – 7 July 2006 ) was an English singer , songwriter , guitarist , and painter , best remembered as a founder member of the band Pink Floyd ",
                 "He was the lead vocalist , guitarist , and primary songwriter during the band 's psychedelic years , providing major musical and stylistic direction in their early work : he is credited with creating their name ",
                 "Barrett left the group in April 1968 amid speculations of mental illness exacerbated by drug use , and was briefly hospitalised ",
                 "He was active musically for ten years , recording with Pink Floyd four singles , the debut album ( and contributing to the second one ) , plus several unreleased songs ",
-                "In 1969 , Barrett started off a solo career with the release of the single , `` Octopus `` , which foreshadowed his first solo album , The Madcap Laughs ( 1970 ) , which was recorded over the course of one year ( 1968\u20131969 ) with four different producers ( Peter Jenner , Malcolm Jones , David Gilmour , and Roger Waters ) ",
-                "Nearly two months after Madcap was released , Barrett began working on his second \u2013 and last \u2013 album , Barrett ( produced by Gilmour , and featuring contributions from Richard Wright ) , which would be released in late 1970 , before going into self-imposed seclusion lasting until his death in 2006 ",
+                "In 1969 , Barrett started off a solo career with the release of the single , `` Octopus `` , which foreshadowed his first solo album , The Madcap Laughs ( 1970 ) , which was recorded over the course of one year ( 1968–1969 ) with four different producers ( Peter Jenner , Malcolm Jones , David Gilmour , and Roger Waters ) ",
+                "Nearly two months after Madcap was released , Barrett began working on his second – and last – album , Barrett ( produced by Gilmour , and featuring contributions from Richard Wright ) , which would be released in late 1970 , before going into self-imposed seclusion lasting until his death in 2006 ",
                 "In 1988 , an album of unreleased tracks/alternate takes , Opel , was released by EMI with Barrett 's approval ",
                 "Barrett 's innovative guitar work and exploration of experimental techniques such as using dissonance , distortion , and feedback had an enormous legacy , with a wide variety of musicians from David Bowie to Brian Eno to Jimmy Page and more drawing influence ",
                 "In his post-musician life , Barrett continued with his painting and dedicated himself to gardening , never to return to the public eye ",
@@ -633,7 +631,7 @@
                 "The area also contains one of the 11 megaregions of the United States , spanning from the San Francisco Bay Area east to the Lake Tahoe - Reno area , and from Metropolitan Fresno north to Greater Sacramento ",
                 "Native Americans arrived in Northern California at least as early as 8,000 to 5,000 BC and perhaps even much earlier , and successive waves of arrivals led to one of the most densely populated areas of pre-Columbian North America ",
                 "The arrival of European explorers from the early 16th to the mid-18th centuries , did not establish European settlements in Northern California ",
-                "In 1770 , the Spanish mission at Monterey was the first European settlement in the area , followed by other missions along the coast\u2014eventually extending as far north as Sonoma County ",
+                "In 1770 , the Spanish mission at Monterey was the first European settlement in the area , followed by other missions along the coast—eventually extending as far north as Sonoma County ",
                 "Yosemite Valley in the Sierra Nevada "
             ]
         },
@@ -655,7 +653,7 @@
                 "Nerve cells communicate by sending electrical signals called action potentials down long fibers called axons , which are contained within an insulating substance called myelin ",
                 "In MS , the body 's own immune system attacks and damages the myelin ",
                 "When myelin is lost , the axons can no longer effectively conduct signals ",
-                "The name multiple sclerosis refers to scars ( sclerae-\u2014better known as plaques or lesions ) particularly in the white matter of the brain and spinal cord , which is mainly composed of myelin ",
+                "The name multiple sclerosis refers to scars ( sclerae-—better known as plaques or lesions ) particularly in the white matter of the brain and spinal cord , which is mainly composed of myelin ",
                 "Although much is known about the mechanisms involved in the disease process , the cause remains unknown ",
                 "Theories include genetics or infections ",
                 "Different environmental risk factors have also been found ",
@@ -689,7 +687,7 @@
                 "Together , these four planets are sometimes referred to as the or outer planets ",
                 "The planet was known by astronomers of ancient times , and was associated with the mythology and religious beliefs of many cultures ",
                 "The Romans named the planet after the Roman god Jupiter ",
-                "When viewed from Earth , Jupiter can reach an apparent magnitude of \u22122.94 , making it on average the third-brightest object in the night sky after the Moon and Venus ",
+                "When viewed from Earth , Jupiter can reach an apparent magnitude of −2.94 , making it on average the third-brightest object in the night sky after the Moon and Venus ",
                 "( Mars can briefly match Jupiter 's brightness at certain points in its orbit . )",
                 "Jupiter is primarily composed of hydrogen with a quarter of its mass being helium , although helium only comprises about a tenth of the number of molecules ",
                 "It may also have a rocky core of heavier elements , but like the other gas giants , Jupiter lacks a well-defined solid surface ",
@@ -748,7 +746,7 @@
                 "in"
             ],
             "responses": [
-                "Clarence Anicholas Clemons , Jr. ( January 11 , 1942 \u2013 June 18 , 2011 ) , also known as The Big Man , was an American musician and actor ",
+                "Clarence Anicholas Clemons , Jr. ( January 11 , 1942 – June 18 , 2011 ) , also known as The Big Man , was an American musician and actor ",
                 "From 1972 until his death , he was a prominent member of Bruce Springsteen 's E Street Band , playing the tenor saxophone ",
                 "He released several solo albums and in 1985 , had a hit single with `` You 're a Friend of Mine `` , a duet with Jackson Browne ",
                 "As a guest musician he also featured on Aretha Franklin 's classic `` Freeway of Love `` and on Twisted Sister 's `` Be Chrool to Your Scuel `` as well as performing in concert with The Grateful Dead and Ringo Starr & His All-Starr Band ",
@@ -773,9 +771,9 @@
                 "An Olympus EC-20 - 2x teleconverter lens attached between a camera.1 - Camera lens 2 - Teleconverter 3 - Camera body",
                 "A teleconverter ( sometimes called tele extender ) is a secondary lens which is mounted between the camera and a photographic lens ",
                 "Its job is to enlarge the central part of an image obtained by the objective lens ",
-                "For example , a 2\u00d7 teleconverter for a 35 mm camera enlarges the central 12\u00d718 mm part of an image to the size of 24\u00d736 mm in the standard 35 mm film format ",
-                "Teleconverters are typically made in 1.4\u00d7 , 1.7\u00d7 , 2\u00d7 and 3\u00d7 models , of which 1.4\u00d7 and 2\u00d7 are most common ",
-                "The use of a 2\u00d7 teleconverter gives the effect of using a lens with twice the focal length ",
+                "For example , a 2× teleconverter for a 35 mm camera enlarges the central 12×18 mm part of an image to the size of 24×36 mm in the standard 35 mm film format ",
+                "Teleconverters are typically made in 1.4× , 1.7× , 2× and 3× models , of which 1.4× and 2× are most common ",
+                "The use of a 2× teleconverter gives the effect of using a lens with twice the focal length ",
                 "It also decreases the intensity of the light reaching the film by a factor of 4 ( an equivalent of doubling the focal ratio ) as well as the resolution ( by a factor of 2 ) "
             ]
         },
@@ -924,8 +922,8 @@
                 "exam"
             ],
             "responses": [
-                "Abraham Lincoln ( February 12 , 1809 \u2013 April 15 , 1865 ) was the 16th President of the United States , serving from March 1861 until his assassination in April 1865 ",
-                "Lincoln led the United States through its greatest constitutional , military , and moral crises\u2014the American Civil War \u2014preserving the Union , abolishing slavery , strengthening the national government and modernizing the economy ",
+                "Abraham Lincoln ( February 12 , 1809 – April 15 , 1865 ) was the 16th President of the United States , serving from March 1861 until his assassination in April 1865 ",
+                "Lincoln led the United States through its greatest constitutional , military , and moral crises—the American Civil War —preserving the Union , abolishing slavery , strengthening the national government and modernizing the economy ",
                 "Reared in a poor family on the western frontier , Lincoln was self-educated , and became a country lawyer , a Whig Party leader , Illinois state legislator during the 1830s , and a one-term member of the United States House of Representatives during the 1840s ",
                 "After a series of debates in 1858 that gave national visibility to his opposition to the expansion of slavery , Lincoln lost a Senate race to his arch-rival , Stephen A. Douglas ",
                 "Lincoln , a moderate from a swing state , secured the Republican Party presidential nomination in 1860 ",
@@ -1016,7 +1014,7 @@
                 "Waves on an ocean coast ",
                 "This animation uses Earth science data from a variety of sensors on NASA Earth observing satellites to measure physical oceanography parameters such as ocean currents , ocean winds , sea surface height and sea surface temperature ",
                 "An ocean ( ; the World Ocean of classical antiquity ) is a body of saline water that composes a large part of a planet 's hydrosphere ",
-                "In the context of Earth , it refers to one or all of the major divisions of the planet 's World Ocean \u2013 they are , in descending order of area , the Pacific , Atlantic , Indian , Southern ( Antarctic ) , and Arctic Oceans ",
+                "In the context of Earth , it refers to one or all of the major divisions of the planet 's World Ocean – they are , in descending order of area , the Pacific , Atlantic , Indian , Southern ( Antarctic ) , and Arctic Oceans ",
                 "The word `` sea `` is often used interchangeably with `` ocean '' , but strictly speaking a sea is a body of saline water ( possibly a division of the World Ocean ) partly or fully enclosed by land ",
                 "Earth is the only planet known to have an ocean ( or any large amounts of open liquid water ) ",
                 "Approximately 72 % of the planet 's surface ( ~3.6x108 km2 ) is covered by saline water that is customarily divided into several principal oceans and smaller seas , with the ocean covering approximately 71 % of the Earth 's surface ",
@@ -1140,10 +1138,10 @@
                 "The Pacific Ocean",
                 "The Pacific Ocean is the largest of the Earth 's oceanic divisions ",
                 "It extends from the Arctic in the north to the Southern Ocean ( or , depending on definition , to Antarctica ) in the south , bounded by Asia and Australia in the west , and the Americas in the east ",
-                "At 165.25 million square kilometres ( 63.8 million square miles ) in area , this largest division of the World Ocean \u2013 and , in turn , the hydrosphere \u2013 covers about 46 % of the Earth 's water surface and about one-third of its total surface area , making it larger than all of the Earth 's land area combined ",
-                "The equator subdivides it into the North Pacific Ocean and South Pacific Ocean , with two exceptions : the Gal\u00e1pagos and Gilbert Islands , while straddling the equator , are deemed wholly within the South Pacific ",
+                "At 165.25 million square kilometres ( 63.8 million square miles ) in area , this largest division of the World Ocean – and , in turn , the hydrosphere – covers about 46 % of the Earth 's water surface and about one-third of its total surface area , making it larger than all of the Earth 's land area combined ",
+                "The equator subdivides it into the North Pacific Ocean and South Pacific Ocean , with two exceptions : the Galápagos and Gilbert Islands , while straddling the equator , are deemed wholly within the South Pacific ",
                 "The Mariana Trench in the western North Pacific is the deepest point in the world , reaching a depth of ",
-                "The eastern Pacific Ocean was first sighted by Europeans in the early 16th century when Spanish explorer Vasco N\u00fa\u00f1ez de Balboa crossed the Isthmus of Panama in 1513 and discovered the great `` southern sea '' which he named Mar del Sur ",
+                "The eastern Pacific Ocean was first sighted by Europeans in the early 16th century when Spanish explorer Vasco Núñez de Balboa crossed the Isthmus of Panama in 1513 and discovered the great `` southern sea '' which he named Mar del Sur ",
                 "The ocean 's current name was bestowed by Portuguese explorer Ferdinand Magellan during the Spanish expedition of world circumnavigation in 1521 , who encountered favourable winds as he reached the ocean and called it Mar Pacifico in Portuguese , meaning `` peaceful sea '' "
             ]
         },
@@ -1263,7 +1261,7 @@
                 "Holding one 's breath ( Apnea )",
                 "The person may effectively drown without any sort of liquid ",
                 "In cases of dry drowning in which the victim was immersed , very little fluid is aspirated into the lungs ",
-                "The laryngospasm reflex essentially causes asphyxiation and neurogenic pulmonary edema ( \u0153dema ) ",
+                "The laryngospasm reflex essentially causes asphyxiation and neurogenic pulmonary edema ( œdema ) ",
                 "Dry drowning can occur clinically , or due to illness or accident ",
                 "It is also one of the effects of waterboarding "
             ]
@@ -1350,7 +1348,7 @@
                 "Because of Dalton 's work , the general condition has been called daltonism , although in English this term is now used more narrowly for deuteranopia alone ",
                 "Color blindness is usually classified as a mild disability , however there are occasional circumstances where it can give an advantage ",
                 "Some studies conclude that color blind people are better at penetrating certain color camouflages ",
-                "Such findings may give an evolutionary reason for the high prevalence of red\u2013green color blindness ",
+                "Such findings may give an evolutionary reason for the high prevalence of red–green color blindness ",
                 "And there is also a study suggesting that people with some types of color blindness can distinguish colors that people with normal color vision are not able to distinguish "
             ]
         },
@@ -1367,7 +1365,7 @@
                 "writing"
             ],
             "responses": [
-                "John Ernst Steinbeck , Jr. ( February 27 , 1902 \u2013 December 20 , 1968 ) was an American writer ",
+                "John Ernst Steinbeck , Jr. ( February 27 , 1902 – December 20 , 1968 ) was an American writer ",
                 "He is widely known for the Pulitzer Prize -winning novel The Grapes of Wrath ( 1939 ) and East of Eden ( 1952 ) and the novella Of Mice and Men ( 1937 ) ",
                 "As the author of twenty-seven books , including sixteen novels , six non-fiction books , and five collections of short stories , Steinbeck received the Nobel Prize for Literature in 1962 "
             ]
@@ -1403,7 +1401,7 @@
                 "Slavery typically also requires a shortage of labor and a surplus of land to be viable ",
                 "David P. Forsythe wrote : `` The fact remained that at the beginning of the nineteenth century an estimated three-quarters of all people alive were trapped in bondage against their will either in some form of slavery or serfdom . ''",
                 "Slavery is no longer legal anywhere in the world ",
-                "Mauritania abolished it in law in 1981 and was the last country to do so \u2013 see Abolition of slavery timeline ",
+                "Mauritania abolished it in law in 1981 and was the last country to do so – see Abolition of slavery timeline ",
                 "However , the number of slaves today is higher than at any point in history , remaining as high as 12 million to 27 million "
             ]
         },
@@ -1470,7 +1468,7 @@
                 "David Hinkley of the New York Daily News awarded the episode five stars , saying `` Watching HBO 's new 'Boardwalk Empire ' is like sitting in your favorite tavern and hearing someone say , 'Drinks are on the house . '",
                 "Friends , it does n't get much better . ''",
                 "Paige Wiser of the Chicago Sun-Times called it `` ... an event not to be missed , '' and praised Buscemi in particular , calling his performance `` fascinating . ''",
-                "The episode gained a 2.0/5 ratings share among adults aged 18\u201349 and garnered 4.81 million viewers ",
+                "The episode gained a 2.0/5 ratings share among adults aged 18–49 and garnered 4.81 million viewers ",
                 "This was the highest rated premiere for a HBO series since the pilot of Deadwood in March 2004 ",
                 "Following this successful debut , HBO immediately renewed the series for a second season "
             ]
@@ -1518,12 +1516,12 @@
                 "determined"
             ],
             "responses": [
-                "A medical/clinical thermometer showing the temperature of 38.7 \u00b0C",
+                "A medical/clinical thermometer showing the temperature of 38.7 °C",
                 "Attempts of standardized temperature measurement have been reported as early as 170 AD by Claudius Galenus ",
                 "The modern scientific field has its origins in the works by Florentine scientists in the 17th century ",
                 "Early devices to measure temperature were called thermoscopes ",
                 "The first sealed thermometer was constructed in 1641 by the Grand Duke of Toscani , Ferdinand II ",
-                "The development of today 's thermometers and temperature scales began in the early 18th century , when Gabriel Fahrenheit adapted a thermometer using mercury and a scale both developed by Ole Christensen R\u00f8mer ",
+                "The development of today 's thermometers and temperature scales began in the early 18th century , when Gabriel Fahrenheit adapted a thermometer using mercury and a scale both developed by Ole Christensen Rømer ",
                 "Fahrenheit 's scale is still in use , alongside the Celsius scale and the Kelvin scale "
             ]
         },
@@ -1596,7 +1594,7 @@
                 "The tower has three levels for visitors ",
                 "Tickets can be purchased to ascend , by stairs or lift ( elevator ) , to the first and second levels ",
                 "The walk from ground level to the first level is over 300 steps , as is the walk from the first to the second level ",
-                "The third and highest level is accessible only by lift\u2014stairs do exist but are usually closed to the public ",
+                "The third and highest level is accessible only by lift—stairs do exist but are usually closed to the public ",
                 "The first and second levels have restaurants ",
                 "The tower has become the most prominent symbol of both Paris and France , often in the establishing shot of films set in the city "
             ]
@@ -1685,7 +1683,7 @@
             ],
             "responses": [
                 "Judaica ( clockwise from top ) : Shabbat candlesticks , handwashing cup , Chumash and Tanakh , Torah pointer , shofar and etrog box",
-                "Judaism ( from the Latin Iudaismus , derived from the Greek Iouda\u00efsmos , and ultimately from the Hebrew , Yehudah , `` Judah `` ; in Hebrew : , Yahadut , the distinctive characteristics of the Judean ethnos ) is the religion , philosophy and way of life of the Jewish people ",
+                "Judaism ( from the Latin Iudaismus , derived from the Greek Ioudaïsmos , and ultimately from the Hebrew , Yehudah , `` Judah `` ; in Hebrew : , Yahadut , the distinctive characteristics of the Judean ethnos ) is the religion , philosophy and way of life of the Jewish people ",
                 "Judaism is a monotheistic religion , with its main inspiration being based on or found in the Hebrew Bible ( also known as the Tanakh ) which has been explored in later texts , such as the Talmud ",
                 "Judaism is considered by religious Jews to be the expression of the covenantal relationship God established with the Children of Israel ",
                 "Judaism is not a homogenous religion , and embraces a number of streams and views ",
@@ -1740,7 +1738,7 @@
                 "kid"
             ],
             "responses": [
-                "William H. Bonney ( born William Henry McCarty , Jr. c. November 23 , 1859 \u2013 c. July 14 , 1881 ) , better known as Billy the Kid but also known as Henry Antrim , was a 19th-century American gunman who participated in the Lincoln County War and became a frontier outlaw in the American Old West ",
+                "William H. Bonney ( born William Henry McCarty , Jr. c. November 23 , 1859 – c. July 14 , 1881 ) , better known as Billy the Kid but also known as Henry Antrim , was a 19th-century American gunman who participated in the Lincoln County War and became a frontier outlaw in the American Old West ",
                 "According to legend , he killed 21 men , but it is generally believed that he killed between four and nine ",
                 "He killed his first man at 15 ",
                 "McCarty ( or Bonney , the name he used at the height of his notoriety ) was 5'8 '' ( 173 cm ) tall with blue eyes , a smooth complexion , and prominent front teeth ",
@@ -1860,7 +1858,7 @@
                 "Government supported , free public schools for all started being established after the revolution , and expanded in the 19th century , as the results of efforts of men like Horace Mann and Booker T. Washington ",
                 "By 1870 , all states had free elementary schools , albeit only in urban centers ",
                 "As the 20th century drew nearer , states started passing laws to make schooling compulsory , and by 1910 , 72 percent of children attended school ",
-                "Private schools continued to spread during this time , as well as colleges and\u2014in the rural centers\u2014 land grant colleges ",
+                "Private schools continued to spread during this time , as well as colleges and—in the rural centers— land grant colleges ",
                 "The year of 1910 also saw the first true high schools ",
                 "During the rest of the 20th century , educational efforts centered on reducing the inequality of the schooling system ",
                 "The landmark Supreme Court case Brown v. Board of Education made the desegregation of elementary and high schools a national priority , while the Pell Grant program helped poor minorities gain access to college ",
@@ -1894,7 +1892,7 @@
                 "die"
             ],
             "responses": [
-                "James Byron Dean ( February 8 , 1931 \u2013 September 30 , 1955 ) was an American actor ",
+                "James Byron Dean ( February 8 , 1931 – September 30 , 1955 ) was an American actor ",
                 "He is a cultural icon of teenage disillusionment , as expressed in the title of his most celebrated film , Rebel Without a Cause ( 1955 ) , in which he starred as troubled Los Angeles teenager Jim Stark ",
                 "The other two roles that defined his stardom were as loner Cal Trask in East of Eden ( 1955 ) , and as the surly ranch hand , Jett Rink , in Giant ( 1956 ) ",
                 "Dean 's enduring fame and popularity rests on his performances in only these three films , all leading roles ",
@@ -1973,7 +1971,7 @@
                 "Full citizenship rights - assimilation - were offered , although in reality `` assimilation was always receding [ and ] the colonial populations treated like subjects not citizens . ''",
                 "Following the First World War , and even more so after the Second World War , anti-colonial movements began to challenge European authority ",
                 "France unsuccessfully fought bitter wars in Vietnam and Algeria to keep its empire intact , but by the end of the 1960s many of France 's colonies had gained independence ",
-                "However , some remaining territories \u2013 especially islands and archipelagos \u2013 were integrated into France as overseas departments and territories ",
+                "However , some remaining territories – especially islands and archipelagos – were integrated into France as overseas departments and territories ",
                 "These now total altogether 123,150 km2 ( 47,548 sq . miles ) , which amounts to only 1 % of the pre-1939 French colonial empire 's area , with 2,685,705 people living in them in 2011 ",
                 "All of them enjoy full political representation at the national level , as well as varying degrees of legislative self-governance ",
                 "( See Administrative divisions of France . )"
@@ -2093,7 +2091,7 @@
                 "Agriculture remained the primary economic sustenance for the region until well into the twentieth century ",
                 "During the twentieth century the city 's economy experienced a downturn , first due to the replacement of steamboat traffic on the Mississippi River by railroads in the early 1900s , and later due to the exodus of many local industries that had provided a large number of jobs in the area ",
                 "Despite its status as a popular tourist destination for much of its preserved aspects of antebellum culture , Natchez has experienced a general decline in population since 1960 ",
-                "It remains the principal city of the Natchez , MS\u2013 LA Micropolitan Statistical Area "
+                "It remains the principal city of the Natchez , MS– LA Micropolitan Statistical Area "
             ]
         },
         {
@@ -2379,7 +2377,7 @@
                 "buy"
             ],
             "responses": [
-                "Walter Francis O'Malley ( October 9 , 1903 \u2013 August 9 , 1979 ) was an American sports executive who owned the Brooklyn/Los Angeles Dodgers team in Major League Baseball from to ",
+                "Walter Francis O'Malley ( October 9 , 1903 – August 9 , 1979 ) was an American sports executive who owned the Brooklyn/Los Angeles Dodgers team in Major League Baseball from to ",
                 "He served as Brooklyn Dodgers chief legal counsel when Jackie Robinson broke the racial color barrier in ",
                 "In , as owner of the Dodgers , he brought major league baseball to the West Coast , moving the Dodgers from Brooklyn to Los Angeles and coordinating the move of the New York Giants to San Francisco at a time when there were no teams west of Kansas City , Missouri ",
                 "For this , he was long vilified by Brooklyn Dodgers fans ",
@@ -2408,10 +2406,10 @@
                 "from"
             ],
             "responses": [
-                "The Platte River ( ) ( Pawnee : K\u00edckatus\u02be ) is a major river in the state of Nebraska and is about long ",
+                "The Platte River ( ) ( Pawnee : Kíckatusʾ ) is a major river in the state of Nebraska and is about long ",
                 "Measured to its farthest source via its tributary the North Platte River , it flows for over ",
                 "The Platte River is a tributary of the Missouri River , which in turn is a tributary of the Mississippi River which flows to the Gulf of Mexico ",
-                "The Platte over most of its length is a muddy , broad , shallow , meandering stream with a swampy bottom and many islands\u2014a braided stream ",
+                "The Platte over most of its length is a muddy , broad , shallow , meandering stream with a swampy bottom and many islands—a braided stream ",
                 "These characteristics made it too difficult for canoe travel , and it was never used as a major transportation route by European-American trappers or explorers ",
                 "The Platte is one of the most significant tributary systems in the watershed of the Missouri , draining a large portion of the central Great Plains in Nebraska and the eastern Rocky Mountains in Colorado and Wyoming ",
                 "The river valley played an important role in the westward expansion of the United States , providing the route for several major emigrant trails , including the Oregon , California , Mormon and Bozeman trails ",
@@ -2499,9 +2497,9 @@
             "responses": [
                 "New Berlin Observatory at Linden Street , where Neptune was discovered observationally ",
                 "The planet Neptune was mathematically predicted before it was directly observed ",
-                "With a prediction by Urbain Le Verrier , telescopic observations confirming the existence of a major planet were made on the night of September 23\u201324 , 1846 , at the Berlin Observatory , by astronomer Johann Gottfried Galle ( assisted by Heinrich Louis d'Arrest ) , working from Le Verrier 's calculations ",
+                "With a prediction by Urbain Le Verrier , telescopic observations confirming the existence of a major planet were made on the night of September 23–24 , 1846 , at the Berlin Observatory , by astronomer Johann Gottfried Galle ( assisted by Heinrich Louis d'Arrest ) , working from Le Verrier 's calculations ",
                 "It was a sensational moment of 19th century science and dramatic confirmation of Newtonian gravitational theory ",
-                "In Fran\u00e7ois Arago 's apt phrase , Le Verrier had discovered a planet `` with the point of his pen '' ",
+                "In François Arago 's apt phrase , Le Verrier had discovered a planet `` with the point of his pen '' ",
                 "In retrospect , after it was discovered it turned out it had been observed many times before but not recognized , and there were others who made various calculations about its location , which did not lead to its observation ",
                 "By 1846 the planet Uranus had completed nearly one full orbit since its discovery by William Herschel in 1781 , and astronomers had detected a series of irregularities in its path which could not be entirely explained by Newton 's law of gravitation ",
                 "These irregularities could , however , be resolved if the gravity of a farther , unknown planet were disturbing its path around the Sun ",
@@ -2545,7 +2543,7 @@
                 "die"
             ],
             "responses": [
-                "Freddie Mercury ( born Farrokh Bulsara ; Gujarati : \u0aab\u0ab0\u0acb\u0a96 \u0aac\u0ab2\u0acd\u0ab8\u0abe\u0ab0\u0abe\u200c , Phar\u014dkh Bals\u0101r\u0101\u200c ) ; 5 September 1946 \u2013 24 November 1991 ) was a British musician , singer and songwriter , best known as the lead vocalist and lyricist of the rock band Queen ",
+                "Freddie Mercury ( born Farrokh Bulsara ; Gujarati : ફરોખ બલ્સારા‌ , Pharōkh Balsārā‌ ) ; 5 September 1946 – 24 November 1991 ) was a British musician , singer and songwriter , best known as the lead vocalist and lyricist of the rock band Queen ",
                 "As a performer , he was known for his flamboyant stage persona and powerful vocals over a four- octave range ",
                 "As a songwriter , Mercury composed many hits for Queen , including `` Bohemian Rhapsody `` , `` Killer Queen `` , `` Somebody to Love `` , `` Do n't Stop Me Now `` , `` Crazy Little Thing Called Love `` and `` We Are the Champions `` ",
                 "In addition to his work with Queen , he led a solo career , and also occasionally served as a producer and guest musician ( piano or vocals ) for other artists ",
@@ -2629,8 +2627,8 @@
             ],
             "responses": [
                 "Berliners watching a C-54 land at Tempelhof Airport ( 1948 )",
-                "The Berlin blockade ( 24 June 1948 \u2013 12 May 1949 ) was one of the first major international crises of the Cold War ",
-                "During the multinational occupation of post\u2013World War II Germany , the Soviet Union blocked the Western Allies ' railway , road , and canal access to the sectors of Berlin under Allied control ",
+                "The Berlin blockade ( 24 June 1948 – 12 May 1949 ) was one of the first major international crises of the Cold War ",
+                "During the multinational occupation of post–World War II Germany , the Soviet Union blocked the Western Allies ' railway , road , and canal access to the sectors of Berlin under Allied control ",
                 "Their aim was to force the western powers to allow the Soviet zone to start supplying Berlin with food and fuel , thereby giving the Soviets practical control over the entire city ",
                 "In response , the Western Allies organized the Berlin airlift to carry supplies to the people in West Berlin ",
                 "Aircrews from the United States Air Force , the British Royal Air Force , the Royal Australian Air Force , the Royal Canadian Air Force , the Royal New Zealand Air Force , and the South African Air Force flew over 200,000 flights in one year , providing up to 4700 tons of daily necessities such as fuel and food to the Berliners ",
@@ -2716,7 +2714,7 @@
                 "Nearly 14 million immigrants entered the United States from 2000 to 2010 ",
                 "Family reunification accounts for approximately two-thirds of legal immigration to the US every year ",
                 "The number of foreign nationals who became legal permanent residents ( LPRs ) of the U.S. in 2009 as a result of family reunification ( 66 % ) exceeded those who became LPRs on the basis of employment skills ( 13 % ) and for humanitarian reasons ( 17 % ) ",
-                "Migration is difficult , expensive , and dangerous for those who enter the US illegally across the Mexico\u2013United States border ",
+                "Migration is difficult , expensive , and dangerous for those who enter the US illegally across the Mexico–United States border ",
                 "Participants in debates on immigration in the early twenty-first century called for increasing enforcement of existing laws governing illegal immigration to the United States , building a barrier along some or all of the U.S.-Mexico border , or creating a new guest worker program ",
                 "Through much of 2006 the country and Congress was immersed in a debate about these proposals ",
                 "few of these proposals had become law , though a partial border fence had been approved and subsequently canceled "
@@ -2758,7 +2756,7 @@
                 "Reconstruction by M. Gerasimov , Soviet archaeologist and anthropologist who developed the first technique of forensic sculpture ",
                 "1965",
                 "Forensic facial reconstruction ( or forensic facial approximation ) is the process of recreating the face of an individual ( whose identity is often not known ) from their skeletal remains through an amalgamation of artistry , forensic science , anthropology , osteology , and anatomy ",
-                "It is easily the most subjective\u2014as well as one of the most controversial\u2014techniques in the field of forensic anthropology ",
+                "It is easily the most subjective—as well as one of the most controversial—techniques in the field of forensic anthropology ",
                 "Despite this controversy , facial reconstruction has proved successful frequently enough that research and methodological developments continue to be advanced ",
                 "In addition to remains involved in criminal investigations , facial reconstructions are created for remains believed to be of historical value and for remains of prehistoric hominids and humans "
             ]
@@ -2791,7 +2789,7 @@
                 "The more immediate cause for the war was tensions over territory in the Balkans ",
                 "Austria-Hungary competed with Serbia and Russia for territory and influence in the region and they pulled the rest of the Great Powers into the conflict through their various alliances and treaties ",
                 "Although the chain of events unleashed by the assassination triggered the war , the war 's origins go deeper , involving national politics , cultures , economics , and a complex web of alliances and counterbalances that had developed between the various European powers since 1870 ",
-                "Some of the most important long term or structural causes are : the growth of nationalism across Europe , unresolved territorial disputes , an intricate system of alliances , the perceived breakdown of the balance of power in Europe , convoluted and fragmented governance , the arms races of the previous decades , previous military planning , imperial and colonial rivalry for wealth , power and prestige , and economic and military rivalry in industry and trade \u2013 e.g. , the Pig War between Austria and Serbia ",
+                "Some of the most important long term or structural causes are : the growth of nationalism across Europe , unresolved territorial disputes , an intricate system of alliances , the perceived breakdown of the balance of power in Europe , convoluted and fragmented governance , the arms races of the previous decades , previous military planning , imperial and colonial rivalry for wealth , power and prestige , and economic and military rivalry in industry and trade – e.g. , the Pig War between Austria and Serbia ",
                 "Other causes that came into play during the diplomatic crisis that preceded the war included misperceptions of intent ( e.g. , the German belief that the United Kingdom would remain neutral ) and delays and misunderstandings in diplomatic communications ",
                 "The various categories of explanation for World War I correspond to different historians ' overall methods ",
                 "Most historians and popular commentators include causes from more than one category of explanation to provide a rounded account of the causes of the war ",
@@ -2847,7 +2845,7 @@
                 "Conversely , additive color systems start with darkness ",
                 "Light sources of various wavelengths are added in various proportions to produce a range of colors ",
                 "The component lights may be inherently colored or simply white light that has passed through suitable subtractive color filters ; their combination is an additive one in either case ",
-                "Usually , three primary colors are combined to stimulate humans\u2019 trichromatic color vision , sensed by the three types of cone cells in the eye , giving an apparently full range "
+                "Usually , three primary colors are combined to stimulate humans’ trichromatic color vision , sensed by the three types of cone cells in the eye , giving an apparently full range "
             ]
         },
         {
@@ -2863,7 +2861,7 @@
             "responses": [
                 "The mini-DIN connectors are a family of multi-pin electrical connectors used in a variety of applications ",
                 "Mini-DIN is similar to the larger , older DIN connector ",
-                "Both are standards of the Deutsches Institut f\u00fcr Normung , the German standards body "
+                "Both are standards of the Deutsches Institut für Normung , the German standards body "
             ]
         },
         {
@@ -2936,7 +2934,7 @@
                 "In 1868 , however , the German archaeologist Heinrich Schliemann met Frank Calvert , who convinced Schliemann that Troy was at Hissarlik and Schliemann took over Calvert 's excavations on property belonging to Calvert ; this claim is now accepted by most scholars ",
                 "Whether there is any historical reality behind the Trojan War is an open question ",
                 "Many scholars believe that there is a historical core to the tale , though this may simply mean that the Homeric stories are a fusion of various tales of sieges and expeditions by Mycenaean Greeks during the Bronze Age ",
-                "Those who believe that the stories of the Trojan War are derived from a specific historical conflict usually date it to the 12th or 11th centuries BC , often preferring the dates given by Eratosthenes , 1194\u20131184 BC , which roughly corresponds with archaeological evidence of a catastrophic burning of Troy VIIa "
+                "Those who believe that the stories of the Trojan War are derived from a specific historical conflict usually date it to the 12th or 11th centuries BC , often preferring the dates given by Eratosthenes , 1194–1184 BC , which roughly corresponds with archaeological evidence of a catastrophic burning of Troy VIIa "
             ]
         },
         {
@@ -2971,7 +2969,7 @@
             ],
             "responses": [
                 "Crystallization is the ( natural or artificial ) process of formation of solid crystals precipitating from a solution , melt or more rarely deposited directly from a gas ",
-                "Crystallization is also a chemical solid\u2013liquid separation technique , in which mass transfer of a solute from the liquid solution to a pure solid crystalline phase occurs ",
+                "Crystallization is also a chemical solid–liquid separation technique , in which mass transfer of a solute from the liquid solution to a pure solid crystalline phase occurs ",
                 "In chemical engineering crystallization occurs in a crystallizer ",
                 "Crystallization is therefore an aspect of precipitation , obtained through a variation of the solubility conditions of the solute in the solvent , as compared to precipitation due to chemical reaction "
             ]
@@ -2986,14 +2984,14 @@
                 "on"
             ],
             "responses": [
-                "Thomas Jefferson ( April 13 , 1743 ( April 2 , 1743 O.S. ) \u2013 July 4 , 1826 ) was an American Founding Father , the principal author of the Declaration of Independence ( 1776 ) and the third President of the United States ( 1801\u20131809 ) ",
-                "At the beginning of the American Revolution , he served in the Continental Congress , representing Virginia and then served as a wartime Governor of Virginia ( 1779\u20131781 ) ",
+                "Thomas Jefferson ( April 13 , 1743 ( April 2 , 1743 O.S. ) – July 4 , 1826 ) was an American Founding Father , the principal author of the Declaration of Independence ( 1776 ) and the third President of the United States ( 1801–1809 ) ",
+                "At the beginning of the American Revolution , he served in the Continental Congress , representing Virginia and then served as a wartime Governor of Virginia ( 1779–1781 ) ",
                 "Just after the war ended , from mid-1784 Jefferson served as a diplomat , stationed in Paris ",
                 "In May 1785 , he became the United States Minister to France ",
-                "Jefferson was the first United States Secretary of State ( 1790\u20131793 ) serving under President George Washington ",
+                "Jefferson was the first United States Secretary of State ( 1790–1793 ) serving under President George Washington ",
                 "With his close friend James Madison he organized the Democratic-Republican Party , and subsequently resigned from Washington 's cabinet ",
                 "Elected Vice President in 1796 , when he came in second to John Adams of the Federalists , Jefferson opposed Adams and with Madison secretly wrote the Kentucky and Virginia Resolutions , which attempted to nullify the Alien and Sedition Acts ",
-                "Elected president in what Jefferson called the Revolution of 1800 , he oversaw the purchase of the vast Louisiana Territory from France ( 1803 ) , and sent the Lewis and Clark Expedition ( 1804\u20131806 ) to explore the new west ",
+                "Elected president in what Jefferson called the Revolution of 1800 , he oversaw the purchase of the vast Louisiana Territory from France ( 1803 ) , and sent the Lewis and Clark Expedition ( 1804–1806 ) to explore the new west ",
                 "His second term was beset with troubles at home , such as the failed treason trial of his former Vice President Aaron Burr ",
                 "With escalating trouble with Britain who was challenging American neutrality and threatening shipping at sea , he tried economic warfare with his embargo laws which only damaged American trade ",
                 "In 1803 , President Jefferson initiated a process of Indian tribal removal and relocation to the Louisiana Territory west of the Mississippi River , in order to open lands for eventual American settlers ",
@@ -3059,7 +3057,7 @@
                 "me"
             ],
             "responses": [
-                "`` Stand by Me '' is a song originally performed by Ben E. King and written by King , Jerry Leiber , and Mike Stoller , inspired by the spiritual `` Lord Stand by Me , '' plus two lines rooted in Psalms 46:2\u20133 ",
+                "`` Stand by Me '' is a song originally performed by Ben E. King and written by King , Jerry Leiber , and Mike Stoller , inspired by the spiritual `` Lord Stand by Me , '' plus two lines rooted in Psalms 46:2–3 ",
                 "There have been over 400 recorded versions of the song "
             ]
         },
@@ -3095,7 +3093,7 @@
                 "born"
             ],
             "responses": [
-                "Elvis Aaron Presley ( January 8 , 1935 \u2013 August 16 , 1977 ) was an American singer and actor ",
+                "Elvis Aaron Presley ( January 8 , 1935 – August 16 , 1977 ) was an American singer and actor ",
                 "A cultural icon , he is commonly known by the single name Elvis ",
                 "One of the most popular musicians of the 20th century , he is often referred to as the `` King of Rock and Roll '' or `` the King '' ",
                 "Born in Tupelo , Mississippi , Presley moved to Memphis , Tennessee , with his family at the age of 13 ",
@@ -3104,7 +3102,7 @@
                 "RCA Victor acquired his contract in a deal arranged by Colonel Tom Parker , who went on to manage the singer for over two decades ",
                 "Presley 's first RCA single , `` Heartbreak Hotel `` , released in January 1956 , was a number-one hit ",
                 "He became the leading figure of the newly popular sound of rock and roll with a series of network television appearances and chart-topping records ",
-                "His energized interpretations of songs , many from African-American sources , and his uninhibited performance style made him enormously popular\u2014and controversial ",
+                "His energized interpretations of songs , many from African-American sources , and his uninhibited performance style made him enormously popular—and controversial ",
                 "In November 1956 , he made his film debut in Love Me Tender ",
                 "Drafted into military service in 1958 , Presley relaunched his recording career two years later with some of his most commercially successful work ",
                 "He staged few concerts however , and guided by Parker , proceeded to devote much of the 1960s to making Hollywood movies and soundtrack albums , most of them critically derided ",
@@ -3188,7 +3186,7 @@
                 "The planet 's interior remains active , with a solid iron inner core , a liquid outer core that generates the magnetic field , and a thick layer of relatively solid mantle ",
                 "Earth gravitationally interacts with other objects in space , especially the Sun and the Moon ",
                 "During one orbit around the Sun , the Earth rotates about its own axis 366.26 times , creating 365.26 solar days , or one sidereal year ",
-                "The Earth 's axis of rotation is tilted 23.4\u00b0 away from the perpendicular of its orbital plane , producing seasonal variations on the planet 's surface with a period of one tropical year ( 365.24 solar days ) ",
+                "The Earth 's axis of rotation is tilted 23.4° away from the perpendicular of its orbital plane , producing seasonal variations on the planet 's surface with a period of one tropical year ( 365.24 solar days ) ",
                 "The Moon is Earth 's only natural satellite ",
                 "It began orbiting the Earth about ",
                 "The Moon 's gravitational interaction with Earth stimulates ocean tides , stabilizes the axial tilt , and gradually slows the planet 's rotation ",
@@ -3208,7 +3206,7 @@
                 "mercury"
             ],
             "responses": [
-                "Mercury has a very tenuous and highly variable atmosphere ( surface-bound exosphere ) containing hydrogen , helium , oxygen , sodium , calcium , potassium and water vapor , with a combined pressure level of about 10\u221214 bar ( 1 nPa ) ",
+                "Mercury has a very tenuous and highly variable atmosphere ( surface-bound exosphere ) containing hydrogen , helium , oxygen , sodium , calcium , potassium and water vapor , with a combined pressure level of about 10−14 bar ( 1 nPa ) ",
                 "The exospheric species originate either from the Solar wind or from the planetary crust ",
                 "Solar light pushes the atmospheric gases away from the Sun , creating a comet-like tail behind the planet ",
                 "The existence of a atmosphere had been contentious before 1974 , although by that time a consensus had formed that Mercury , like the Moon , lacked any substantial atmosphere ",
@@ -3269,13 +3267,13 @@
             ],
             "responses": [
                 "Super Bowl XLI was an American football game between the American Football Conference ( AFC ) champion Indianapolis Colts and the National Football Conference ( NFC ) champion Chicago Bears to decide the National Football League ( NFL ) champion for the 2006 season ",
-                "The Colts defeated the Bears by the score of 29\u201317 ",
+                "The Colts defeated the Bears by the score of 29–17 ",
                 "The game was played on February 4 , 2007 , at Dolphin Stadium in Miami Gardens , Florida ",
                 "This game featured two teams ending long Super Bowl appearance droughts ",
-                "The Colts , who finished with a 12\u20134 regular season record , were making their first Super Bowl appearance since winning Super Bowl V in the 1970 season during the team 's tenure in Baltimore ; they had moved to Indianapolis in 1984 ",
-                "Meanwhile , the Bears , who posted an NFC-best 13\u20133 regular season record , were making their first appearance since winning Super Bowl XX in the 1985 season ",
+                "The Colts , who finished with a 12–4 regular season record , were making their first Super Bowl appearance since winning Super Bowl V in the 1970 season during the team 's tenure in Baltimore ; they had moved to Indianapolis in 1984 ",
+                "Meanwhile , the Bears , who posted an NFC-best 13–3 regular season record , were making their first appearance since winning Super Bowl XX in the 1985 season ",
                 "In addition , the Bears ' Lovie Smith and the Colts ' Tony Dungy both became the first African-American head coaches to coach in the Super Bowl ",
-                "In the first Super Bowl played in rainy conditions , the Colts overcame a 14\u20136 first-quarter deficit to outscore the Bears 23\u20133 in the last three quarters ",
+                "In the first Super Bowl played in rainy conditions , the Colts overcame a 14–6 first-quarter deficit to outscore the Bears 23–3 in the last three quarters ",
                 "Chicago posted the earliest lead in Super Bowl history when returner Devin Hester ran back the opening kickoff 92 yards for a touchdown ",
                 "But the Colts forced 5 turnovers , including cornerback Kelvin Hayden 's 56-yard interception return for a touchdown , and Indianapolis kicker Adam Vinatieri made three field goals ",
                 "Colts quarterback Peyton Manning was named the game 's Most Valuable Player , completing 25 of 38 passes for 247 yards and a touchdown , with one interception for a passer rating of 81.8 ",
@@ -3302,7 +3300,7 @@
                 "Of the 24 pitchers who have won the award , 15 are right-handed while 9 are left-handed ",
                 "Walter Johnson , Carl Hubbell , and Hal Newhouser are the only pitchers who have won multiple times , Newhouser winning consecutively in 1944 and 1945 ",
                 "Hank Greenberg , Stan Musial , Alex Rodriguez , and Robin Yount have won at different positions , while Rodriguez is the only player who has won the award with two different teams at two different positions ",
-                "Barry Bonds has won the most often ( seven times ) and the most consecutively ( 2001\u201304 ) ",
+                "Barry Bonds has won the most often ( seven times ) and the most consecutively ( 2001–04 ) ",
                 "Jimmie Foxx was the first player to win multiple times ; 9 players have won three times , and 19 have won twice ",
                 "The award 's only tie occurred in the National League in 1979 , when Keith Hernandez and Willie Stargell received an equal number of points ",
                 "There have been 17 unanimous winners , who received all the first-place votes ",
@@ -3431,7 +3429,7 @@
                 "Thirty-two teams were selected for participation via a worldwide qualification tournament that began in August 2007 ",
                 "In the first round of the tournament finals , the teams competed in round-robin groups of four teams for points , with the top two teams in each group proceeding ",
                 "These sixteen teams advanced to the knockout stage , where three rounds of play decided which teams would participate in the final ",
-                "In the final , Spain , the European champions , defeated third-time finalists the Netherlands 1\u20130 after extra time , with Andr\u00e9s Iniesta 's goal in the 116th minute giving Spain their first world title , becoming the eighth nation to win the tournament , and the first European nation to win the tournament outside its home continent ",
+                "In the final , Spain , the European champions , defeated third-time finalists the Netherlands 1–0 after extra time , with Andrés Iniesta 's goal in the 116th minute giving Spain their first world title , becoming the eighth nation to win the tournament , and the first European nation to win the tournament outside its home continent ",
                 "Host nation South Africa , 2006 world champions Italy and 2006 runners-up France were all eliminated in the first round of the tournament ",
                 "It was the first time that the hosts were eliminated in the first round ",
                 "New Zealand with their three draws were the only undefeated team in the tournament , but were also eliminated in the first round "
@@ -3541,7 +3539,7 @@
                 "In 2007 , the Costa Rican government announced plans for Costa Rica to become the first carbon-neutral country by 2021 ",
                 "The New Economics Foundation ( NEF ) ranked Costa Rica first in its 2009 Happy Planet Index , and once again in 2012 ",
                 "The NEF also ranked Costa Rica in 2009 as the greenest country in the world ",
-                "In 2012 Costa Rica became the first country in the American continent to ban recreational hunting after the country\u2019s legislature approved the popular measure by a wide margin "
+                "In 2012 Costa Rica became the first country in the American continent to ban recreational hunting after the country’s legislature approved the popular measure by a wide margin "
             ]
         },
         {
@@ -3556,13 +3554,13 @@
             ],
             "responses": [
                 "Mamma Mia ",
-                "is a stage musical written by British playwright Catherine Johnson , based on the songs of ABBA , composed by Benny Andersson and Bj\u00f6rn Ulvaeus , former members of the band ",
+                "is a stage musical written by British playwright Catherine Johnson , based on the songs of ABBA , composed by Benny Andersson and Björn Ulvaeus , former members of the band ",
                 "The title of the musical is taken from the group 's 1975 chart-topper `` Mamma Mia `` ",
-                "Bj\u00f6rn Ulvaeus and Benny Andersson , who composed the original music for ABBA , were involved in the development of the show from the beginning ",
+                "Björn Ulvaeus and Benny Andersson , who composed the original music for ABBA , were involved in the development of the show from the beginning ",
                 "Anni-Frid Lyngstad has been involved financially in the production and she has also been present at many of the premieres around the world ",
                 "The musical includes such hits as `` Super Trouper `` , `` Lay All Your Love On Me `` , `` Dancing Queen `` , `` Knowing Me , Knowing You `` , `` Take A Chance On Me `` , `` Thank You for the Music `` , `` Money , Money , Money `` , `` The Winner Takes It All `` , `` Voulez Vous `` and `` SOS `` ",
                 "Over 42 million people have seen the show , which has grossed $ 2 billion dollars worldwide since its 1999 debut ",
-                "A film adaptation starring Meryl Streep , Colin Firth , Pierce Brosnan , Amanda Seyfried , Christine Baranski , Stellan Skarsg\u00e5rd and Julie Walters was released in July 2008 "
+                "A film adaptation starring Meryl Streep , Colin Firth , Pierce Brosnan , Amanda Seyfried , Christine Baranski , Stellan Skarsgård and Julie Walters was released in July 2008 "
             ]
         },
         {
@@ -3601,12 +3599,12 @@
                 "It was marketed as a personal-luxury coupe through most of its history , with the last model version being classified as a full-sized coupe ",
                 "When it was discontinued in 2007 , it had outlived many competitors that were either discontinued many years earlier or changed in concept to either a four-door sedan or small sport coupe ",
                 "The Monte Carlo endured six design generations ",
-                "The first four ( 1970\u201372 , 1973\u201377 , 1978\u201380 and 1981\u201388 ) were of a rear-wheel-drive , V8-powered ( V6 available beginning in 1978 ) coupe style , utilizing separate body-on-frame construction ",
+                "The first four ( 1970–72 , 1973–77 , 1978–80 and 1981–88 ) were of a rear-wheel-drive , V8-powered ( V6 available beginning in 1978 ) coupe style , utilizing separate body-on-frame construction ",
                 "The later rear-wheel-drive generations bucked the trend of unit-body construction , along with smaller engines , that became more prevalent in the early 1980s as automakers downsized their vehicle lines to meet increasing stringent fuel-economy regulations in the aftermath of two energy crises that led to gasoline shortages and skyrocketing pump prices in 1973-74 and 1979-80 ",
                 "Despite those trends , the Monte Carlo remained a popular seller and even regained the SS version ( initially offered for 1970-71 with 454 cubic-inch V8 ) from mid-1983 to 1988 with a high-performance 305-cubic-inch V8 ",
                 "Following a several year hiatus following the discontinuation of the rear-drive Monte Carlo after 1988 , the nameplate was revived for 1995 on a front-drive , V6-powered coupe based on the Chevrolet Lumina sedan ",
                 "It was succeeded by the sixth and final-generation Monte Carlo in 2000 that was built alongside the Chevrolet Impala , which succeeded the Lumina as Chevy 's mid-sized sedan ",
-                "The Monte Carlo SS was revived from 2000 to 2007 and initially powered by 3.8-liter V6 ( supercharged in 2004\u20132005 ) , later to be replaced by a 5.3-liter V8 for 2006\u20132007 "
+                "The Monte Carlo SS was revived from 2000 to 2007 and initially powered by 3.8-liter V6 ( supercharged in 2004–2005 ) , later to be replaced by a 5.3-liter V8 for 2006–2007 "
             ]
         },
         {
@@ -3616,7 +3614,7 @@
                 "scottsdale"
             ],
             "responses": [
-                "Scottsdale ( O'odham Va\u1e63ai S-va\u1e63on\u012d ; Yaqui Eskatel ) is a city in the eastern part of Maricopa County , Arizona , United States , adjacent to Phoenix ",
+                "Scottsdale ( O'odham Vaṣai S-vaṣonĭ ; Yaqui Eskatel ) is a city in the eastern part of Maricopa County , Arizona , United States , adjacent to Phoenix ",
                 "According to the U.S. Census Bureau , as of 2010 the population of the city was 217,385 ",
                 "The New York Times described downtown Scottsdale as `` a desert version of Miami 's South Beach `` and as having `` plenty of late night partying and a buzzing hotel scene '' ",
                 "Scottsdale is bordered to the west by Phoenix and Paradise Valley , to the north by Carefree , to the south by Tempe , and to the east by Fountain Hills and the Salt River Pima-Maricopa Indian Community "
@@ -3637,7 +3635,7 @@
                 "Social contract arguments typically posit that individuals have consented , either explicitly or tacitly , to surrender some of their freedoms and submit to the authority of the ruler or magistrate ( or to the decision of a majority ) , in exchange for protection of their remaining rights ",
                 "The question of the relation between natural and legal rights , therefore , is often an aspect of social contract theory ",
                 "Although the antecedents of social contract theory are found in antiquity , in Greek and Stoic philosophy and Roman and Canon Law , as well as in the Biblical idea of the covenant , the heyday of the social contract was the mid-seventeenth to early nineteenth centuries , when it emerged as the leading doctrine of political legitimacy ",
-                "The starting point for most social contract theories is a heuristic examination of the human condition absent from any political order that Thomas Hobbes termed the \u201c state of nature \u201d ",
+                "The starting point for most social contract theories is a heuristic examination of the human condition absent from any political order that Thomas Hobbes termed the “ state of nature ” ",
                 "In this condition , individuals ' actions are bound only by their personal power and conscience ",
                 "From this shared starting point social contract theorists seek to demonstrate , in different ways , why a rational individual would voluntarily consent to give up his or her natural freedom to obtain the benefits of political order ",
                 "Hugo Grotius ( 1625 ) , Thomas Hobbes ( 1651 ) , Samuel Pufendorf ( 1673 ) , John Locke ( 1689 ) , Jean-Jacques Rousseau ( 1762 ) , and Immanuel Kant ( 1797 ) are among the most prominent of seventeenth- and eighteenth-century theorists of social contract and natural rights ",
@@ -3686,7 +3684,7 @@
             ],
             "responses": [
                 "A newton metre is a unit of torque ( also called `` moment `` ) in the SI system ",
-                "The symbolic form is N m or N\u00b7m , ",
+                "The symbolic form is N m or N·m , ",
                 "One newton metre , sometimes hyphenated newton-metre , is equal to the torque resulting from a force of one newton applied perpendicularly to a moment arm which is one metre long ",
                 "It is also used less commonly as a unit of work , or energy , in which case it is equivalent to the more common and standard SI unit of energy , the joule ",
                 "In this very different usage the metre term represents the distance traveled or displacement in the direction of the force , and not the perpendicular distance from a fulcrum as it does when used to express torque ",
@@ -3730,7 +3728,7 @@
                 "president"
             ],
             "responses": [
-                "John Adams ( October 30 , 1735 ( O.S . October 19 , 1735 ) \u2013 July 4 , 1826 ) was the second president of the United States ( 1797\u20131801 ) , having earlier served as the first vice president of the United States ",
+                "John Adams ( October 30 , 1735 ( O.S . October 19 , 1735 ) – July 4 , 1826 ) was the second president of the United States ( 1797–1801 ) , having earlier served as the first vice president of the United States ",
                 "An American Founding Father , he was a statesman , diplomat , and a leading advocate of American independence from Great Britain ",
                 "Well educated , he was an Enlightenment political theorist who promoted republicanism and wrote prolifically about his often seminal ideas , both in published works and in letters to his wife and key adviser Abigail as well as to other Founding Fathers ",
                 "Adams came to prominence in the early stages of the American Revolution ",
@@ -3741,7 +3739,7 @@
                 "One of his greatest roles was as a judge of character : in 1775 , he nominated George Washington to be commander-in-chief , and 25 years later nominated John Marshall to be Chief Justice of the United States ",
                 "Adams ' revolutionary credentials secured him two terms as George Washington 's vice president and his own election in 1796 as the second president ",
                 "During his one term , he encountered ferocious attacks by the Jeffersonian Republicans , as well as the dominant faction in his own Federalist Party led by his bitter enemy Alexander Hamilton ",
-                "Adams signed the controversial Alien and Sedition Acts , and built up the army and navy especially in the face of an undeclared naval war ( called the `` Quasi-War `` ) with France , 1798\u20131800 ",
+                "Adams signed the controversial Alien and Sedition Acts , and built up the army and navy especially in the face of an undeclared naval war ( called the `` Quasi-War `` ) with France , 1798–1800 ",
                 "The major accomplishment of his presidency was his peaceful resolution of the conflict in the face of Hamilton 's opposition ",
                 "In 1800 , Adams was defeated for re-election by Thomas Jefferson and retired to Massachusetts ",
                 "He later resumed his friendship with Jefferson ",
@@ -3763,7 +3761,7 @@
                 "die"
             ],
             "responses": [
-                "Joseph Franklin Rutherford ( November 8 , 1869 \u2013 January 8 , 1942 ) , also known as `` Judge '' Rutherford , was the second president of the incorporated Watch Tower Bible and Tract Society ",
+                "Joseph Franklin Rutherford ( November 8 , 1869 – January 8 , 1942 ) , also known as `` Judge '' Rutherford , was the second president of the incorporated Watch Tower Bible and Tract Society ",
                 "He played a primary role in the organization and doctrinal development of Jehovah 's Witnesses , which emerged from the Bible Student movement established by Charles Taze Russell ",
                 "Rutherford began a career in law , working as a court stenographer , trial lawyer and prosecutor ",
                 "He developed an interest in the doctrines of Watch Tower Society president Charles Taze Russell , which led to his joining the Bible Student movement and was baptized in 1906 ",
@@ -3823,7 +3821,7 @@
                 "There have been anecdotal reports of individuals experiencing panic attacks and vomiting , at doses as small as 2 milligrams ",
                 "As the dosage is much smaller than most other synthetic cannabinoids , users may accidentally dose too much ",
                 "Convulsions have been reported at doses exceeding 10 milligrams ",
-                "Caution should be taken if using this substance as it is active at doses as small as 500 \u03bcg ( micrograms ) , has a very steep dose-response curve , and tolerance builds up very quickly to the effects ",
+                "Caution should be taken if using this substance as it is active at doses as small as 500 μg ( micrograms ) , has a very steep dose-response curve , and tolerance builds up very quickly to the effects ",
                 "As of November 2011 , there have been no reports of death associated with the drug ",
                 "The toxicity of AM-2201 is still a matter of debate and there may be long term side effects "
             ]
@@ -3855,7 +3853,7 @@
                 "died"
             ],
             "responses": [
-                "George Washington ( \u2013 , 1799 ) was the first President of the United States ( 1789\u20131797 ) , the commander-in-chief of the Continental Army during the American Revolutionary War , and one of the Founding Fathers of the United States ",
+                "George Washington ( – , 1799 ) was the first President of the United States ( 1789–1797 ) , the commander-in-chief of the Continental Army during the American Revolutionary War , and one of the Founding Fathers of the United States ",
                 "He presided over the convention that drafted the Constitution , which replaced the Articles of Confederation and established the position of President ",
                 "Washington was elected President as the unanimous choice of the 69 electors in 1788 , and he served two terms in office ",
                 "He oversaw the creation of a strong , well-financed national government that maintained neutrality in the wars raging in Europe , suppressed rebellion , and won acceptance among Americans of all types ",
@@ -3991,7 +3989,7 @@
                 "die"
             ],
             "responses": [
-                "Justinian I ( ) ( , ) ( c. 482 \u2013 14 November 565 ) , commonly known as Justinian the Great , was Byzantine Emperor from 527 to 565 ",
+                "Justinian I ( ) ( , ) ( c. 482 – 14 November 565 ) , commonly known as Justinian the Great , was Byzantine Emperor from 527 to 565 ",
                 "During his reign , Justinian sought to revive the Empire 's greatness and reconquer the lost western half of the classical Roman Empire ",
                 "One of the most important figures of Late Antiquity and the last Roman Emperor to speak Latin as a first language , Justinian 's rule constitutes a distinct epoch in the history of the Eastern Roman Empire ",
                 "The impact of his administration extended far beyond the boundaries of his time and domain ",
@@ -4030,13 +4028,13 @@
                 "awards"
             ],
             "responses": [
-                "Enrique `` Ricky '' Mart\u00edn Morales ( born December 24 , 1971 ) , is a Puerto Rican pop singer , musician , songwriter , actor and author who achieved prominence , first as a member of the Puerto Rican boy band Menudo , and as a solo artist since 1991 ",
+                "Enrique `` Ricky '' Martín Morales ( born December 24 , 1971 ) , is a Puerto Rican pop singer , musician , songwriter , actor and author who achieved prominence , first as a member of the Puerto Rican boy band Menudo , and as a solo artist since 1991 ",
                 "Martin began his career at age twelve with the all-boy pop group Menudo ; after five years with the group , he released his Spanish-language solo album , Ricky Martin , in 1991 ",
                 "He also acted on stage and on TV in Mexico , becoming a modest star in the country ",
                 "In 1994 he starred on the American TV soap opera General Hospital , playing a Puerto Rican singer ",
                 "In 1999 , after several albums in Spanish , he released his first English-language album ( also titled Ricky Martin ) , which included `` Livin ' la Vida Loca `` ",
                 "The album sold 22 million copies and brought Martin international fame ",
-                "His other studio albums include : Me Amar\u00e1s ( 1993 ) , A Medio Vivir ( 1995 ) , Vuelve ( 1998 ) , Sound Loaded ( 2000 ) , Almas del Silencio ( 2003 ) , Life ( 2005 ) , and M\u00fasica + Alma + Sexo ( 2011 ) ",
+                "His other studio albums include : Me Amarás ( 1993 ) , A Medio Vivir ( 1995 ) , Vuelve ( 1998 ) , Sound Loaded ( 2000 ) , Almas del Silencio ( 2003 ) , Life ( 2005 ) , and Música + Alma + Sexo ( 2011 ) ",
                 "Martin performed at the 1999 Grammy Awards ",
                 "He has sold over 70 million albums sold and has had 95 platinum records , 6 # 1 Billboard albums , 11 # 1 hit songs , 2 American Music Awards , 6 Grammy Awards , 8 World Music Awards , 10 Billboard Music Awards , 8 MTV Music Video Awards , with concerts in more than 60 countries across the globe "
             ]
@@ -4090,12 +4088,12 @@
             ],
             "responses": [
                 "Fidel Alejandro Castro Ruz ( ; born August 13 , 1926 ) is a Cuban communist revolutionary and politician who was Prime Minister of Cuba from 1959 to 1976 , and President from 1976 to 2008 ",
-                "He also served as the Commander in Chief of the country\u2019s armed forces from 1959 to 2008 , and as the First Secretary of the Communist Party of Cuba from 1961 until 2011 ",
+                "He also served as the Commander in Chief of the country’s armed forces from 1959 to 2008 , and as the First Secretary of the Communist Party of Cuba from 1961 until 2011 ",
                 "Politically a Marxist-Leninist , under his administration the Republic of Cuba became a one-party socialist state ; industry and businesses were nationalized , and socialist reforms implemented in all areas of society ",
                 "Internationally , Castro was the Secretary-General of the Non-Aligned Movement , from 1979 to 1983 and from 2006 to 2008 ",
                 "Born the illegitimate son of a wealthy farmer , Castro adopted leftist anti-imperialist politics while studying law at the University of Havana ",
-                "After participating in armed rebellions against right-wing governments in the Dominican Republic and Colombia , he planned the overthrow of the United States-backed military junta of Cuban president Fulgencio Batista , and served a year\u2019s imprisonment in 1953 after a failed attack on the Moncada Barracks ",
-                "On release he traveled to Mexico , where he formed a revolutionary group with his brother Ra\u00fal and friend Che Guevara , the 26th of July Movement ",
+                "After participating in armed rebellions against right-wing governments in the Dominican Republic and Colombia , he planned the overthrow of the United States-backed military junta of Cuban president Fulgencio Batista , and served a year’s imprisonment in 1953 after a failed attack on the Moncada Barracks ",
+                "On release he traveled to Mexico , where he formed a revolutionary group with his brother Raúl and friend Che Guevara , the 26th of July Movement ",
                 "Returning to Cuba , Castro led the Cuban Revolution which ousted Batista in 1959 , and brought his own assumption of military and political power ",
                 "Alarmed by his revolutionary credentials and friendly relations with the Soviet Union , the U.S. governments of Dwight D. Eisenhower and John F. Kennedy unsuccessfully attempted to remove him , by economic blockade , assassination and counter-revolution , including the Bay of Pigs invasion of 1961 ",
                 "Countering these threats , Castro formed an economic and military alliance with the Soviets , and allowed them to place nuclear weapons on the island , sparking the Cuban Missile Crisis in 1962 ",
@@ -4103,9 +4101,9 @@
                 "Ideologically-based reforms introducing central economic planning and expanding healthcare and education were accompanied by state control of the press and the suppression of internal dissent ",
                 "Abroad , Castro supported foreign revolutionary socialist groups in the hope of toppling world capitalism , sending Cuban troops to fight in the Yom Kippur War , Ogaden War and Angolan Civil War ",
                 "Following the dissolution of the Soviet Union in 1991 , Castro led Cuba into its economic `` Special Period `` , before taking the country into the Bolivarian Alliance for the Americas in 2006 and forging alliances with other nations in the Latin American Pink Tide ",
-                "Amid failing health , in 2006 he transferred his responsibilities to Vice-President Ra\u00fal Castro , who assumed full presidency in 2008 ",
+                "Amid failing health , in 2006 he transferred his responsibilities to Vice-President Raúl Castro , who assumed full presidency in 2008 ",
                 "Castro is a controversial and divisive world figure , lauded as a champion of anti-imperialism , humanitarianism , socialism and environmentalism by his supporters , but viewed as a dictator who has overseen multiple human rights abuses by his critics ",
-                "Through his actions and his writings he has significantly influenced the politics of various individuals and groups across the world , including Nelson Mandela , Hugo Ch\u00e1vez , Evo Morales , Rafael Correa and Daniel Ortega "
+                "Through his actions and his writings he has significantly influenced the politics of various individuals and groups across the world , including Nelson Mandela , Hugo Chávez , Evo Morales , Rafael Correa and Daniel Ortega "
             ]
         },
         {
@@ -4226,7 +4224,7 @@
                 "Qualification for the finals began in March 1996 and concluded in November 1997 ",
                 "For the first time in the competition , the group stage were expanded from 24 teams to 32 , with eight groups of four ",
                 "A total of 64 matches were played in 10 stadiums located across 10 different host cities , with the opening match and final staged at the Stade de France , Saint-Denis ",
-                "The tournament was won by France , who beat Brazil 3\u20130 in the final ",
+                "The tournament was won by France , who beat Brazil 3–0 in the final ",
                 "France won their first title , becoming the seventh nation to win a World Cup , and the sixth ( after Uruguay , Italy , England , West Germany and Argentina ) to win the tournament on home soil "
             ]
         },
@@ -4293,7 +4291,7 @@
                 "The show went on to be a critical success as well as a ratings winner within its target demographic ",
                 "As an ongoing drama series , Skins is atypical in that it replaces its primary cast every two years ",
                 "In 2009 , producers announced a Skins film was being discussed , but as of 2012 announcement of the show 's cancellation , nothing has come of these plans ",
-                "A specially-commissioned final seventh series is set to broadcast in 2013 which will feature the casts from its 2007\u201310 run ",
+                "A specially-commissioned final seventh series is set to broadcast in 2013 which will feature the casts from its 2007–10 run ",
                 "The show 's name comes from the rolling papers known as `` skins '' ",
                 "Other ventures to expand the brand have included a failed North American adaptation , which aired on MTV in 2011 but it was cancelled after one season after advertisers abandoned the series in response to low ratings and the significant controversy which arose over its depiction of teen sexuality "
             ]
@@ -4308,8 +4306,8 @@
                 "jenner"
             ],
             "responses": [
-                "Kristen Mary `` Kris '' Jenner ( n\u00e9e Houghton , previously Kardashian ; born November 5 , 1955 ) is an American socialite , author and television personality ",
-                "In her television ventures , Jenner has appeared on Keeping Up with the Kardashians , Kourtney and Khlo\u00e9 Take Miami , Khlo\u00e9 & Lamar , Kourtney and Kim Take New York , Good Morning America , The Talk and America 's Next Top Model ",
+                "Kristen Mary `` Kris '' Jenner ( née Houghton , previously Kardashian ; born November 5 , 1955 ) is an American socialite , author and television personality ",
+                "In her television ventures , Jenner has appeared on Keeping Up with the Kardashians , Kourtney and Khloé Take Miami , Khloé & Lamar , Kourtney and Kim Take New York , Good Morning America , The Talk and America 's Next Top Model ",
                 "Divorced from lawyer Robert Kardashian , she has been married to Bruce Jenner since 1991 ",
                 "She has four children with Robert ( Kourtney , Kim , Khloe , and Robert Jr. ) and two with Bruce ( Kendall and Kylie ) ",
                 "As of 2011 , Jenner 's net worth is estimated at $ 20 million "
@@ -4409,7 +4407,7 @@
                 "Sharecropping is a system of agriculture in which a landowner allows a tenant to use the land in return for a share of the crops produced on the land ",
                 "Sharecropping has a long history and there are a wide range of different situations and types of agreements that have used a form of the system ",
                 "Some are governed by tradition , and others by law ",
-                "Legal contract systems such as the Italian mezzadria , the French m\u00e9tayage , the Spanish mediero , or the Islamic system of muqasat , enshrined in the Shariah , occur widely "
+                "Legal contract systems such as the Italian mezzadria , the French métayage , the Spanish mediero , or the Islamic system of muqasat , enshrined in the Shariah , occur widely "
             ]
         },
         {
@@ -4479,13 +4477,13 @@
                 "from"
             ],
             "responses": [
-                "Olmec Head No . 3 from San Lorenzo Tenochtitlan 1200\u2013900 BCE",
-                "`` The Wrestler `` , an Olmec era statuette , 1200\u2013800 BCE",
-                "Olmec jadeite mask 1000\u2013600 BCE",
+                "Olmec Head No . 3 from San Lorenzo Tenochtitlan 1200–900 BCE",
+                "`` The Wrestler `` , an Olmec era statuette , 1200–800 BCE",
+                "Olmec jadeite mask 1000–600 BCE",
                 "The Olmec were the first major civilization in Mexico ",
                 "They lived in the tropical lowlands of south-central Mexico , in the modern-day states of Veracruz and Tabasco ",
                 "The Olmec flourished during Mesoamerica 's Formative period , dating roughly from as early as 1500 BCE to about 400 BCE ",
-                "Pre-Olmec cultures had flourished in the area since about 2500 BCE , but by 1600\u20131500 BCE Early Olmec culture had emerged centered around the San Lorenzo Tenochtitl\u00e1n site near the coast in southeast Veracruz ",
+                "Pre-Olmec cultures had flourished in the area since about 2500 BCE , but by 1600–1500 BCE Early Olmec culture had emerged centered around the San Lorenzo Tenochtitlán site near the coast in southeast Veracruz ",
                 "They were the first Mesoamerican civilization and laid many of the foundations for the civilizations that followed ",
                 "Among other `` firsts '' , the Olmec appeared to practice ritual bloodletting and played the Mesoamerican ballgame , hallmarks of nearly all subsequent Mesoamerican societies ",
                 "The most familiar aspect of the Olmecs is their artwork , particularly the aptly named `` colossal heads `` ",
@@ -4506,7 +4504,7 @@
                 "Milwaukee is the largest city in the U.S. state of Wisconsin , the 28th most populous city in the United States , and 39th most populous region in the United States ",
                 "It is the county seat of Milwaukee County and is located on the southwestern shore of Lake Michigan ",
                 "According to 2010 census data , the City of Milwaukee has a population of ",
-                "Milwaukee is the main cultural and economic center of the Milwaukee\u2013Racine\u2013Waukesha Metropolitan Area with a population of as of 2010 ",
+                "Milwaukee is the main cultural and economic center of the Milwaukee–Racine–Waukesha Metropolitan Area with a population of as of 2010 ",
                 "The first Europeans to pass through the area were French missionaries and fur traders ",
                 "In 1818 , the French-Canadian explorer Solomon Juneau settled in the area , and in 1846 Juneau 's town combined with two neighboring towns to incorporate as the City of Milwaukee ",
                 "Large numbers of German and other immigrants helped increase the city 's population during the 1840s and the following decades ",
@@ -4539,7 +4537,7 @@
                 "anthony"
             ],
             "responses": [
-                "Caylee Marie Anthony ( August 9 , 2005 \u2013 2008 ) was a two-year-old American girl who lived in Orlando , Florida with her mother , Casey Marie Anthony , and her maternal grandparents , George and Cindy Anthony ",
+                "Caylee Marie Anthony ( August 9 , 2005 – 2008 ) was a two-year-old American girl who lived in Orlando , Florida with her mother , Casey Marie Anthony , and her maternal grandparents , George and Cindy Anthony ",
                 "On July 15 , 2008 , she was reported missing to by Cindy , who said she had not seen Caylee for 31 days and that Casey 's car smelled like a dead body had been inside it ",
                 "Cindy said Casey had given varied explanations as to Caylee 's whereabouts before finally telling her that she had not seen Caylee for weeks ",
                 "Casey told detectives several falsehoods , including that the child had been kidnapped by a nanny on June 9 , and that she had been trying to find her , too frightened to alert the authorities ",
@@ -4616,7 +4614,7 @@
             ],
             "responses": [
                 ", also known as , is a Japanese manga series written and illustrated by Rumiko Takahashi ",
-                "It premiered in Weekly Sh\u014dnen Sunday on November 13 , 1996 and concluded on June 18 , 2008 ",
+                "It premiered in Weekly Shōnen Sunday on November 13 , 1996 and concluded on June 18 , 2008 ",
                 "The series follows the half demon , InuYasha , and a teenager from Tokyo , Kagome Higurashi , who is transported to the Sengoku period after falling into a well in her family shrine. , where she meets InuYasha ",
                 "When a monster from that era tries to take the magical Jewel of Four Souls embodied in Kagome , she accidentally splits the Jewel into various shards , which are dispersed across Japan ",
                 "InuYasha and Kagome start travelling to recover it before a powerful demon named Naraku finds all the shards ",
@@ -4624,10 +4622,10 @@
                 "They also gain enemies throughout the journey ",
                 "In contrast to the typically comedic nature of many of Takahashi 's previous works , InuYasha deals with darker subject matter , using the setting of the Sengoku period to easily display the violent content ",
                 "Earlier works by Takahashi with more dramatic and serious themes include her work , Mermaid Saga - though it is considerably darker in nature than Inuyasha - and many of her short stories ",
-                "The manga was published in North America by Viz Media with all of its 56 tank\u014dbon volumes having already been released ",
+                "The manga was published in North America by Viz Media with all of its 56 tankōbon volumes having already been released ",
                 "The manga was adapted into two anime television series produced by Sunrise ",
                 "The first was broadcasted for 167 episodes on Yomiuri TV in Japan from October 16 , 2000 until September 13 , 2004 and was directed by Masashi Ikeda for the first forty-four episodes and by Yasunao Aoki for the remainder ",
-                "The second series , called InuYasha : The Final Act ( \u72ac\u591c\u53c9 \u5b8c\u7d50\u7de8 , InuYasha Kanketsu-hen ) , began airing October 3 , 2009 to cover the rest of the manga series and ended on March 29 , 2010 ",
+                "The second series , called InuYasha : The Final Act ( 犬夜叉 完結編 , InuYasha Kanketsu-hen ) , began airing October 3 , 2009 to cover the rest of the manga series and ended on March 29 , 2010 ",
                 "Viz Media licensed the two anime series , having released the former in DVD volumes and aired most of its episodes ",
                 "A total of four feature films and an original video animation have also been released ",
                 "Other merchandise include video games and a light novel "
@@ -4686,7 +4684,7 @@
                 "This area is also known as Uptown ( particularly its southern end near W Burnside St. ) and includes Nob Hill ( centered on NW 23rd Ave. and NW Lovejoy St. ) ",
                 "Music retailer Music Millennium , considered a local icon and national leader in the music-selling industry , operated what was then its main store on NW 23rd Avenue from 1977 until 2007 ",
                 "NW 21st Ave ",
-                "The neighborhood\u2019s other main commercial district is a dining and entertainment destination , with popular restaurants , an independent film theater , and numerous bars , pubs , and nightclubs ",
+                "The neighborhood’s other main commercial district is a dining and entertainment destination , with popular restaurants , an independent film theater , and numerous bars , pubs , and nightclubs ",
                 "The Alphabet Historic District , an area zoned for historic preservation running roughly from NW 24th Ave. to NW 2nd Ave. , and from NW Vaughn St. to W Burnside St ",
                 "It is named for the alphabetical progression of street names in the area and in 2000 was added to the National Register of Historic Places ",
                 "Alphabet District street sign topper in Northwest Portland",
@@ -4864,16 +4862,16 @@
             ],
             "responses": [
                 "Cub Cadet loader",
-                "Cub Cadet produces a full line of outdoor power equipment and services \u2013 including four-wheel steer zero-turn riders ; lap bar zero-turn riders ; utility vehicles ; lawn and garden tractors , lithium ion- and gasoline-powered handheld and chore products ; snow throwers and more ",
+                "Cub Cadet produces a full line of outdoor power equipment and services – including four-wheel steer zero-turn riders ; lap bar zero-turn riders ; utility vehicles ; lawn and garden tractors , lithium ion- and gasoline-powered handheld and chore products ; snow throwers and more ",
                 "Cub Cadet products are distributed through a network of 1,500+ independent dealers , The Home Depot and Tractor Supply Company stores ",
                 "Cub Cadet is a global company , based in the U.S ",
                 "Cub Cadet engineers have introduced a variety of new technology to the market including:",
                 "1st steerable track drive snow thrower - 1993",
                 "1st lawn tractor with shaft drive - 1994",
                 "1st hydrostatic-drive garden tractor - 1966",
-                "Four-wheel steer or Synchro-SteerTM technology debuts as an industry first \u2013 2007",
-                "Cub Cadet zero-turn riding mowers offer industry\u2019s tightest turning radius \u2013 2009",
-                "Most advanced zero-turn riding mower with lap bar technology \u2013 2010",
+                "Four-wheel steer or Synchro-SteerTM technology debuts as an industry first – 2007",
+                "Cub Cadet zero-turn riding mowers offer industry’s tightest turning radius – 2009",
+                "Most advanced zero-turn riding mower with lap bar technology – 2010",
                 "Four-wheel steer zero-turn riders with steering wheel technology ( first and only in the world ) - 2011"
             ]
         },
@@ -4905,7 +4903,7 @@
                 "from"
             ],
             "responses": [
-                "David Am\u00e9rico Ortiz Arias ( born November 18 , 1975 ) , nicknamed `` Big Papi '' , is a Dominican-American professional baseball designated hitter with the Boston Red Sox of Major League Baseball ( MLB ) ",
+                "David Américo Ortiz Arias ( born November 18 , 1975 ) , nicknamed `` Big Papi '' , is a Dominican-American professional baseball designated hitter with the Boston Red Sox of Major League Baseball ( MLB ) ",
                 "Mostly a designated hitter , Ortiz played first base during his early career ",
                 "Ortiz played with the Minnesota Twins from 1997 until 2002 ",
                 "Ortiz is an eight-time All-Star and holds the Red Sox single season record for home runs in a regular season with 54 , set during the 2006 season ",
@@ -4924,7 +4922,7 @@
                 "cheers"
             ],
             "responses": [
-                "Kirstie Louise Alley ( born January 12 , 1951 ) is an American actress and comedian known for her role in the TV series Cheers , in which she played Rebecca Howe from 1987\u20131993 , winning an Emmy Award and a Golden Globe Award as the Outstanding Lead Actress in a Comedy Series in 1991 ",
+                "Kirstie Louise Alley ( born January 12 , 1951 ) is an American actress and comedian known for her role in the TV series Cheers , in which she played Rebecca Howe from 1987–1993 , winning an Emmy Award and a Golden Globe Award as the Outstanding Lead Actress in a Comedy Series in 1991 ",
                 "She is also known for her role in the thriller Shoot to Kill and the Look Who 's Talking film series as Mollie Ubriacco ",
                 "More recently , Alley has appeared in reality shows revolving around her life "
             ]
@@ -4940,18 +4938,18 @@
                 "capital"
             ],
             "responses": [
-                "Mexico City ( ; , also known as M\u00e9xico , D. F. , or simply D.F . ) is the Federal District ( Distrito Federal ) , capital of Mexico and seat of the federal powers of the Mexican Union ",
+                "Mexico City ( ; , also known as México , D. F. , or simply D.F . ) is the Federal District ( Distrito Federal ) , capital of Mexico and seat of the federal powers of the Mexican Union ",
                 "It is a federal entity within Mexico which is not part of any one of the 31 Mexican states but belongs to the federation as a whole ",
                 "Mexico City is the country 's largest city as well as its most important political , cultural , educational and financial center ",
                 "As an `` alpha '' global city , Mexico City is one of the most important financial centers in North America ",
-                "It is located in the Valley of Mexico ( Valle de M\u00e9xico ) , a large valley in the high plateaus at the center of Mexico , at an altitude of ",
+                "It is located in the Valley of Mexico ( Valle de México ) , a large valley in the high plateaus at the center of Mexico , at an altitude of ",
                 "The city consists of sixteen boroughs ",
                 "The 2009 estimated population for the city proper was around 8.84 million people , and has a land area of ",
                 "According to the most recent definition agreed upon by the federal and state governments , the Mexico City metropolitan area population is 21.2 million people , making it the largest metropolitan area in the western hemisphere , the third largest agglomeration worldwide and the largest Spanish -speaking city in the world ",
                 "The Greater Mexico City has a gross domestic product ( GDP ) of US $ 390 billion in 2008 , making Mexico City urban agglomeration the eighth richest metropolitan area in the world ",
                 "The city was responsible for generating 21 % of Mexico 's Gross Domestic Product and the metropolitan area accounted for 34 % of total national GDP ",
                 "The city was originally built on an island of Lake Texcoco by the Aztecs in 1325 as Tenochtitlan , which was almost completely destroyed in the 1521 siege of Tenochtitlan , and subsequently redesigned and rebuilt in accordance with the Spanish urban standards ",
-                "In 1524 , the municipality of Mexico City was established , known as M\u00e9xico Tenochtitl\u00e1n , and as of 1585 it was officially known as Ciudad de M\u00e9xico ( Mexico City ) ",
+                "In 1524 , the municipality of Mexico City was established , known as México Tenochtitlán , and as of 1585 it was officially known as Ciudad de México ( Mexico City ) ",
                 "Mexico City served as the political , administrative and financial center of a major part of the Spanish colonial empire ",
                 "After independence from Spain was achieved , the Federal District was created in 1824 ",
                 "After years of demanding greater political autonomy , residents were given the right to directly elect the Head of Government and the representatives of the unicameral Legislative Assembly by popular vote in 1997 ",
@@ -5042,8 +5040,8 @@
                 "The Ksamil Archipelago in Albania",
                 "The archipelago of Fernando de Noronha",
                 "An archipelago ( ) , sometimes called an island group or island chain , is a chain or cluster of islands ",
-                "The word archipelago is derived from the Greek \u1f04\u03c1\u03c7\u03b9- \u2013 arkhi- ( `` chief '' ) and \u03c0\u03ad\u03bb\u03b1\u03b3\u03bf\u03c2 \u2013 p\u00e9lagos ( `` sea '' ) through the Italian arcipelago ",
-                "In Italian , possibly following a tradition of antiquity , the Arcipelago ( from medieval Greek *\u1f00\u03c1\u03c7\u03b9\u03c0\u03ad\u03bb\u03b1\u03b3\u03bf\u03c2 ) was the proper name for the Aegean Sea and , later , usage shifted to refer to the Aegean Islands ( since the sea is remarkable for its large number of islands ) ",
+                "The word archipelago is derived from the Greek ἄρχι- – arkhi- ( `` chief '' ) and πέλαγος – pélagos ( `` sea '' ) through the Italian arcipelago ",
+                "In Italian , possibly following a tradition of antiquity , the Arcipelago ( from medieval Greek *ἀρχιπέλαγος ) was the proper name for the Aegean Sea and , later , usage shifted to refer to the Aegean Islands ( since the sea is remarkable for its large number of islands ) ",
                 "It is now used to refer to any island group or , sometimes , to a sea containing a large number of scattered islands "
             ]
         },
@@ -5103,7 +5101,7 @@
             "responses": [
                 "Beaver Stadium is an outdoor college football stadium in University Park , Pennsylvania , United States , on the campus of The Pennsylvania State University ",
                 "It is home to the Penn State Nittany Lions of the Big Ten Conference since 1960 , though some parts of the stadium date back to 1909 ",
-                "The stadium is named for James A. Beaver , a former governor of Pennsylvania ( 1887\u201391 ) and president of the university 's board of trustees ",
+                "The stadium is named for James A. Beaver , a former governor of Pennsylvania ( 1887–91 ) and president of the university 's board of trustees ",
                 "Beaver Stadium has an official seating capacity of 106,572 , making it currently the second-largest stadium in the Western Hemisphere and the fourth-largest in the world ",
                 "Beaver Stadium is widely known as one of the toughest venues for opposing teams in collegiate athletics ",
                 "In 2008 , Beaver Stadium was recognized as having the best student section in the country for the second consecutive year ",
@@ -5312,8 +5310,8 @@
                 "The frequent practice of fitting the final selected model followed by reporting estimates and confidence intervals without adjusting them to take the model building process into account has led to calls to stop using stepwise model building altogether or to at least make sure model uncertainty is correctly reflected ",
                 "In this example from engineering , necessity and sufficiency are usually determined by F-tests ",
                 "For additional consideration , when planning an experiment , computer simulation , or scientific survey to collect data for this model , one must keep in mind the number of parameters , P , to estimate and adjust the sample size accordingly ",
-                "For K variables , P = 1 ( Start ) + K ( Stage I ) + ( K2 \u2212 K ) /2 ( Stage II ) + 3K ( Stage III ) = 0.5K2 + 3.5K + 1 ",
-                "For K < 17 , an efficient design of experiments exists for this type of model , a Box\u2013Behnken design , augmented with positive and negative axial points of length min ( 2 , ( int ( 1.5 + K/4 ) ) 1/2 ) , plus point ( s ) at the origin . There are more efficient designs , requiring fewer runs , even for K > 16 "
+                "For K variables , P = 1 ( Start ) + K ( Stage I ) + ( K2 − K ) /2 ( Stage II ) + 3K ( Stage III ) = 0.5K2 + 3.5K + 1 ",
+                "For K < 17 , an efficient design of experiments exists for this type of model , a Box–Behnken design , augmented with positive and negative axial points of length min ( 2 , ( int ( 1.5 + K/4 ) ) 1/2 ) , plus point ( s ) at the origin . There are more efficient designs , requiring fewer runs , even for K > 16 "
             ]
         },
         {
@@ -5409,7 +5407,7 @@
                 "rush"
             ],
             "responses": [
-                "Big Time Rush ( BTR ) is an American television series created by Scott Fellows about the Hollywood misadventures of four hockey players from Minnesota \u2014Kendall , James , Carlos , and Logan , after they are selected to form a boy band ",
+                "Big Time Rush ( BTR ) is an American television series created by Scott Fellows about the Hollywood misadventures of four hockey players from Minnesota —Kendall , James , Carlos , and Logan , after they are selected to form a boy band ",
                 "The series premiered with an hour-long pilot episode , `` Big Time Audition `` , on Nickelodeon , on November 28 , 2009 ",
                 "Its official debut episode premiered on January 18 , 2010 , earning 6.8 million viewers , making it Nickelodeon 's highest-rated live-action series debut ever ",
                 "The show 's second season premiered on September 25 , 2010 ",
@@ -5443,10 +5441,10 @@
                 "North of the Arctic Circle , the sun is above the horizon for 24 continuous hours at least once per year ( and therefore visible at midnight ) and below the horizon for 24 continuous hours at least once per year ",
                 "On the Arctic Circle those events occur , in principle , exactly once per year , at the June and December solstices , respectively ",
                 "It would therefore seem that the Arctic Circle marks the southern extremity of the northern hemisphere polar day ( 24-hour sunlit day , often referred to as the midnight sun ) and polar night ( 24-hour sunless night ) ",
-                "In fact , because of atmospheric refraction and mirages , and because the sun appears as a disk and not a point , part of the midnight sun may be seen on the night of the northern summer solstice up to about 50 \u2032 ( ) south of the Arctic Circle ; similarly , on the day of the northern winter solstice , part of the sun may be seen up to about 50\u2032 north of the Arctic Circle ",
+                "In fact , because of atmospheric refraction and mirages , and because the sun appears as a disk and not a point , part of the midnight sun may be seen on the night of the northern summer solstice up to about 50 ′ ( ) south of the Arctic Circle ; similarly , on the day of the northern winter solstice , part of the sun may be seen up to about 50′ north of the Arctic Circle ",
                 "That is true at sea level ; those limits increase with elevation above sea level although in mountainous regions , there is often no direct view of the true horizon ",
                 "The position of the Arctic Circle is not fixed ",
-                "It directly depends on the Earth 's axial tilt , which fluctuates within a margin of 2\u00b0 over a 40,000 year period , notably due to tidal forces resulting from the orbit of the Moon ",
+                "It directly depends on the Earth 's axial tilt , which fluctuates within a margin of 2° over a 40,000 year period , notably due to tidal forces resulting from the orbit of the Moon ",
                 "The Arctic Circle is currently drifting northwards at a speed of about per year ; see Circle of latitude for more information "
             ]
         },
@@ -5483,7 +5481,7 @@
             "responses": [
                 "An epileptic seizure ( colloquially a fit ) is a transient symptom of `` abnormal excessive or synchronous neuronal activity in the brain '' ",
                 "The outward effect can be as dramatic as a wild thrashing movement ( tonic-clonic seizure ) or as mild as a brief loss of awareness ( absence seizure ) ",
-                "It can manifest as an alteration in , tonic or clonic movements , convulsions , and various other psychic symptoms ( such as d\u00e9j\u00e0 vu or jamais vu ) ",
+                "It can manifest as an alteration in , tonic or clonic movements , convulsions , and various other psychic symptoms ( such as déjà vu or jamais vu ) ",
                 "Sometimes it is not accompanied by convulsions but a full body `` slump '' , where the person simply will lose body control and slump to the ground ",
                 "The medical syndrome of recurrent , unprovoked seizures is termed epilepsy , but seizures can occur in people who do not have epilepsy ",
                 "For more information , see non-epileptic seizure ",
@@ -5573,7 +5571,7 @@
                 "There is a vast number of examples for block codes , many of which have a wide range of practical applications ",
                 "Block Codes are conceptually useful because they allow coding theorists , mathematicians , and computer scientists to study the limitations of all block codes in a unified way ",
                 "Such limitations often take the form of bounds that relate different parameters of the block code to each other , such as its rate and its ability to detect and correct errors ",
-                "Examples of block codes are Reed\u2013Solomon codes , Hamming codes , Hadamard codes , Expander codes , Golay codes , and Reed\u2013Muller codes ",
+                "Examples of block codes are Reed–Solomon codes , Hamming codes , Hadamard codes , Expander codes , Golay codes , and Reed–Muller codes ",
                 "These examples also belong to the class of linear codes , and hence they are called linear block codes "
             ]
         },
@@ -5614,11 +5612,11 @@
             "responses": [
                 "I Confess is a 1953 drama film directed by Alfred Hitchcock , and starring Montgomery Clift as Fr . Michael William Logan , a Catholic priest , Anne Baxter as Ruth Grandfort , and Karl Malden as Inspector Larrue ",
                 "Biographers say Hitchcock had trouble with `` Method `` actors such as Clift and Paul Newman , who worked with him in Torn Curtain ( 1966 ) ",
-                "In the book-length interview Hitchcock/Truffaut ( 1967 ) , Hitchcock said he had hired Anita Bj\u00f6rk as the female lead for I Confess , after seeing her in Miss Julie ( 1951 ) ",
-                "However , when Bj\u00f6rk arrived in Hollywood with her lover and their baby , Warner Bros. insisted that Hitchcock find another actress ",
+                "In the book-length interview Hitchcock/Truffaut ( 1967 ) , Hitchcock said he had hired Anita Björk as the female lead for I Confess , after seeing her in Miss Julie ( 1951 ) ",
+                "However , when Björk arrived in Hollywood with her lover and their baby , Warner Bros. insisted that Hitchcock find another actress ",
                 "The film is based on a 1902 French play by Paul Anthelme called Nos Deux Consciences , a play Hitchcock saw in the 1930s ",
                 "The screenplay was written by George Tabori ",
-                "The movie was largely filmed on location in Quebec City with numerous shots of the city landscape and interiors of its churches and other emblematic buildings , such as the Ch\u00e2teau Frontenac "
+                "The movie was largely filmed on location in Quebec City with numerous shots of the city landscape and interiors of its churches and other emblematic buildings , such as the Château Frontenac "
             ]
         },
         {
@@ -5786,14 +5784,14 @@
             "responses": [
                 "Ecuador ( ) , officially the Republic of Ecuador ( , which literally translates as `` Republic of the Equator `` ) is a representative democratic republic in South America , bordered by Colombia on the north , Peru on the east and south , and by the Pacific Ocean to the west ",
                 "It and Chile are the only two countries in South America that do not have a border with Brazil ",
-                "Ecuador also includes the Gal\u00e1pagos Islands in the Pacific , about west of the mainland ",
+                "Ecuador also includes the Galápagos Islands in the Pacific , about west of the mainland ",
                 "The main spoken language in Ecuador is Spanish ( 94 % of the population ) ",
                 "Languages of official use in native communities include Quichua , Shuar , and 11 other languages ",
                 "Ecuador has an area of ",
                 "Its capital city is Quito , which was declared a World Heritage Site by UNESCO in the 1970s for having the best preserved and least altered historic center in Latin America ",
                 "The country 's largest city is Guayaquil ",
                 "The historic center of Cuenca , the third largest city in the country in size and economically , was also declared a World Heritage Site in 1999 , for being an outstanding example of a planned inland Spanish style colonial city in the Americas ",
-                "Ecuador is also home to a great variety of species , many of them endemic , like those of the Gal\u00e1pagos islands ",
+                "Ecuador is also home to a great variety of species , many of them endemic , like those of the Galápagos islands ",
                 "This species diversity makes Ecuador one of the 17 megadiverse countries in the world ",
                 "The new constitution of 2008 is the first in the world to recognize legally enforceable Rights of Nature , or ecosystem rights ",
                 "Ecuador is a presidential republic and became independent in 1830 , after having been part of the Spanish colonial empire , and for a much shorter time of the republic of Gran Colombia ",
@@ -5810,7 +5808,7 @@
                 "mein"
             ],
             "responses": [
-                "Chow mein ( ; Chinese : \u7092\u9eb5 , `` fried noodles '' ) is a Chinese term for a dish of stir-fried noodles , of which there are many varieties "
+                "Chow mein ( ; Chinese : 炒麵 , `` fried noodles '' ) is a Chinese term for a dish of stir-fried noodles , of which there are many varieties "
             ]
         },
         {
@@ -5830,15 +5828,15 @@
                 "The Dominican Republic ( ; , ) is a nation on the island of Hispaniola , part of the Greater Antilles archipelago in the Caribbean region ",
                 "The western third of the island is occupied by the nation of Haiti , making Hispaniola one of two Caribbean islands , along with Saint Martin , that are shared by two countries ",
                 "Both by area and population , the Dominican Republic is the second largest Caribbean nation ( after Cuba ) , with and an estimated 10 million people ",
-                "Ta\u00ednos inhabited what is now the Dominican Republic since the 7th century ",
+                "Taínos inhabited what is now the Dominican Republic since the 7th century ",
                 "Christopher Columbus landed on it in 1492 , and it became the site of the first permanent European settlement in the Americas , namely Santo Domingo , the country 's capital and Spain 's first capital in the New World ",
                 "After three centuries of Spanish rule , with French and Haitian interludes , the country became independent in 1821 ",
-                "The ruler , Jos\u00e9 N\u00fa\u00f1ez de C\u00e1ceres , intended that the Dominican Republic be part of the nation of Gran Colombia , but he was quickly removed by the Haitian government and `` Dominican '' slave revolts ",
+                "The ruler , José Núñez de Cáceres , intended that the Dominican Republic be part of the nation of Gran Colombia , but he was quickly removed by the Haitian government and `` Dominican '' slave revolts ",
                 "Victorious in the Dominican War of Independence in 1844 , Dominicans experienced mostly internal strife , and also a brief return to Spanish rule , over the next 72 years ",
-                "The United States occupation of 1916\u20131924 , and a subsequent calm and prosperous six-year period under Horacio V\u00e1squez Lajara , were followed by the dictatorship of Rafael Leonidas Trujillo Molina until 1961 ",
-                "The civil war of 1965 , the country 's last , was ended by a U.S.-led intervention , and was followed by the authoritarian rule of Joaqu\u00edn Balaguer , 1966\u20131978 ",
-                "Since then , the Dominican Republic has moved toward representative democracy , and has been led by Leonel Fern\u00e1ndez for most of the time after 1996 ",
-                "Danilo Medina , Dominican Republic 's current president , replaced former president Leonel Fern\u00e1ndez holding 51 % of the Electoral Vote over his opponent ex-president Hipolito Mejia in 2012 ",
+                "The United States occupation of 1916–1924 , and a subsequent calm and prosperous six-year period under Horacio Vásquez Lajara , were followed by the dictatorship of Rafael Leonidas Trujillo Molina until 1961 ",
+                "The civil war of 1965 , the country 's last , was ended by a U.S.-led intervention , and was followed by the authoritarian rule of Joaquín Balaguer , 1966–1978 ",
+                "Since then , the Dominican Republic has moved toward representative democracy , and has been led by Leonel Fernández for most of the time after 1996 ",
+                "Danilo Medina , Dominican Republic 's current president , replaced former president Leonel Fernández holding 51 % of the Electoral Vote over his opponent ex-president Hipolito Mejia in 2012 ",
                 "The Dominican Republic has the ninth largest economy in Latin America and the second largest economy in the Caribbean and Central American region ",
                 "Though long known for sugar production , the economy is now dominated by services ",
                 "The country 's economic progress is exemplified by its advanced telecommunication system ",
@@ -5942,7 +5940,7 @@
                 "In Moby-Dick , Melville employs stylized language , symbolism , and the metaphor to explore numerous complex themes ",
                 "Through the journey of the main characters , the concepts of class and social status , good and evil , and the existence of God are all examined , as the main characters speculate upon their personal beliefs and their places in the universe ",
                 "The narrator 's reflections , along with his descriptions of a sailor 's life aboard a whaling ship , are woven into the narrative along with Shakespearean literary devices , such as stage directions , extended soliloquies , and asides ",
-                "The book portrays destructive obsession and monomania , as well as the assumption of anthropomorphism \u2014projecting human instincts , characteristics and motivations onto animals ",
+                "The book portrays destructive obsession and monomania , as well as the assumption of anthropomorphism —projecting human instincts , characteristics and motivations onto animals ",
                 "Moby Dick is ruthless in attacking the sailors who attempt to hunt and kill him , but it is Ahab who invests Moby Dick 's natural instincts with malignant and evil intentions ",
                 "In fact , it is not the whale but the crippled Ahab who alone possesses this characteristic ",
                 "Moby-Dick has been classified as American Romanticism ",
@@ -6003,7 +6001,7 @@
             "responses": [
                 "Human brain in the coronal orientation ",
                 "Amygdalae are shown in dark red ",
-                "The ( ; singular : ; also ' ; Latin , from Greek , ' , 'almond ' , 'tonsil ' , listed in the Gray 's Anatomy textbook as the nucleus amygdal\u00e6 ) are almond-shaped groups of nuclei located deep within the medial temporal lobes of the brain in complex vertebrates , including humans ",
+                "The ( ; singular : ; also ' ; Latin , from Greek , ' , 'almond ' , 'tonsil ' , listed in the Gray 's Anatomy textbook as the nucleus amygdalæ ) are almond-shaped groups of nuclei located deep within the medial temporal lobes of the brain in complex vertebrates , including humans ",
                 "Shown in research to perform a primary role in the processing of memory and emotional reactions , the amygdalae are considered part of the limbic system "
             ]
         },
@@ -6061,7 +6059,7 @@
                 "One of the critical problems facing India 's economy is the sharp and growing regional variations among India 's different states and territories in terms of per capita income , poverty , availability of infrastructure and socio-economic development ",
                 "Although income inequality in India is relatively small ( Gini coefficient : 32.5 in year 1999- 2000 ) ; India 's nominal Gini index rose to 36.8 in 2005 , while real Gini after tax remained nearly flat at 32.6 ",
                 "Despite significant economic progress , a quarter of the nation 's population earns less than the government-specified poverty threshold of $ 0.40/day ",
-                "27.5 % of the population was living below the poverty line in 2004\u20132005 ",
+                "27.5 % of the population was living below the poverty line in 2004–2005 ",
                 "Between 1999 and 2008 , the annualized growth rates for Maharashtra ( 9.0 % )",
                 "Gujarat ( 8.8 % ) , Haryana ( 8.7 % ) , or Delhi ( 7.4 % ) were much higher than for Bihar ( 5.1 % ) , Uttar Pradesh ( 4.4 % ) , or Madhya Pradesh ( 3.5 % ) ",
                 "By 2010 , economically backward states start to catchup up with developed states with Bihar with an impressive 11 percent growth rate ",
@@ -6194,7 +6192,7 @@
             "responses": [
                 "The Kentucky Wildcats men 's basketball team is a college basketball team representing the University of Kentucky ",
                 "Kentucky has both the most all-time wins ( 2111 ) and the highest all-time winning percentage in the history of college basketball ( .762 ) ",
-                "Kentucky 's all-time record currently stands at 2111\u2013661 ",
+                "Kentucky 's all-time record currently stands at 2111–661 ",
                 "Kentucky also leads all schools in total NCAA tournament appearances with 52 , is first in NCAA tournament wins with 111 , and ranks second to UCLA in NCAA championships with 8 ",
                 "In addition to these titles , Kentucky also has won the National Invitation Tournament ( NIT ) in both 1946 and 1976 , making them the only school to win multiple NCAA and NIT championships ",
                 "The Wildcats have played in a record 52 NCAA Tournaments , in a record 157 NCAA Tournament games , have a NCAA record 39 Sweet-16 appearances , a NCAA record 34 Elite-8 appearances , and have a NCAA record 61 total post-season tournament appearances ( NCAA and NIT ) ",
@@ -6228,7 +6226,7 @@
                 "Thirty-two teams were selected for participation via a worldwide qualification tournament that began in August 2007 ",
                 "In the first round of the tournament finals , the teams competed in round-robin groups of four teams for points , with the top two teams in each group proceeding ",
                 "These sixteen teams advanced to the knockout stage , where three rounds of play decided which teams would participate in the final ",
-                "In the final , Spain , the European champions , defeated third-time finalists the Netherlands 1\u20130 after extra time , with Andr\u00e9s Iniesta 's goal in the 116th minute giving Spain their first world title , becoming the eighth nation to win the tournament , and the first European nation to win the tournament outside its home continent ",
+                "In the final , Spain , the European champions , defeated third-time finalists the Netherlands 1–0 after extra time , with Andrés Iniesta 's goal in the 116th minute giving Spain their first world title , becoming the eighth nation to win the tournament , and the first European nation to win the tournament outside its home continent ",
                 "Host nation South Africa , 2006 world champions Italy and 2006 runners-up France were all eliminated in the first round of the tournament ",
                 "It was the first time that the hosts were eliminated in the first round ",
                 "New Zealand with their three draws were the only undefeated team in the tournament , but were also eliminated in the first round "
@@ -6256,9 +6254,9 @@
                 "bombs"
             ],
             "responses": [
-                "The J\u00e4gerbomb ( ) is a bomb shot cocktail that was originally mixed by dropping a shot of J\u00e4germeister into a glass of beer and in recent years evolved by the Bagheri brothers ( UK ) with Red Bull or other energy drinks ",
-                "In German-speaking countries , it is called a `` Turboj\u00e4ger '' or a `` Flying Hirsch '' ( Flying Stag ) \u2014 where `` Flying '' is derived from the slogan `` Red Bull gives you wings '' and `` Stag `` originates in the J\u00e4germeister logo ",
-                "A long drink mixed with J\u00e4germeister and Red Bull is called `` J\u00e4gerBull '' as it is adopted from J\u00e4germeister and RedBull ",
+                "The Jägerbomb ( ) is a bomb shot cocktail that was originally mixed by dropping a shot of Jägermeister into a glass of beer and in recent years evolved by the Bagheri brothers ( UK ) with Red Bull or other energy drinks ",
+                "In German-speaking countries , it is called a `` Turbojäger '' or a `` Flying Hirsch '' ( Flying Stag ) — where `` Flying '' is derived from the slogan `` Red Bull gives you wings '' and `` Stag `` originates in the Jägermeister logo ",
+                "A long drink mixed with Jägermeister and Red Bull is called `` JägerBull '' as it is adopted from Jägermeister and RedBull ",
                 "In Finland , it is called an `` Akkuhappo '' ( Battery Acid ) "
             ]
         },
@@ -6374,18 +6372,18 @@
                 "acid"
             ],
             "responses": [
-                "Lipoic acid ( LA ) , also known as \u03b1-lipoic acid and alpha lipoic acid ( ALA ) is an organosulfur compound derived from octanoic acid ",
+                "Lipoic acid ( LA ) , also known as α-lipoic acid and alpha lipoic acid ( ALA ) is an organosulfur compound derived from octanoic acid ",
                 "LA contains two sulfur atoms ( at C6 and C8 ) connected by a disulfide bond and is thus considered to be oxidized although either sulfur atom can exist in higher oxidation states ",
                 "The carbon atom at C6 is chiral and the molecule exists as two enantiomers ( R ) - ( + ) -lipoic acid ( RLA ) and ( S ) - ( - ) -lipoic acid ( SLA ) and as a racemic mixture ( R/S ) -lipoic acid ( R/S-LA ) ",
                 "Only the ( R ) - ( + ) -enantiomer exists in nature and is an essential cofactor of four mitochondrial enzyme complexes ",
                 "Endogenously synthesized RLA is essential for aerobic metabolism ",
                 "Both RLA and R/S-LA are available as over-the-counter nutritional supplements and have been used nutritionally and clinically since the 1950s for various diseases and conditions ",
                 "LA appears physically as a yellow solid and structurally contains a terminal carboxylic acid and a terminal dithiolane ring ",
-                "The relationship between endogenously synthesized ( enzyme\u2013bound ) RLA and administered free RLA or R/S-LA has not been fully characterized but free plasma and cellular levels increase and decrease rapidly after oral consumption or intravenous injections ",
+                "The relationship between endogenously synthesized ( enzyme–bound ) RLA and administered free RLA or R/S-LA has not been fully characterized but free plasma and cellular levels increase and decrease rapidly after oral consumption or intravenous injections ",
                 "`` Lipoate '' is the conjugate base of lipoic acid , and the most prevalent form of LA under physiologic conditions ",
                 "Although the intracellular environment is strongly reducing , both free LA and its reduced form , dihydrolipoic acid ( DHLA ) , have been detected in cells after administration of LA ",
-                "Most endogenously produced RLA is not \u201cfree\u201d because octanoic acid , the precursor to RLA , is bound to the enzyme complexes prior to enzymatic insertion of the sulfur atoms ",
-                "As a cofactor , RLA is covalently attached by an amide bond to a terminal lysine residue of the enzyme\u2019s lipoyl domains ",
+                "Most endogenously produced RLA is not “free” because octanoic acid , the precursor to RLA , is bound to the enzyme complexes prior to enzymatic insertion of the sulfur atoms ",
+                "As a cofactor , RLA is covalently attached by an amide bond to a terminal lysine residue of the enzyme’s lipoyl domains ",
                 "One of the most studied roles of RLA is as a cofactor of the pyruvate dehydrogenase complex ( PDC or PDHC ) , though it is a cofactor in other enzymatic systems as well ( described below ) "
             ]
         },
@@ -6402,7 +6400,7 @@
                 "David Gray ( born 13 June 1968 ) is a British singer-songwriter from Sale , Cheshire ",
                 "Gray released his first studio album in 1993 and received worldwide attention after the release of White Ladder six years later ",
                 "It was the first of three UK chart-toppers in six years for Gray , the latter two of which also made the Top 17 in the US ",
-                "He has been nominated for four Brit Awards \u2013 twice for Best British Male "
+                "He has been nominated for four Brit Awards – twice for Best British Male "
             ]
         },
         {
@@ -6420,7 +6418,7 @@
                 "Located in four buildings in Washington , D.C. , as well as the Packard Campus in Culpeper , Virginia , it is one of the two largest libraries in the world by shelf space and number of books , the other being The British Library ",
                 "The head of the Library is the Librarian of Congress , currently James H. Billington ",
                 "The Library of Congress was instituted for Congress in 1800 , and was housed in the United States Capitol for most of the 19th century ",
-                "After much of the original collection had been destroyed during the War of 1812 , Thomas Jefferson sold 6,487 books \u2014 his entire personal collection \u2014 to the library in 1815 ",
+                "After much of the original collection had been destroyed during the War of 1812 , Thomas Jefferson sold 6,487 books — his entire personal collection — to the library in 1815 ",
                 "After a period of decline during the mid-19th century the Library of Congress began to grow rapidly in both size and importance after the American Civil War , culminating in the construction of a separate library building and the transference of all copyright deposit holdings to the Library ",
                 "During the rapid expansion of the 20th century the Library of Congress assumed a preeminent public role , becoming a `` library of last resort '' and expanding its mission for the benefit of scholars and the American people ",
                 "The Library 's primary mission is researching inquiries made by members of Congress through the Congressional Research Service ",
@@ -6461,7 +6459,7 @@
                 "An abstract is a brief of a research article , thesis , review , conference proceeding or any in-depth analysis of a particular subject or discipline , and is often used to help the reader quickly ascertain the paper 's purpose ",
                 "When used , an abstract always appears at the beginning of a manuscript or typescript , acting as the point-of-entry for any given academic paper or patent application ",
                 "Abstracting and indexing services for various academic disciplines are aimed at compiling a body of literature for that particular subject ",
-                "The terms pr\u00e9cis or synopsis are used in some publications to refer to the same thing that other publications might call an `` abstract '' ",
+                "The terms précis or synopsis are used in some publications to refer to the same thing that other publications might call an `` abstract '' ",
                 "In management reports , an executive summary usually contains more information ( and often more sensitive information ) than the abstract does "
             ]
         },
@@ -6509,7 +6507,7 @@
             "responses": [
                 "The North American Free Trade Agreement ( NAFTA ) is an agreement signed by Canada , Mexico , and the United States , creating a trilateral trade bloc in North America ",
                 "The agreement came into force on January 1 , 1994 ",
-                "It superseded the Canada\u2013United States Free Trade Agreement between the U.S. , Canada , and Mexico",
+                "It superseded the Canada–United States Free Trade Agreement between the U.S. , Canada , and Mexico",
                 "NAFTA has two supplements : the North American Agreement on Environmental Cooperation ( NAAEC ) and the North American Agreement on Labor Cooperation ( NAALC ) "
             ]
         },
@@ -6680,7 +6678,7 @@
                 "Her first leading role in a major film was in the cyber-thriller Hackers ( 1995 ) ",
                 "She starred in the critically acclaimed biographical television films George Wallace ( 1997 ) and Gia ( 1998 ) , and won an Academy Award for Best Supporting Actress for her performance in the drama Girl , Interrupted ( 1999 ) ",
                 "Jolie achieved wide fame after her portrayal of video game heroine Lara Croft in Lara Croft : Tomb Raider ( 2001 ) , and established herself among the highest-paid actresses in Hollywood with the sequel The Cradle of Life ( 2003 ) ",
-                "She continued her action star career with Mr. & Mrs. Smith ( 2005 ) and Wanted ( 2008 ) \u2014her biggest non-animated commercial successes to date\u2014and received further critical acclaim for her performances in the dramas A Mighty Heart ( 2007 ) and Changeling ( 2008 ) , which earned her a nomination for an Academy Award for Best Actress ",
+                "She continued her action star career with Mr. & Mrs. Smith ( 2005 ) and Wanted ( 2008 ) —her biggest non-animated commercial successes to date—and received further critical acclaim for her performances in the dramas A Mighty Heart ( 2007 ) and Changeling ( 2008 ) , which earned her a nomination for an Academy Award for Best Actress ",
                 "Jolie made her directorial debut with the wartime drama In the Land of Blood and Honey ( 2011 ) ",
                 "Divorced from actors Jonny Lee Miller and Billy Bob Thornton , Jolie now lives with actor Brad Pitt , in a relationship notable for fervent media attention ",
                 "Jolie and Pitt have three biological children and three adopted children "
@@ -6714,7 +6712,7 @@
                 "Bilirubin ( formerly referred to as hematoidin ) is the yellow breakdown product of normal heme catabolism ",
                 "Heme is found in hemoglobin , a principal component of red blood cells ",
                 "Bilirubin is excreted in bile and urine , and elevated levels may indicate certain diseases ",
-                "It is responsible for the yellow color of bruises , the background straw-yellow color of urine ( via its reduced breakdown product , urobilin \u2013 the more obvious but variable bright yellow colour of urine is due to thiochrome , a breakdown product of thiamine ) , the brown color of feces ( via its conversion to stercobilin ) , and the yellow discoloration in jaundice ",
+                "It is responsible for the yellow color of bruises , the background straw-yellow color of urine ( via its reduced breakdown product , urobilin – the more obvious but variable bright yellow colour of urine is due to thiochrome , a breakdown product of thiamine ) , the brown color of feces ( via its conversion to stercobilin ) , and the yellow discoloration in jaundice ",
                 "It has also been found in plants "
             ]
         },
@@ -6791,21 +6789,21 @@
                 "Michael Jordan has won ten scoring titles in his career ",
                 "In basketball , points are the sum of the score accumulated through free throws or field goals ",
                 "The National Basketball Association 's ( NBA ) scoring title is awarded to the player with the highest points per game average in a given season ",
-                "The scoring title was originally determined by total points scored until the 1968\u201369 season , after which points per game was used to determine the leader instead ",
-                "Players who earned scoring titles before the 1979\u201380 season did not record any three-point field goals because the three-point line was first implemented in the NBA during that season ",
+                "The scoring title was originally determined by total points scored until the 1968–69 season , after which points per game was used to determine the leader instead ",
+                "Players who earned scoring titles before the 1979–80 season did not record any three-point field goals because the three-point line was first implemented in the NBA during that season ",
                 "To qualify for the scoring title , the player must appear in at least 70 games ( out of 82 ) or have at least 1400 points ",
-                "These have been the entry criteria since the 1974\u201375 season ",
-                "Wilt Chamberlain holds the all-time records for total points scored ( 4,029 ) and points per game ( 50.4 ) in a season ; both records were achieved in the 1961\u201362 season ",
-                "He also holds the rookie records for points per game when he averaged 37.6 points in the 1959\u201360 season ",
-                "Among active players , Kobe Bryant has the highest point total ( 2832 ) and the highest scoring average ( 35.4 ) in a season ; both were achieved in the 2005\u201306 season ",
+                "These have been the entry criteria since the 1974–75 season ",
+                "Wilt Chamberlain holds the all-time records for total points scored ( 4,029 ) and points per game ( 50.4 ) in a season ; both records were achieved in the 1961–62 season ",
+                "He also holds the rookie records for points per game when he averaged 37.6 points in the 1959–60 season ",
+                "Among active players , Kobe Bryant has the highest point total ( 2832 ) and the highest scoring average ( 35.4 ) in a season ; both were achieved in the 2005–06 season ",
                 "Michael Jordan has won the most scoring titles , with ten ",
                 "Jordan and Chamberlain are the only players to have won seven consecutive scoring titles ",
                 "Both George Gervin and Allen Iverson have won four scoring titles in their career , and George Mikan , Neil Johnston , Kevin Durant , and Bob McAdoo have achieved it three times ",
                 "Paul Arizin , Bob Pettit , Kareem Abdul-Jabbar , Shaquille O'Neal , Tracy McGrady , and Bryant have each won the scoring title twice ",
-                "Since the 1969\u201370 season , three players have won both the scoring title and the NBA championship in the same season : Abdul-Jabbar ( then Alcindor ) in 1971 with the Milwaukee Bucks , Jordan from 1991 to 1993 and from 1996 to 1998 with the Chicago Bulls , and O'Neal in 2000 with the Los Angeles Lakers ",
+                "Since the 1969–70 season , three players have won both the scoring title and the NBA championship in the same season : Abdul-Jabbar ( then Alcindor ) in 1971 with the Milwaukee Bucks , Jordan from 1991 to 1993 and from 1996 to 1998 with the Chicago Bulls , and O'Neal in 2000 with the Los Angeles Lakers ",
                 "O'Neal is the only scoring leader to have made no three point field goals in his winning season ( during the era of the three-point field goal ) ",
-                "At 21 years and 197 days , Durant is the youngest scoring leader in NBA history , averaging 30.1 , 27.7 , and 28.0 points in the 2009\u201310 , 2010\u201311 , and 2011\u201312 season respectively ",
-                "The 2012\u201313 scoring leader was Carmelo Anthony of the New York Knicks "
+                "At 21 years and 197 days , Durant is the youngest scoring leader in NBA history , averaging 30.1 , 27.7 , and 28.0 points in the 2009–10 , 2010–11 , and 2011–12 season respectively ",
+                "The 2012–13 scoring leader was Carmelo Anthony of the New York Knicks "
             ]
         },
         {
@@ -6826,11 +6824,11 @@
                 "Addressability comes in a variety of forms including email addresses , mobile phone numbers , Web browser cookies , fax numbers and postal addresses ",
                 "Direct marketing seeks to drive a specific `` call to action . ''",
                 "For example , an advertisement may ask the prospect to call a free phone number or click on a link to a website ",
-                "Direct marketing emphasizes trackable , measurable responses from customers \u2014 regardless of medium ",
-                "Direct marketing is practiced by businesses of all sizes \u2014 from the smallest start-up to the leaders on the Fortune 500 ",
+                "Direct marketing emphasizes trackable , measurable responses from customers — regardless of medium ",
+                "Direct marketing is practiced by businesses of all sizes — from the smallest start-up to the leaders on the Fortune 500 ",
                 "A well-executed direct advertising campaign can prove a positive return on investment by showing how many potential customers responded to a clear call-to-action ",
-                "General advertising eschews calls-for-action in favor of messages that try to build prospects\u2019 emotional awareness or engagement with a brand ",
-                "Even well-designed general advertisements rarely can prove their impact on the organization\u2019s bottom line "
+                "General advertising eschews calls-for-action in favor of messages that try to build prospects’ emotional awareness or engagement with a brand ",
+                "Even well-designed general advertisements rarely can prove their impact on the organization’s bottom line "
             ]
         },
         {
@@ -6871,8 +6869,8 @@
             ],
             "responses": [
                 "Biltmore Estate is a large private estate and tourist attraction in Asheville , North Carolina ",
-                "Biltmore House , the main house on the estate , is a Ch\u00e2teauesque -styled mansion built by George Washington Vanderbilt II between 1889 and 1895 and is the largest privately owned house in the United States , at and featuring 250 rooms ",
-                "Still owned by one of Vanderbilt 's descendants , it stands today as one of the most prominent remaining examples of the Gilded Age , and of significant gardens in the jardin \u00e0 la fran\u00e7aise and English Landscape garden styles in the United States ",
+                "Biltmore House , the main house on the estate , is a Châteauesque -styled mansion built by George Washington Vanderbilt II between 1889 and 1895 and is the largest privately owned house in the United States , at and featuring 250 rooms ",
+                "Still owned by one of Vanderbilt 's descendants , it stands today as one of the most prominent remaining examples of the Gilded Age , and of significant gardens in the jardin à la française and English Landscape garden styles in the United States ",
                 "In 2007 , it was ranked eighth in America 's Favorite Architecture by the American Institute of Architects "
             ]
         },
@@ -6992,6 +6990,16 @@
                 "The different schemes or architectures are named by the word RAID followed by a number ( e.g . RAID 0 , RAID 1 ) ",
                 "Each scheme provides a different balance between the key goals : reliability and availability , performance and capacity ",
                 "RAID levels greater than RAID 0 provide protection against unrecoverable ( sector ) read errors , as well as whole disk failure "
+            ]
+        },
+        {
+            "tag": "296",
+            "patterns": [
+                "屌，垃圾"
+                
+            ],
+            "responses": [
+                "你老母臭西"
             ]
         }
     ]
