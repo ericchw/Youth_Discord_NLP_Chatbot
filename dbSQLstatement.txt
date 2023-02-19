@@ -1,19 +1,27 @@
+Test bot:
+hi
+Hello
+極度憤怒
+聯絡
+我的狗剛剛去世
+####################################################
+
 # brew install --cask pgadmin4
 # brew install postgresql  (version: PostgreSQL@14)
 # brew services start postgresql
 
-
+####################################################
 
 -- Role: admin
 -- DROP ROLE IF EXISTS admin;
 CREATE ROLE admin WITH
-  LOGIN
-  SUPERUSER
-  INHERIT
-  CREATEDB
-  CREATEROLE
-  REPLICATION
-  ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:FRd+bOnm+iKG8lhJCv4fsw==$qwIDoBcBSU6xBNZNWvKW8IC5zQehD1DIH74OQ/g2Q+U=:alCpVnY1bfriBlR9eXGE2pnZbwPlAdrnj+SMSStbCfQ=';
+    LOGIN
+    SUPERUSER
+    INHERIT
+    CREATEDB
+    CREATEROLE
+    REPLICATION
+    ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:FRd+bOnm+iKG8lhJCv4fsw==$qwIDoBcBSU6xBNZNWvKW8IC5zQehD1DIH74OQ/g2Q+U=:alCpVnY1bfriBlR9eXGE2pnZbwPlAdrnj+SMSStbCfQ=';
 
 -- Database: sjs
 -- DROP DATABASE IF EXISTS sjs;
@@ -27,46 +35,48 @@ CREATE DATABASE sjs
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
+####################################################
+
+DROP TABLE account;
+DROP TABLE chatlog;
+DROP TABLE helplog;
+DROP TABLE games;
+DROP TABLE information;
+DROP TABLE event_detail;
+DROP TABLE event_header;
+
+
 CREATE TABLE IF NOT EXISTS account
 (
-    aid SERIAL PRIMARY KEY,
-	  email VARCHAR,
-	  pwd VARCHAR,
-	  username VARCHAR
+    id SERIAL PRIMARY KEY,
+	email VARCHAR,
+	pwd VARCHAR,
+    username VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS chatlog
 (
-    cid SERIAL PRIMARY KEY,
-	  senderId VARCHAR,
-	  message VARCHAR,
-	  label VARCHAR,
-	  timestamp TIMESTAMP
+    id SERIAL PRIMARY KEY,
+    senderName VARCHAR,
+	senderId VARCHAR,
+	message VARCHAR,
+	label VARCHAR,
+	timestamp TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS Event_Header(
-    eHdrId SERIAL PRIMARY KEY,
-    eHdrTitle VARCHAR,
-    eStatus VARCHAR,
-    eHdrDesc VARCHAR,
-    eHdrDate TIMESTAMP,
-    eHdrCreateDate TIMESTAMP
-);
-
-CREATE TABLE IF NOT EXISTS Event_Detail(
-    eDtlId SERIAL PRIMARY KEY,
-    eDtlOptTitle VARCHAR,
-    eDtlHdrId INTEGER,
-    eDtlUsername VARCHAR,
-    eDtlGameId VARCHAR,
-    CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
+CREATE TABLE IF NOT EXISTS helplog
+(
+    id SERIAL PRIMARY KEY,
+    userName VARCHAR,
+	userId VARCHAR,
+	timestamp TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS games
 (
-    gid SERIAL PRIMARY KEY,
-	gname VARCHAR,
-    gname_zh VARCHAR
+    id SERIAL PRIMARY KEY,
+	name VARCHAR,
+    name_zh VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS information
@@ -97,3 +107,20 @@ INSERT INTO games VALUES
 	(12, 'Arena of Valor', '傳說對決'),
 	(13, 'Honor of Kings', '王者榮耀')
 ;
+
+
+CREATE TABLE IF NOT EXISTS Event_Header(
+    eHdrId SERIAL PRIMARY KEY,
+    eHdrTitle VARCHAR,
+    eHdrStatus VARCHAR,
+    eHdrDesc VARCHAR,
+    eHdrDate TIMESTAMP,
+    eHdrCreateDate TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Event_Detail(
+    eDtlId SERIAL PRIMARY KEY,
+    eDtlHdrId INTEGER,
+    eDtlGameId VARCHAR,
+    CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
+);
