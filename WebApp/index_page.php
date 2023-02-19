@@ -1,3 +1,7 @@
+<?php
+include 'checkCookie.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,11 +70,15 @@
             </li>
             <li>
               <a href="event_page.php">
-                <i class="fas fa-star"></i>Event</a>
+                <i class="fa fa-star"></i>Event</a>
+            </li>
+            <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
-                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                <i class="fa fa-calendar"></i>Calendar</a>
             </li>
           </ul>
         </div>
@@ -98,11 +106,15 @@
             </li>
             <li>
               <a href="event_page.php">
-                <i class="fas fa-star"></i>Event</a>
+                <i class="fa fa-star"></i>Event</a>
+            </li>
+            <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
-                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                <i class="fa fa-calendar"></i>Calendar</a>
             </li>
           </ul>
         </nav>
@@ -180,7 +192,7 @@
                       </div>
                       <div class="text">
                         <h2>10368</h2>
-                        <span>members online</span>
+                        <span>Chatting Log</span>
                       </div>
                     </div>
                     <div class="overview-chart">
@@ -198,7 +210,7 @@
                       </div>
                       <div class="text">
                         <h2>1,086</h2>
-                        <span>this week</span>
+                        <span>Event</span>
                       </div>
                     </div>
                     <div class="overview-chart">

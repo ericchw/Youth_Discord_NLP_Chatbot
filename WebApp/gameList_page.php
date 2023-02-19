@@ -13,7 +13,7 @@ include 'checkCookie.php';
   <meta name="keywords" content="au theme template" />
 
   <!-- Title Page-->
-  <title>Dashboard</title>
+  <title>Game List</title>
 
   <!-- Fontfaces CSS-->
   <link href="css/font-face.css" rel="stylesheet" media="all" />
@@ -72,6 +72,10 @@ include 'checkCookie.php';
                 <i class="fas fa-star"></i>Event</a>
             </li>
             <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
+            </li>
+            <li>
               <a href="calendar_page.php">
                 <i class="fas fa-calendar-alt"></i>Calendar</a>
             </li>
@@ -104,8 +108,13 @@ include 'checkCookie.php';
                 <i class="fas fa-star"></i>Event</a>
             </li>
             <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
+            </li>
+            <li>
               <a href="calendar_page.php">
                 <i class="fas fa-calendar-alt"></i>Calendar</a>
+
             </li>
           </ul>
         </nav>
@@ -173,10 +182,23 @@ include 'checkCookie.php';
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
+            <div align="right">
+              <a class="btn btn-primary" href="newGame_page.php">
+                <i class="fa fa-star"></i>&nbsp; NEW</a>
+            </div>
             <div class="row m-t-25">
-              <div class="col-sm-6 col-lg-3">
-
-              </div>
+              <table class="table table-data2">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>中文名</th>
+                    <th>English Name</th>
+                  </tr>
+                </thead>
+                <?php
+                include('getAllGame.php');
+                ?>
+              </table>
             </div>
           </div>
         </div>
@@ -201,6 +223,15 @@ include 'checkCookie.php';
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
+    <script>
+      function cardOnOver(obj) {
+
+      }
+
+      function cardOnOut(obj) {
+
+      }
+    </script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>

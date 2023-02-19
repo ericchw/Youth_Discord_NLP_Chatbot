@@ -204,15 +204,15 @@ include 'checkCookie.php';
                 <table class="table table-data2">
                   <thead>
                     <tr>
-                      <th>name</th>
-                      <th>description</th>
-                      <th>date</th>
-                      <th>status</th>
+                      <th>User Discord Id</th>
+                      <th>Message</th>
+                      <th>Label</th>
+                      <th>Send Time</th>
                       <th></th>
                     </tr>
                   </thead>
                   <?php
-                  include('getAllEvent.php');
+                  include('getAllChatlog.php');
                   ?>
                 </table>
               </div>

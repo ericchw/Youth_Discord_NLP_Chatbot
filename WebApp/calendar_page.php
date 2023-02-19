@@ -92,6 +92,10 @@ include 'checkCookie.php';
                 <i class="fas fa-star"></i>Events</a>
             </li>
             <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
+            </li>
+            <li>
               <a href="calendar_page.php">
                 <i class="fas fa-calendar-alt"></i>Calendar</a>
             </li>
@@ -122,6 +126,10 @@ include 'checkCookie.php';
             <li>
               <a href="event_page.php">
                 <i class="fas fa-star"></i>Events</a>
+            </li>
+            <li>
+              <a href="chatlog_page.php">
+                <i class="fa fa-comment"></i>Chat Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
