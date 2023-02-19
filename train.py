@@ -55,7 +55,7 @@ X_train = np.array(X_train)
 y_train = np.array(y_train)
 
 # Hyper-parameters 
-num_epochs = 10000
+num_epochs = 1000
 batch_size = 3000
 learning_rate = 0.001
 input_size = len(X_train[0])
@@ -79,6 +79,7 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 dataset = ChatDataset()
+# multiprocessing.freeze_support()
 train_loader = DataLoader(dataset=dataset,
                           batch_size=batch_size,
                           shuffle=True,

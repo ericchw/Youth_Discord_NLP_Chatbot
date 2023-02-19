@@ -14,7 +14,7 @@ import json, nltk, uuid
 #             "patterns": patterns,
 #             "responses": responses
 #         })
-with open('intents.json', 'r') as json_file:
+with open('intents.json', 'r', encoding='utf-8') as json_file:
     # json.dump(data, json_file)
      data = json.load(json_file)
     #  for i in data['intents']:
@@ -53,17 +53,18 @@ with open('WikiQA-dev.txt', 'r') as f:
         # Extract the first sentence before the tab space
         pattern = line.split('\t')[0].strip('.!?')
         response = line.split('\t')[1].strip('.!?')
-        # lower_case = line.lower()
-        # tokens = nltk.word_tokenize(lower_case)
-        # tags = nltk.pos_tag(tokens)
-        # for tag in tags:
-        #     if 'NN' in tag:
-        #         temp_intent['tag'] = tag[0]
-        #         break
+        lower_case = pattern.lower()
+        tokens = nltk.word_tokenize(lower_case)
+        tags = nltk.pos_tag(tokens)
+        for tag in tags:
+            if 'VBP' or 'NN' or 'NNS' or 'NNP' in tag:
+                temp_intent['patterns'].append(tag[0])
+            print(tag)
+                # break
         
         temp_intent['tag'] = str(counter)
         counter += 1
-        temp_intent['patterns'].append(pattern)
+        # temp_intent['patterns'].append(pattern)
         temp_intent['responses'].append(response)
         data['intents'].append(temp_intent)
         temp_intent = {
@@ -73,8 +74,10 @@ with open('WikiQA-dev.txt', 'r') as f:
             "responses": [
             ]
         }
-        with open("intents.json", "w") as file:
+        with open("intents.json", "w",encoding='utf-8') as file:
             # Write the modified data back to the file
             json.dump(data, file, indent=4)
             # file.write(new_data)
-        # break
+        # if counter == 30:
+        #     print(data['intents'])
+        #     break

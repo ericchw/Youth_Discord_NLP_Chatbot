@@ -5,7 +5,7 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
-from db import connectDB
+from db import connectDB, initiate
 from datetime import datetime, timezone
 
 responses= {}
@@ -68,6 +68,7 @@ class EventModel(Modal):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
+    initiate()
 #     schedule.every().week.at("12:00").do(job)
 #     while True:
 #         schedule.run_pending()
