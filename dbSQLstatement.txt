@@ -112,7 +112,7 @@ INSERT INTO games VALUES
 CREATE TABLE IF NOT EXISTS Event_Header(
     eHdrId SERIAL PRIMARY KEY,
     eHdrTitle VARCHAR,
-    eStatus VARCHAR,
+    eHdrStatus VARCHAR,
     eHdrDesc VARCHAR,
     eHdrDate TIMESTAMP,
     eHdrCreateDate TIMESTAMP
@@ -120,9 +120,7 @@ CREATE TABLE IF NOT EXISTS Event_Header(
 
 CREATE TABLE IF NOT EXISTS Event_Detail(
     eDtlId SERIAL PRIMARY KEY,
-    eDtlOptTitle VARCHAR,
     eDtlHdrId INTEGER,
-    eDtlUsername VARCHAR,
     eDtlGameId VARCHAR,
     CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
 );
