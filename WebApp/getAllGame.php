@@ -10,6 +10,15 @@ if (pg_num_rows($query) > 0) {
     echo '<tbody>';
     while ($result = pg_fetch_array($query)) {
         echo '<tr class="tr-shadow">';
+        echo '<td>
+        <div>
+            <form action="deleteGame.php" method="POST">
+                <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="gameId" value="' . $result[0] . '">
+                    X
+                </button>
+            </form>
+        </div>
+        </td>';
         echo '<td>' . $result[2] . '</td>';
         echo '<td>' . $result[1] . '</td>';
         echo '<tr class="spacer"></tr>';
