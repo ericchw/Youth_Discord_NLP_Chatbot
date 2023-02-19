@@ -5,6 +5,7 @@ from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
+import psycopg2
 from db import connectDB
 from datetime import datetime, timedelta, timezone
 
@@ -59,9 +60,38 @@ class EventModel(Modal):
         embed.add_field(name="members",value=self.children[2].value,inline=False)
         m=await interaction.response.send_message(embed=embed)
         
-        
+#event
+bot.event_variable1 = ""
+bot.event_variable2 = ""
+bot.event_variable3 = ""
 
+class Event(View):
+    @button(label="1:Apex", style=discord.ButtonStyle.blurple)
+    async def callback1(self, button, interaction):
+        if bot.event_variable1.find(str(interaction.user))<0:
+            bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
+        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
+    @button(label="2:LOL", style=discord.ButtonStyle.green)
+    async def callback2(self, button, interaction):
+        if bot.event_variable2.find(str(interaction.user))<0:
+            bot.event_variable2=bot.event_variable2+str(interaction.user)+"\n"
+        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
+    @button(label="3:PUBG", style=discord.ButtonStyle.red)
+    async def callback3(self, button, interaction):
+        if bot.event_variable3.find(str(interaction.user))<0:
+            bot.event_variable3=bot.event_variable3+str(interaction.user)+"\n"
+        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
 
+@bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
+async def event(ctx):
+    embed = discord.Embed(
+        title="Event",
+        description="1:Apex\n2:LOL\n3:PUBG",
+        color=discord.Color.red()
+    )
+    await ctx.send(embed=embed)
+    connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+    await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
 
 
 
@@ -86,83 +116,6 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
-#event
-@bot.command(name="create_event")
-async def event(ctx):
-    modal=EventModel(title="Create a Event")
-    await ctx.send_modal(modal)
-    
-
-
-
-
-
-
-#polling
-@bot.command()
-async def poll(ctx, *, question):
-    #limit of polling
-    await ctx.channel.purge(limit=2)
-    message = await ctx.send(f"New poll: \n✅ = Yes**\n**❎ = No**")
-    await message.add_reaction('❎')
-    await message.add_reaction('✅')
-
-@bot.command()  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
-async def hello(ctx):
-    select1 = Select( 
-        min_values=2,
-        max_values=4,
-        placeholder= "Choose a game",
-        options = [
-        discord.SelectOption(
-            label="Apex", 
-            description="Apex",
-            ),
-        discord.SelectOption(
-            label="Rainbow_six", 
-            description="Rainbow Six Seige",
-            default= True),
-        discord.SelectOption(
-            label="pubg", 
-            description="PUBG (COMP)",
-            ),
-        discord.SelectOption(
-            label="brawlhalla", 
-            description="Brawlhalla",
-            ),
-        discord.SelectOption(
-            label="others", 
-            description="Others",
-            )
-
-    ],
-    row = 2)
-    select2 = Select( 
-        placeholder= "Choose a game",
-        options = [
-        discord.SelectOption(
-            label="Apex", 
-            description="Apex",
-            default= True),
-        discord.SelectOption(
-            label="Rainbow_six", 
-            description="Rainbow Six Seige")
-    ])
-    async def my_callback(interaction):
-        select1.disabled = True
-        if "others"  in select1.values:
-            select1.add_option()
-            select1.append_option(discord.SelectOption(
-            label="new_game_1", 
-            description="New Game_1",
-            ))
-        await interaction.response.send_message(f"Game chosen: {select1.values}")
-    select1.callback = my_callback
-    # select.callback = my_callback
-    view = View()
-    view.add_item(select1)
-    view.add_item(select2)
-    await ctx.send("Choose a game", view = view)
 
 
 @bot.event
