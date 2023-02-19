@@ -119,11 +119,6 @@
             ]
         },
         {
-            "tag": "",
-            "patterns": [],
-            "responses": []
-        },
-        {
             "tag": "1",
             "patterns": [
                 "how",
@@ -6990,16 +6985,6 @@
                 "The different schemes or architectures are named by the word RAID followed by a number ( e.g . RAID 0 , RAID 1 ) ",
                 "Each scheme provides a different balance between the key goals : reliability and availability , performance and capacity ",
                 "RAID levels greater than RAID 0 provide protection against unrecoverable ( sector ) read errors , as well as whole disk failure "
-            ]
-        },
-        {
-            "tag": "296",
-            "patterns": [
-                "屌，垃圾"
-                
-            ],
-            "responses": [
-                "你老母臭西"
             ]
         }
     ]

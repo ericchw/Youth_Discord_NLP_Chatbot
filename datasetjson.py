@@ -54,14 +54,15 @@ with open('WikiQA-dev.txt', 'r') as f:
         pattern = line.split('\t')[0].strip('.!?')
         response = line.split('\t')[1].strip('.!?')
         if current != pattern:
-            data['intents'].append(temp_intent)
-            temp_intent = {
-                "tag": '',
-                "patterns": [
-                ],
-                "responses": [
-                ]
-            }
+            if counter != 1:
+                data['intents'].append(temp_intent)
+                temp_intent = {
+                    "tag": '',
+                    "patterns": [
+                    ],
+                    "responses": [
+                    ]
+                }
             temp_intent['tag'] = str(counter)
             counter += 1
             current = pattern
