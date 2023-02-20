@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS Event_Header(
     eHdrId SERIAL PRIMARY KEY,
     eHdrTitle VARCHAR,
     eHdrStatus VARCHAR,
+    eHdrLimitMem int,
     eHdrDesc VARCHAR,
     eHdrDate TIMESTAMP,
     eHdrCreateDate TIMESTAMP
