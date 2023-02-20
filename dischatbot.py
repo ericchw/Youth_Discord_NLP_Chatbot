@@ -6,7 +6,7 @@ from emotiontest import emtransform
 import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 responses= {}
 intents = discord.Intents.default()
