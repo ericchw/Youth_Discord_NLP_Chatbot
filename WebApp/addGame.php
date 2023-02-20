@@ -7,7 +7,7 @@ function insertGame($engName, $ehName)
     $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
         or die('Could not connect: ' . pg_last_error());
 
-    $query = pg_prepare($dbconn, 'InsertGameStatement', 'INSERT INTO Games(name, name_zh) VALUES ($1, $2)');
+    $query = pg_prepare($dbconn, 'InsertGameStatement', 'INSERT INTO Games(id, name, name_zh) VALUES (DEFAULT, $1, $2)');
     $query = pg_execute($dbconn, 'InsertGameStatement', array($engName, $ehName));
 
     // if (pg_num_rows($query) != 0) {
