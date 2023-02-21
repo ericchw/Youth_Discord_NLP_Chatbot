@@ -235,8 +235,8 @@ def connectDB(sqlStatement, mode):
         # closing database connection.
         if connection:
             cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+            # connection.close()
+            # print("PostgreSQL connection is closed")
 
 
 

@@ -14,7 +14,7 @@ import json, nltk, uuid
 #             "patterns": patterns,
 #             "responses": responses
 #         })
-with open('intents.json', 'r', encoding='utf-8') as json_file:
+with open('intents.json', 'r') as json_file:
     # json.dump(data, json_file)
      data = json.load(json_file)
     #  for i in data['intents']:
@@ -69,11 +69,15 @@ with open('WikiQA-dev.txt', 'r') as f:
             lower_case = pattern.lower()
             tokens = nltk.word_tokenize(lower_case)
             tags = nltk.pos_tag(tokens)
-            for tag in tags:
-                if 'VBP' or 'NN' or 'NNS' or 'NNP' in tag:
-                    temp_intent['patterns'].append(tag[0])
-                print(tag)
+            # for tag in tags:
+            #     print(tag)
+            #     if  'NN'== tag[1] or 'NNS'== tag[1] or 'NNP'== tag[1] or 'JJ' == tag[1]:
+            #         temp_intent['patterns'].append(tag[0])
+                    # print(tag)
+                    # print(temp_intent)
                     # break
+                
+            temp_intent['patterns'].append(pattern)    
             temp_intent['responses'].append(response)
         else:
             temp_intent['responses'].append(response)
@@ -85,10 +89,9 @@ with open('WikiQA-dev.txt', 'r') as f:
         
         
         
-        with open("intents.json", "w",encoding='utf-8') as file:
-            # Write the modified data back to the file
-            json.dump(data, file, ensure_ascii=False, indent=4)
+        with open("intents.json", "w") as file:
+            json.dump(data, file, indent=4)
             # file.write(new_data)
-        # if counter == 3:
+        # if counter == 30:
         #     print(data['intents'])
         #     break
