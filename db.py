@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS games
 (
     id SERIAL PRIMARY KEY,
 	name VARCHAR,
-    game_zh VARCHAR
+    name_zh VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS information
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS games
 (
     id SERIAL PRIMARY KEY,
 	name VARCHAR,
-    game_zh VARCHAR
+    name_zh VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS information
