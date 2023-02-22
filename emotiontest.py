@@ -7,7 +7,11 @@ from googletrans import Translator
 # must uninstall first then install
 from googletrans import LANGUAGES
 
-emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
+# emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
+classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
+
+# from transformers import pipeline
+# classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
 
 def emtransform(text):
     # translat = google_translator()
@@ -16,8 +20,13 @@ def emtransform(text):
     #     print(f'{lang} - {LANGUAGES[lang]}')
     trans = translat.translate(text)
     # trans = translat.translate('他真的是白痴',lang_src='zh-tw', lang_tgt='en')
-    # print(trans.text)
-    emotion_labels = emotion(trans.text)
+    emotion_labels = classifier(trans.text)
+    max_score = 0
+    return_label =''
+    for item in emotion_labels[0]:
+        if item['score'] > max_score:
+            max_score = item['score']
+            return_label = item['label']
 
     # print(emotion_labels)
-    return emotion_labels
+    return return_label

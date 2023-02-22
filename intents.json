@@ -1,51 +1,47 @@
 {
     "intents": [
-      {
-        "tag": "6pm_contact",
-        "patterns": [
-          "contact",
-          "6pm 聯絡方法",
-          "6pm contact"
-        ],
-        "responses": [
-            {
-              "sql": "SELECT * FROM information"
-            }
-        ]
-      },
-      {
-        "tag": "6pm_activity",
-        "patterns": [
-          "activity",
-          "6pm 重點活動",
-          "6pm activity"
-        ],
-        "responses": [
-            
-              "https://drive.google.com/file/d/1qJq1T4i5dpRgpCcETe5XZ73BOEWfCP_j/view"
-          
-        ]
-      },
-      {
-        "tag": "greeting",
-        "patterns": [
-          "hi",
-          "你好",
-          "Hey",
-          "How are you",
-          "Is anyone there?",
-          "Hello",
-          "Good day"
-        ],
-        "responses": [
-          "Hey :-)",
-          "Hello, thanks for visiting",
-          "Hi there, what can I do for you?",
-          "Hi there, how can I help?"
-        ]
-      },
-      {
-        "tag": "goodbye",
+        {
+            "tag": "6pm_contact",
+            "patterns": [
+                "contact",
+                "6pm contact"
+            ],
+            "responses": [
+                {
+                    "sql": "SELECT * FROM information"
+                }
+            ]
+        },
+        {
+            "tag": "6pm_activity",
+            "patterns": [
+                "activity",
+                "6pm activity"
+            ],
+            "responses": [
+                "https://drive.google.com/file/d/1qJq1T4i5dpRgpCcETe5XZ73BOEWfCP_j/view"
+            ]
+        },
+        {
+            "tag": "greeting",
+            "patterns": [
+                "hi",
+                "\u4f60\u597d",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, thanks for visiting",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?"
+            ]
+        },
+        {
+            "tag": "goodbye",
             "patterns": [
                 "Bye",
                 "See you later",
@@ -121,19 +117,9 @@
             ]
         },
         {
-            "tag": "",
-            "patterns": [],
-            "responses": []
-        },
-        {
             "tag": "1",
             "patterns": [
-                "how",
-                "are",
-                "epithelial",
-                "tissues",
-                "joined",
-                "together"
+                "How are epithelial tissues joined together "
             ],
             "responses": [
                 "Cross section of sclerenchyma fibers in plant ground tissue",
@@ -150,15 +136,7 @@
         {
             "tag": "2",
             "patterns": [
-                "how",
-                "big",
-                "is",
-                "bmc",
-                "software",
-                "in",
-                "houston",
-                ",",
-                "tx"
+                "c , tx"
             ],
             "responses": [
                 "BMC Software , Inc. is an American company specializing in Business Service Management ( BSM ) software ",
@@ -171,15 +149,7 @@
         {
             "tag": "3",
             "patterns": [
-                "how",
-                "long",
-                "was",
-                "i",
-                "love",
-                "lucy",
-                "on",
-                "the",
-                "air"
+                "how long was i love lucy on the air"
             ],
             "responses": [
                 "I Love Lucy is an American television sitcom starring Lucille Ball , Desi Arnaz , Vivian Vance , and William Frawley ",
@@ -196,13 +166,7 @@
         {
             "tag": "4",
             "patterns": [
-                "how",
-                "did",
-                "armando",
-                "christian",
-                "perez",
-                "become",
-                "famous"
+                "how did armando christian perez become famous"
             ],
             "responses": [
                 "Armando P\u00e9rez ( born January 15 , 1981 ) , better known by his stage name Pitbull , is an American rapper , songwriter , and record producer ",
@@ -230,14 +194,7 @@
         {
             "tag": "5",
             "patterns": [
-                "how",
-                "old",
-                "is",
-                "youngest",
-                "mother",
-                "in",
-                "the",
-                "world"
+                "how old is youngest mother in the world"
             ],
             "responses": [
                 "This is a list of known biological mothers under 11 years of age "
@@ -246,14 +203,7 @@
         {
             "tag": "6",
             "patterns": [
-                "how",
-                "much",
-                "is",
-                "an",
-                "adult",
-                "film",
-                "actor",
-                "paid"
+                "how much is an adult film actor paid"
             ],
             "responses": [
                 "A pornographic actor or actress or a porn star is a person who performs sex acts in film , normally characterised as a pornographic film ",
@@ -277,13 +227,7 @@
         {
             "tag": "7",
             "patterns": [
-                "how",
-                "much",
-                "is",
-                "us",
-                "national",
-                "debt",
-                "limit"
+                "How much is US National Debt limit "
             ],
             "responses": [
                 "U.S. debt from 1940 to 2011 ",
@@ -311,11 +255,7 @@
         {
             "tag": "8",
             "patterns": [
-                "how",
-                "did",
-                "athenians",
-                "make",
-                "money"
+                "how did athenians make money"
             ],
             "responses": [
                 "Athenian democracy developed in the Greek city-state of Athens , comprising the central city-state of Athens and the surrounding territory of Attica , around 550 BC ",
@@ -334,12 +274,7 @@
         {
             "tag": "9",
             "patterns": [
-                "what",
-                "bird",
-                "family",
-                "is",
-                "the",
-                "owl"
+                "what bird family is the owl"
             ],
             "responses": [
                 "Owls are a group of birds that belong to the order Strigiformes , constituting 200 extant bird of prey species ",
@@ -352,13 +287,7 @@
         {
             "tag": "10",
             "patterns": [
-                "what",
-                "do",
-                "you",
-                "want",
-                "from",
-                "me",
-                "quotes"
+                "what do you want from me quotes"
             ],
             "responses": [
                 "What Do You Want From Me ( ? ) may refer to:",
@@ -376,18 +305,7 @@
         {
             "tag": "11",
             "patterns": [
-                "how",
-                "old",
-                "do",
-                "you",
-                "have",
-                "to",
-                "be",
-                "to",
-                "get",
-                "in",
-                "the",
-                "olympics"
+                "how old do you have to be to get in the olympics"
             ],
             "responses": [
                 "The modern Olympic Games ( , JO ) is the leading international sporting event featuring summer and winter sports competitions in which thousands of athletes participate in a variety of competitions ",
@@ -419,12 +337,7 @@
         {
             "tag": "12",
             "patterns": [
-                "how",
-                "does",
-                "one",
-                "get",
-                "pancreatic",
-                "cancer"
+                "how does one get pancreatic cancer"
             ],
             "responses": [
                 "Pancreatic cancer is a malignant neoplasm originating from transformed cells arising in tissues forming the pancreas ",
@@ -439,11 +352,7 @@
         {
             "tag": "13",
             "patterns": [
-                "how",
-                "many",
-                "judges",
-                "of",
-                "israel"
+                "How Many Judges of Israel"
             ],
             "responses": [
                 "Biblical judges",
@@ -455,11 +364,7 @@
         {
             "tag": "14",
             "patterns": [
-                "what",
-                "happened",
-                "to",
-                "pink",
-                "floyd"
+                "what happened to pink floyd"
             ],
             "responses": [
                 "Roger Keith `` Syd '' Barrett ( 6 January 1946 \u2013 7 July 2006 ) was an English singer , songwriter , guitarist , and painter , best remembered as a founder member of the band Pink Floyd ",
@@ -478,16 +383,7 @@
         {
             "tag": "15",
             "patterns": [
-                "how",
-                "many",
-                "people",
-                "were",
-                "killed",
-                "in",
-                "the",
-                "oklahoma",
-                "city",
-                "bombing"
+                "how many people were killed in the oklahoma city bombing"
             ],
             "responses": [
                 "The Oklahoma City bombing was a domestic terrorist bomb attack on the Alfred P. Murrah Federal Building in downtown Oklahoma City on April 19 , 1995 ",
@@ -516,15 +412,7 @@
         {
             "tag": "16",
             "patterns": [
-                "how",
-                "does",
-                "the",
-                "book",
-                "flatlands",
-                "related",
-                "to",
-                "pre",
-                "calc"
+                "how does the book flatlands related to pre calc"
             ],
             "responses": [
                 "In American mathematics education , precalculus ( or Algebra 3 in some areas ) , is an advanced form of secondary school algebra , and a foundational mathematical discipline ",
@@ -562,24 +450,7 @@
         {
             "tag": "17",
             "patterns": [
-                "how",
-                "many",
-                "electrons",
-                "can",
-                "a",
-                "1.5",
-                "v",
-                "battery",
-                "with",
-                "a",
-                "capacity",
-                "of",
-                "2.2",
-                "ah",
-                "hold",
-                "at",
-                "full",
-                "charge"
+                "how many electrons can a 1.5 v battery with a capacity of 2.2 AH hold at full charge"
             ],
             "responses": [
                 "Various cells and batteries ( top-left to bottom-right ) : two AA , one D , one handheld ham radio battery , two 9-volt ( PP3 ) , two AAA , one C , one camcorder battery , one cordless phone battery ",
@@ -593,13 +464,7 @@
         {
             "tag": "18",
             "patterns": [
-                "how",
-                "many",
-                "xbox",
-                "360",
-                "games",
-                "are",
-                "there"
+                "how many xbox 360 games are there"
             ],
             "responses": [
                 "Official Xbox 360 Banner used on game covers from 2005-2010",
@@ -619,12 +484,7 @@
         {
             "tag": "19",
             "patterns": [
-                "how",
-                "far",
-                "inland",
-                "os",
-                "tehachapi",
-                "california"
+                "how far inland os tehachapi california"
             ],
             "responses": [
                 "Northern California is the northern portion of the U.S. state of California ",
@@ -640,11 +500,7 @@
         {
             "tag": "20",
             "patterns": [
-                "how",
-                "many",
-                "types",
-                "of",
-                "sclerosis"
+                "how many types of sclerosis"
             ],
             "responses": [
                 "Multiple sclerosis ( MS ) , also known as `` disseminated sclerosis '' or `` encephalomyelitis disseminata '' , is an inflammatory disease in which the fatty myelin sheaths around the axons of the brain and spinal cord are damaged , leading to demyelination and scarring as well as a broad spectrum of signs and symptoms ",
@@ -672,15 +528,7 @@
         {
             "tag": "21",
             "patterns": [
-                "how",
-                "many",
-                "planets",
-                "is",
-                "jupiter",
-                "away",
-                "from",
-                "the",
-                "sun"
+                "how many planets is jupiter away from the sun "
             ],
             "responses": [
                 "Jupiter is the fifth planet from the Sun and the largest planet in the Solar System ",
@@ -708,17 +556,7 @@
         {
             "tag": "22",
             "patterns": [
-                "how",
-                "many",
-                "teams",
-                "can",
-                "a",
-                "league",
-                "send",
-                "to",
-                "little",
-                "league",
-                "all-stars"
+                "HOW MANY TEAMS CAN A LEAGUE SEND TO LITTLE LEAGUE ALL-STARS"
             ],
             "responses": [
                 "Little League Baseball , May 2009 ",
@@ -737,15 +575,7 @@
         {
             "tag": "23",
             "patterns": [
-                "what",
-                "episode",
-                "of",
-                "different",
-                "strokes",
-                "was",
-                "clarence",
-                "clemons",
-                "in"
+                "what episode of different strokes was clarence clemons in"
             ],
             "responses": [
                 "Clarence Anicholas Clemons , Jr. ( January 11 , 1942 \u2013 June 18 , 2011 ) , also known as The Big Man , was an American musician and actor ",
@@ -761,12 +591,7 @@
         {
             "tag": "24",
             "patterns": [
-                "how",
-                "does",
-                "a",
-                "lens",
-                "converter",
-                "work"
+                "how does a lens converter work "
             ],
             "responses": [
                 "A teleconverter attached between a camera and its objective",
@@ -782,24 +607,7 @@
         {
             "tag": "25",
             "patterns": [
-                "how",
-                "does",
-                "the",
-                "hydrophobic",
-                "and",
-                "hydrophilic",
-                "nature",
-                "of",
-                "the",
-                "phospholipid",
-                "layer",
-                "regulate",
-                "what",
-                "enters",
-                "and",
-                "leaves",
-                "the",
-                "cell"
+                "How does the hydrophobic and hydrophilic nature of the phospholipid layer regulate what enters and leaves the cell "
             ],
             "responses": [
                 "Illustration of a Eukaryotic cell membrane",
@@ -814,18 +622,7 @@
         {
             "tag": "26",
             "patterns": [
-                "what",
-                "happened",
-                "on",
-                "the",
-                "moon",
-                "during",
-                "the",
-                "period",
-                "of",
-                "late",
-                "heavy",
-                "bombardment"
+                "what happened on the moon during the period of Late Heavy Bombardment "
             ],
             "responses": [
                 "The Late Heavy Bombardment ( commonly referred to as the lunar cataclysm , or LHB ) is a hypothetical event around 4.1 to 3.8 billion years ago ( Ga ) ",
@@ -841,12 +638,7 @@
         {
             "tag": "27",
             "patterns": [
-                "how",
-                "many",
-                "colors",
-                "in",
-                "the",
-                "rainbow"
+                "how many colors in the rainbow"
             ],
             "responses": [
                 "Double rainbow and supernumerary rainbows on the inside of the primary arc ",
@@ -863,12 +655,7 @@
         {
             "tag": "28",
             "patterns": [
-                "what",
-                "does",
-                "the",
-                "federal",
-                "reserve",
-                "do"
+                "what does the federal reserve do"
             ],
             "responses": [
                 "The Federal Reserve System ( also known as the Federal Reserve , and informally as the Fed ) is the central banking system of the United States ",
@@ -898,10 +685,7 @@
         {
             "tag": "29",
             "patterns": [
-                "how",
-                "is",
-                "foundation",
-                "made"
+                "how is foundation made"
             ],
             "responses": [
                 "Thick , unblended foundation on skin",
@@ -912,16 +696,7 @@
         {
             "tag": "30",
             "patterns": [
-                "how",
-                "many",
-                "times",
-                "did",
-                "abraham",
-                "lincoln",
-                "take",
-                "the",
-                "bar",
-                "exam"
+                "how many times did abraham lincoln take the bar exam"
             ],
             "responses": [
                 "Abraham Lincoln ( February 12 , 1809 \u2013 April 15 , 1865 ) was the 16th President of the United States , serving from March 1861 until his assassination in April 1865 ",
@@ -956,13 +731,7 @@
         {
             "tag": "31",
             "patterns": [
-                "how",
-                "did",
-                "mark",
-                "cuban",
-                "make",
-                "his",
-                "fortune"
+                "how did mark cuban make his fortune"
             ],
             "responses": [
                 "Mark Cuban ( born July 31 , 1958 ) is an American businessman , investor , and philanthropist ",
@@ -974,13 +743,7 @@
         {
             "tag": "32",
             "patterns": [
-                "what",
-                "does",
-                "a",
-                "f",
-                "22",
-                "raptor",
-                "cost"
+                "what does a f 22 raptor cost"
             ],
             "responses": [
                 "The Lockheed Martin/Boeing F-22 Raptor is a single-seat , twin-engine fifth-generation supermaneuverable fighter aircraft that uses stealth technology ",
@@ -1003,13 +766,7 @@
         {
             "tag": "33",
             "patterns": [
-                "how",
-                "many",
-                "nature",
-                "oceans",
-                "are",
-                "on",
-                "earth"
+                "how many nature oceans are on earth"
             ],
             "responses": [
                 "Surface of the Atlantic ocean meeting the Earth 's planetary boundary layer and troposphere ",
@@ -1040,12 +797,7 @@
         {
             "tag": "34",
             "patterns": [
-                "how",
-                "many",
-                "acres",
-                "is",
-                "toledo",
-                "zoo"
+                "how many acres is toledo zoo"
             ],
             "responses": [
                 "Toledo Zoo is a zoo located in Toledo , Ohio ",
@@ -1060,15 +812,7 @@
         {
             "tag": "35",
             "patterns": [
-                "how",
-                "do",
-                "movies",
-                "with",
-                "low",
-                "budgets",
-                "handle",
-                "wardrobe",
-                "etc"
+                "how do movies with low budgets handle wardrobe etc "
             ],
             "responses": [
                 "Film budgeting refers to the process by which a line producer , unit production manager or filmmaker prepares a budget for a film production ",
@@ -1081,15 +825,7 @@
         {
             "tag": "36",
             "patterns": [
-                "how",
-                "many",
-                "junior",
-                "justices",
-                "are",
-                "in",
-                "the",
-                "supreme",
-                "courts"
+                "how many junior justices are in the supreme courts"
             ],
             "responses": [
                 "The Supreme Court of the United States is the highest court in the United States ",
@@ -1101,12 +837,7 @@
         {
             "tag": "37",
             "patterns": [
-                "how",
-                "is",
-                "a",
-                "ms",
-                "drg",
-                "defined"
+                "how is a ms drg defined"
             ],
             "responses": [
                 "Diagnosis-related group ( DRG ) is a system to classify hospital cases into one of originally 467 groups ",
@@ -1124,17 +855,7 @@
         {
             "tag": "38",
             "patterns": [
-                "how",
-                "many",
-                "times",
-                "deeper",
-                "is",
-                "the",
-                "pacific",
-                "ocean",
-                "than",
-                "the",
-                "arctic"
+                "how many times deeper is the pacific ocean than the arctic"
             ],
             "responses": [
                 "The Pacific Ocean",
@@ -1150,12 +871,7 @@
         {
             "tag": "39",
             "patterns": [
-                "what",
-                "does",
-                "a",
-                "plus-minus",
-                "sign",
-                "mean"
+                "what does a plus-minus sign mean"
             ],
             "responses": [
                 "The plus-minus sign ( ) is a mathematical symbol commonly used either",
@@ -1171,15 +887,7 @@
         {
             "tag": "40",
             "patterns": [
-                "what",
-                "does",
-                "judgment",
-                "as",
-                "a",
-                "matter",
-                "of",
-                "law",
-                "mean"
+                "what does judgment as a matter of law mean"
             ],
             "responses": [
                 "Judgment as a matter of law ( JMOL ) is a motion made by a party , during trial , claiming the opposing party has insufficient evidence to reasonably support its case ",
@@ -1203,12 +911,7 @@
         {
             "tag": "41",
             "patterns": [
-                "how",
-                "much",
-                "does",
-                "christianity",
-                "cover",
-                "kenya"
+                "how much does christianity cover kenya"
             ],
             "responses": [
                 "Christianity ( from the and the Latin suffix -itas ) is a monotheistic and Abrahamic religion based on the life and teachings of Jesus Christ as presented in canonical gospels and other New Testament writings as well as the Old Testament ",
@@ -1233,10 +936,7 @@
         {
             "tag": "42",
             "patterns": [
-                "how",
-                "fast",
-                "formula",
-                "1"
+                "how fast formula 1"
             ],
             "responses": [
                 "A Formula One car is a single-seat , open cockpit , open-wheel racing car with substantial front and rear wings , and an engine positioned behind the driver , intended to be used in competition at Formula One racing events ",
@@ -1247,10 +947,7 @@
         {
             "tag": "43",
             "patterns": [
-                "what",
-                "causes",
-                "dry",
-                "drowning"
+                "what causes dry drowning"
             ],
             "responses": [
                 "Dry drowning occurs when a person 's lungs become unable to extract oxygen from the air , due primarily to:",
@@ -1271,12 +968,7 @@
         {
             "tag": "44",
             "patterns": [
-                "what",
-                "county",
-                "is",
-                "aurora",
-                ",",
-                "in"
+                "What county is Aurora , IN"
             ],
             "responses": [
                 "The City of Aurora ( , ) is a Home Rule Municipality in the U.S. state of Colorado , spanning Arapahoe and Adams counties , with the extreme southeastern portion of the city extending into Douglas County ",
@@ -1290,13 +982,7 @@
         {
             "tag": "45",
             "patterns": [
-                "what",
-                "county",
-                "is",
-                "holly",
-                "ridge",
-                "nc",
-                "in"
+                "what county is Holly Ridge nc in "
             ],
             "responses": [
                 "Holly Ridge is a town in Onslow County , North Carolina , United States ",
@@ -1307,9 +993,7 @@
         {
             "tag": "46",
             "patterns": [
-                "what",
-                "forms",
-                "seasons"
+                "what forms seasons"
             ],
             "responses": [
                 "A season is a subdivision of the year , marked by changes in weather , ecology , and hours of daylight ",
@@ -1330,12 +1014,7 @@
         {
             "tag": "47",
             "patterns": [
-                "how",
-                "do",
-                "people",
-                "get",
-                "color",
-                "blindness"
+                "how do people get color blindness "
             ],
             "responses": [
                 "Color blindness or color vision deficiency is the inability or decreased ability to see color , or perceive color differences , under normal lighting conditions ",
@@ -1357,14 +1036,7 @@
         {
             "tag": "48",
             "patterns": [
-                "what",
-                "kind",
-                "of",
-                "literature",
-                "did",
-                "john",
-                "steinbeck",
-                "writing"
+                "what kind of literature did john steinbeck writing"
             ],
             "responses": [
                 "John Ernst Steinbeck , Jr. ( February 27 , 1902 \u2013 December 20 , 1968 ) was an American writer ",
@@ -1375,10 +1047,7 @@
         {
             "tag": "49",
             "patterns": [
-                "whatever",
-                "happened",
-                "clint",
-                "walker"
+                "whatever happened clint walker"
             ],
             "responses": [
                 "Norman Eugene Walker , known as Clint Walker ( born May 30 , 1927 ) , is a retired American actor ",
@@ -1388,10 +1057,7 @@
         {
             "tag": "50",
             "patterns": [
-                "what",
-                "countries",
-                "enslaved",
-                "africans"
+                "what countries enslaved Africans"
             ],
             "responses": [
                 "The history of slavery covers slave systems in historical perspective in which one human being is legally the property of another , can be bought or sold , is not allowed to escape and must work for the owner without any choice involved ",
@@ -1410,19 +1076,7 @@
         {
             "tag": "51",
             "patterns": [
-                "what",
-                "golf",
-                "tournament",
-                "did",
-                "tiger",
-                "woods",
-                "first",
-                "miss",
-                "the",
-                "cut",
-                "as",
-                "a",
-                "professional"
+                "what golf tournament did tiger woods first miss the cut as a professional"
             ],
             "responses": [
                 "Eldrick Tont `` Tiger '' Woods ( born December 30 , 1975 ) is an American professional golfer whose achievements to date rank him among the most successful golfers of all time ",
@@ -1448,12 +1102,7 @@
         {
             "tag": "52",
             "patterns": [
-                "how",
-                "many",
-                "episodes",
-                "of",
-                "boardwalk",
-                "empire"
+                "how many episodes of boardwalk empire"
             ],
             "responses": [
                 "`` Boardwalk Empire '' is the pilot episode of the HBO crime drama Boardwalk Empire ",
@@ -1478,13 +1127,7 @@
         {
             "tag": "53",
             "patterns": [
-                "what",
-                "does",
-                "a",
-                "full",
-                "stormwater",
-                "permit",
-                "mean"
+                "what does a full stormwater permit mean"
             ],
             "responses": [
                 "Urban runoff entering a storm drain",
@@ -1499,10 +1142,7 @@
         {
             "tag": "54",
             "patterns": [
-                "how",
-                "is",
-                "kristen",
-                "stewart"
+                "how is kristen stewart "
             ],
             "responses": [
                 "Kristen Jaymes Stewart ( born April 9 , 1990 ) is an American actress who is best known for playing Bella Swan in The Twilight Saga ",
@@ -1512,10 +1152,7 @@
         {
             "tag": "55",
             "patterns": [
-                "how",
-                "is",
-                "temperature",
-                "determined"
+                "How is temperature determined "
             ],
             "responses": [
                 "A medical/clinical thermometer showing the temperature of 38.7 \u00b0C",
@@ -1530,13 +1167,7 @@
         {
             "tag": "56",
             "patterns": [
-                "how",
-                "many",
-                "people",
-                "go",
-                "to",
-                "macarthur",
-                "2010"
+                "how many people go to macarthur 2010"
             ],
             "responses": [
                 "`` General MacArthur '' and `` Douglas McArthur '' redirect here ",
@@ -1572,16 +1203,7 @@
         {
             "tag": "57",
             "patterns": [
-                "how",
-                "long",
-                "do",
-                "lights",
-                "stay",
-                "on",
-                "eiffel",
-                "tower",
-                "at",
-                "night"
+                "how long do lights stay on eiffel tower at night "
             ],
             "responses": [
                 "The Eiffel Tower ( , ) is an iron lattice tower located on the Champ de Mars in Paris , named after the engineer Gustave Eiffel , whose company designed and built the tower ",
@@ -1604,10 +1226,7 @@
         {
             "tag": "58",
             "patterns": [
-                "how",
-                "is",
-                "stoning",
-                "performed"
+                "how is stoning performed"
             ],
             "responses": [
                 "Pilgrims at the Masjid al-Haram on Hajj in 2008",
@@ -1625,11 +1244,7 @@
         {
             "tag": "59",
             "patterns": [
-                "what",
-                "channel",
-                "is",
-                "shopnbc",
-                "on"
+                "what channel is shopnbc on"
             ],
             "responses": [
                 "ShopNBC is an American broadcast and cable home shopping network , owned and operated by ValueVision Media , which is in turn 30 % owned by GE Equity and NBC Universal ",
@@ -1640,12 +1255,7 @@
         {
             "tag": "60",
             "patterns": [
-                "how",
-                "post",
-                "and",
-                "lintels",
-                "are",
-                "used"
+                "how post and lintels are used"
             ],
             "responses": [
                 "Stonehenge , an example of Neolithic architecture post and lintel construction ",
@@ -1658,14 +1268,7 @@
         {
             "tag": "61",
             "patterns": [
-                "how",
-                "many",
-                "acts",
-                "are",
-                "in",
-                "the",
-                "scarlet",
-                "letter"
+                "how many acts are in the scarlet letter"
             ],
             "responses": [
                 "The Scarlet Letter is an 1850 romantic work of fiction in a historical setting , written by Nathaniel Hawthorne ",
@@ -1677,11 +1280,7 @@
         {
             "tag": "62",
             "patterns": [
-                "how",
-                "many",
-                "laws",
-                "in",
-                "judaism"
+                "how many laws in judaism"
             ],
             "responses": [
                 "Judaica ( clockwise from top ) : Shabbat candlesticks , handwashing cup , Chumash and Tanakh , Torah pointer , shofar and etrog box",
@@ -1713,10 +1312,7 @@
         {
             "tag": "63",
             "patterns": [
-                "what",
-                "do",
-                "marshalls",
-                "do"
+                "what do marshalls do "
             ],
             "responses": [
                 "The United States Marshals Service ( USMS ) is a U.S. federal law enforcement agency within the United States Department of Justice ( see ) ",
@@ -1730,14 +1326,7 @@
         {
             "tag": "64",
             "patterns": [
-                "how",
-                "did",
-                "he",
-                "die",
-                "outlaw",
-                "billy",
-                "the",
-                "kid"
+                "how did he die outlaw billy the kid"
             ],
             "responses": [
                 "William H. Bonney ( born William Henry McCarty , Jr. c. November 23 , 1859 \u2013 c. July 14 , 1881 ) , better known as Billy the Kid but also known as Henry Antrim , was a 19th-century American gunman who participated in the Lincoln County War and became a frontier outlaw in the American Old West ",
@@ -1756,10 +1345,7 @@
         {
             "tag": "65",
             "patterns": [
-                "what",
-                "hormones",
-                "produce",
-                "thyroid"
+                "what hormones produce thyroid"
             ],
             "responses": [
                 "The thyroid hormones , triiodothyronine ( T3 ) and thyroxine ( T4 ) , are tyrosine -based hormones produced by the thyroid gland that are primarily responsible for regulation of metabolism ",
@@ -1775,14 +1361,7 @@
         {
             "tag": "66",
             "patterns": [
-                "how",
-                "the",
-                "ku",
-                "klux",
-                "klan",
-                "contributed",
-                "to",
-                "segregation"
+                "how the ku klux klan contributed to segregation"
             ],
             "responses": [
                 "The Ku Klux Klan ( KKK ) , informally known as the Klan , is the name of three distinct past and present far-right organizations in the United States , which have advocated extremist reactionary currents such as white supremacy , white nationalism , and anti-immigration , historically expressed through terrorism ",
@@ -1799,18 +1378,7 @@
         {
             "tag": "67",
             "patterns": [
-                "what",
-                "guitar",
-                "did",
-                "joe",
-                "bonamassa",
-                "use",
-                "to",
-                "record",
-                "had",
-                "to",
-                "cry",
-                "today"
+                "what guitar did joe bonamassa use to record had to cry today"
             ],
             "responses": [
                 "Joe Bonamassa ( born May 8 , 1977 ) is an American blues rock guitarist and singer ",
@@ -1828,20 +1396,7 @@
         {
             "tag": "68",
             "patterns": [
-                "how",
-                "many",
-                "kids",
-                "go",
-                "to",
-                "a",
-                "new",
-                "school",
-                "in",
-                "a",
-                "day",
-                "in",
-                "the",
-                "usa"
+                "how many kids go to a new school in a day in the usa"
             ],
             "responses": [
                 "Education in the United States is mainly provided by the public sector , with control and funding coming from three levels : local , state , and federal , in that order ",
@@ -1873,11 +1428,7 @@
         {
             "tag": "69",
             "patterns": [
-                "what",
-                "happens",
-                "in",
-                "vegas",
-                "plot"
+                "what happens in vegas plot"
             ],
             "responses": [
                 "What Happens in Vegas is a 2008 American romantic comedy film from 20th Century Fox starring Cameron Diaz and Ashton Kutcher ",
@@ -1887,11 +1438,7 @@
         {
             "tag": "70",
             "patterns": [
-                "how",
-                "did",
-                "james",
-                "dean",
-                "die"
+                "how did James Dean die "
             ],
             "responses": [
                 "James Byron Dean ( February 8 , 1931 \u2013 September 30 , 1955 ) was an American actor ",
@@ -1906,14 +1453,7 @@
         {
             "tag": "71",
             "patterns": [
-                "how",
-                "do",
-                "you",
-                "measure",
-                "temperature",
-                "on",
-                "electrical",
-                "equipment"
+                "how do you measure temperature on electrical equipment"
             ],
             "responses": [
                 "Captain Nemo and Professor Aronnax contemplating measuring instruments in Twenty Thousand Leagues Under the Sea",
@@ -1931,12 +1471,7 @@
         {
             "tag": "72",
             "patterns": [
-                "what",
-                "colors",
-                "are",
-                "in",
-                "a",
-                "rainbow"
+                "what colors are in a rainbow"
             ],
             "responses": [
                 "Double rainbow and supernumerary rainbows on the inside of the primary arc ",
@@ -1953,11 +1488,7 @@
         {
             "tag": "73",
             "patterns": [
-                "what",
-                "colony",
-                "did",
-                "france",
-                "1900"
+                "what colony did france 1900"
             ],
             "responses": [
                 "The French colonial Empire was the set of territories that were under French rule primarily from the 17th century to the late 1960s ",
@@ -1982,18 +1513,7 @@
         {
             "tag": "74",
             "patterns": [
-                "what",
-                "kind",
-                "of",
-                "integrity",
-                "is",
-                "enforced",
-                "when",
-                "a",
-                "primary",
-                "key",
-                "is",
-                "declared"
+                "what kind of integrity is enforced when a primary key is declared"
             ],
             "responses": [
                 "In computing , data integrity refers to maintaining and assuring the accuracy and consistency of data over its entire life-cycle , and is an important feature of a database or RDBMS system ",
@@ -2008,11 +1528,7 @@
         {
             "tag": "75",
             "patterns": [
-                "how",
-                "is",
-                "spider",
-                "solitaire",
-                "scored"
+                "how is spider solitaire scored"
             ],
             "responses": [
                 "One initial layout in the game of Spider ",
@@ -2023,10 +1539,7 @@
         {
             "tag": "76",
             "patterns": [
-                "how",
-                "works",
-                "diaphragm",
-                "pump"
+                "How Works Diaphragm Pump"
             ],
             "responses": [
                 "Diaphragm pump schematic ",
@@ -2048,14 +1561,7 @@
         {
             "tag": "77",
             "patterns": [
-                "how",
-                "many",
-                "regions",
-                "do",
-                "the",
-                "human",
-                "brain",
-                "have"
+                "how many regions do the human brain have "
             ],
             "responses": [
                 "Anatomical regions of the brain are listed vertically , following hierarchies that are standard in neuroanatomy ",
@@ -2065,16 +1571,7 @@
         {
             "tag": "78",
             "patterns": [
-                "how",
-                "far",
-                "is",
-                "it",
-                "from",
-                "quitman",
-                "texas",
-                "to",
-                "natchez",
-                "mississippi"
+                "How far is it from Quitman Texas to Natchez Mississippi"
             ],
             "responses": [
                 "Natchez is a city in and the county seat of Adams County , Mississippi , United States ",
@@ -2099,11 +1596,7 @@
         {
             "tag": "79",
             "patterns": [
-                "what",
-                "days",
-                "are",
-                "smackdown",
-                "on"
+                "what days are smackdown on"
             ],
             "responses": [
                 "WWE SmackDown ( also advertised as WWE Friday Night SmackDown ) is a professional wrestling television program for WWE which was previously referred to the brand of the same name until its discontinuation in 2011 in which WWE employees are assigned to work and perform on that program ",
@@ -2121,12 +1614,7 @@
         {
             "tag": "80",
             "patterns": [
-                "how",
-                "many",
-                "episodes",
-                "of",
-                "young",
-                "justice"
+                "how many episodes of young justice"
             ],
             "responses": [
                 "Young Justice is an American animated television series created by Greg Weisman and Brandon Vietti for Cartoon Network ",
@@ -2137,17 +1625,7 @@
         {
             "tag": "81",
             "patterns": [
-                "how",
-                "many",
-                "police",
-                "car",
-                "used",
-                "in",
-                "making",
-                "of",
-                "dukes",
-                "of",
-                "hazzard"
+                "how many police car used in making of dukes of hazzard"
             ],
             "responses": [
                 "The Dukes of Hazzard is an American television series that aired on the CBS television network from 1979 to 1985 ",
@@ -2157,16 +1635,7 @@
         {
             "tag": "82",
             "patterns": [
-                "how",
-                "many",
-                "people",
-                "come",
-                "over",
-                "the",
-                "border",
-                "from",
-                "mexico",
-                "annually"
+                "how many people come over the border from mexico annually"
             ],
             "responses": [
                 "Illegal immigration to the United States is the act of foreign nationals entering the United States , without government permission and in violation of United States nationality law , or staying beyond the termination date of a visa , also in violation of the law ",
@@ -2180,11 +1649,7 @@
         {
             "tag": "83",
             "patterns": [
-                "what",
-                "country",
-                "took",
-                "over",
-                "ireland"
+                "what country took over ireland"
             ],
             "responses": [
                 "Ireland ( , ; ; Ulster-Scots : Airlann or Airlan ) is an island to the north-west of continental Europe ",
@@ -2214,15 +1679,7 @@
         {
             "tag": "84",
             "patterns": [
-                "what",
-                "happened",
-                "to",
-                "``",
-                "the",
-                "glades",
-                "``",
-                "tv",
-                "series"
+                "What happened to `` The Glades '' tv series"
             ],
             "responses": [
                 "The Glades is an A & E Network drama television series created by Clifton Campbell ",
@@ -2235,16 +1692,7 @@
         {
             "tag": "85",
             "patterns": [
-                "how",
-                "many",
-                "different",
-                "energy",
-                "drinks",
-                "are",
-                "sold",
-                "in",
-                "the",
-                "u.s"
+                "how many different energy drinks are sold in the u.s"
             ],
             "responses": [
                 "A variety of energy drinks in a typical retail fridge display in Quebec City , Canada ",
@@ -2261,11 +1709,7 @@
         {
             "tag": "86",
             "patterns": [
-                "how",
-                "many",
-                "consumers",
-                "of",
-                "pharmaceuticals"
+                "how many consumers of pharmaceuticals"
             ],
             "responses": [
                 "The pharmaceutical industry develops , produces , and markets drugs or pharmaceuticals licensed for use as medications ",
@@ -2278,13 +1722,7 @@
         {
             "tag": "87",
             "patterns": [
-                "how",
-                "much",
-                "mercury",
-                "is",
-                "in",
-                "a",
-                "thermometer"
+                "how much mercury is in a thermometer"
             ],
             "responses": [
                 "Closeup of a maximum thermometer ",
@@ -2300,12 +1738,7 @@
         {
             "tag": "88",
             "patterns": [
-                "what",
-                "kind",
-                "of",
-                "company",
-                "is",
-                "microsoft"
+                "what kind of company is Microsoft "
             ],
             "responses": [
                 "Microsoft Corporation is an American multinational software corporation headquartered in Redmond , Washington that develops , manufactures , licenses , and supports a wide range of products and services related to computing ",
@@ -2326,13 +1759,7 @@
         {
             "tag": "89",
             "patterns": [
-                "how",
-                "many",
-                "kids",
-                "does",
-                "erykah",
-                "badu",
-                "have"
+                "how many kids does erykah badu have"
             ],
             "responses": [
                 "Erica Abi Wright ( born February 26 , 1971 ) , better known by her stage name Erykah Badu , is a Grammy Award -winning American singer-songwriter , record producer , activist and actress ",
@@ -2348,11 +1775,7 @@
         {
             "tag": "90",
             "patterns": [
-                "what",
-                "area",
-                "code",
-                "is",
-                "949"
+                "what area code is 949"
             ],
             "responses": [
                 "The map to the right is now clickable ; click on an area code to go to the page for that area code ",
@@ -2368,15 +1791,7 @@
         {
             "tag": "91",
             "patterns": [
-                "how",
-                "many",
-                "baseball",
-                "clubs",
-                "did",
-                "walter",
-                "o",
-                "malley",
-                "buy"
+                "how many baseball clubs did walter o malley buy"
             ],
             "responses": [
                 "Walter Francis O'Malley ( October 9 , 1903 \u2013 August 9 , 1979 ) was an American sports executive who owned the Brooklyn/Los Angeles Dodgers team in Major League Baseball from to ",
@@ -2399,13 +1814,7 @@
         {
             "tag": "92",
             "patterns": [
-                "where",
-                "does",
-                "the",
-                "name",
-                "platte",
-                "come",
-                "from"
+                "where does the name platte come from "
             ],
             "responses": [
                 "The Platte River ( ) ( Pawnee : K\u00edckatus\u02be ) is a major river in the state of Nebraska and is about long ",
@@ -2421,14 +1830,7 @@
         {
             "tag": "93",
             "patterns": [
-                "who",
-                "should",
-                "the",
-                "democrats",
-                "vote",
-                "for",
-                "on",
-                "11/2/10"
+                "Who should the democrats vote for on 11/2/10"
             ],
             "responses": [
                 "The Democratic Party is one of the two major contemporary political parties in the United States along with the Republican Party ",
@@ -2441,13 +1843,7 @@
         {
             "tag": "94",
             "patterns": [
-                "who",
-                "sings",
-                "the",
-                "song",
-                "never",
-                "ending",
-                "story"
+                "who sings the song never ending story"
             ],
             "responses": [
                 "`` The NeverEnding Story '' ( titled `` The NeverEnding Story ( L'histoire sans fin ) '' in the French version ) is the title song from the English version of the 1984 film The NeverEnding Story ",
@@ -2458,10 +1854,7 @@
         {
             "tag": "95",
             "patterns": [
-                "where",
-                "does",
-                "limestone",
-                "form"
+                "where does limestone form"
             ],
             "responses": [
                 "Limestone is a sedimentary rock composed largely of the minerals calcite and aragonite , which are different crystal forms of calcium carbonate ( CaCO3 ) ",
@@ -2476,11 +1869,7 @@
         {
             "tag": "96",
             "patterns": [
-                "what",
-                "are",
-                "risk",
-                "for",
-                "infections"
+                "what are risk for infections"
             ],
             "responses": [
                 "Risk of infection is a nursing diagnosis which is defined as `` the state in which an individual is at risk to be invaded by an opportunistic or pathogenic agent ( virus , fungus , bacteria , protozoa , or other parasite ) from endogenous or exogenous sources '' and was approved by NANDA in 1986 ",
@@ -2490,11 +1879,7 @@
         {
             "tag": "97",
             "patterns": [
-                "who",
-                "discovered",
-                "neptune",
-                "the",
-                "planet"
+                "who discovered neptune the planet"
             ],
             "responses": [
                 "New Berlin Observatory at Linden Street , where Neptune was discovered observationally ",
@@ -2514,12 +1899,7 @@
         {
             "tag": "98",
             "patterns": [
-                "what",
-                "separates",
-                "me",
-                "from",
-                "you",
-                "album"
+                "what separates me from you album"
             ],
             "responses": [
                 "What Separates Me from You is the fourth studio album by American metalcore / pop punk band A Day to Remember ",
@@ -2538,11 +1918,7 @@
         {
             "tag": "99",
             "patterns": [
-                "when",
-                "did",
-                "freddie",
-                "mercury",
-                "die"
+                "when did freddie mercury die"
             ],
             "responses": [
                 "Freddie Mercury ( born Farrokh Bulsara ; Gujarati : \u0aab\u0ab0\u0acb\u0a96 \u0aac\u0ab2\u0acd\u0ab8\u0abe\u0ab0\u0abe\u200c , Phar\u014dkh Bals\u0101r\u0101\u200c ) ; 5 September 1946 \u2013 24 November 1991 ) was a British musician , singer and songwriter , best known as the lead vocalist and lyricist of the rock band Queen ",
@@ -2562,12 +1938,7 @@
         {
             "tag": "100",
             "patterns": [
-                "when",
-                "did",
-                "the",
-                "lutheran",
-                "church",
-                "began"
+                "when did the lutheran church began"
             ],
             "responses": [
                 "Lutheranism is a major branch of Western Christianity that identifies with the theology of Martin Luther , a German reformer ",
@@ -2585,15 +1956,7 @@
         {
             "tag": "101",
             "patterns": [
-                "what",
-                "are",
-                "all",
-                "the",
-                "cities",
-                "in",
-                "orange",
-                "county",
-                "ca"
+                "what are all the cities in orange county ca"
             ],
             "responses": [
                 "Incorporated cities in Orange County , California USA "
@@ -2602,16 +1965,7 @@
         {
             "tag": "102",
             "patterns": [
-                "who",
-                "sang",
-                "lead",
-                "in",
-                "voice",
-                "for",
-                "jem",
-                "and",
-                "the",
-                "holograms"
+                "who sang lead in voice for jem and the holograms"
             ],
             "responses": [
                 "The list of characters from the animated television series Jem "
@@ -2620,12 +1974,7 @@
         {
             "tag": "103",
             "patterns": [
-                "what",
-                "tensions",
-                "preceded",
-                "the",
-                "berlin",
-                "blockade"
+                "what tensions preceded the berlin blockade"
             ],
             "responses": [
                 "Berliners watching a C-54 land at Tempelhof Airport ( 1948 )",
@@ -2644,10 +1993,7 @@
         {
             "tag": "104",
             "patterns": [
-                "who",
-                "sang",
-                "proud",
-                "mary"
+                "who sang proud mary"
             ],
             "responses": [
                 "`` Proud Mary '' is a rock song written by American singer-songwriter and multi-instrumentalist John Fogerty , and recorded by his band Creedence Clearwater Revival ",
@@ -2658,14 +2004,7 @@
         {
             "tag": "105",
             "patterns": [
-                "what",
-                "percentage",
-                "of",
-                "the",
-                "human",
-                "body",
-                "is",
-                "water"
+                "what percentage of the human body is water"
             ],
             "responses": [
                 "In physiology , body water is the water content of the human body ",
@@ -2695,15 +2034,7 @@
         {
             "tag": "106",
             "patterns": [
-                "when",
-                "did",
-                "americans",
-                "current",
-                "immigration",
-                "policies",
-                "go",
-                "into",
-                "effect"
+                "when did americans current immigration policies go into effect"
             ],
             "responses": [
                 "2000 Census Population Ancestry Map",
@@ -2725,13 +2056,7 @@
         {
             "tag": "107",
             "patterns": [
-                "where",
-                "did",
-                "the",
-                "name",
-                "sheetrock",
-                "come",
-                "from"
+                "Where did the name sheetrock come from"
             ],
             "responses": [
                 "Vertically hung drywall with joint compound ",
@@ -2745,13 +2070,7 @@
         {
             "tag": "108",
             "patterns": [
-                "what",
-                "materials",
-                "are",
-                "used",
-                "for",
-                "facial",
-                "reconstruction"
+                "what materials are used for facial reconstruction"
             ],
             "responses": [
                 "Tsar Ivan the Terrible of Russia ",
@@ -2766,19 +2085,7 @@
         {
             "tag": "109",
             "patterns": [
-                "what",
-                "part",
-                "of",
-                "the",
-                "pre-world",
-                "war",
-                "1",
-                "arms",
-                "race",
-                "was",
-                "the",
-                "most",
-                "intense"
+                "what part of the pre-world war 1 arms race was the most intense "
             ],
             "responses": [
                 "Personifications of Germany , France , Russia , Austria-Hungary , and the United Kingdom attempting to keep the lid on the simmering cauldron of imperialist and nationalist tensions in the Balkans to prevent a general European war ",
@@ -2805,14 +2112,7 @@
         {
             "tag": "110",
             "patterns": [
-                "where",
-                "did",
-                "the",
-                "name",
-                "glen",
-                "burnie",
-                "come",
-                "from"
+                "where did the name glen burnie come from"
             ],
             "responses": [
                 "Glen Burnie is a census-designated place ( CDP ) in Anne Arundel County , Maryland , United States ",
@@ -2823,17 +2123,7 @@
         {
             "tag": "111",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "three",
-                "primary",
-                "colors",
-                "in",
-                "the",
-                "subtractive",
-                "color",
-                "model"
+                "what are the three primary colors in the subtractive color model"
             ],
             "responses": [
                 "Subtractive color mixing",
@@ -2853,12 +2143,7 @@
         {
             "tag": "112",
             "patterns": [
-                "what",
-                "is",
-                "6",
-                "pin",
-                "din",
-                "connector"
+                "what is 6 pin din connector"
             ],
             "responses": [
                 "The mini-DIN connectors are a family of multi-pin electrical connectors used in a variety of applications ",
@@ -2869,12 +2154,7 @@
         {
             "tag": "113",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "uses",
-                "for",
-                "gui"
+                "what are the uses for gui"
             ],
             "responses": [
                 "A screenshot of the GNOME Shell GUI ",
@@ -2890,11 +2170,7 @@
         {
             "tag": "114",
             "patterns": [
-                "what",
-                "are",
-                "banana",
-                "plugs",
-                "for"
+                "what are banana plugs for"
             ],
             "responses": [
                 "Adapter between a female BNC connector and banana plugs",
@@ -2909,13 +2185,7 @@
         {
             "tag": "115",
             "patterns": [
-                "when",
-                "did",
-                "the",
-                "trojan",
-                "war",
-                "take",
-                "place"
+                "when did the trojan war take place"
             ],
             "responses": [
                 "In Greek mythology , the Trojan War was waged against the city of Troy by the Achaeans ( Greeks ) after Paris of Troy took Helen from her husband Menelaus king of Sparta ",
@@ -2942,15 +2212,7 @@
         {
             "tag": "116",
             "patterns": [
-                "what",
-                "part",
-                "of",
-                "canada",
-                "did",
-                "slaves",
-                "run",
-                "away",
-                "to"
+                "what part of canada did slaves run away to "
             ],
             "responses": [
                 "An April 24 , 1851 poster warning the `` colored people of Boston '' about policemen acting as slave catchers ",
@@ -2963,11 +2225,7 @@
         {
             "tag": "117",
             "patterns": [
-                "when",
-                "does",
-                "a",
-                "solution",
-                "crystallize"
+                "when does a solution crystallize "
             ],
             "responses": [
                 "Crystallization is the ( natural or artificial ) process of formation of solid crystals precipitating from a solution , melt or more rarely deposited directly from a gas ",
@@ -2979,11 +2237,7 @@
         {
             "tag": "118",
             "patterns": [
-                "what",
-                "money",
-                "is",
-                "jefferson",
-                "on"
+                "what money is jefferson on"
             ],
             "responses": [
                 "Thomas Jefferson ( April 13 , 1743 ( April 2 , 1743 O.S. ) \u2013 July 4 , 1826 ) was an American Founding Father , the principal author of the Declaration of Independence ( 1776 ) and the third President of the United States ( 1801\u20131809 ) ",
@@ -3011,13 +2265,7 @@
         {
             "tag": "119",
             "patterns": [
-                "when",
-                "did",
-                "the",
-                "free",
-                "soilers",
-                "party",
-                "start"
+                "when did the free soilers party start "
             ],
             "responses": [
                 "The Free Soil Party was a short-lived political party in the United States active in the 1848 and 1852 presidential elections , and in some state elections ",
@@ -3031,15 +2279,7 @@
         {
             "tag": "120",
             "patterns": [
-                "when",
-                "did",
-                "steven",
-                "adler",
-                "play",
-                "for",
-                "guns",
-                "and",
-                "roses"
+                "when did steven adler play for guns and roses"
             ],
             "responses": [
                 "Steven Adler ( born Michael Coletti ; January 22 , 1965 ) is an American musician ",
@@ -3052,11 +2292,7 @@
         {
             "tag": "121",
             "patterns": [
-                "who",
-                "sings",
-                "stand",
-                "by",
-                "me"
+                "who sings stand by me"
             ],
             "responses": [
                 "`` Stand by Me '' is a song originally performed by Ben E. King and written by King , Jerry Leiber , and Mike Stoller , inspired by the spiritual `` Lord Stand by Me , '' plus two lines rooted in Psalms 46:2\u20133 ",
@@ -3066,12 +2302,7 @@
         {
             "tag": "122",
             "patterns": [
-                "where",
-                "did",
-                "abe",
-                "lincoln",
-                "conspirators",
-                "meet"
+                "where did abe lincoln conspirators meet"
             ],
             "responses": [
                 "The assassination of United States President Abraham Lincoln took place on Good Friday , April 14 , 1865 , as the American Civil War was drawing to a close ",
@@ -3088,11 +2319,7 @@
         {
             "tag": "123",
             "patterns": [
-                "what",
-                "year",
-                "was",
-                "elvis",
-                "born"
+                "what year was elvis born"
             ],
             "responses": [
                 "Elvis Aaron Presley ( January 8 , 1935 \u2013 August 16 , 1977 ) was an American singer and actor ",
@@ -3121,11 +2348,7 @@
         {
             "tag": "124",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "arb",
-                "medications"
+                "what are the arb medications"
             ],
             "responses": [
                 "ARB or ARb may stand for:",
@@ -3163,16 +2386,7 @@
         {
             "tag": "125",
             "patterns": [
-                "what",
-                "part",
-                "of",
-                "the",
-                "earth",
-                "is",
-                "covered",
-                "with",
-                "water",
-                "1/4,1/3,3/4"
+                "what part of the earth is covered with water 1/4,1/3,3/4 "
             ],
             "responses": [
                 "Earth is the third planet from the Sun , and the densest and fifth-largest of the eight planets in the Solar System ",
@@ -3201,11 +2415,7 @@
         {
             "tag": "126",
             "patterns": [
-                "what",
-                "the",
-                "atmosphere",
-                "on",
-                "mercury"
+                "what the atmosphere on mercury"
             ],
             "responses": [
                 "Mercury has a very tenuous and highly variable atmosphere ( surface-bound exosphere ) containing hydrogen , helium , oxygen , sodium , calcium , potassium and water vapor , with a combined pressure level of about 10\u221214 bar ( 1 nPa ) ",
@@ -3219,11 +2429,7 @@
         {
             "tag": "127",
             "patterns": [
-                "what",
-                "religion",
-                "is",
-                "westminster",
-                "abbey"
+                "what religion is westminster abbey"
             ],
             "responses": [
                 "North Entrance of Westminster Abbey",
@@ -3243,11 +2449,7 @@
         {
             "tag": "128",
             "patterns": [
-                "what",
-                "are",
-                "stanzas",
-                "in",
-                "poetry"
+                "what are stanzas in poetry"
             ],
             "responses": [
                 "In poetry , a stanza is a unit within a larger poem ",
@@ -3260,12 +2462,7 @@
         {
             "tag": "129",
             "patterns": [
-                "who",
-                "won",
-                "the",
-                "super",
-                "in",
-                "xl1"
+                "who won the super in xl1"
             ],
             "responses": [
                 "Super Bowl XLI was an American football game between the American Football Conference ( AFC ) champion Indianapolis Colts and the National Football Conference ( NFC ) champion Chicago Bears to decide the National Football League ( NFL ) champion for the 2006 season ",
@@ -3285,11 +2482,7 @@
         {
             "tag": "130",
             "patterns": [
-                "who",
-                "won",
-                "2010",
-                "mlb",
-                "mvp"
+                "WHO won 2010 mlb mvp"
             ],
             "responses": [
                 "The Major League Baseball Most Valuable Player Award ( MVP ) is an annual Major League Baseball ( MLB ) award , given to one outstanding player in the American League and one in the National League ",
@@ -3316,15 +2509,7 @@
         {
             "tag": "131",
             "patterns": [
-                "what",
-                "percent",
-                "of",
-                "women",
-                "have",
-                "no",
-                "complications",
-                "giving",
-                "birth"
+                "what percent of women have no complications giving birth "
             ],
             "responses": [
                 "Childbirth , labour , delivery , birth , partus , or parturition is the culmination of a pregnancy period with the expulsion of one or more newborn infants from a woman 's uterus ",
@@ -3338,12 +2523,7 @@
         {
             "tag": "132",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "pulmonary",
-                "alveolar",
-                "cells"
+                "what are the pulmonary alveolar cells"
             ],
             "responses": [
                 "An alveolus ( plural : alveoli , from Latin alveolus , `` little cavity '' ) is an anatomical structure that has the form of a hollow cavity ",
@@ -3357,14 +2537,7 @@
         {
             "tag": "133",
             "patterns": [
-                "who",
-                "played",
-                "danny",
-                "zuko",
-                "in",
-                "the",
-                "original",
-                "grease"
+                "who played danny zuko in the original grease"
             ],
             "responses": [
                 "Grease is a 1978 American musical film directed by Randal Kleiser and produced by Paramount Pictures ",
@@ -3379,17 +2552,7 @@
         {
             "tag": "134",
             "patterns": [
-                "who",
-                "elects",
-                "the",
-                "board",
-                "of",
-                "directors",
-                "and",
-                "what",
-                "are",
-                "their",
-                "responsibilities"
+                "Who elects the Board of Directors and what are their responsibilities"
             ],
             "responses": [
                 "A board of directors is a body of elected or appointed members who jointly oversee the activities of a company or organization ",
@@ -3416,12 +2579,7 @@
         {
             "tag": "135",
             "patterns": [
-                "who",
-                "won",
-                "the",
-                "2010",
-                "world",
-                "cup"
+                "who won the 2010 world cup"
             ],
             "responses": [
                 "The 2010 FIFA World Cup was the 19th FIFA World Cup , the world championship for men 's national association football teams ",
@@ -3440,13 +2598,7 @@
         {
             "tag": "136",
             "patterns": [
-                "what",
-                "part",
-                "of",
-                "the",
-                "plant",
-                "are",
-                "avocados"
+                "what part of the plant are avocados"
             ],
             "responses": [
                 "The avocado ( Persea americana ) is a tree native to Central Mexico , classified in the flowering plant family Lauraceae along with cinnamon , camphor and bay laurel ",
@@ -3460,11 +2612,7 @@
         {
             "tag": "137",
             "patterns": [
-                "what",
-                "would",
-                "you",
-                "do",
-                "song"
+                "what would you do song"
             ],
             "responses": [
                 "`` What Would You Do ? '' is the title of a song recorded by American R & B / hip hop trio City High ",
@@ -3478,12 +2626,7 @@
         {
             "tag": "138",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "roles",
-                "that",
-                "mouth"
+                "what are the roles that mouth"
             ],
             "responses": [
                 "Alligators are known for their large mouths and sharp teeth",
@@ -3498,14 +2641,7 @@
         {
             "tag": "139",
             "patterns": [
-                "what",
-                "us",
-                "city",
-                "has",
-                "the",
-                "highest",
-                "murder",
-                "rate"
+                "what us city has the highest murder rate"
             ],
             "responses": [
                 "The following table of United States cities by crime rate is based on Federal Bureau of Investigation Uniform Crime Reports statistics ",
@@ -3522,13 +2658,7 @@
         {
             "tag": "140",
             "patterns": [
-                "when",
-                "did",
-                "intel",
-                "build",
-                "in",
-                "costa",
-                "rica"
+                "when did intel build in costa rica"
             ],
             "responses": [
                 "Costa Rica ( , meaning `` rich coast '' in Spanish ) , officially the Republic of Costa Rica ( or ' , ) , is a country in Central America , bordered by Nicaragua to the north , Panama to the southeast , the Pacific Ocean to the west , and the Caribbean Sea to the east ",
@@ -3547,12 +2677,7 @@
         {
             "tag": "141",
             "patterns": [
-                "who",
-                "plays",
-                "rosie",
-                "in",
-                "mamma",
-                "mia"
+                "who plays rosie in mamma mia"
             ],
             "responses": [
                 "Mamma Mia ",
@@ -3568,13 +2693,7 @@
         {
             "tag": "142",
             "patterns": [
-                "who",
-                "starred",
-                "in",
-                "the",
-                "original",
-                "true",
-                "grit"
+                "who starred in the original true grit"
             ],
             "responses": [
                 "True Grit is a 1969 American western film written by Marguerite Roberts and directed by Henry Hathaway ",
@@ -3588,13 +2707,7 @@
         {
             "tag": "143",
             "patterns": [
-                "what",
-                "motor",
-                "does",
-                "a",
-                "2001",
-                "monte",
-                "carlo"
+                "what motor does a 2001 monte carlo"
             ],
             "responses": [
                 "The Chevrolet Monte Carlo was an American-made two-door coupe introduced for model year 1970 , and manufactured over six generations through model year 2007 ",
@@ -3612,8 +2725,7 @@
         {
             "tag": "144",
             "patterns": [
-                "where",
-                "scottsdale"
+                "where scottsdale "
             ],
             "responses": [
                 "Scottsdale ( O'odham Va\u1e63ai S-va\u1e63on\u012d ; Yaqui Eskatel ) is a city in the eastern part of Maricopa County , Arizona , United States , adjacent to Phoenix ",
@@ -3625,12 +2737,7 @@
         {
             "tag": "145",
             "patterns": [
-                "who",
-                "had",
-                "the",
-                "social",
-                "contract",
-                "theory"
+                "who had the social contract theory"
             ],
             "responses": [
                 "In political philosophy the social contract or political contract is a theory or model , originating during the Age of Enlightenment , that typically addresses the questions of the origin of society and the legitimacy of the authority of the state over the individual ",
@@ -3651,14 +2758,7 @@
         {
             "tag": "146",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "most",
-                "known",
-                "sports",
-                "in",
-                "america"
+                "what are the most known sports in america"
             ],
             "responses": [
                 "Sports are an important part of the culture of the United States ",
@@ -3678,11 +2778,7 @@
         {
             "tag": "147",
             "patterns": [
-                "what",
-                "is",
-                "an",
-                "``",
-                "n.m"
+                "what is an `` N.M "
             ],
             "responses": [
                 "A newton metre is a unit of torque ( also called `` moment `` ) in the SI system ",
@@ -3696,16 +2792,7 @@
         {
             "tag": "148",
             "patterns": [
-                "where",
-                "did",
-                "the",
-                "tradition",
-                "of",
-                "leaving",
-                "a",
-                "sock",
-                "come",
-                "from"
+                "where did the tradition of leaving a sock come from"
             ],
             "responses": [
                 "Stockings on a fireplace mantel ",
@@ -3721,13 +2808,7 @@
         {
             "tag": "149",
             "patterns": [
-                "what",
-                "year",
-                "did",
-                "john",
-                "adams",
-                "become",
-                "president"
+                "what year did john adams become president "
             ],
             "responses": [
                 "John Adams ( October 30 , 1735 ( O.S . October 19 , 1735 ) \u2013 July 4 , 1826 ) was the second president of the United States ( 1797\u20131801 ) , having earlier served as the first vice president of the United States ",
@@ -3754,13 +2835,7 @@
         {
             "tag": "150",
             "patterns": [
-                "what",
-                "year",
-                "did",
-                "j.f",
-                ".",
-                "rutherford",
-                "die"
+                "what year did J.F . Rutherford die"
             ],
             "responses": [
                 "Joseph Franklin Rutherford ( November 8 , 1869 \u2013 January 8 , 1942 ) , also known as `` Judge '' Rutherford , was the second president of the incorporated Watch Tower Bible and Tract Society ",
@@ -3784,10 +2859,7 @@
         {
             "tag": "151",
             "patterns": [
-                "who",
-                "shot",
-                "50",
-                "cent"
+                "who shot 50 cent"
             ],
             "responses": [
                 "Curtis James Jackson III ( born July 6 , 1975 ) , better known by his stage name 50 Cent , is an American rapper , entrepreneur , investor , and actor ",
@@ -3811,10 +2883,7 @@
         {
             "tag": "152",
             "patterns": [
-                "what",
-                "is",
-                "am",
-                "2201"
+                "what is am 2201"
             ],
             "responses": [
                 "AM-2201 ( 1- ( 5-fluoropentyl ) -3- ( 1-naphthoyl ) indole ) is a research chemical that acts as a potent but nonselective full agonist for the cannabinoid receptor ",
@@ -3831,14 +2900,7 @@
         {
             "tag": "153",
             "patterns": [
-                "what",
-                "nuns",
-                "ran",
-                "the",
-                "french",
-                "hospital",
-                "in",
-                "ny"
+                "what nuns ran the french hospital in ny "
             ],
             "responses": [
                 "The Archdiocese of New York is home to over 100 charitable organizations , run by many different religious orders , as well as by Catholic Charities of the Archdiocese ",
@@ -3848,11 +2910,7 @@
         {
             "tag": "154",
             "patterns": [
-                "when",
-                "did",
-                "george",
-                "washington",
-                "died"
+                "when did george washington died "
             ],
             "responses": [
                 "George Washington ( \u2013 , 1799 ) was the first President of the United States ( 1789\u20131797 ) , the commander-in-chief of the Continental Army during the American Revolutionary War , and one of the Founding Fathers of the United States ",
@@ -3890,11 +2948,7 @@
         {
             "tag": "155",
             "patterns": [
-                "what",
-                "is",
-                "a",
-                "wiki",
-                "platform"
+                "what is a wiki platform"
             ],
             "responses": [
                 "Ward Cunningham , inventor of the wiki",
@@ -3914,13 +2968,7 @@
         {
             "tag": "156",
             "patterns": [
-                "who",
-                "plays",
-                "dumbledore",
-                "in",
-                "harry",
-                "potter",
-                "6"
+                "who plays dumbledore in harry potter 6"
             ],
             "responses": [
                 "Professor Albus Percival Wulfric Brian Dumbledore is a major character and protagonist of J. K. Rowling 's Harry Potter series ",
@@ -3934,11 +2982,7 @@
         {
             "tag": "157",
             "patterns": [
-                "who",
-                "made",
-                "the",
-                "roller",
-                "skates"
+                "who made the roller skates"
             ],
             "responses": [
                 "People roller skating",
@@ -3951,15 +2995,7 @@
         {
             "tag": "158",
             "patterns": [
-                "what",
-                "towns",
-                "are",
-                "near",
-                "to",
-                "great",
-                "falls",
-                "south",
-                "carolina"
+                "what towns are near to great falls south carolina"
             ],
             "responses": [
                 "Great Falls is a town in Chester County , South Carolina , United States ",
@@ -3969,11 +3005,7 @@
         {
             "tag": "159",
             "patterns": [
-                "where",
-                "do",
-                "dungeness",
-                "crab",
-                "live"
+                "where do dungeness crab live"
             ],
             "responses": [
                 "The Dungeness crab , Metacarcinus magister ( formerly Cancer magister ) , is a species of crab that inhabits eelgrass beds and water bottoms on the west coast of North America ",
@@ -3984,11 +3016,7 @@
         {
             "tag": "160",
             "patterns": [
-                "when",
-                "did",
-                "emperor",
-                "justinian",
-                "die"
+                "when did Emperor Justinian die"
             ],
             "responses": [
                 "Justinian I ( ) ( , ) ( c. 482 \u2013 14 November 565 ) , commonly known as Justinian the Great , was Byzantine Emperor from 527 to 565 ",
@@ -4018,16 +3046,7 @@
         {
             "tag": "161",
             "patterns": [
-                "what",
-                "song",
-                "did",
-                "ricky",
-                "martin",
-                "sing",
-                "at",
-                "the",
-                "grammy",
-                "awards"
+                "what song did ricky martin sing at the grammy awards"
             ],
             "responses": [
                 "Enrique `` Ricky '' Mart\u00edn Morales ( born December 24 , 1971 ) , is a Puerto Rican pop singer , musician , songwriter , actor and author who achieved prominence , first as a member of the Puerto Rican boy band Menudo , and as a solo artist since 1991 ",
@@ -4044,11 +3063,7 @@
         {
             "tag": "162",
             "patterns": [
-                "what",
-                "is",
-                "a",
-                "klingon",
-                "dish"
+                "what is a klingon dish"
             ],
             "responses": [
                 "Klingon culture describes the customs and practices of Klingons in the fictional Star Trek universe "
@@ -4057,12 +3072,7 @@
         {
             "tag": "163",
             "patterns": [
-                "what",
-                "mountains",
-                "are",
-                "on",
-                "appalachian",
-                "trail"
+                "what mountains are on appalachian trail"
             ],
             "responses": [
                 "The Appalachian National Scenic Trail , generally known as the Appalachian Trail or simply the A.T. , is a marked hiking trail in the eastern United States extending between Springer Mountain in Georgia and Mount Katahdin in Maine ",
@@ -4080,13 +3090,7 @@
         {
             "tag": "164",
             "patterns": [
-                "when",
-                "did",
-                "fidel",
-                "castro",
-                "take",
-                "over",
-                "cuba"
+                "when did fidel castro take over cuba"
             ],
             "responses": [
                 "Fidel Alejandro Castro Ruz ( ; born August 13 , 1926 ) is a Cuban communist revolutionary and politician who was Prime Minister of Cuba from 1959 to 1976 , and President from 1976 to 2008 ",
@@ -4111,12 +3115,7 @@
         {
             "tag": "165",
             "patterns": [
-                "when",
-                "did",
-                "scott",
-                "pilgrim",
-                "come",
-                "out"
+                "when did scott pilgrim come out"
             ],
             "responses": [
                 "Scott Pilgrim vs. the World is a 2010 American comedy film directed by Edgar Wright , based on the graphic novel series Scott Pilgrim by Bryan Lee O'Malley ",
@@ -4134,27 +3133,7 @@
         {
             "tag": "166",
             "patterns": [
-                "what",
-                "movie",
-                "has",
-                "the",
-                "line",
-                "in",
-                "it",
-                "``",
-                "i",
-                "'m",
-                "walking",
-                "here",
-                "!",
-                "i",
-                "'m",
-                "walking",
-                "here",
-                "!",
-                "``",
-                "?",
-                "'"
+                "what movie has the line in it `` I 'm walking here ! I 'm walking here ! '' ? '"
             ],
             "responses": [
                 "Part of the AFI 100 Years ... series , AFI 's 100 Years ... 100 Movie Quotes is a list of the top 100 movie quotations in American cinema ",
@@ -4166,11 +3145,7 @@
         {
             "tag": "167",
             "patterns": [
-                "what",
-                "season",
-                "is",
-                "dexter",
-                "on"
+                "what season is dexter on"
             ],
             "responses": [
                 "Dexter is an American television drama series which debuted on Showtime on October 1 , 2006 ",
@@ -4192,12 +3167,7 @@
         {
             "tag": "168",
             "patterns": [
-                "what",
-                "are",
-                "context",
-                "effects",
-                "of",
-                "memory"
+                "What are context effects of memory "
             ],
             "responses": [
                 "Context-dependent memory refers to improved recall of specific episodes or information when the context present at encoding and retrieval are the same ",
@@ -4212,12 +3182,7 @@
         {
             "tag": "169",
             "patterns": [
-                "who",
-                "won",
-                "the",
-                "1998",
-                "world",
-                "cup"
+                "who won the 1998 world cup"
             ],
             "responses": [
                 "The 1998 FIFA World Cup was the 16th FIFA World Cup , the world championship for men 's national association football teams ",
@@ -4233,18 +3198,7 @@
         {
             "tag": "170",
             "patterns": [
-                "who",
-                "wrote",
-                "the",
-                "song",
-                ",",
-                "``",
-                "just",
-                "the",
-                "way",
-                "you",
-                "are",
-                "``"
+                "Who wrote the song , `` Just the Way You Are ''"
             ],
             "responses": [
                 "Just the Way You Are may refer to:",
@@ -4264,10 +3218,7 @@
         {
             "tag": "171",
             "patterns": [
-                "who",
-                "played",
-                "ugly",
-                "betty"
+                "who played ugly betty"
             ],
             "responses": [
                 "This article lists the characters featured in the American ABC dramedy series Ugly Betty "
@@ -4276,15 +3227,7 @@
         {
             "tag": "172",
             "patterns": [
-                "what",
-                "kind",
-                "of",
-                "people",
-                "are",
-                "on",
-                "the",
-                "show",
-                "skins"
+                "what kind of people are on the show skins"
             ],
             "responses": [
                 "Skins is a British teen drama that follows the lives of a group of teenagers in Bristol , South West England , through the two years of sixth form ",
@@ -4301,11 +3244,7 @@
         {
             "tag": "173",
             "patterns": [
-                "what",
-                "nationality",
-                "is",
-                "kris",
-                "jenner"
+                "what nationality is kris jenner"
             ],
             "responses": [
                 "Kristen Mary `` Kris '' Jenner ( n\u00e9e Houghton , previously Kardashian ; born November 5 , 1955 ) is an American socialite , author and television personality ",
@@ -4318,14 +3257,7 @@
         {
             "tag": "174",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "boundaries",
-                "of",
-                "the",
-                "pelvic",
-                "outlet"
+                "what are the boundaries of the pelvic outlet"
             ],
             "responses": [
                 "The lower circumference of the lesser pelvis is very irregular ; the space enclosed by it is named the inferior aperture or pelvic outlet "
@@ -4334,15 +3266,7 @@
         {
             "tag": "175",
             "patterns": [
-                "what",
-                "time",
-                "will",
-                "the",
-                "world",
-                "end",
-                "on",
-                "may",
-                "21"
+                "what time will the world end on may 21"
             ],
             "responses": [
                 "The 2011 end times prediction made by American Christian radio host Harold Camping stated that the Rapture and Judgment Day would take place on May 21 , 2011 , and that the end of the world would take place five months later on October 21 , 2011 ",
@@ -4361,12 +3285,7 @@
         {
             "tag": "176",
             "patterns": [
-                "who",
-                "coined",
-                "the",
-                "term",
-                "bucket",
-                "list"
+                "who coined the term bucket list"
             ],
             "responses": [
                 "The Bucket List is a 2007 American comedy-drama film directed by Rob Reiner , written by Justin Zackham , and starring Jack Nicholson and Morgan Freeman ",
@@ -4380,10 +3299,7 @@
         {
             "tag": "177",
             "patterns": [
-                "who",
-                "makes",
-                "triumph",
-                "motorcycles"
+                "who makes triumph motorcycles"
             ],
             "responses": [
                 "Triumph Motorcycles may refer to:",
@@ -4396,13 +3312,7 @@
         {
             "tag": "178",
             "patterns": [
-                "where",
-                "did",
-                "sharecroppers",
-                "get",
-                "their",
-                "last",
-                "name"
+                "where did sharecroppers get their last name"
             ],
             "responses": [
                 "FSA photo of cropper family chopping the weeds from cotton near White Plains , in Georgia , USA ( 1941 )",
@@ -4415,24 +3325,7 @@
         {
             "tag": "179",
             "patterns": [
-                "what",
-                "party",
-                "describes",
-                "a",
-                "candidate",
-                "that",
-                "focuses",
-                "on",
-                "creating",
-                "new",
-                "social",
-                "patterns",
-                "or",
-                "values",
-                "with",
-                "direct",
-                "government",
-                "action"
+                "What party describes a candidate that focuses on creating new social patterns or values with direct government action"
             ],
             "responses": [
                 "The Democratic Party is one of the two major contemporary political parties in the United States along with the Republican Party ",
@@ -4445,12 +3338,7 @@
         {
             "tag": "180",
             "patterns": [
-                "where",
-                "do",
-                "sesame",
-                "seeds",
-                "come",
-                "from"
+                "where do sesame seeds come from"
             ],
             "responses": [
                 "Sesame in Panchkhal valley , Nepal",
@@ -4471,12 +3359,7 @@
         {
             "tag": "181",
             "patterns": [
-                "where",
-                "did",
-                "the",
-                "olmecs",
-                "come",
-                "from"
+                "where did the olmecs come from"
             ],
             "responses": [
                 "Olmec Head No . 3 from San Lorenzo Tenochtitlan 1200\u2013900 BCE",
@@ -4496,11 +3379,7 @@
         {
             "tag": "182",
             "patterns": [
-                "what",
-                "state",
-                "is",
-                "milwaukee",
-                "in"
+                "what state is milwaukee in"
             ],
             "responses": [
                 "Milwaukee is the largest city in the U.S. state of Wisconsin , the 28th most populous city in the United States , and 39th most populous region in the United States ",
@@ -4518,9 +3397,7 @@
         {
             "tag": "183",
             "patterns": [
-                "what",
-                "are",
-                "garnishments"
+                "what are garnishments"
             ],
             "responses": [
                 "A garnishment is a means of collecting a monetary judgment against a defendant by ordering a third party ( the garnishee ) to pay money , otherwise owed to the defendant , directly to the plaintiff ",
@@ -4530,13 +3407,7 @@
         {
             "tag": "184",
             "patterns": [
-                "what",
-                "are",
-                "the",
-                "charges",
-                "against",
-                "casey",
-                "anthony"
+                "what are the charges against Casey Anthony"
             ],
             "responses": [
                 "Caylee Marie Anthony ( August 9 , 2005 \u2013 2008 ) was a two-year-old American girl who lived in Orlando , Florida with her mother , Casey Marie Anthony , and her maternal grandparents , George and Cindy Anthony ",
@@ -4564,14 +3435,7 @@
         {
             "tag": "185",
             "patterns": [
-                "what",
-                "organic",
-                "molecules",
-                "are",
-                "found",
-                "in",
-                "cottage",
-                "cheese"
+                "what organic molecules are found in cottage cheese"
             ],
             "responses": [
                 "A platter with cheese and garnishes",
@@ -4605,14 +3469,7 @@
         {
             "tag": "186",
             "patterns": [
-                "when",
-                "will",
-                "inuyasha",
-                "the",
-                "final",
-                "act",
-                "be",
-                "dub"
+                "when will inuyasha the final act be dub"
             ],
             "responses": [
                 ", also known as , is a Japanese manga series written and illustrated by Rumiko Takahashi ",
@@ -4636,11 +3493,7 @@
         {
             "tag": "187",
             "patterns": [
-                "what",
-                "are",
-                "arizona",
-                "'s",
-                "symbols"
+                "what are arizona 's symbols"
             ],
             "responses": [
                 "Location of the state of Arizona in the United States of America",
@@ -4656,10 +3509,7 @@
         {
             "tag": "188",
             "patterns": [
-                "what",
-                "are",
-                "slr",
-                "cameras"
+                "what are SLR cameras"
             ],
             "responses": [
                 "The historic 1949 Zeiss Ikon VEB Contax S , manufactured in Dresden , the first pentaprism SLR for eye-level viewing",
@@ -4669,10 +3519,7 @@
         {
             "tag": "189",
             "patterns": [
-                "where",
-                "is",
-                "nw",
-                "23"
+                "where is nw 23"
             ],
             "responses": [
                 "The Northwest District is a densely populated retail and residential neighborhood in the Northwest section of Portland , Oregon ",
@@ -4700,16 +3547,7 @@
         {
             "tag": "190",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "scientific",
-                "name",
-                "of",
-                "the",
-                "eastern",
-                "tiger",
-                "salamander"
+                "what is the scientific name of the eastern tiger salamander "
             ],
             "responses": [
                 "The tiger salamander ( Ambystoma tigrinum ) is a species of mole salamander ",
@@ -4719,11 +3557,7 @@
         {
             "tag": "191",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "steelworkers",
-                "strike"
+                "what was the steelworkers strike"
             ],
             "responses": [
                 "The Steel Strike of 1919 was an attempt by the weakened Amalgamated Association of Iron , Steel and Tin Workers ( the AA ) to organize the United States steel industry in the wake of World War I ",
@@ -4736,13 +3570,7 @@
         {
             "tag": "192",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "point",
-                "or",
-                "the",
-                "qwerty"
+                "what is the point or the qwerty"
             ],
             "responses": [
                 "Geographic distribution of different keyboard layouts in Europe:",
@@ -4757,11 +3585,7 @@
         {
             "tag": "193",
             "patterns": [
-                "when",
-                "was",
-                "the",
-                "web",
-                "invented"
+                "when was the web invented"
             ],
             "responses": [
                 "The World Wide Web ( abbreviated as WWW or W3 , commonly known as the web ) , is a system of interlinked hypertext documents accessed via the Internet ",
@@ -4773,11 +3597,7 @@
         {
             "tag": "194",
             "patterns": [
-                "who",
-                "is",
-                "on",
-                "a",
-                "dime"
+                "who is on a dime"
             ],
             "responses": [
                 "The dime is a ten- cent coin , one tenth of a United States dollar , labeled formally as `` one dime '' ",
@@ -4789,20 +3609,7 @@
         {
             "tag": "195",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "name",
-                "of",
-                "canada",
-                "'s",
-                "constitution",
-                "after",
-                "it",
-                "became",
-                "independent",
-                "from",
-                "england"
+                "what is the name of canada 's constitution after it became independent from england"
             ],
             "responses": [
                 "The Constitution of Canada is the supreme law in Canada ; the country 's constitution is an amalgamation of codified acts and uncodified traditions and conventions ",
@@ -4817,11 +3624,7 @@
         {
             "tag": "196",
             "patterns": [
-                "where",
-                "is",
-                "andy",
-                "whitfield",
-                "from"
+                "where is andy whitfield from "
             ],
             "responses": [
                 "Andy Whitfield ( died 11 September 2011 ) was a Welsh Australian actor and model ",
@@ -4831,14 +3634,7 @@
         {
             "tag": "197",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "formula",
-                "for",
-                "the",
-                "phosphate",
-                "ion"
+                "what is the formula for the phosphate ion "
             ],
             "responses": [
                 "A phosphate , an inorganic chemical , is a salt of phosphoric acid ",
@@ -4851,16 +3647,7 @@
         {
             "tag": "198",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "difference",
-                "between",
-                "cub",
-                "cadet",
-                "at",
-                "home",
-                "depot"
+                "what is the difference between Cub cadet at home depot"
             ],
             "responses": [
                 "Cub Cadet loader",
@@ -4880,11 +3667,7 @@
         {
             "tag": "199",
             "patterns": [
-                "where",
-                "is",
-                "scotty",
-                "mccreery",
-                "from"
+                "where is scotty mccreery from"
             ],
             "responses": [
                 "Scott `` Scotty '' McCreery ( born October 9 , 1993 ) is an American country music singer from Garner , North Carolina ",
@@ -4898,11 +3681,7 @@
         {
             "tag": "200",
             "patterns": [
-                "where",
-                "is",
-                "david",
-                "ortiz",
-                "from"
+                "where is david ortiz from"
             ],
             "responses": [
                 "David Am\u00e9rico Ortiz Arias ( born November 18 , 1975 ) , nicknamed `` Big Papi '' , is a Dominican-American professional baseball designated hitter with the Boston Red Sox of Major League Baseball ( MLB ) ",
@@ -4916,12 +3695,7 @@
         {
             "tag": "201",
             "patterns": [
-                "when",
-                "was",
-                "kirstie",
-                "alley",
-                "on",
-                "cheers"
+                "when was kirstie alley on cheers"
             ],
             "responses": [
                 "Kirstie Louise Alley ( born January 12 , 1951 ) is an American actress and comedian known for her role in the TV series Cheers , in which she played Rebecca Howe from 1987\u20131993 , winning an Emmy Award and a Golden Globe Award as the Outstanding Lead Actress in a Comedy Series in 1991 ",
@@ -4932,12 +3706,7 @@
         {
             "tag": "202",
             "patterns": [
-                "what",
-                "was",
-                "mexico",
-                "'s",
-                "original",
-                "capital"
+                "what was mexico 's original capital"
             ],
             "responses": [
                 "Mexico City ( ; , also known as M\u00e9xico , D. F. , or simply D.F . ) is the Federal District ( Distrito Federal ) , capital of Mexico and seat of the federal powers of the Mexican Union ",
@@ -4962,12 +3731,7 @@
         {
             "tag": "203",
             "patterns": [
-                "what",
-                "is",
-                "top",
-                "marginal",
-                "tax",
-                "rate"
+                "what is top marginal tax rate"
             ],
             "responses": [
                 "In the United States , a tax is imposed on income by the federal , most states , and many local governments ",
@@ -4995,14 +3759,7 @@
         {
             "tag": "204",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "cabin",
-                "pressure",
-                "of",
-                "us",
-                "airlines"
+                "what is the cabin pressure of us airlines"
             ],
             "responses": [
                 "The pressurization controls on a Boeing 737-800",
@@ -5015,14 +3772,7 @@
         {
             "tag": "205",
             "patterns": [
-                "who",
-                "was",
-                "the",
-                "wbc",
-                "boxing",
-                "champion",
-                "in",
-                "1962"
+                "who was the wbc boxing champion in 1962 "
             ],
             "responses": [
                 "This is a chronological list of world heavyweight boxing champions since the introduction of the Marquess of Queensberry rules : Bare knuckle champions who fought under London Prize Ring rules are not listed here , as they were predominantly British "
@@ -5031,11 +3781,7 @@
         {
             "tag": "206",
             "patterns": [
-                "where",
-                "are",
-                "the",
-                "archipelago",
-                "islands"
+                "where are the archipelago islands"
             ],
             "responses": [
                 "The Mergui Archipelago",
@@ -5050,17 +3796,7 @@
         {
             "tag": "207",
             "patterns": [
-                "what",
-                "is",
-                "stpp",
-                "model",
-                "strategy",
-                "in",
-                "public",
-                "relation",
-                "stands",
-                "for",
-                "what"
+                "what is STPP model strategy in public relation stands for what"
             ],
             "responses": [
                 "The marketing mix is a business tool used in marketing and by marketing professionals ",
@@ -5073,16 +3809,7 @@
         {
             "tag": "208",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "first",
-                "movie",
-                "to",
-                "become",
-                "a",
-                "video",
-                "game"
+                "what was the first movie to become a video game "
             ],
             "responses": [
                 "This article shows a list of film adaptations of video games ",
@@ -5094,11 +3821,7 @@
         {
             "tag": "209",
             "patterns": [
-                "where",
-                "is",
-                "penn",
-                "state",
-                "stadium"
+                "where is penn state stadium"
             ],
             "responses": [
                 "Beaver Stadium is an outdoor college football stadium in University Park , Pennsylvania , United States , on the campus of The Pennsylvania State University ",
@@ -5113,12 +3836,7 @@
         {
             "tag": "210",
             "patterns": [
-                "where",
-                "is",
-                "shelton",
-                "benjamin",
-                ",",
-                "wwe"
+                "where is Shelton Benjamin , WWE"
             ],
             "responses": [
                 "Shelton James Benjamin ( born July 9 , 1975 ) is an American professional wrestler and former amateur wrestler best known for his tenure in World Wrestling Entertainment ",
@@ -5133,17 +3851,7 @@
         {
             "tag": "211",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "significance",
-                "of",
-                "the",
-                "headwear",
-                "of",
-                "a",
-                "saudi",
-                "prince"
+                "what is the significance of the headwear of a saudi prince"
             ],
             "responses": [
                 "Mecca ( ; , Makkah , ) , also transliterated as Makkah , is a city in the Hejaz and the capital of Makkah Province in Saudi Arabia ",
@@ -5161,15 +3869,7 @@
         {
             "tag": "212",
             "patterns": [
-                "when",
-                "is",
-                "father",
-                "'s",
-                "day",
-                "2010",
-                "in",
-                "the",
-                "usa"
+                "when is father 's day 2010 in the USA "
             ],
             "responses": [
                 "Father 's Day is a celebration honoring fathers and celebrating fatherhood , paternal bonds , and the influence of fathers in society ",
@@ -5180,13 +3880,7 @@
         {
             "tag": "213",
             "patterns": [
-                "who",
-                "is",
-                "the",
-                "secretary",
-                "of",
-                "state",
-                "florida"
+                "who is the secretary of state florida"
             ],
             "responses": [
                 "Current ( 2009 ) U.S. state Secretaries of State by party affiliations",
@@ -5205,12 +3899,7 @@
         {
             "tag": "214",
             "patterns": [
-                "who",
-                "is",
-                "amy",
-                "poehler",
-                "married",
-                "to"
+                "who is amy poehler married to"
             ],
             "responses": [
                 "Amy Meredith Poehler ( ; born September 16 , 1971 ) is an American actress , comedienne , voice artist , producer and writer ",
@@ -5226,15 +3915,7 @@
         {
             "tag": "215",
             "patterns": [
-                "when",
-                "were",
-                "the",
-                "jews",
-                "removed",
-                "from",
-                "the",
-                "promised",
-                "land"
+                "when were the jews removed from the promised land"
             ],
             "responses": [
                 "The history of the Jews in the Land of Israel refers to the history of the Jewish people in Eretz Yisrael ",
@@ -5248,11 +3929,7 @@
         {
             "tag": "216",
             "patterns": [
-                "what",
-                "is",
-                "fastest",
-                "ethernet",
-                "hub"
+                "what is fastest ethernet hub"
             ],
             "responses": [
                 "4-port Ethernet hub",
@@ -5268,12 +3945,7 @@
         {
             "tag": "217",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "parthenon",
-                "used",
-                "for"
+                "what was the parthenon used for"
             ],
             "responses": [
                 "Night view",
@@ -5300,11 +3972,7 @@
         {
             "tag": "218",
             "patterns": [
-                "what",
-                "is",
-                "stepwise",
-                "linear",
-                "regression"
+                "what is stepwise linear regression"
             ],
             "responses": [
                 "In statistics , stepwise regression includes regression models in which the choice of predictive variables is carried out by an automatic procedure ",
@@ -5319,10 +3987,7 @@
         {
             "tag": "219",
             "patterns": [
-                "what",
-                "is",
-                "zoom",
-                "range"
+                "what is zoom range"
             ],
             "responses": [
                 "Nikkor 28-200 mm zoom lens , extended to 200 mm at left and collapsed to 28 mm focal length at right",
@@ -5336,14 +4001,7 @@
         {
             "tag": "220",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "definition",
-                "of",
-                "a",
-                "hung",
-                "jury"
+                "what is the definition of a hung jury"
             ],
             "responses": [
                 "A hung jury or deadlocked jury is a jury that can not , by the required voting threshold , agree upon a verdict after an extended period of deliberation and is unable to change its votes "
@@ -5352,12 +4010,7 @@
         {
             "tag": "221",
             "patterns": [
-                "where",
-                "is",
-                "the",
-                "coyote",
-                "ugly",
-                "bar"
+                "where is the coyote ugly bar"
             ],
             "responses": [
                 "Outside the Coyote Ugly Saloon in New York ",
@@ -5368,10 +4021,7 @@
         {
             "tag": "222",
             "patterns": [
-                "where",
-                "was",
-                "jfk",
-                "buried"
+                "where was jfk buried"
             ],
             "responses": [
                 "The state funeral of John F. Kennedy took place in Washington , D.C . , during the three days that followed his assassination on Friday , November 22 , 1963 , in Dallas , Texas ",
@@ -5386,10 +4036,7 @@
         {
             "tag": "223",
             "patterns": [
-                "what",
-                "is",
-                "baklava",
-                "recipe"
+                "what is baklava recipe"
             ],
             "responses": [
                 "Baklava ( , , or ; also Baklawa ) is a rich , sweet pastry made of layers of phyllo pastry filled with chopped nuts and sweetened with syrup or honey ",
@@ -5399,14 +4046,7 @@
         {
             "tag": "224",
             "patterns": [
-                "who",
-                "is",
-                "carlos",
-                "pena",
-                "on",
-                "big",
-                "time",
-                "rush"
+                "who is carlos pena on big time rush"
             ],
             "responses": [
                 "Big Time Rush ( BTR ) is an American television series created by Scott Fellows about the Hollywood misadventures of four hockey players from Minnesota \u2014Kendall , James , Carlos , and Logan , after they are selected to form a boy band ",
@@ -5422,15 +4062,7 @@
         {
             "tag": "225",
             "patterns": [
-                "where",
-                "is",
-                "the",
-                "arctic",
-                "circle",
-                "located",
-                "on",
-                "the",
-                "earth"
+                "where is the arctic circle located on the earth"
             ],
             "responses": [
                 "World map showing the Arctic Circle in red ",
@@ -5453,11 +4085,7 @@
         {
             "tag": "226",
             "patterns": [
-                "where",
-                "are",
-                "colors",
-                "on",
-                "stoplight"
+                "where are colors on stoplight"
             ],
             "responses": [
                 "An LED traffic light in Portsmouth , England",
@@ -5473,12 +4101,7 @@
         {
             "tag": "227",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "frequency",
-                "of",
-                "seizures"
+                "what is the frequency of seizures"
             ],
             "responses": [
                 "An epileptic seizure ( colloquially a fit ) is a transient symptom of `` abnormal excessive or synchronous neuronal activity in the brain '' ",
@@ -5497,11 +4120,7 @@
         {
             "tag": "228",
             "patterns": [
-                "where",
-                "is",
-                "baby",
-                "bash",
-                "from"
+                "where is baby bash from"
             ],
             "responses": [
                 "Ronnie Ray Bryant ( born October 18 , 1975 ) , better known by his stage name Baby Bash ( formerly Baby Beesh ) , is a Mexican-American rapper ",
@@ -5517,15 +4136,7 @@
         {
             "tag": "229",
             "patterns": [
-                "who",
-                "is",
-                "it",
-                "that",
-                "hangs",
-                "himself",
-                "in",
-                "shawshank",
-                "redemption"
+                "who is it that hangs himself in shawshank redemption"
             ],
             "responses": [
                 "The Shawshank Redemption is a 1994 American drama film written and directed by Frank Darabont and starring Tim Robbins and Morgan Freeman ",
@@ -5538,16 +4149,7 @@
         {
             "tag": "230",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "ge",
-                "building",
-                "in",
-                "rockefeller",
-                "plaza",
-                "called",
-                "before"
+                "what was the GE building in rockefeller plaza called before "
             ],
             "responses": [
                 "The GE Building is an Art Deco skyscraper that forms the centerpiece of Rockefeller Center in Midtown Manhattan , New York City , USA ",
@@ -5560,13 +4162,7 @@
         {
             "tag": "231",
             "patterns": [
-                "what",
-                "is",
-                "d",
-                "application",
-                "in",
-                "code",
-                "blocks"
+                "What is D Application in code blocks"
             ],
             "responses": [
                 "In coding theory , block codes comprise the large and important family of error-correcting codes that encode data in blocks ",
@@ -5580,14 +4176,7 @@
         {
             "tag": "232",
             "patterns": [
-                "what",
-                "is",
-                "ron",
-                "weasley",
-                "'s",
-                "sister",
-                "'s",
-                "name"
+                "what is ron weasley 's sister 's name"
             ],
             "responses": [
                 "Ronald Bilius `` Ron '' Weasley is a fictional character and one of the three protagonists ( the other two being Harry Potter and Hermione Granger ) of J. K. Rowling 's Harry Potter series ",
@@ -5600,16 +4189,7 @@
         {
             "tag": "233",
             "patterns": [
-                "who",
-                "was",
-                "in",
-                "the",
-                "movie",
-                "i",
-                "confess",
-                "with",
-                "montgomery",
-                "clift"
+                "WHO WAS IN THE MOVIE I CONFESS WITH MONTGOMERY CLIFT"
             ],
             "responses": [
                 "I Confess is a 1953 drama film directed by Alfred Hitchcock , and starring Montgomery Clift as Fr . Michael William Logan , a Catholic priest , Anne Baxter as Ruth Grandfort , and Karl Malden as Inspector Larrue ",
@@ -5624,11 +4204,7 @@
         {
             "tag": "234",
             "patterns": [
-                "where",
-                "was",
-                "merle",
-                "haggard",
-                "born"
+                "where was merle haggard born "
             ],
             "responses": [
                 "Merle Ronald Haggard ( born April 6 , 1937 ) is an American country and Western song writer , singer , guitarist , fiddler , and instrumentalist ",
@@ -5641,14 +4217,7 @@
         {
             "tag": "235",
             "patterns": [
-                "what",
-                "is",
-                "matt",
-                "'s",
-                "power",
-                "power",
-                "of",
-                "five"
+                "what is matt 's power power of five"
             ],
             "responses": [
                 "Matthew J. Freeman is the main protagonist of Anthony Horowitz 's The Power of Five novels , Raven 's Gate , Evil Star and one of the protagonists in Necropolis , although not the main protagonist ",
@@ -5663,11 +4232,7 @@
         {
             "tag": "236",
             "patterns": [
-                "what",
-                "is",
-                "article",
-                "5",
-                "about"
+                "what is article 5 about"
             ],
             "responses": [
                 "Resolution proposing the Nineteenth Amendment",
@@ -5686,30 +4251,7 @@
         {
             "tag": "237",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "name",
-                "of",
-                "the",
-                "norwegian",
-                "who",
-                "is",
-                "known",
-                "as",
-                "the",
-                "``",
-                "father",
-                "of",
-                "modern",
-                "skiing",
-                ",",
-                "``",
-                "being",
-                "responsible",
-                "for",
-                "telemark",
-                "skiing"
+                "What is the name of the Norwegian who is known as the `` father of modern skiing , '' being responsible for Telemark skiing"
             ],
             "responses": [
                 "Spring ski touring on Hardangervidda , Norway",
@@ -5721,12 +4263,7 @@
         {
             "tag": "238",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "function",
-                "of",
-                "albumin"
+                "What is the function of albumin "
             ],
             "responses": [
                 "Human serum albumin is the most abundant protein in human blood plasma ",
@@ -5747,16 +4284,7 @@
         {
             "tag": "239",
             "patterns": [
-                "when",
-                "were",
-                "4g",
-                "wireless",
-                "networks",
-                "launched",
-                "in",
-                "the",
-                "united",
-                "states"
+                "when were 4g wireless networks launched in the United States "
             ],
             "responses": [
                 "In telecommunications , 4G is the fourth generation of mobile phone mobile communication technology standards ",
@@ -5774,14 +4302,7 @@
         {
             "tag": "240",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "country",
-                "of",
-                "ecuador",
-                "known",
-                "as"
+                "what is the country of Ecuador known as "
             ],
             "responses": [
                 "Ecuador ( ) , officially the Republic of Ecuador ( , which literally translates as `` Republic of the Equator `` ) is a representative democratic republic in South America , bordered by Colombia on the north , Peru on the east and south , and by the Pacific Ocean to the west ",
@@ -5803,11 +4324,7 @@
         {
             "tag": "241",
             "patterns": [
-                "what",
-                "is",
-                "chicken",
-                "chow",
-                "mein"
+                "what is chicken chow mein"
             ],
             "responses": [
                 "Chow mein ( ; Chinese : \u7092\u9eb5 , `` fried noodles '' ) is a Chinese term for a dish of stir-fried noodles , of which there are many varieties "
@@ -5816,15 +4333,7 @@
         {
             "tag": "242",
             "patterns": [
-                "what",
-                "is",
-                "dominican",
-                "republic",
-                "'s",
-                "most",
-                "important",
-                "natural",
-                "resource"
+                "what is dominican republic 's most important natural resource"
             ],
             "responses": [
                 "The Dominican Republic ( ; , ) is a nation on the island of Hispaniola , part of the Greater Antilles archipelago in the Caribbean region ",
@@ -5858,11 +4367,7 @@
         {
             "tag": "243",
             "patterns": [
-                "where",
-                "is",
-                "desmanthus",
-                "illinoensis",
-                "found"
+                "where is Desmanthus Illinoensis found"
             ],
             "responses": [
                 "Desmanthus illinoensis ( commonly known as Illinois bundleflower , prairie-mimosa or prickleweed ) is a plant in many areas of the south central US ",
@@ -5873,11 +4378,7 @@
         {
             "tag": "244",
             "patterns": [
-                "when",
-                "was",
-                "pearl",
-                "harbor",
-                "bombed"
+                "when was pearl harbor bombed"
             ],
             "responses": [
                 "The attack on Pearl Harbor ( called Hawaii Operation or Operation AI by the Japanese Imperial General Headquarters ( Operation Z in planning ) and the Battle of Pearl Harbor ) was a surprise military strike conducted by the Imperial Japanese Navy against the United States naval base at Pearl Harbor , Hawaii , on the morning of December 7 , 1941 ( December 8 in Japan ) ",
@@ -5903,11 +4404,7 @@
         {
             "tag": "245",
             "patterns": [
-                "what",
-                "is",
-                "associates",
-                "arts",
-                "degree"
+                "what is associates arts degree"
             ],
             "responses": [
                 "An associate degree is an undergraduate academic degree awarded by community colleges , junior colleges , technical colleges , and bachelor 's degree -granting colleges and universities upon completion of a course of study usually lasting two years ",
@@ -5919,19 +4416,7 @@
         {
             "tag": "246",
             "patterns": [
-                "what",
-                "was",
-                "captain",
-                "ahab",
-                "'s",
-                "ship",
-                "in",
-                "the",
-                "novel",
-                "``",
-                "moby",
-                "dick",
-                "``"
+                "What was Captain Ahab 's Ship in the novel `` Moby Dick ''"
             ],
             "responses": [
                 "Moby-Dick ; or , The Whale is a novel by Herman Melville , first published in 1851 ",
@@ -5955,13 +4440,7 @@
         {
             "tag": "247",
             "patterns": [
-                "what",
-                "is",
-                "oregon",
-                "institute",
-                "of",
-                "technology",
-                "like"
+                "what is oregon institute of technology like"
             ],
             "responses": [
                 "Oregon Institute of Technology , also known as Oregon Tech or OIT , is one of seven Universities in the Oregon University System , and the only public institute of technology in the Pacific Northwest ",
@@ -5973,11 +4452,7 @@
         {
             "tag": "248",
             "patterns": [
-                "what",
-                "is",
-                "linkedin",
-                "used",
-                "for"
+                "what is linkedin used for"
             ],
             "responses": [
                 "LinkedIn ( ) is a social networking website for people in professional occupations ",
@@ -5992,13 +4467,7 @@
         {
             "tag": "249",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "role",
-                "of",
-                "the",
-                "amygdala"
+                "what is the role of the amygdala"
             ],
             "responses": [
                 "Human brain in the coronal orientation ",
@@ -6010,13 +4479,7 @@
         {
             "tag": "250",
             "patterns": [
-                "where",
-                "is",
-                "rashard",
-                "lewis",
-                "from",
-                "?",
-                "?"
+                "where is rashard lewis from ? ? "
             ],
             "responses": [
                 "Rashard Quovon Lewis ( born August 8 , 1979 in Pineville , Louisiana ) is an American professional basketball player who currently plays for the Miami Heat of the NBA "
@@ -6025,12 +4488,7 @@
         {
             "tag": "251",
             "patterns": [
-                "what",
-                "is",
-                "on",
-                "a",
-                "grocery",
-                "store"
+                "What is on a grocery store"
             ],
             "responses": [
                 "Piggly Wiggly was the first self-service grocery store , opening in 1916 ",
@@ -6043,13 +4501,7 @@
         {
             "tag": "252",
             "patterns": [
-                "what",
-                "is",
-                "india",
-                "'s",
-                "current",
-                "income",
-                "gap"
+                "what is india 's current income gap"
             ],
             "responses": [
                 "World map showing the Gini coefficient , a measure of income inequality ",
@@ -6076,17 +4528,7 @@
         {
             "tag": "253",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "song",
-                "just",
-                "a",
-                "dream",
-                "by",
-                "carrie",
-                "underwood",
-                "about"
+                "what is the song just a dream by carrie underwood about"
             ],
             "responses": [
                 "For the Nelly song of the same name , see Just a Dream ( Nelly song ) ",
@@ -6100,12 +4542,7 @@
         {
             "tag": "254",
             "patterns": [
-                "what",
-                "is",
-                "contemporary",
-                "period",
-                "based",
-                "on"
+                "what is contemporary period based on"
             ],
             "responses": [
                 "Contemporary classical music can be understood as belonging to the period that started in the mid-1970s with the retreat of modernism ",
@@ -6115,14 +4552,7 @@
         {
             "tag": "255",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "song",
-                "here",
-                "without",
-                "you",
-                "about"
+                "what is the song here without you about"
             ],
             "responses": [
                 "`` Here Without You '' is the title of a song recorded by American rock band 3 Doors Down ",
@@ -6138,15 +4568,7 @@
         {
             "tag": "256",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "autocrat",
-                "of",
-                "the",
-                "breakfast",
-                "table",
-                "about"
+                "What was The Autocrat of the Breakfast Table about "
             ],
             "responses": [
                 "The Autocrat of the Breakfast-Table ( 1858 ) is a collection of essays written by Oliver Wendell Holmes , Sr . The essays were originally published in The Atlantic Monthly in 1857 and 1858 before being collected in book form ",
@@ -6156,18 +4578,7 @@
         {
             "tag": "257",
             "patterns": [
-                "what",
-                "was",
-                "the",
-                "warm",
-                "temperature",
-                "in",
-                "the",
-                "most",
-                "northern",
-                "area",
-                "of",
-                "canada"
+                "what was the warm temperature in the most northern area of canada "
             ],
             "responses": [
                 "Northern Canada , defined politically to comprise ( from west to east ) Yukon , Northwest Territories , and Nunavut ",
@@ -6183,13 +4594,7 @@
         {
             "tag": "258",
             "patterns": [
-                "who",
-                "was",
-                "kentucky",
-                "s",
-                "first",
-                "basketball",
-                "coach"
+                "who was kentucky s first basketball coach"
             ],
             "responses": [
                 "The Kentucky Wildcats men 's basketball team is a college basketball team representing the University of Kentucky ",
@@ -6212,13 +4617,7 @@
         {
             "tag": "259",
             "patterns": [
-                "where",
-                "is",
-                "the",
-                "world",
-                "cup",
-                "in",
-                "2010"
+                "where is the world cup in 2010"
             ],
             "responses": [
                 "The 2010 FIFA World Cup was the 19th FIFA World Cup , the world championship for men 's national association football teams ",
@@ -6237,9 +4636,7 @@
         {
             "tag": "260",
             "patterns": [
-                "what",
-                "is",
-                "mepsipax"
+                "what is mepsipax"
             ],
             "responses": [
                 "Pepsi Max is a low- calorie , sugar -free cola , marketed by PepsiCo as an alternative to Pepsi and Diet Pepsi ",
@@ -6250,10 +4647,7 @@
         {
             "tag": "261",
             "patterns": [
-                "what",
-                "is",
-                "jagger",
-                "bombs"
+                "what is jagger bombs"
             ],
             "responses": [
                 "The J\u00e4gerbomb ( ) is a bomb shot cocktail that was originally mixed by dropping a shot of J\u00e4germeister into a glass of beer and in recent years evolved by the Bagheri brothers ( UK ) with Red Bull or other energy drinks ",
@@ -6265,15 +4659,7 @@
         {
             "tag": "262",
             "patterns": [
-                "who",
-                "is",
-                "the",
-                "author",
-                "of",
-                "tree",
-                "grows",
-                "in",
-                "brooklyn"
+                "who is the author of tree grows in brooklyn"
             ],
             "responses": [
                 "A Tree Grows in Brooklyn is a 1943 novel written by Betty Smith ",
@@ -6286,10 +4672,7 @@
         {
             "tag": "263",
             "patterns": [
-                "what",
-                "is",
-                "flex",
-                "3"
+                "what is flex 3"
             ],
             "responses": [
                 "Apache Flex , formerly Adobe Flex , is a software development kit ( SDK ) for the development and deployment of cross-platform rich Internet applications based on the Adobe Flash platform ",
@@ -6303,14 +4686,7 @@
         {
             "tag": "264",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "german",
-                "name",
-                "for",
-                "frederick",
-                "friedrich"
+                "what is the german name for frederick friedrich"
             ],
             "responses": [
                 "Frederick is a masculine given name meaning `` peaceful ruler . ''",
@@ -6327,15 +4703,7 @@
         {
             "tag": "265",
             "patterns": [
-                "when",
-                "was",
-                "the",
-                "first",
-                "census",
-                "of",
-                "all",
-                "50",
-                "states"
+                "when was the first census of all 50 states"
             ],
             "responses": [
                 "A state of the United States of America is one of the fifty constituent political entities that shares its sovereignty with the United States federal government ",
@@ -6361,17 +4729,7 @@
         {
             "tag": "266",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "difference",
-                "between",
-                "alpha",
-                "lipoic",
-                "acid",
-                "and",
-                "lipoic",
-                "acid"
+                "what is the difference between alpha lipoic acid and lipoic acid"
             ],
             "responses": [
                 "Lipoic acid ( LA ) , also known as \u03b1-lipoic acid and alpha lipoic acid ( ALA ) is an organosulfur compound derived from octanoic acid ",
@@ -6392,11 +4750,7 @@
         {
             "tag": "267",
             "patterns": [
-                "who",
-                "is",
-                "songwriter",
-                "david",
-                "gray"
+                "who is songwriter david gray"
             ],
             "responses": [
                 "David Gray ( born 13 June 1968 ) is a British singer-songwriter from Sale , Cheshire ",
@@ -6408,12 +4762,7 @@
         {
             "tag": "268",
             "patterns": [
-                "when",
-                "was",
-                "library",
-                "of",
-                "congress",
-                "built"
+                "when was library of congress built"
             ],
             "responses": [
                 "The Library of Congress is the research library of the United States Congress , the de facto national library of the United States of America , and the oldest federal cultural institution in the United States ",
@@ -6431,11 +4780,7 @@
         {
             "tag": "269",
             "patterns": [
-                "what",
-                "is",
-                "gravy",
-                "made",
-                "of"
+                "what is gravy made of"
             ],
             "responses": [
                 "Gravy can be served in a pitcher or gravy boat ",
@@ -6451,11 +4796,7 @@
         {
             "tag": "270",
             "patterns": [
-                "what",
-                "is",
-                "a",
-                "research",
-                "abstract"
+                "what is a research abstract"
             ],
             "responses": [
                 "An abstract is a brief of a research article , thesis , review , conference proceeding or any in-depth analysis of a particular subject or discipline , and is often used to help the reader quickly ascertain the paper 's purpose ",
@@ -6468,15 +4809,7 @@
         {
             "tag": "271",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "movie",
-                "when",
-                "jennifer",
-                "love",
-                "hewitt",
-                "cooks"
+                "what is the movie when jennifer love hewitt cooks"
             ],
             "responses": [
                 "Jennifer Love Hewitt ( born February 21 , 1979 ) is an American actress , producer , author , television director and singer-songwriter ",
@@ -6496,15 +4829,7 @@
         {
             "tag": "272",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "the",
-                "north",
-                "american",
-                "free",
-                "trade",
-                "agreement"
+                "What is the the North American Free Trade Agreement "
             ],
             "responses": [
                 "The North American Free Trade Agreement ( NAFTA ) is an agreement signed by Canada , Mexico , and the United States , creating a trilateral trade bloc in North America ",
@@ -6516,11 +4841,7 @@
         {
             "tag": "273",
             "patterns": [
-                "when",
-                "was",
-                "27th",
-                "amendment",
-                "proposed"
+                "When was 27th amendment proposed"
             ],
             "responses": [
                 "Page 1 of the Twenty-seventh Amendment 's certification in the National Archives",
@@ -6534,13 +4855,7 @@
         {
             "tag": "274",
             "patterns": [
-                "who",
-                "is",
-                "in",
-                "the",
-                "school",
-                "of",
-                "athens"
+                "who is in The school of athens"
             ],
             "responses": [
                 "The School of Athens created by Raphael Sanzio , or ' in Italian , is one of the most famous frescoes by the Italian Renaissance artist Raphael ",
@@ -6552,11 +4867,7 @@
         {
             "tag": "275",
             "patterns": [
-                "where",
-                "was",
-                "paul",
-                "revere",
-                "born"
+                "where was paul revere born"
             ],
             "responses": [
                 "Paul Revere ( December 21 , 1734May 10 , 1818 ) was an American silversmith , early industrialist , and a patriot in the American Revolution ",
@@ -6570,10 +4881,7 @@
         {
             "tag": "276",
             "patterns": [
-                "what",
-                "is",
-                "float",
-                "format"
+                "what is float format"
             ],
             "responses": [
                 "Floating Point is an album by John McLaughlin , released in 2008 through the record label Abstract Logix ",
@@ -6583,11 +4891,7 @@
         {
             "tag": "277",
             "patterns": [
-                "where",
-                "are",
-                "kenworth",
-                "trucks",
-                "built"
+                "where are kenworth trucks built"
             ],
             "responses": [
                 "Kenworth is an American manufacturer of medium and heavy-duty Class 8 trucks based in Kirkland , Washington , United States , a suburb of Seattle , Washington ",
@@ -6597,14 +4901,7 @@
         {
             "tag": "278",
             "patterns": [
-                "where",
-                "is",
-                "uwa",
-                "on",
-                "world",
-                "list",
-                "of",
-                "universities"
+                "where is UWA on world list of universities"
             ],
             "responses": [
                 "The University of Western Australia ( UWA ) was established by an Act of the Western Australian Parliament in February 1911 , and began teaching students for the first time in 1913 ",
@@ -6619,15 +4916,7 @@
         {
             "tag": "279",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "storage",
-                "capacity",
-                "of",
-                "a",
-                "floppy",
-                "disk"
+                "what is the storage capacity of a floppy disk"
             ],
             "responses": [
                 "8-inch , -inch , and -inch floppy disks",
@@ -6643,13 +4932,7 @@
         {
             "tag": "280",
             "patterns": [
-                "where",
-                "are",
-                "the",
-                "jonas",
-                "brothers",
-                "right",
-                "now"
+                "where are the jonas brothers right now"
             ],
             "responses": [
                 "The Jonas Brothers are an American pop rock band ",
@@ -6664,12 +4947,7 @@
         {
             "tag": "281",
             "patterns": [
-                "who",
-                "are",
-                "the",
-                "parents",
-                "of",
-                "anguilla"
+                "who are the parents of anguilla"
             ],
             "responses": [
                 "Angelina Jolie ( , born Angelina Jolie Voight ; June 4 , 1975 ) is an American actress , film director , and screenwriter ",
@@ -6689,9 +4967,7 @@
         {
             "tag": "282",
             "patterns": [
-                "what",
-                "is",
-                "ibrix"
+                "what is IBRIX"
             ],
             "responses": [
                 "IBRIX Fusion is a scalable parallel file system combined with integrated logical volume manager , availability features and a management interface ",
@@ -6705,10 +4981,7 @@
         {
             "tag": "283",
             "patterns": [
-                "what",
-                "is",
-                "bilirubin",
-                "total"
+                "what is bilirubin total"
             ],
             "responses": [
                 "Bilirubin ( formerly referred to as hematoidin ) is the yellow breakdown product of normal heme catabolism ",
@@ -6721,10 +4994,7 @@
         {
             "tag": "284",
             "patterns": [
-                "where",
-                "is",
-                "ccr",
-                "from"
+                "where is ccr from"
             ],
             "responses": [
                 "Creedence Clearwater Revival ( sometimes shortened to Creedence or CCR ) was an American rock band that gained popularity in the late 1960s and early 1970s ",
@@ -6740,14 +5010,7 @@
         {
             "tag": "285",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "average",
-                "wear",
-                "time",
-                "for",
-                "braces"
+                "what is the average wear time for braces"
             ],
             "responses": [
                 "A patient with braces ",
@@ -6760,11 +5023,7 @@
         {
             "tag": "286",
             "patterns": [
-                "what",
-                "is",
-                "three",
-                "phase",
-                "electrical"
+                "what is three phase electrical"
             ],
             "responses": [
                 "Three-phase transformer with four wire output for 208Y/120 volt service : one wire for neutral , others for A , B and C phases",
@@ -6779,13 +5038,7 @@
         {
             "tag": "287",
             "patterns": [
-                "who",
-                "is",
-                "the",
-                "highest",
-                "scoring",
-                "nba",
-                "player"
+                "Who is the highest scoring NBA player"
             ],
             "responses": [
                 "Michael Jordan has won ten scoring titles in his career ",
@@ -6811,11 +5064,7 @@
         {
             "tag": "288",
             "patterns": [
-                "what",
-                "is",
-                "direct",
-                "marketing",
-                "channel"
+                "what is direct marketing channel"
             ],
             "responses": [
                 "Direct marketing is a channel-agnostic form of advertising that allows businesses and nonprofits organizations to communicate straight to the customer , with advertising techniques that can include Cell Phone Text messaging , email , interactive consumer websites , online display ads , fliers , catalog distribution , promotional letters , and outdoor advertising ",
@@ -6836,12 +5085,7 @@
         {
             "tag": "289",
             "patterns": [
-                "what",
-                "is",
-                "disney",
-                "'s",
-                "magic",
-                "kingdom"
+                "what is disney 's magic kingdom"
             ],
             "responses": [
                 "Magic Kingdom Park , also known as Magic Kingdom , is the first of four theme parks built at the Walt Disney World Resort in Bay Lake , Florida ",
@@ -6854,20 +5098,7 @@
         {
             "tag": "290",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "name",
-                "of",
-                "the",
-                "family",
-                "who",
-                "own",
-                "the",
-                "biltmore",
-                "estates",
-                "in",
-                "nc"
+                "what is the name of the family who own the biltmore estates in nc"
             ],
             "responses": [
                 "Biltmore Estate is a large private estate and tourist attraction in Asheville , North Carolina ",
@@ -6879,18 +5110,7 @@
         {
             "tag": "291",
             "patterns": [
-                "who",
-                "was",
-                "the",
-                "congressman",
-                "who",
-                "was",
-                "caught",
-                "with",
-                "an",
-                "escort",
-                "in",
-                "ny"
+                "who was the congressman who was caught with an escort in ny"
             ],
             "responses": [
                 "Eliot Spitzer in 2004",
@@ -6901,12 +5121,7 @@
         {
             "tag": "292",
             "patterns": [
-                "when",
-                "is",
-                "the",
-                "next",
-                "national",
-                "election"
+                "when is the next national election "
             ],
             "responses": [
                 "The United States presidential election of 2008 was the 56th quadrennial presidential election ",
@@ -6924,15 +5139,7 @@
         {
             "tag": "293",
             "patterns": [
-                "what",
-                "is",
-                "the",
-                "name",
-                "of",
-                "chris",
-                "cornell",
-                "'s",
-                "band"
+                "what is the name of chris cornell 's band "
             ],
             "responses": [
                 "Chris Cornell ( born Christopher John Boyle ; July 20 , 1964 ) is an American rock musician best known as the lead vocalist and rhythm guitarist for Soundgarden and as the former lead vocalist for Audioslave ",
@@ -6947,13 +5154,7 @@
         {
             "tag": "294",
             "patterns": [
-                "what",
-                "is",
-                "global",
-                "warming",
-                "not",
-                "caused",
-                "by"
+                "what is global warming not caused by"
             ],
             "responses": [
                 "Global warming is the rise in the average temperature of Earth 's atmosphere and oceans since the late 19th century and its projected continuation ",
@@ -6978,10 +5179,7 @@
         {
             "tag": "295",
             "patterns": [
-                "what",
-                "is",
-                "raid",
-                "1+0"
+                "what is raid 1+0"
             ],
             "responses": [
                 "RAID ( redundant array of independent disks , originally redundant array of inexpensive disks ) is a storage technology that combines multiple disk drive components into a logical unit ",
