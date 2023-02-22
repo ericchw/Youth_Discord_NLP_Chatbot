@@ -1,10 +1,10 @@
 INSERT INTO account(email, pwd, username) VALUES ('1234@gmail.com', '1234', 'Ken');
 
-INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate) VALUES 
-('Hiking everyday', 'Finished', 'Let''s hiking', CURRENT_DATE, CURRENT_TIMESTAMP);
+INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate, eHdrLimitMem) VALUES 
+('Hiking everyday', 'Finished', 'Let''s hiking', CURRENT_DATE, CURRENT_TIMESTAMP, 5);
 
-INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate) VALUES 
-('Playing everyday', 'Start', 'Let''s play the game', CURRENT_DATE, CURRENT_TIMESTAMP);
+INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate, eHdrLimitMem) VALUES 
+('Playing everyday', 'Start', 'Let''s play the game', CURRENT_DATE, CURRENT_TIMESTAMP, 5);
 
 --Game--
 -------------------------------------------------------------------------------
@@ -23,8 +23,8 @@ INSERT INTO Games(name, name_zh) VALUES ('Arena of Valor', '傳說對決');
 INSERT INTO Games(name, name_zh) VALUES ('Honor of Kings', '王者榮耀');
 INSERT INTO Games(name, name_zh) VALUES ('Other', '其他');
 
-INSERT INTO Event_Detail (egameid, edtlhdrid) values ('1', '2');
-INSERT INTO Event_Detail (egameid, edtlhdrid) values ('2', '2');
+INSERT INTO Event_Detail (edtlgameId, edtlhdrid) values ('1', '2');
+INSERT INTO Event_Detail (edtlgameId, edtlhdrid) values ('2', '2');
 
 select * from games
 
