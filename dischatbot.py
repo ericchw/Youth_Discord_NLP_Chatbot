@@ -129,7 +129,7 @@ async def on_message(message):
         emotion=emtransform(text)
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
         ans=chat.outp(text)
         # print(ans)
@@ -166,7 +166,7 @@ async def on_message(message):
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
-            if emotion[0]['label'] == 'anger':
+            if emotion['label'] == 'anger':
                 string = "大家冷靜d"
                 await message.channel.send(string)
                 # SQL: save message to database "大家冷靜d"
@@ -176,7 +176,7 @@ async def on_message(message):
         #     await message.channel.send(string)
         if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
-        if emotion[0]['label'] == 'sadness':
+        if emotion['label'] == 'sadness':
             user = message.author
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
@@ -199,12 +199,14 @@ async def on_message(message):
                 #     responses[user.id] = "Agree"
                 # elif str(reaction) == "👎":
                 #     responses[user.id] = "Disagree"
+                
                 response = message.content
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                 if response == 'yes':
                     user1 = bot.get_user(315836714029416449)
-                    await user1.send("有個人需要幫手，麻煩請關注")
-                print(response)
+                    await user1.send(f"{message.author.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                    # await user.send("你的")
+                # print(type(response))
         
         
         # await message.channel.send(ans) 
@@ -222,7 +224,9 @@ async def on_reaction_add(reaction, user):
                 # send need help to social worker
                 # user1 = bot.get_user(792305150429233152)
                 user1 = bot.get_user(315836714029416449)
-                await user1.send("有個人需要幫手，麻煩請關注")
+                # await user1.send("有個人需要幫手，麻煩請關注")
+                await user1.send(f"{user.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                # await user.send("你的")
                 connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             elif str(reaction) == "👎":
                 responses[user.id] = "Disagree"

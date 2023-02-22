@@ -26,7 +26,7 @@ def emtransform(text):
     for item in emotion_labels[0]:
         if item['score'] > max_score:
             max_score = item['score']
-            return_label = item['label']
+            return_label = item
 
     # print(emotion_labels)
     return return_label
