@@ -205,10 +205,48 @@ include 'checkCookie.php';
                                         <strong>Basic Form</strong> Elements
                                     </div>
                                     <div class="card-body card-block">
-                                        <?php
-                                        require 'getEvent.php';
-                                        echo getEventById($_POST['eventId']);
-                                        ?>
+                                        <form action="addEvent.php" method="POST">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="title" class=" form-control-label">Title</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="title" name="title" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="desc" class=" form-control-label">Description</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <textarea id="desc" name="desc" class="form-control" rows="7" style="resize: none"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="maxMember" class=" form-control-label">Maximum Number of Member</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="number" id="maxMember" name="maxMember" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="eventDate" class=" form-control-label">Date</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" min=<?php echo date("Y-m-d") . 'T00:00:00' ?>>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-success btn-sm" name="submit">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                                <button type="reset" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-ban"></i> Reset
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -252,6 +290,13 @@ include 'checkCookie.php';
         <!-- Main JS-->
         <script src="js/main.js"></script>
 
+        <script>
+            // var x = document.getElementById("eventDate").min;
+            // x = new Date();
+            // var today = new Date();
+            // //document.getElementById("eventDate").min = dt;
+            // document.getElementById("eventDate").setAttribute("min", today);
+        </script>
 </body>
 
 </html>

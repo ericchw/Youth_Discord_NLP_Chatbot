@@ -13,14 +13,14 @@ if (pg_num_rows($query) > 0) {
         echo '<td>
         <div>
             <form action="deleteGame.php" method="POST">
-                <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="gameId" value="' . $result[0] . '">
+                <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="gameId" value="' . $result['id'] . '">
                     X
                 </button>
             </form>
         </div>
         </td>';
-        echo '<td>' . $result[2] . '</td>';
-        echo '<td>' . $result[1] . '</td>';
+        echo '<td>' . $result['name_zh'] . '</td>';
+        echo '<td>' . $result['name'] . '</td>';
         echo '<tr class="spacer"></tr>';
     }
 
