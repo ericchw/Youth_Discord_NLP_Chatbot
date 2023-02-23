@@ -18,7 +18,7 @@ function insertEvent($title, $desc, $limit, $date)
     $status = "Pending";
     $query = pg_prepare($dbconn, 'InsertEventStatement', 'INSERT INTO Event_Header(eHdrId, eHdrTitle, eHdrStatus, eHdrLimitMem, eHdrDesc, eHdrDate, eHdrCreateDate, ehdrUpdateDate) VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7)');
     #// $query = pg_execute($dbconn, 'InsertEventStatement', array($title, 'Pending', $desc, $limit, $now, $now));
-    $query = pg_execute($dbconn, 'InsertEventStatement', array($title, $status, $limit, $desc, $now, $now, null));
+    $query = pg_execute($dbconn, 'InsertEventStatement', array($title, $status, $limit, $desc, $date, $now, null));
 
     // if (pg_num_rows($query) != 0) {
     //     pg_free_result($query);
@@ -36,6 +36,7 @@ function insertEvent($title, $desc, $limit, $date)
         pg_close($dbconn);
     }
 }
+
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $desc = $_POST['desc'];
