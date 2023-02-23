@@ -199,10 +199,10 @@ include 'checkCookie.php';
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
-            <!-- <div align="right">
+            <div align="right">
               <a class="btn btn-primary" href="newEvent_page.php">
                 <i class="fa fa-star"></i>&nbsp; NEW</a>
-            </div> -->
+            </div>
             <div class="row">
               <div class="table-responsive table-responsive-data2">
                 <table class="table table-data2">
