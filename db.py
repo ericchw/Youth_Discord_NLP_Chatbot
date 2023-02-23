@@ -14,7 +14,6 @@ def initiate():
 
             cursor.execute("""
         
-
 DROP TABLE account;
 DROP TABLE chatlog;
 DROP TABLE helplog;
@@ -22,6 +21,7 @@ DROP TABLE games;
 DROP TABLE information;
 DROP TABLE event_detail;
 DROP TABLE event_header;
+
 
 CREATE TABLE IF NOT EXISTS account
 (
@@ -89,21 +89,22 @@ INSERT INTO games VALUES
 CREATE TABLE IF NOT EXISTS Event_Header(
     eHdrId SERIAL PRIMARY KEY,
     eHdrTitle VARCHAR,
-    eStatus VARCHAR,
+    eHdrStatus VARCHAR,
+    eHdrLimitMem int,
     eHdrDesc VARCHAR,
     eHdrDate TIMESTAMP,
-    eHdrCreateDate TIMESTAMP
+    eHdrCreateDate TIMESTAMP,
+    eHdrUpdaetDate TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Event_Detail(
     eDtlId SERIAL PRIMARY KEY,
-    eDtlOptTitle VARCHAR,
     eDtlHdrId INTEGER,
-    eDtlUsername VARCHAR,
-    eDtlGameId VARCHAR,
+    eDtlGameId INTEGER,
     CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
 );
-        """)
+
+""")
         
             connection.commit()
             

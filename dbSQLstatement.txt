@@ -116,7 +116,8 @@ CREATE TABLE IF NOT EXISTS Event_Header(
     eHdrLimitMem int,
     eHdrDesc VARCHAR,
     eHdrDate TIMESTAMP,
-    eHdrCreateDate TIMESTAMP
+    eHdrCreateDate TIMESTAMP,
+    eHdrUpdateDate TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS Event_Detail(
