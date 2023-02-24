@@ -1,9 +1,9 @@
 from logging import PlaceHolder
-import os, discord, requests
+import os, discord, time, asyncio
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from emotiontest import emtransform
-import chat, faq
+import chat
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
@@ -13,7 +13,6 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 event=""
-time=""
 member=""
 bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) # specify the guild IDs in debug_guilds
 
@@ -88,6 +87,7 @@ async def event(ctx):
         description="1:Apex\n2:LOL\n3:PUBG",
         color=discord.Color.red()
     )
+    print(event)
     await ctx.send(embed=embed)
     connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
     await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
@@ -98,15 +98,27 @@ async def event(ctx):
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
     initiate()
-#     schedule.every().week.at("12:00").do(job)
-#     while True:
-#         schedule.run_pending()
-#         time.sleep(1)
+    
+    await asyncio.create_task(my_function())
+        
+        
 
-# def job():
-#     channel = bot.get_channel(995158826347143309)
-#     message = "Hello! This is a message posted every week."
-#     bot.loop.create_task(channel.send(message))
+async def my_function():
+    # channel = bot.get_channel(995158826347143309)
+    # message = "Hello! This is a message posted every week."
+    # bot.loop.create_task(channel.send(message))
+    while True:
+        print(f"Starting timer for {5} seconds.")
+        latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
+        print("Latest record:", latest_record[1])
+        event = latest_record[1]
+        await asyncio.sleep(5)
+        
+
+    
+        
+    
+
     
 @bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
 async def ping(ctx): # a slash command will be created with the name "ping"
