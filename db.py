@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS Event_Header(
 CREATE TABLE IF NOT EXISTS Event_Detail(
     eDtlId SERIAL PRIMARY KEY,
     eDtlHdrId INTEGER,
-    eDtlGameId INTEGER,
+    eDtlVoteDtl VARCHAR, 
     CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
 );
 
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS Event_Header(
 CREATE TABLE IF NOT EXISTS Event_Detail(
     eDtlId SERIAL PRIMARY KEY,
     eDtlHdrId INTEGER,
-    eDtlGameId INTEGER,
+    eDtlVoteDtl VARCHAR, 
     CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
 );
         """)
