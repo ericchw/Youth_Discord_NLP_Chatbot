@@ -269,7 +269,14 @@ async def on_reaction_add(reaction, user):
             # Do something with the user's reaction
             if dateline == False:
                 polling[0][1].append(user.name)
-                connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0]}', '{polling}')", "u")
+                flat_list = [item for sublist in polling for item in sublist]
+                str_list = [str(item) for item in flat_list]
+                temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
+                my_string = ",".join(temp_list)
+                my_string = my_string.replace("'", "")
+
+                print(my_string)
+                connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u")
             print(cevent[0][5])
             print(f"{user.name} reacted with {reaction.emoji}")
         print(f"Outisde: {user.name} reacted with {reaction.emoji}")
