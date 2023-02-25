@@ -133,6 +133,7 @@ async def my_function():
             # await channel.send("testing")
             if datetime.now() >= cevent[0][5]:
                 dateline = True
+                #TODO number of people 
             try:
                 embed = discord.Embed(
                     title=cevent[0][1],
@@ -277,7 +278,6 @@ async def on_reaction_add(reaction, user):
 
                 print(my_string)
                 connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u")
-            print(cevent[0][5])
             print(f"{user.name} reacted with {reaction.emoji}")
         print(f"Outisde: {user.name} reacted with {reaction.emoji}")
     if isinstance(message.channel, discord.DMChannel):
