@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-from nltk_utils import bag_of_words, stem
+from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
 import jieba 
 with open('intents.json', 'r',encoding='utf-8') as f:
@@ -22,8 +22,9 @@ for intent in intents['intents']:
     tags.append(tag)
     for pattern in intent['patterns']:
         # tokenize each word in the sentence
-        single=jieba.cut(pattern)
-        w=sorted(set(single))
+        # single=jieba.cut(pattern)
+        # w=sorted(set(single))
+        w = tokenize(pattern)
         # add to our words list
         all_words.extend(w)
         # add to xy pair
@@ -56,10 +57,10 @@ y_train = np.array(y_train)
 
 # Hyper-parameters 
 num_epochs = 1000
-batch_size = 8
+batch_size = len(tags)
 learning_rate = 0.001
 input_size = len(X_train[0])
-hidden_size = 8
+hidden_size = len(tags)
 output_size = len(tags)
 print(input_size, output_size)
 
@@ -79,6 +80,7 @@ class ChatDataset(Dataset):
         return self.n_samples
 
 dataset = ChatDataset()
+# multiprocessing.freeze_support()
 train_loader = DataLoader(dataset=dataset,
                           batch_size=batch_size,
                           shuffle=True,

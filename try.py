@@ -1,16 +1,33 @@
-import discord
-from discord.ext import commands
-from discord.ui import Button, View, button, Modal, InputText, Select
+import random
+import jieba
 
-intents = discord.Intents.default()
-intents.members = True
-intents.message_content = True
-bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) 
+# load dataset
+import json
+with open('data.json', 'r',encoding='utf-8') as f:
+    intents = json.load(f)
 
 bot.event_variable1 = ""
 bot.event_variable2 = ""
 bot.event_variable3 = ""
 
+# define a function to get the response
+def get_response(input_text):
+    # tokenize the input text
+    tokens = jieba.lcut(input_text)
+    # find matching patterns
+    matching_patterns = []
+    for token in tokens:
+        if token in patterns:
+            matching_patterns.extend(patterns[token])
+    # select a random response from the matching patterns
+    if matching_patterns:
+        tag = random.choice(matching_patterns)
+        for intent in intents['intents']:
+            if intent['tag'] == tag:
+                response = random.choice(intent['responses'])
+                return response
+    else:
+        return "對不起，我不太明白你的意思。"
 
 class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
