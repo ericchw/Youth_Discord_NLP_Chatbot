@@ -2,6 +2,7 @@ from logging import PlaceHolder
 import os, discord, time, asyncio
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
+from discord.ext import commands
 from emotiontest import emtransform
 import chat
 from bs4 import BeautifulSoup
@@ -12,9 +13,11 @@ responses= {}
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
-event=""
+cevent = []
 member=""
-bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) # specify the guild IDs in debug_guilds
+bot = discord.Bot(debug_guilds=["995158826347143309"], intents=discord.Intents.all()) # specify the guild IDs in debug_guilds
+# bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
+channel_id = 1060512412299710504
 
 # since global slash commands can take up to an hour to register,
 # we need to limit the guilds for testing purposes
@@ -87,9 +90,10 @@ async def event(ctx):
         description="1:Apex\n2:LOL\n3:PUBG",
         color=discord.Color.red()
     )
-    print(event)
+    # print(event)
     await ctx.send(embed=embed)
-    connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+    # bot.loop.create_task(my_function(ctx))
+    # connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
     await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
 
 
@@ -108,10 +112,28 @@ async def my_function():
     # message = "Hello! This is a message posted every week."
     # bot.loop.create_task(channel.send(message))
     while True:
-        print(f"Starting timer for {5} seconds.")
+        # print(f"Starting timer for {5} seconds.")
+        channel = bot.get_channel(channel_id)
         latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
-        print("Latest record:", latest_record[1])
-        event = latest_record[1]
+        # print("Latest record:", latest_record[1])
+        await channel.send('testing')
+        global cevent
+        print(cevent)
+        if cevent != latest_record[1]:
+            cevent = latest_record[1]
+            # await channel.send("testing")
+            try:
+                embed = discord.Embed(
+                    title=cevent[0][1],
+                    description=cevent[0][4],
+                    color=discord.Color.red()
+                )
+                await channel.send(embed=embed)
+            except (Exception) as error:
+                print(f'List is empty {error}')
+            
+
+            
         await asyncio.sleep(5)
         
 
@@ -132,7 +154,7 @@ async def button2(ctx): # a slash command will be created with the name "ping"
 
 @bot.event
 async def on_message(message):
-    print(message)
+    # print(message)
     #type=<MessageType.application_command: 20>
     if(message.type[1]==20):
         await message.add_reaction('✅')
@@ -228,6 +250,9 @@ async def on_reaction_add(reaction, user):
     # check if the user's id is in the dictionary
     # bug found to fix: DM and public like message also will redirect to socail worker
     message = reaction.message
+    #TODO: here check reaction
+    #1. IF CHECK discord channel, and check emoji is 'up' or 'down'
+
     if isinstance(message.channel, discord.DMChannel):
         if user.id in responses:
             if reaction.emoji == "👍":
@@ -244,6 +269,6 @@ async def on_reaction_add(reaction, user):
                 responses[user.id] = "Disagree"
             # print the user's response
             print(f'{user.name} responded with {responses[user.id]}')
-
+    
 #run bot by token
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
