@@ -10,6 +10,8 @@ from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
 
 responses= {}
+polling = [[1,[]],[2,[]],[3,[]],[4,[]],[5,[]],[6,[]],[7,[]],[8,[]],[9,[]],[10,[]]]
+dateline = False
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -111,17 +113,26 @@ async def my_function():
     # channel = bot.get_channel(995158826347143309)
     # message = "Hello! This is a message posted every week."
     # bot.loop.create_task(channel.send(message))
+    games = connectDB("SELECT * FROM games LIMIT 10","r")
+    for index,game in enumerate(games[1]):
+        polling[index][0] = game[1]
     while True:
         # print(f"Starting timer for {5} seconds.")
         channel = bot.get_channel(channel_id)
         latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
         # print("Latest record:", latest_record[1])
-        await channel.send('testing')
+        
+            
+            
+            
+        # await channel.send('testing')
         global cevent
         print(cevent)
         if cevent != latest_record[1]:
             cevent = latest_record[1]
             # await channel.send("testing")
+            if datetime.now() >= cevent[0][5]:
+                dateline = True
             try:
                 embed = discord.Embed(
                     title=cevent[0][1],
@@ -132,7 +143,6 @@ async def my_function():
             except (Exception) as error:
                 print(f'List is empty {error}')
             
-
             
         await asyncio.sleep(5)
         
@@ -252,7 +262,17 @@ async def on_reaction_add(reaction, user):
     message = reaction.message
     #TODO: here check reaction
     #1. IF CHECK discord channel, and check emoji is 'up' or 'down'
-
+    if user.bot:
+        return
+    if reaction.message.channel.id == 1060512412299710504:
+        if reaction.emoji == "1️⃣":
+            # Do something with the user's reaction
+            if dateline == False:
+                polling[0][1].append(user.name)
+                connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0]}', '{polling}')", "u")
+            print(cevent[0][5])
+            print(f"{user.name} reacted with {reaction.emoji}")
+        print(f"Outisde: {user.name} reacted with {reaction.emoji}")
     if isinstance(message.channel, discord.DMChannel):
         if user.id in responses:
             if reaction.emoji == "👍":
