@@ -116,7 +116,18 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
-
+#check eng
+from langdetect import detect
+import chinese
+def is_english(text):
+    try:
+        lang = detect(text)
+        if lang == 'en':
+            return True
+        else:
+            return False
+    except:
+        return False
 
 @bot.event
 async def on_message(message):
@@ -130,9 +141,15 @@ async def on_message(message):
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
         print(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+        #connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion[0]['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
-        ans=chat.outp(text)
+        print(text)
+        if is_english(text):
+            ans=chat.outp(text)
+        else:
+            ans=chinese.get_response(text)
+
+        
         # print(ans)
         if ans:
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
