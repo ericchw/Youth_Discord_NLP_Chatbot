@@ -121,19 +121,37 @@ async def my_function():
         channel = bot.get_channel(channel_id)
         latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
         # print("Latest record:", latest_record[1])
-        
-            
-            
             
         # await channel.send('testing')
         global cevent
-        print(cevent)
+        # print("cevent:")
+        # print(cevent)
+        # print("polling:")
+        # print(polling)
+        resultGame=''
+        resultParticipant=[]
+        maxOfParticipant=0
+        if cevent and cevent[0][3]:
+            maxOfParticipant = int(cevent[0][3])
+        print("maxOfParticipant: "+str(maxOfParticipant))
+        for i in polling:
+            game = i[0]
+            participant = i[1]
+            numOfParticipant = len(i[1])
+            print(i[0] + str(numOfParticipant))
+            print(f"Game: {game}; Participant: {participant}; Number of Participant: {numOfParticipant}")
+            if numOfParticipant >= maxOfParticipant:
+                resultGame = game
+                resultParticipant = participant
+
         if cevent != latest_record[1]:
             cevent = latest_record[1]
             # await channel.send("testing")
-            if datetime.now() >= cevent[0][5]:
+            print("result + part:" + str(resultGame) + str(maxOfParticipant))
+            if datetime.now() >= cevent[0][5] or resultGame!= '':
                 dateline = True
                 #TODO number of people 
+                print(f"Result: {resultGame}; Participant: {resultParticipant}")
             try:
                 embed = discord.Embed(
                     title=cevent[0][1],
@@ -277,7 +295,11 @@ async def on_reaction_add(reaction, user):
                 my_string = my_string.replace("'", "")
 
                 print(my_string)
-                connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u")
+                edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                if edtlhdridInDB == id:
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                else:
+                    id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
             print(f"{user.name} reacted with {reaction.emoji}")
         print(f"Outisde: {user.name} reacted with {reaction.emoji}")
     if isinstance(message.channel, discord.DMChannel):

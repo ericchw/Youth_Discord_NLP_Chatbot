@@ -220,12 +220,15 @@ def connectDB(sqlStatement, mode):
         print("PostgreSQL connection is established.")
 
         cursor.execute(sqlStatement)
-        
-        if mode == "r":
+        if mode == "c":
+            defaultId = cursor.fetchone()[0]
+            connection.commit()
+            return defaultId
+        elif mode == "r":
              column_names = [desc[0] for desc in cursor.description]
              record = cursor.fetchall()
              return column_names, record
-        else: # c = create, u = update, d = delete
+        else: # u = update, d = delete
             connection.commit()
 
     except (Exception, psycopg2.Error) as error:
