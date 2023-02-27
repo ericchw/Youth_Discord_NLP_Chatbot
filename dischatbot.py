@@ -74,7 +74,7 @@ class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         if bot.event_variable1.find(str(interaction.user))<0:
-            print(interaction.user)
+            # print(interaction.user)
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
@@ -307,12 +307,20 @@ async def on_reaction_add(reaction, user):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
 
-                print(my_string)
-                edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                if edtlhdridInDB == id:
-                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                # print(my_string)
+                # edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                # if edtlhdridInDB == id:
+                #     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                # else:
+                #     id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
+                
+                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                # connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                print(event_det_id)
+                if len(event_det_id[1]) == 0:
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
-                    id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
             print(f"{user.name} reacted with {reaction.emoji}")
         print(f"Outisde: {user.name} reacted with {reaction.emoji}")
     if isinstance(message.channel, discord.DMChannel):
