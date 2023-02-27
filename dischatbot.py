@@ -4,7 +4,9 @@ from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
 from emotiontest import emtransform
-import chat
+import chinese
+import langid
+import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
@@ -72,6 +74,7 @@ class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         if bot.event_variable1.find(str(interaction.user))<0:
+            print(interaction.user)
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
@@ -151,14 +154,16 @@ async def my_function():
             if datetime.now() >= cevent[0][5] or resultGame!= '':
                 dateline = True
                 #TODO number of people 
-                print(f"Result: {resultGame}; Participant: {resultParticipant}")
+                #print(f"Result: {resultGame}; Participant: {resultParticipant}")
             try:
                 embed = discord.Embed(
                     title=cevent[0][1],
                     description=cevent[0][4],
                     color=discord.Color.red()
                 )
+                
                 await channel.send(embed=embed)
+                await channel.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
             except (Exception) as error:
                 print(f'List is empty {error}')
             
@@ -179,29 +184,37 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
-
+#check eng
+def is_english(text):
+    lang, _ = langid.classify(text)
+    return lang == 'en'
 
 @bot.event
 async def on_message(message):
-    # print(message)
-    #type=<MessageType.application_command: 20>
-    if(message.type[1]==20):
-        await message.add_reaction('✅')
+    print(message)
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
+        print(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
-        ans=chat.outp(text)
+        print(text)
+        if is_english(text):
+            ans=chat.outp(text)
+        else:
+            ans=chinese.get_response(text)
+
+        
         # print(ans)
         if ans:
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
             # print(type(ans))
             if type(ans) == str:
-                await message.channel.send(ans)
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                if(message.channel.name=='faq'):
+                    await message.channel.send(ans)
+                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             else:
                 # print(ans.keys())
                 for key in ans.keys():
@@ -229,7 +242,7 @@ async def on_message(message):
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
-            if emotion['label'] == 'anger':
+            if emotion['label']== 'anger':
                 string = "大家冷靜d"
                 await message.channel.send(string)
                 # SQL: save message to database "大家冷靜d"

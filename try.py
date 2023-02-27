@@ -1,49 +1,27 @@
-import random
-import jieba
+import os, discord, requests
+from turtle import title
+from discord.ui import Button, View, button, Modal, InputText, Select
+import discord
+responses= {}
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+event=""
+time=""
+member=""
+bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) # specify the guild IDs in debug_guilds
 
-# load dataset
-import json
-with open('data.json', 'r',encoding='utf-8') as f:
-    intents = json.load(f)
+# event handler for when the bot is ready
+@bot.event
+async def on_ready():
+    print('Logged in as', bot.user.name)
+    print('------')
+    event = bot.get_channel(1079610659647520849)
+    await event.send("有個人需要幫手，麻煩請關注")
 
-# create a dictionary to store all patterns
-patterns = {}
-for intent in intents['intents']:
-    for pattern in intent['patterns']:
-        # use jieba to tokenize the pattern
-        tokens = jieba.lcut(pattern)
-        for token in tokens:
-            # only consider tokens that are not stopwords
-            if token not in [' ', '\n'] and token not in patterns:
-                patterns[token] = [intent['tag']]
-            elif token in patterns:
-                patterns[token].append(intent['tag'])
 
-# define a function to get the response
-def get_response(input_text):
-    # tokenize the input text
-    tokens = jieba.lcut(input_text)
-    # find matching patterns
-    matching_patterns = []
-    for token in tokens:
-        if token in patterns:
-            matching_patterns.extend(patterns[token])
-    # select a random response from the matching patterns
-    if matching_patterns:
-        tag = random.choice(matching_patterns)
-        for intent in intents['intents']:
-            if intent['tag'] == tag:
-                response = random.choice(intent['responses'])
-                return response
-    else:
-        return "對不起，我不太明白你的意思。"
 
-# start the chatting loop
-while True:
-    input_text = input("你好，有什麼我能幫到你的嗎？")
-    if input_text.lower() in ['bye', '再見']:
-        print("好的，下次見！")
-        break
-    else:
-        response = get_response(input_text)
-        print(response)
+# start the bot
+bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
+
+
