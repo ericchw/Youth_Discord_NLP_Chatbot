@@ -69,25 +69,72 @@ class EventModel(Modal):
 bot.event_variable1 = ""
 bot.event_variable2 = ""
 bot.event_variable3 = ""
+bot.event_name=[]
 
 class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         if bot.event_variable1.find(str(interaction.user))<0:
-            print(interaction.user)
+            print(interaction.user.name)
+            if dateline == False:
+                polling[1][1].append(interaction.user.name)
+                flat_list = [item for sublist in polling for item in sublist]
+                str_list = [str(item) for item in flat_list]
+                temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
+                my_string = ",".join(temp_list)
+                my_string = my_string.replace("'", "")
+                bot.event_name=polling
+                print(polling[1][1])
+                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                if len(event_det_id[1]) == 0:
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                else:
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
     async def callback2(self, button, interaction):
-        if bot.event_variable2.find(str(interaction.user))<0:
-            bot.event_variable2=bot.event_variable2+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
+         if bot.event_variable1.find(str(interaction.user))<0:
+            print(interaction.user.name)
+            if dateline == False:
+                polling[2][1].append(interaction.user.name)
+                flat_list = [item for sublist in polling for item in sublist]
+                str_list = [str(item) for item in flat_list]
+                temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
+                my_string = ",".join(temp_list)
+                my_string = my_string.replace("'", "")
+                bot.event_name=polling
+                print(polling[1][1])
+                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                if len(event_det_id[1]) == 0:
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                else:
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+            bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
     @button(label="3:PUBG", style=discord.ButtonStyle.red)
     async def callback3(self, button, interaction):
-        if bot.event_variable3.find(str(interaction.user))<0:
-            bot.event_variable3=bot.event_variable3+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
-
+        if bot.event_variable1.find(str(interaction.user))<0:
+            print(interaction.user.name)
+            if dateline == False:
+                polling[3][1].append(interaction.user.name)
+                flat_list = [item for sublist in polling for item in sublist]
+                str_list = [str(item) for item in flat_list]
+                temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
+                my_string = ",".join(temp_list)
+                my_string = my_string.replace("'", "")
+                bot.event_name=polling
+                print(polling[1][1])
+                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                if len(event_det_id[1]) == 0:
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                else:
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+            bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
 @bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
 async def event(ctx):
     embed = discord.Embed(
@@ -150,7 +197,7 @@ async def my_function():
         if cevent != latest_record[1]:
             cevent = latest_record[1]
             # await channel.send("testing")
-            print("result + part:" + str(resultGame) + str(maxOfParticipant))
+            #print("result + part:" + str(resultGame) + str(maxOfParticipant))
             if datetime.now() >= cevent[0][5] or resultGame!= '':
                 dateline = True
                 #TODO number of people 
@@ -161,9 +208,10 @@ async def my_function():
                     description=cevent[0][4],
                     color=discord.Color.red()
                 )
-                
+
+                bot.event_name=polling
                 await channel.send(embed=embed)
-                await channel.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
+                await channel.send(f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=Event())
             except (Exception) as error:
                 print(f'List is empty {error}')
             
