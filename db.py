@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS Event_Detail(
     CONSTRAINT fk_EventDetail FOREIGN KEY (eDtlHdrId) REFERENCES Event_Header(eHdrId)
 );
 
-INSERT INTO event_header VALUES (DEFAULT, 'test1', 'Pending', 1, 'desc', '2023-02-28 01:37:00', '2023-02-27 01:37:00', NULL)
+INSERT INTO event_header VALUES (DEFAULT, 'test1', 'Pending', 1, 'desc', '2023-12-28 01:37:00', '2023-02-27 01:37:00', NULL)
         """)
         
         connection.commit()

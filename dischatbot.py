@@ -72,7 +72,7 @@ bot.event_variable3 = ""
 bot.event_name=[]
 
 class Event(View):
-    @button(label="1:Apex", style=discord.ButtonStyle.blurple)
+    @button(label="1:League of Legends", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         for i in polling[1][1]:
             bot.event_variable1=bot.event_variable1+i
@@ -86,14 +86,13 @@ class Event(View):
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
-                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
-    @button(label="2:LOL", style=discord.ButtonStyle.green)
+    @button(label="Apex Leagues", style=discord.ButtonStyle.green)
     async def callback2(self, button, interaction):
         for i in polling[2][1]:
             bot.event_variable2=bot.event_variable2+i
@@ -107,14 +106,13 @@ class Event(View):
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
-                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-            bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
+            bot.event_variable2=bot.event_variable2+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
-    @button(label="3:PUBG", style=discord.ButtonStyle.red)
+    @button(label="Fall Guys", style=discord.ButtonStyle.red)
     async def callback3(self, button, interaction):
         for i in polling[3][1]:
             bot.event_variable3=bot.event_variable3+i
@@ -129,12 +127,11 @@ class Event(View):
                 bot.event_name=polling
                 #print(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
-                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-            bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
+                    connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
+            bot.event_variable3=bot.event_variable3+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
 @bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
 async def event(ctx):
