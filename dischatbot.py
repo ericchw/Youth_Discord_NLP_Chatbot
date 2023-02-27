@@ -171,32 +171,51 @@ async def my_function():
         # print("Latest record:", latest_record[1])
             
         # await channel.send('testing')
-        global cevent
+        global cevent, dateline
         # print("cevent:")
         # print(cevent)
         # print("polling:")
         # print(polling)
+        if dateline == True:
+            user1 = bot.get_user(315836714029416449)
+            await user1.send(f"activity passed")
         resultGame=''
         resultParticipant=[]
         maxOfParticipant=0
         if cevent and cevent[0][3]:
             maxOfParticipant = int(cevent[0][3])
         print("maxOfParticipant: "+str(maxOfParticipant))
+        print(f'result game: {resultGame}')
+        # print(f'dateline: {dateline}')
+        print(f'resultPart: {resultParticipant}')
         for i in polling:
-            game = i[0]
+            game = str(i[0])
+            # print(str(game))
             participant = i[1]
             numOfParticipant = len(i[1])
-            print(i[0] + str(numOfParticipant))
-            print(f"Game: {game}; Participant: {participant}; Number of Participant: {numOfParticipant}")
-            if numOfParticipant >= maxOfParticipant:
+            numOfParticipant = int(numOfParticipant)
+
+            # print(i[0] + str(numOfParticipant))
+            # print(f"Game: {game}; Participant: {participant}; Number of Participant: {numOfParticipant}")
+            if numOfParticipant >= maxOfParticipant and numOfParticipant != 0 and maxOfParticipant != 0:
+                # print(f'number of part: {numOfParticipant}')
+                # print(f'games: {game}')
                 resultGame = game
-                resultParticipant = participant
+                # print(f'resultgame: {resultGame}')
+                # print(i[1])
+                resultParticipant = i[1]
+                dateline = True
+                break
+        
 
         if cevent != latest_record[1]:
             cevent = latest_record[1]
             # await channel.send("testing")
             #print("result + part:" + str(resultGame) + str(maxOfParticipant))
-            if datetime.now() >= cevent[0][5] or resultGame!= '':
+            # if datetime.now() >= cevent[0][5] or resultGame!= '':
+                # dateline = True
+                # pass
+            if resultGame:
                 dateline = True
                 #TODO number of people 
                 #print(f"Result: {resultGame}; Participant: {resultParticipant}")
