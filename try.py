@@ -16,9 +16,9 @@ bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) # specif
 async def on_ready():
     print('Logged in as', bot.user.name)
     print('------')
-    user1 = bot.get_channel(1079610659647520849)
-    await user1.send("有個人需要幫手，麻煩請關注")
-    #channel = bot.get_channel("1079610659647520849")
+    event = bot.get_channel(1079610659647520849)
+    await event.send("有個人需要幫手，麻煩請關注")
+
 
 
 # start the bot

@@ -74,6 +74,7 @@ class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         if bot.event_variable1.find(str(interaction.user))<0:
+            print(interaction.user)
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
         await interaction.response.edit_message(content=f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select ", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
@@ -153,15 +154,16 @@ async def my_function():
             if datetime.now() >= cevent[0][5] or resultGame!= '':
                 dateline = True
                 #TODO number of people 
-                print(f"Result: {resultGame}; Participant: {resultParticipant}")
+                #print(f"Result: {resultGame}; Participant: {resultParticipant}")
             try:
                 embed = discord.Embed(
                     title=cevent[0][1],
                     description=cevent[0][4],
                     color=discord.Color.red()
                 )
-
-                await channel.send(embed=Event())
+                
+                await channel.send(embed=embed)
+                await channel.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
             except (Exception) as error:
                 print(f'List is empty {error}')
             
