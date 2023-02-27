@@ -198,7 +198,7 @@ async def on_message(message):
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
         print(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
         print(text)
         if is_english(text):
@@ -241,7 +241,7 @@ async def on_message(message):
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
-            if emotion== 'anger':
+            if emotion['label']== 'anger':
                 string = "大家冷靜d"
                 await message.channel.send(string)
                 # SQL: save message to database "大家冷靜d"
@@ -251,7 +251,7 @@ async def on_message(message):
         #     await message.channel.send(string)
         if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
-        if emotion == 'sadness':
+        if emotion['label'] == 'sadness':
             user = message.author
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
