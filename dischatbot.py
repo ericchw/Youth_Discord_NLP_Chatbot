@@ -297,31 +297,31 @@ async def on_reaction_add(reaction, user):
     if user.bot:
         return
     if reaction.message.channel.id == 1060512412299710504:
-        if reaction.emoji == "1️⃣":
-            # Do something with the user's reaction
-            if dateline == False:
-                polling[0][1].append(user.name)
-                flat_list = [item for sublist in polling for item in sublist]
-                str_list = [str(item) for item in flat_list]
-                temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
-                my_string = ",".join(temp_list)
-                my_string = my_string.replace("'", "")
+        # if reaction.emoji == "1️⃣":
+        #     # Do something with the user's reaction
+        #     if dateline == False:
+        #         polling[0][1].append(user.name)
+        #         flat_list = [item for sublist in polling for item in sublist]
+        #         str_list = [str(item) for item in flat_list]
+        #         temp_list = [item.strip("[]") if "[" in item else item for item in str_list]
+        #         my_string = ",".join(temp_list)
+        #         my_string = my_string.replace("'", "")
 
-                # print(my_string)
-                # edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                # if edtlhdridInDB == id:
-                #     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-                # else:
-                #     id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
+        #         # print(my_string)
+        #         # edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+        #         # if edtlhdridInDB == id:
+        #         #     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+        #         # else:
+        #         #     id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
                 
-                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
-                # connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-                print(event_det_id)
-                if len(event_det_id[1]) == 0:
-                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
-                else:
-                    connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-            print(f"{user.name} reacted with {reaction.emoji}")
+        #         event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+        #         # connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+        #         print(event_det_id)
+        #         if len(event_det_id[1]) == 0:
+        #             connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+        #         else:
+        #             connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
+        #     print(f"{user.name} reacted with {reaction.emoji}")
         print(f"Outisde: {user.name} reacted with {reaction.emoji}")
     if isinstance(message.channel, discord.DMChannel):
         if user.id in responses:
