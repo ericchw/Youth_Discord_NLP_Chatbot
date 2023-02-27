@@ -4,7 +4,9 @@ from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
 from emotiontest import emtransform
-import chat
+import chinese
+import langid
+import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
@@ -179,7 +181,10 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
-
+#check eng
+def is_english(text):
+    lang, _ = langid.classify(text)
+    return lang == 'en'
 
 @bot.event
 async def on_message(message):
@@ -192,9 +197,16 @@ async def on_message(message):
         emotion=emtransform(text)
         text = text.replace("'", "''")
             #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+        print(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # print(ans)
-        ans=chat.outp(text)
+        print(text)
+        if is_english(text):
+            ans=chat.outp(text)
+        else:
+            ans=chinese.get_response(text)
+
+        
         # print(ans)
         if ans:
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
@@ -229,7 +241,7 @@ async def on_message(message):
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
-            if emotion['label'] == 'anger':
+            if emotion== 'anger':
                 string = "大家冷靜d"
                 await message.channel.send(string)
                 # SQL: save message to database "大家冷靜d"
@@ -239,7 +251,7 @@ async def on_message(message):
         #     await message.channel.send(string)
         if 'working hours' in message.content:
             await message.channel.send(file=discord.File('5ee1ae88efa3e739.png'))
-        if emotion['label'] == 'sadness':
+        if emotion == 'sadness':
             user = message.author
             embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
             # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
