@@ -74,9 +74,9 @@ bot.event_name=[]
 class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
-        bot.event_variable1=polling[1][1]
+        for i in polling[1][1]:
+            bot.event_variable1=bot.event_variable1+i
         if bot.event_variable1.find(str(interaction.user))<0:
-            print(interaction.user.name)
             if dateline == False:
                 polling[1][1].append(interaction.user.name)
                 flat_list = [item for sublist in polling for item in sublist]
@@ -92,10 +92,11 @@ class Event(View):
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
     async def callback2(self, button, interaction):
-        bot.event_variable2=polling[2][1]
+        for i in polling[2][1]:
+            bot.event_variable2=bot.event_variable2+i
         if bot.event_variable2.find(str(interaction.user))<0:
             if dateline == False:
                 polling[2][1].append(interaction.user.name)
@@ -112,10 +113,11 @@ class Event(View):
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
     @button(label="3:PUBG", style=discord.ButtonStyle.red)
     async def callback3(self, button, interaction):
-        bot.event_variable3=polling[3][1]
+        for i in polling[3][1]:
+            bot.event_variable3=bot.event_variable3+i
         if bot.event_variable3.find(str(interaction.user))<0:
             if dateline == False:
                 polling[3][1].append(interaction.user.name)
@@ -133,7 +135,7 @@ class Event(View):
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
-        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
+        await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{polling[1][1]}\n2.{bot.event_name[2][0]}:\n{polling[2][1]}\n3.{bot.event_name[3][0]}:\n{polling[3][1]}\nPlease select", view=self)
 @bot.command(name="create_event")  #https://www.youtube.com/watch?v=56XoybDajjA&t=487s
 async def event(ctx):
     embed = discord.Embed(
@@ -167,7 +169,7 @@ async def my_function():
         polling[index][0] = game[1]
     while True:
         # print(f"Starting timer for {5} seconds.")
-        channel = bot.get_channel(channel_id)
+        channel = bot.get_channel(1079031912682766406)
         latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
         # print("Latest record:", latest_record[1])
             
@@ -210,6 +212,9 @@ async def my_function():
 
                 bot.event_name=polling
                 await channel.send(embed=embed)
+                bot.event_variable1 = ""
+                bot.event_variable2 = ""
+                bot.event_variable3 = ""
                 await channel.send(f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=Event())
             except (Exception) as error:
                 print(f'List is empty {error}')
