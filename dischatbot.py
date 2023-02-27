@@ -74,6 +74,7 @@ bot.event_name=[]
 class Event(View):
     @button(label="1:Apex", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
+        bot.event_variable1=polling[1][1]
         if bot.event_variable1.find(str(interaction.user))<0:
             print(interaction.user.name)
             if dateline == False:
@@ -84,7 +85,6 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                print(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
@@ -95,8 +95,8 @@ class Event(View):
         await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
     @button(label="2:LOL", style=discord.ButtonStyle.green)
     async def callback2(self, button, interaction):
-         if bot.event_variable1.find(str(interaction.user))<0:
-            print(interaction.user.name)
+        bot.event_variable2=polling[2][1]
+        if bot.event_variable2.find(str(interaction.user))<0:
             if dateline == False:
                 polling[2][1].append(interaction.user.name)
                 flat_list = [item for sublist in polling for item in sublist]
@@ -105,7 +105,6 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                print(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
@@ -116,8 +115,8 @@ class Event(View):
         await interaction.response.edit_message(content=f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=self)
     @button(label="3:PUBG", style=discord.ButtonStyle.red)
     async def callback3(self, button, interaction):
-        if bot.event_variable1.find(str(interaction.user))<0:
-            print(interaction.user.name)
+        bot.event_variable3=polling[3][1]
+        if bot.event_variable3.find(str(interaction.user))<0:
             if dateline == False:
                 polling[3][1].append(interaction.user.name)
                 flat_list = [item for sublist in polling for item in sublist]
@@ -126,7 +125,7 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                print(polling[1][1])
+                #print(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
                 if len(event_det_id[1]) == 0:
