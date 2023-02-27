@@ -126,9 +126,6 @@ def is_english(text):
 @bot.event
 async def on_message(message):
     print(message)
-    #type=<MessageType.application_command: 20>
-    if(message.type[1]==20):
-        await message.add_reaction('✅')
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
@@ -149,8 +146,9 @@ async def on_message(message):
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
             # print(type(ans))
             if type(ans) == str:
-                await message.channel.send(ans)
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                if(message.channel.name=='faq'):
+                    await message.channel.send(ans)
+                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             else:
                 # print(ans.keys())
                 for key in ans.keys():

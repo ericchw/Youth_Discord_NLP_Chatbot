@@ -1,28 +1,27 @@
-# https://huggingface.co/docs/transformers/installation
-from transformers import pipeline
-# from google_trans_new import google_translator  
-from googletrans import Translator
-# pip uninstall googletrans==4.0.0-rc1
-# pip install googletrans==3.1.0a0
-# must uninstall first then install
-from googletrans import LANGUAGES
+import os, discord, requests
+from turtle import title
+from discord.ui import Button, View, button, Modal, InputText, Select
+import discord
+responses= {}
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+event=""
+time=""
+member=""
+bot = discord.Bot(debug_guilds=["995158826347143309"], intents=intents) # specify the guild IDs in debug_guilds
 
-# emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
-classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
+# event handler for when the bot is ready
+@bot.event
+async def on_ready():
+    print('Logged in as', bot.user.name)
+    print('------')
+    user1 = bot.get_channel(1079610659647520849)
+    await user1.send("有個人需要幫手，麻煩請關注")
+    #channel = bot.get_channel("1079610659647520849")
 
-# from transformers import pipeline
-# classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
 
-import langid
-
-def is_english(text):
-    lang, _ = langid.classify(text)
-    return lang == 'en'
-
-text = "This is an example sentence in English."
-if is_english(text):
-    print("The text is in English.")
-else:
-    print("The text is not in English.")
+# start the bot
+bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
 
 
