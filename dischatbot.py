@@ -72,7 +72,7 @@ bot.event_variable3 = ""
 bot.event_name=[]
 
 class Event(View):
-    @button(label="1:League of Legends", style=discord.ButtonStyle.blurple)
+    @button(label="League of Legends", style=discord.ButtonStyle.blurple)
     async def callback1(self, button, interaction):
         for i in polling[1][1]:
             bot.event_variable1=bot.event_variable1+i
