@@ -179,6 +179,8 @@ async def my_function():
         if dateline == True:
             user1 = bot.get_user(315836714029416449)
             await user1.send(f"activity passed")
+            dateline = False
+            
         resultGame=''
         resultParticipant=[]
         maxOfParticipant=0
