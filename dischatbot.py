@@ -177,9 +177,10 @@ async def my_function():
         # print("polling:")
         # print(polling)
         if dateline == True:
+            dateline = False
             user1 = bot.get_user(315836714029416449)
             await user1.send(f"activity passed")
-            dateline = False
+            
             
         resultGame=''
         resultParticipant=[]
@@ -207,6 +208,7 @@ async def my_function():
                 # print(i[1])
                 resultParticipant = i[1]
                 dateline = True
+                connectDB(f"UPDATE event_header SET ehdrstatus = 'Passed'  WHERE ehdrid = {cevent[0][0]}", "u")
                 break
         
 
