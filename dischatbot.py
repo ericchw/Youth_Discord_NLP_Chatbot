@@ -178,8 +178,8 @@ async def my_function():
         # print(polling)
         if dateline == True:
             dateline = False
-            user1 = bot.get_user(315836714029416449)
-            await user1.send(f"activity passed")
+            sjsAdmin = bot.get_user(909806470416191518)
+            await sjsAdmin.send(f"activity passed")
             
             
         resultGame=''
@@ -351,8 +351,8 @@ async def on_message(message):
                 response = message.content
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                 if response == 'yes':
-                    user1 = bot.get_user(315836714029416449)
-                    await user1.send(f"{message.author.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                    sjsAdmin = bot.get_user(909806470416191518)
+                    await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
                     # await user.send("你的")
                 # print(type(response))
         
@@ -401,10 +401,10 @@ async def on_reaction_add(reaction, user):
                 responses[user.id] = "Agree"
                 # await user.send("Hello! This is a private message.")
                 # send need help to social worker
-                # user1 = bot.get_user(792305150429233152)
-                user1 = bot.get_user(315836714029416449)
-                # await user1.send("有個人需要幫手，麻煩請關注")
-                await user1.send(f"{user.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                # sjsAdmin = bot.get_user(792305150429233152)
+                sjsAdmin = bot.get_user(909806470416191518)
+                # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
+                await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
                 # await user.send("你的")
                 connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             elif str(reaction) == "👎":
