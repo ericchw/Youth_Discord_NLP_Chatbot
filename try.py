@@ -19,6 +19,14 @@ async def on_ready():
     event = bot.get_channel(1079610659647520849)
     await event.send("有個人需要幫手，麻煩請關注")
 
+@bot.event
+async def on_interaction(interaction):
+    if interaction.type == discord.InteractionType.component:
+        if interaction.data['custom_id'] == 'yes':
+            await interaction.response.send_message('You voted yes!')
+        elif interaction.data['custom_id'] == 'no':
+            await interaction.response.send_message('You voted no!')
+
 
 
 # start the bot
