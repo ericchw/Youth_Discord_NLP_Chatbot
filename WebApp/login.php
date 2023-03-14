@@ -34,3 +34,4 @@ if (isset($_POST['submit'])) {
     $pwd = $_POST['password'];
     login($email, $pwd);
 }
+?>
