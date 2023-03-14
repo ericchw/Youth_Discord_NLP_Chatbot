@@ -10,6 +10,7 @@ import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
+import random
 
 responses= {}
 polling = [[1,[]],[2,[]],[3,[]],[4,[]],[5,[]],[6,[]],[7,[]],[8,[]],[9,[]],[10,[]]]
@@ -316,7 +317,9 @@ async def on_message(message):
         else:
             if emotion['label']== 'anger':
                 string = "大家冷靜d"
+                image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
                 await message.channel.send(string)
+                await message.channel.send(image)
                 # SQL: save message to database "大家冷靜d"
                 connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # string = faq.faq(message.content)
