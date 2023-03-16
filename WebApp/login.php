@@ -31,6 +31,6 @@ function login($email, $password)
 }
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $pwd = $_POST['password'];
+    $pwd = md5($_POST['password']);
     login($email, $pwd);
 }
