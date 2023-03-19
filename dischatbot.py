@@ -10,6 +10,7 @@ import chat, faq
 from bs4 import BeautifulSoup
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
+import random
 
 responses= {}
 polling = [[1,[]],[2,[]],[3,[]],[4,[]],[5,[]],[6,[]],[7,[]],[8,[]],[9,[]],[10,[]]]
@@ -178,8 +179,8 @@ async def my_function():
         # print(polling)
         if dateline == True:
             dateline = False
-            user1 = bot.get_user(315836714029416449)
-            await user1.send(f"activity passed")
+            sjsAdmin = bot.get_user(909806470416191518)
+            await sjsAdmin.send(f"activity passed")
             
             
         resultGame=''
@@ -316,7 +317,9 @@ async def on_message(message):
         else:
             if emotion['label']== 'anger':
                 string = "大家冷靜d"
+                image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
                 await message.channel.send(string)
+                await message.channel.send(image)
                 # SQL: save message to database "大家冷靜d"
                 connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
         # string = faq.faq(message.content)
@@ -351,8 +354,8 @@ async def on_message(message):
                 response = message.content
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                 if response == 'yes':
-                    user1 = bot.get_user(315836714029416449)
-                    await user1.send(f"{message.author.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                    sjsAdmin = bot.get_user(909806470416191518)
+                    await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
                     # await user.send("你的")
                 # print(type(response))
         
@@ -401,10 +404,10 @@ async def on_reaction_add(reaction, user):
                 responses[user.id] = "Agree"
                 # await user.send("Hello! This is a private message.")
                 # send need help to social worker
-                # user1 = bot.get_user(792305150429233152)
-                user1 = bot.get_user(315836714029416449)
-                # await user1.send("有個人需要幫手，麻煩請關注")
-                await user1.send(f"{user.name}，於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                # sjsAdmin = bot.get_user(792305150429233152)
+                sjsAdmin = bot.get_user(909806470416191518)
+                # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
+                await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
                 # await user.send("你的")
                 connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             elif str(reaction) == "👎":

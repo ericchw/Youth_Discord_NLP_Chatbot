@@ -1,0 +1,16 @@
+# FROM php:fpm-alpine
+
+# # Install PostgreSQL client and extension
+# RUN apk add --no-cache postgresql-client postgresql-dev \
+#     && docker-php-ext-install pgsql pdo_pgsql
+
+# # Set working directory
+# WORKDIR /var/www/html
+
+# # Copy PHP application files
+# COPY . .
+
+# # Set file permissions
+# RUN chown -R www-data:www-data /var/www/html \
+#     && chmod -R 755 /var/www/html
+
