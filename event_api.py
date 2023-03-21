@@ -17,7 +17,7 @@ def create_event(primary_key, des):
     }
 
     data = {
-        "content": f"No: {primary_key}\n{des}",
+        "content": f"**No: {primary_key}\n{des}**",
         "components": [
             {
                 "type": 1,
