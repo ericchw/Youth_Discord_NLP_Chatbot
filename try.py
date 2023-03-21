@@ -22,10 +22,16 @@ async def on_ready():
 @bot.event
 async def on_interaction(interaction):
     if interaction.type == discord.InteractionType.component:
-        if interaction.data['custom_id'] == 'yes':
+        if interaction.data['custom_id'] == 'join':
+            # Retrieve the message object
+            channel = await bot.fetch_channel(interaction.channel_id)
+            message = await channel.fetch_message(interaction.message.id)
+            
+            # Get the message content
+            message_content = message.content
+            print(message_content)
             await interaction.response.send_message('You voted yes!')
-        elif interaction.data['custom_id'] == 'no':
-            await interaction.response.send_message('You voted no!')
+
 
 
 

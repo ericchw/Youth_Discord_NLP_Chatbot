@@ -9,15 +9,15 @@ app.config["DISCORD_BOT_TOKEN"] = "OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHq
 
 discord = DiscordInteractions(app)
 
-@app.route("/send_message")
-def send_message():
+@app.route("/create_event/<string:primary_key>/<string:des>")
+def create_event(primary_key, des):
     headers = {
         "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
         "Content-Type": "application/json"
     }
 
     data = {
-        "content": "Click the button to vote:",
+        "content": f"No: {primary_key}\n{des}",
         "components": [
             {
                 "type": 1,
