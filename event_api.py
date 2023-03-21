@@ -24,15 +24,9 @@ def create_event(primary_key, des):
                 "components": [
                     {
                         "type": 2,
-                        "label": "Yes",
-                        "style": 3,
-                        "custom_id": "yes"
-                    },
-                    {
-                        "type": 2,
-                        "label": "No",
+                        "label": "Join",
                         "style": 4,
-                        "custom_id": "no"
+                        "custom_id": "join"
                     }
                 ]
             }
@@ -42,6 +36,7 @@ def create_event(primary_key, des):
     response = requests.post("https://discord.com/api/channels/996710862146523136/messages", headers=headers, json=data)
 
     return response.json()
+
 
 
 if __name__ == "__main__":

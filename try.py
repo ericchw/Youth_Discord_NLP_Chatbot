@@ -29,7 +29,11 @@ async def on_interaction(interaction):
             
             # Get the message content
             message_content = message.content
-            print(message_content)
+            key= message_content.split(':')[1].split('\n')[0].strip()
+            des = message_content.split('\n')[1].strip()
+            print(key)
+            print(des)
+
             await interaction.response.send_message('You voted yes!')
 
 
