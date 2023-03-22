@@ -83,8 +83,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="calendar_page.php">
@@ -119,8 +119,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -178,12 +178,12 @@ include 'checkCookie.php';
                       </div>
                       <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                          <a href="#">
+                          <a href="account_page.php">
                             <i class="zmdi zmdi-account"></i>Account</a>
                         </div>
                       </div>
                       <div class="account-dropdown__footer">
-                        <a href="#"> <i class="zmdi zmdi-power"></i>Logout</a>
+                        <a href="logout.php"> <i class="zmdi zmdi-power"></i>Logout</a>
                       </div>
                     </div>
                   </div>
@@ -199,6 +199,10 @@ include 'checkCookie.php';
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
+            <?php
+            if (isset($_GET['erro'])) { ?>
+              <p class="error"> <?php echo $_GET['erro']; ?></p>
+            <?php } ?>
             <div align="right">
               <a class="btn btn-primary" href="newEvent_page.php">
                 <i class="fa fa-star"></i>&nbsp; NEW</a>
@@ -211,7 +215,6 @@ include 'checkCookie.php';
                       <th>name</th>
                       <th>description</th>
                       <th>date</th>
-                      <th>status</th>
                       <th>Maximum number of member</th>
                       <th></th>
                     </tr>
@@ -219,7 +222,7 @@ include 'checkCookie.php';
                   <?php
                   if (isset($_POST['searchEvent'])) {
                     require 'getEvent.php';
-                    echo searchEventById($_POST['searchEvent']);
+                    echo searchEventByKey($_POST['searchEvent']);
                   } else {
                     include('getAllEvent.php');
                   }

@@ -1,7 +1,9 @@
-INSERT INTO account(email, pwd, username) VALUES ('1234@gmail.com', '1234', 'Ken');
+INSERT INTO account(email, pwd, username) VALUES ('1234@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'Ken');
 
-INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate, eHdrLimitMem) VALUES 
-('Hiking everyday', 'Finished', 'Let''s hiking', CURRENT_DATE, CURRENT_TIMESTAMP, 5);
+INSERT INTO Activity(ATYName, ATYCreateDate, ATYUpdateDate) VALUES ('Hiking', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Event(EVTTitle, ATYId, EVTDesc, EVTDate, EVTLimitMem, EVTCreateDate, EVTUpdateDate) VALUES 
+('Hiking everyday', 1, 'Let''s hiking', CURRENT_DATE, 5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO Event_Header(eHdrTitle, eStatus, eHdrDesc, eHdrDate, eHdrCreateDate, eHdrLimitMem) VALUES 
 ('Playing everyday', 'Start', 'Let''s play the game', CURRENT_DATE, CURRENT_TIMESTAMP, 5);

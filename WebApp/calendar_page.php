@@ -84,8 +84,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -120,8 +120,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -179,7 +179,7 @@ include 'checkCookie.php';
                       </div>
                       <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                          <a href="#">
+                          <a href="account_page.php">
                             <i class="zmdi zmdi-account"></i>Account</a>
                         </div>
                       </div>
@@ -250,43 +250,36 @@ include 'checkCookie.php';
 
   <script type="text/javascript">
     $(function() {
-      // for now, there is something adding a click handler to 'a'
-      var tues = moment().day(2).hour(19);
-
       // build trival night events for example data
-      var events = [{
-          title: "Special Conference",
-          start: moment().format("YYYY-MM-DD"),
-          url: "#",
-        },
-        {
-          title: "Doctor Appt",
-          start: moment().hour(9).add(2, "days").toISOString(),
-          url: "#",
-        },
-      ];
+      <?php
+      include 'dbconfig.php';
 
-      var trivia_nights = [];
+      $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
+        or die('Could not connect: ' . pg_last_error());
 
-      for (var i = 1; i <= 4; i++) {
-        var n = tues.clone().add(i, "weeks");
-        console.log("isoString: " + n.toISOString());
-        trivia_nights.push({
-          title: "Trival Night @ Pub XYZ",
-          start: n.toISOString(),
-          allDay: false,
-          url: "#",
-        });
-      }
+      $query = pg_query($dbconn, 'SELECT * FROM Event ORDER BY EVTCreateDate desc');
 
-      // setup a few events
+      ?>
+
+      const creEvents = [];
+
+      <?php while ($result = pg_fetch_array($query)) { ?>
+        var evtTitle = "<?php echo strval($result['evttitle']); ?>";
+        var evtDate = "<?php echo date('Y-m-d', strtotime($result['evtdate'])); ?>";
+        var creEvent = {
+          title: evtTitle,
+          start: evtDate,
+        };
+        creEvents.push(creEvent);
+      <?php } ?>
+
       $("#calendar").fullCalendar({
         header: {
           left: "prev,next today",
           center: "title",
           right: "month,agendaWeek,agendaDay,listWeek",
         },
-        events: events.concat(trivia_nights),
+        events: creEvents,
       });
     });
   </script>

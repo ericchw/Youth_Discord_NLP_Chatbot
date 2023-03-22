@@ -83,8 +83,8 @@ include 'checkCookie.php';
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="gameList_page.php">
-                                <i class="fa fa-gamepad"></i>Games</a>
+                            <a href="activityList_page.php">
+                                <i class="fa fa-gamepad"></i>Activity</a>
                         </li>
                         <li>
                             <a href="calendar_page.php">
@@ -115,8 +115,8 @@ include 'checkCookie.php';
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="gameList_page.php">
-                                <i class="fa fa-gamepad"></i>Games</a>
+                            <a href="activityList_page.php">
+                                <i class="fa fa-gamepad"></i>Activity</a>
                         </li>
                         <li>
                             <a href="event_page.php">
@@ -170,7 +170,7 @@ include 'checkCookie.php';
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+                                                    <a href="account_page.php">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                             </div>
