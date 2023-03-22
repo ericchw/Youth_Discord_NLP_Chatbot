@@ -19,6 +19,24 @@ async def on_ready():
     event = bot.get_channel(1079610659647520849)
     await event.send("有個人需要幫手，麻煩請關注")
 
+@bot.event
+async def on_interaction(interaction):
+    if interaction.type == discord.InteractionType.component:
+        if interaction.data['custom_id'] == 'join':
+            # Retrieve the message object
+            channel = await bot.fetch_channel(interaction.channel_id)
+            message = await channel.fetch_message(interaction.message.id)
+            
+            # Get the message content
+            message_content = message.content
+            key= message_content.split(':')[1].split('\n')[0].strip()
+            des = message_content.split('\n')[1].strip()
+            print(key)
+            print(des)
+
+            await interaction.response.send_message('You voted yes!')
+
+
 
 
 # start the bot

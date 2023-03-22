@@ -397,7 +397,7 @@ async def on_reaction_add(reaction, user):
         #         else:
         #             connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
         #     print(f"{user.name} reacted with {reaction.emoji}")
-        print(f"Outisde: {user.name} reacted with {reaction.emoji}")
+        print(f"Outisde: {user.name} reacted with responses")
     if isinstance(message.channel, discord.DMChannel):
         if user.id in responses:
             if reaction.emoji == "👍":
