@@ -11,7 +11,7 @@ function login($email, $password)
     $query = pg_execute($dbconn, 'LoginStatement', array($email, $password));
 
     if (pg_num_rows($query) != 0) {
-        $username = pg_fetch_result($query, 0, 0);
+        $username = pg_fetch_result($query, 0, 'username');
         if (isset($_COOKIE['email'])) {
             unset($_COOKIE['email']);
         }
@@ -31,7 +31,6 @@ function login($email, $password)
 }
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $pwd = $_POST['password'];
+    $pwd = md5($_POST['password']);
     login($email, $pwd);
 }
-?>

@@ -14,7 +14,7 @@ include 'checkCookie.php';
   <meta name="keywords" content="au theme template" />
 
   <!-- Title Page-->
-  <title>Event</title>
+  <title>Chat Log</title>
 
   <!-- Fontfaces CSS-->
   <link href="css/font-face.css" rel="stylesheet" media="all" />
@@ -83,8 +83,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="calendar_page.php">
@@ -119,8 +119,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -171,14 +171,14 @@ include 'checkCookie.php';
                         </div>
                         <div class="content">
                           <h5 class="name">
-                            <a href="#"><?php echo $_COOKIE['username'] ?></a>
+                            <a href="account_page.php"><?php echo $_COOKIE['username'] ?></a>
                           </h5>
                           <span class="email"><?php echo $_COOKIE['email'] ?></span>
                         </div>
                       </div>
                       <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                          <a href="#">
+                          <a href="account_page.php">
                             <i class="zmdi zmdi-account"></i>Account</a>
                         </div>
                       </div>

@@ -14,7 +14,7 @@ include 'checkCookie.php';
     <meta name="keywords" content="au theme template" />
 
     <!-- Title Page-->
-    <title>Event</title>
+    <title>Create Event</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all" />
@@ -83,8 +83,8 @@ include 'checkCookie.php';
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="gameList_page.php">
-                                <i class="fa fa-gamepad"></i>Games</a>
+                            <a href="activityList_page.php">
+                                <i class="fa fa-gamepad"></i>Activity</a>
                         </li>
                         <li>
                             <a href="calendar_page.php">
@@ -119,8 +119,8 @@ include 'checkCookie.php';
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="gameList_page.php">
-                                <i class="fa fa-gamepad"></i>Games</a>
+                            <a href="activityList_page.php">
+                                <i class="fa fa-gamepad"></i>Activity</a>
                         </li>
                         <li>
                             <a href="event_page.php">
@@ -178,7 +178,7 @@ include 'checkCookie.php';
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+                                                    <a href="account_page.php">
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                             </div>
@@ -202,7 +202,7 @@ include 'checkCookie.php';
                             <div class="table-responsive table-responsive-data2">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong>Basic Form</strong> Elements
+                                        <strong>New </strong> Event
                                     </div>
                                     <div class="card-body card-block">
                                         <form action="addEvent.php" method="POST">
@@ -211,7 +211,15 @@ include 'checkCookie.php';
                                                     <label for="title" class=" form-control-label">Title</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="title" name="title" class="form-control">
+                                                    <input type="text" id="title" name="title" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="title" class=" form-control-label">Activity</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <?php include('getActivityList.php');?>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -219,7 +227,7 @@ include 'checkCookie.php';
                                                     <label for="desc" class=" form-control-label">Description</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <textarea id="desc" name="desc" class="form-control" rows="7" style="resize: none"></textarea>
+                                                    <textarea id="desc" name="desc" class="form-control" rows="7" style="resize: none" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -227,7 +235,7 @@ include 'checkCookie.php';
                                                     <label for="maxMember" class=" form-control-label">Maximum Number of Member</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="number" id="maxMember" name="maxMember" class="form-control">
+                                                    <input type="number" id="maxMember" name="maxMember" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -235,7 +243,7 @@ include 'checkCookie.php';
                                                     <label for="eventDate" class=" form-control-label">Date</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" min=<?php echo date("Y-m-d") . 'T00:00:00' ?>>
+                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" min=<?php echo date("Y-m-d") . 'T00:00:00' ?> required>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
