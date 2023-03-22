@@ -19,7 +19,7 @@ function changePwd($email, $currPwd, $newPwd)
         pg_close($dbconn);
         header('Location: login_page.php?erro=Password Changed Successfully, please login again');
     } else {
-        pg_free_result($query);
+        pg_free_result($CheckLoginQuery);
         pg_close($dbconn);
         header('Location: login_page.php?erro=Username or password incorrect');
     }

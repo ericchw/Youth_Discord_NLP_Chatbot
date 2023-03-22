@@ -9,14 +9,14 @@
 -- # brew install postgresql  (version: PostgreSQL@14)
 -- # brew services start postgresql
 -- ####################################################
-Role: admin
-DROP ROLE IF EXISTS admin;
-CREATE ROLE admin WITH LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:FRd+bOnm+iKG8lhJCv4fsw==$qwIDoBcBSU6xBNZNWvKW8IC5zQehD1DIH74OQ/g2Q+U=:alCpVnY1bfriBlR9eXGE2pnZbwPlAdrnj+SMSStbCfQ=';
+-- Role: admin
+-- DROP ROLE IF EXISTS admin;
+-- CREATE ROLE admin WITH LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:FRd+bOnm+iKG8lhJCv4fsw==$qwIDoBcBSU6xBNZNWvKW8IC5zQehD1DIH74OQ/g2Q+U=:alCpVnY1bfriBlR9eXGE2pnZbwPlAdrnj+SMSStbCfQ=';
 
 -- Database: sjs
 -- DROP DATABASE IF EXISTS sjs;
-CREATE DATABASE sjs WITH OWNER = admin ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C' TABLESPACE = pg_default CONNECTION
-LIMIT = -1 IS_TEMPLATE = False;
+-- CREATE DATABASE sjs WITH OWNER = admin ENCODING = 'UTF8' LC_COLLATE = 'C' LC_CTYPE = 'C' TABLESPACE = pg_default CONNECTION
+-- LIMIT = -1 IS_TEMPLATE = False;
 
 --####################################################
 -- DROP TABLE account IF EXISTS;
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS Activity (
     ATYName VARCHAR,
     ATYCreateDate TIMESTAMP,
     ATYUpdateDate TIMESTAMP
-)
+);
 
 CREATE TABLE IF NOT EXISTS Event(
     EVTId SERIAL PRIMARY KEY,

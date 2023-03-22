@@ -6,13 +6,14 @@ COPY php.ini $PHP_INI_DIR/conf.d/
 # https://github.com/mlocati/docker-php-extension-installer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 
-RUN install-php-extensions redis mysqli xdebug
+RUN install-php-extensions redis mysqli xdebug curl
 
 RUN apt-get update
 
 RUN apt-get install -y libpq-dev \
   && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-   && docker-php-ext-install pdo pdo_pgsql pgsql
+   && docker-php-ext-install pdo pdo_pgsql pgsql\
+   && apt-get -y install curl
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
