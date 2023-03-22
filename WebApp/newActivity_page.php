@@ -211,7 +211,7 @@ include 'checkCookie.php';
                                                     <label for="name" class=" form-control-label">活動名稱</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="name" name="name" class="form-control">
+                                                    <input type="text" id="name" name="name" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="card-footer">

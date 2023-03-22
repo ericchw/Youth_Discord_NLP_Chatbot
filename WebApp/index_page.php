@@ -198,7 +198,7 @@ include 'checkCookie.php';
                             $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
                               or die('Could not connect: ' . pg_last_error());
 
-                            $query = pg_query($dbconn, 'SELECT COUNT(evtid) FROM Event');
+                            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Event');
 
                             echo pg_fetch_result($query, 0, 0);
 
@@ -223,7 +223,7 @@ include 'checkCookie.php';
                             $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
                               or die('Could not connect: ' . pg_last_error());
 
-                            $query = pg_query($dbconn, 'SELECT COUNT(id) FROM Chatlog');
+                            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Chatlog');
 
                             echo pg_fetch_result($query, 0, 0);
 

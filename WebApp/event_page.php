@@ -201,12 +201,26 @@ include 'checkCookie.php';
           <div class="container-fluid">
             <?php
             if (isset($_GET['erro'])) { ?>
-              <p class="error"> <?php echo $_GET['erro']; ?></p>
+              <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
             <?php } ?>
-            <div align="right">
-              <a class="btn btn-primary" href="newEvent_page.php">
-                <i class="fa fa-star"></i>&nbsp; NEW</a>
-            </div>
+            <?php
+            include 'dbconfig.php';
+
+            $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
+              or die('Could not connect: ' . pg_last_error());
+
+            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Event');
+
+            $rowCount = intval(pg_fetch_result($query, 0, 0));
+
+            if ($rowCount != 0) {
+              echo '<div align="right">';
+              echo '<a class="btn btn-primary" href="newEvent_page.php">';
+              echo '<i class="fa fa-star"></i>&nbsp; NEW</a>';
+              echo '</div>';
+            }
+            ?>
+
             <div class="row">
               <div class="table-responsive table-responsive-data2">
                 <table class="table table-data2">

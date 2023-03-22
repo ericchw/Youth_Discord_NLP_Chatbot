@@ -21,7 +21,7 @@ function changePwd($email, $currPwd, $newPwd)
     } else {
         pg_free_result($CheckLoginQuery);
         pg_close($dbconn);
-        header('Location: login_page.php?erro=Username or password incorrect');
+        header('Location: changePassword_page.php?erro=Current password incorrect');
     }
 }
 if (isset($_POST['submit'])) {
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     }
     $email = $_COOKIE['email'];
     if ($newPwd != $cnewPwd) {
-        header('Location: changePassword.php?erro=New Password and Confirm New Password Not Match');
+        header('Location: changePassword_page.php?erro=New Password and Confirm New Password Not Match');
     } else {
         changePwd($email, $currPwd, $newPwd);
     }

@@ -28,7 +28,6 @@ if (pg_num_rows($query) > 0) {
     pg_free_result($query);
     pg_close($dbconn);
 } else {
-    echo 'No data';
     pg_free_result($query);
     pg_close($dbconn);
 }

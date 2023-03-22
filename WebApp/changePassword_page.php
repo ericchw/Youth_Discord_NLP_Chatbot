@@ -198,10 +198,6 @@ include 'checkCookie.php';
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <?php
-                        if (isset($_GET['erro'])) { ?>
-                            <p class="error"> <?php echo $_GET['erro']; ?></p>
-                        <?php } ?>
                         <div class="row">
                             <div class="table-responsive table-responsive-data2">
                                 <div class="card">
@@ -234,6 +230,10 @@ include 'checkCookie.php';
                                                     <input type="password" id="cnewPwd" name="cnewPwd" class="form-control" required>
                                                 </div>
                                             </div>
+                                            <?php
+                                            if (isset($_GET['erro'])) { ?>
+                                                <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
+                                            <?php } ?>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-success btn-sm" name="submit">
                                                     <i class="fa fa-dot-circle-o"></i> Submit
