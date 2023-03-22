@@ -3,4 +3,4 @@
     $dbname ='sjs';
     $dbuser = 'admin';
     $dbpass = 'admin';
-?>  
+?>
