@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS Event(
     EVTTitle VARCHAR,
     EVTLimitMem int,
     EVTDesc VARCHAR,
+    EVTDeadline TIMESTAMP,
     EVTDate TIMESTAMP,
     EVTCreateDate TIMESTAMP,
     EVTUpdateDate TIMESTAMP,
