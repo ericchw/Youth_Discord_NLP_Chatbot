@@ -1,7 +1,8 @@
-import discord
+import discord, psycopg2
 from discord.ext import commands
 from flask import Flask, redirect, url_for, render_template_string
 from flask_discord_interactions import DiscordInteractions
+from datetime import datetime
 import requests
 app = Flask(__name__)
 
@@ -11,13 +12,28 @@ discord = DiscordInteractions(app)
 
 @app.route("/create_event/<string:primary_key>")
 def create_event(primary_key):
+    connection = psycopg2.connect(user="admin",
+                                password="admin",
+                                host="db",
+                                port="5432",
+                                database="sjs")
+    cursor = connection.cursor()
+    cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate FROM event where evtid = {primary_key}')
+    record = cursor.fetchall()
+    cursor.execute(f'SELECT atyname FROM activity where atyid = {record[0][1]}')
+    activity = cursor.fetchall()
+    print(record, activity)
+    print("PostgreSQL connection is established.")
+
     headers = {
         "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
         "Content-Type": "application/json"
     }
 
     data = {
-        "content": f"**No: {primary_key}**",
+        "content": f"**Event: {record[0][0]}**",
+
+
         "components": [
             {
                 "type": 1,
@@ -30,12 +46,38 @@ def create_event(primary_key):
                     }
                 ]
             }
+        ],
+        
+        'embeds':[
+            {
+                "description" :f"{record[0][3]}",
+                "title" : f"{activity[0][0]}",
+                "color": 0x4CAF50,
+                "fields": [
+                    {
+                        "name": "Number of people",
+                        "value": f"{record[0][2]}",
+                        "inline": False # This determines whether the field is displayed inline or not
+                    },
+                    {
+                        "name": "Submission Dateline",
+                        "value": f"{record[0][4]}",
+                        "inline": True
+                    }
+                ],
+                 "footer": {
+                    "text": "Footer Text"
+                }
+            }
         ]
     }
+
 
     response = requests.post("https://discord.com/api/channels/996710862146523136/messages", headers=headers, json=data)
 
     return response.json()
+
+
 
 
 
