@@ -7,17 +7,16 @@ app = Flask(__name__)
 
 app.config["DISCORD_BOT_TOKEN"] = "OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk"                    # Required to access BOT resources.
 
-discord = DiscordInteractions(app)
 
-@app.route("/create_event/<string:primary_key>/<string:des>")
-def create_event(primary_key, des):
+@app.route("/create_event/<string:primary_key>")
+def create_event(primary_key):
     headers = {
         "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
         "Content-Type": "application/json"
     }
 
     data = {
-        "content": f"**No: {primary_key}\n{des}**",
+        "content": f"**No: {primary_key}**",
         "components": [
             {
                 "type": 1,
@@ -30,12 +29,19 @@ def create_event(primary_key, des):
                     }
                 ]
             }
+        ],
+        "embeds": [
+            {
+                "title": "Example Embed",
+                "description": "This is an example embed.",
+                "color": 16711680
+            }
         ]
     }
 
     response = requests.post("https://discord.com/api/channels/996710862146523136/messages", headers=headers, json=data)
-
     return response.json()
+
 
 
 
