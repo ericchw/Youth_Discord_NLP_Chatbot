@@ -31,7 +31,7 @@ def create_event(primary_key):
     }
 
     data = {
-        "content": f"**Event: {record[0][0]}**",
+        "content": f"**Event: {primary_key}**",
 
 
         "components": [

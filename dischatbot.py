@@ -336,11 +336,12 @@ async def on_interaction(interaction):
             # Get the message content
             message_content = message.content
             eventid = message.content.split(maxsplit=1)[1]
+            # print(f"event id is {eventid}")
             eventid = re.search(r'\d+', eventid).group()
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
             timecheck = connectDB(f"select evtdate from event where evtid = {eventid}", "r")
-            print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
-            print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            # print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
+            # print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             
             if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo):
                 current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
