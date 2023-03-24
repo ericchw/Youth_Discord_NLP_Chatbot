@@ -151,7 +151,7 @@ async def event(ctx):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    initiate()
+    # initiate()
         
 
     
@@ -339,16 +339,20 @@ async def on_interaction(interaction):
             # print(f"event id is {eventid}")
             eventid = re.search(r'\d+', eventid).group()
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
-            timecheck = connectDB(f"select evtdate from event where evtid = {eventid}", "r")
+            timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
             # print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
-            # print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
-            
-            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo):
+            print(f'database: {timecheck[1]}')
+            print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
+            print(count[1][0][0])
+            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and count[1][0][0] != 0:
                 current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
                 connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
                 await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
             elif checking[1][0][0] == True:
-                await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')    
+                await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
+            elif count[1][0][0] >= timecheck[1][0][1]:
+                await interaction.response.send_message(f'{interaction.user}, member is full')
             else:
                 await interaction.response.send_message(f'{interaction.user}, the event is overdue')    
 
