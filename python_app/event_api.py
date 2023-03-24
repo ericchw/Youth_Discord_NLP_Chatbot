@@ -60,13 +60,13 @@ def create_event(primary_key):
                         "inline": False # This determines whether the field is displayed inline or not
                     },
                     {
-                        "name": "Submission Dateline",
+                        "name": "Date:",
                         "value": f"{record[0][4]}",
                         "inline": True
                     }
                 ],
                  "footer": {
-                    "text": "Footer Text"
+                    "text": f"Submission Dateline: 2023-12-31 02:17:00"
                 }
             }
         ]
