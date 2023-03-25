@@ -18,7 +18,7 @@ def create_event(primary_key):
                                 port="5432",
                                 database="sjs")
     cursor = connection.cursor()
-    cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate FROM event where evtid = {primary_key}')
+    cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate, evtdeadline FROM event where evtid = {primary_key}')
     record = cursor.fetchall()
     cursor.execute(f'SELECT atyname FROM activity where atyid = {record[0][1]}')
     activity = cursor.fetchall()
@@ -66,7 +66,7 @@ def create_event(primary_key):
                     }
                 ],
                  "footer": {
-                    "text": f"Submission Dateline: 2023-12-31 02:17:00"
+                    "text": f"Submission Dateline: {record[0][5]}"
                 }
             }
         ]

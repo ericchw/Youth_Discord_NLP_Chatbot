@@ -345,7 +345,7 @@ async def on_interaction(interaction):
             print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             print(count[1][0][0])
-            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and count[1][0][0] != 0:
+            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and timecheck[1][0][1] != 0:
                 current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
                 connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
                 await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
