@@ -235,7 +235,7 @@ include 'checkCookie.php';
                                                 <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
                                             <?php } ?>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-success btn-sm" name="submit">
+                                                <button type="submit" class="btn btn-success btn-sm" name="submit" onclick="return confirm('Are you sure to change the password?')">
                                                     <i class="fa fa-dot-circle-o"></i> Submit
                                                 </button>
                                                 <button type="reset" class="btn btn-danger btn-sm">

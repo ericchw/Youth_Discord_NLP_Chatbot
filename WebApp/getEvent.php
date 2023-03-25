@@ -55,6 +55,16 @@ function getEventById($id)
         echo '<input type="datetime-local" id="eventDate" name="eventDate" value="' . pg_fetch_result($HdrQuery, 0, 'evtdate') . '"class="form-control" readonly>';
         echo '</div>';
         echo '</div>';
+
+        echo '<div class="row form-group">';
+        echo '<div class="col col-md-3">';
+        echo '<label for="eventDate" class=" form-control-label">Submission Deadline</label>';
+        echo '</div>';
+        echo '<div class="col-12 col-md-9">';
+        echo '<input type="datetime-local" id="eventDate" name="eventDate" value="' . pg_fetch_result($HdrQuery, 0, 'evtdeadline') . '"class="form-control" readonly>';
+        echo '</div>';
+        echo '</div>';
+
         echo '<br />';
 
         pg_free_result($HdrQuery);
@@ -76,7 +86,11 @@ function getEventById($id)
             echo '<tbody>';
             while ($result = pg_fetch_array($DtlQuery)) {
                 echo '<tr>';
-                echo '<td><button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="polldcid" value="' . $result['polldcid'] . '">X</button></td>';
+                echo '<td>
+                    <form action="deleteUser.php" method="POST">
+                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="pollid" value="' . $result['pollid'] . '" onclick="return confirm(\'Are you sure to remove this user from this event?\')">X</button>
+                    </form>
+                    </td>';
                 echo '<td>' . $result['polldcid'] . '</td><td>' . $result['polldcusername'] . '</td>';
                 echo '</tr>';
             }
@@ -114,6 +128,7 @@ function searchEventByKey($key)
             echo '<td>' . $result['evttitle'] . '</td>';
             echo '<td class="desc">' . $result['evtdesc'] . '</td>';
             echo '<td>' . $result['evtdate'] . '</td>';
+            echo '<td>' . $result['evtdeadline'] . '</td>';
             echo '<td>' . $result['evtlimitmem'] . '</td>';
             echo '<td>
                         <div class="table-data-feature">

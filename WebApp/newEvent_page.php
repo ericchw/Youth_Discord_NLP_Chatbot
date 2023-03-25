@@ -219,7 +219,7 @@ include 'checkCookie.php';
                                                     <label for="title" class=" form-control-label">Activity</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <?php include('getActivityList.php');?>
+                                                    <?php include('getActivityList.php'); ?>
                                                 </div>
                                             </div>
                                             <div class="row form-group">
@@ -243,11 +243,19 @@ include 'checkCookie.php';
                                                     <label for="eventDate" class=" form-control-label">Date</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" min=<?php echo date("Y-m-d") . 'T00:00:00' ?> required>
+                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" onchange="enableDeadline()" min=<?php echo date("Y-m-d") . 'T00:00:00' ?> required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="deadline" class=" form-control-label">Submission Deadline</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="datetime-local" id="deadline" name="deadline" class="form-control" required disabled>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-success btn-sm" name="submit">
+                                                <button type="submit" class="btn btn-success btn-sm" name="submit" onclick="return confirm('Are you sure to create new event?')">
                                                     <i class="fa fa-dot-circle-o"></i> Submit
                                                 </button>
                                                 <button type="reset" class="btn btn-danger btn-sm">
@@ -299,11 +307,18 @@ include 'checkCookie.php';
         <script src="js/main.js"></script>
 
         <script>
-            // var x = document.getElementById("eventDate").min;
-            // x = new Date();
-            // var today = new Date();
-            // //document.getElementById("eventDate").min = dt;
-            // document.getElementById("eventDate").setAttribute("min", today);
+            function enableDeadline() {
+                var e = document.getElementById("eventDate").value;
+                e.replace(/\s+/, "");
+                if (e != "") {
+                    var d = document.getElementById("deadline");
+                    d.disabled = false;
+                    d.min = document.getElementById("eventDate").value;
+                } else {
+                    var d = document.getElementById("deadline");
+                    d.disabled = true;
+                }
+            }
         </script>
 </body>
 

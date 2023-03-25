@@ -186,6 +186,10 @@ include 'checkCookie.php';
             if (isset($_GET['erro'])) { ?>
               <p class="error"> <?php echo $_GET['erro']; ?></p>
             <?php } ?>
+            <?php
+            if (isset($_GET['succ'])) { ?>
+              <p style="color: green; text-align: center"> <?php echo $_GET['succ']; ?></p>
+            <?php } ?>
             <div align="right">
               <a class="btn btn-primary" href="newActivity_page.php">
                 <i class="fa fa-star"></i>&nbsp; NEW</a>
@@ -194,9 +198,9 @@ include 'checkCookie.php';
               <table class="table table-data2">
                 <thead>
                   <tr>
-                    
+
                     <th>ID</th>
-                    <th>活動名稱</th>
+                    <th>Activity</th>
                   </tr>
                 </thead>
                 <?php

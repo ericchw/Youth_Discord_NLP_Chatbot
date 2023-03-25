@@ -198,6 +198,7 @@ include 'checkCookie.php';
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
+                        <br />
                         <div class="row">
                             <div class="table-responsive table-responsive-data2">
                                 <div class="card">

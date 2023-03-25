@@ -15,16 +15,17 @@ if (pg_num_rows($query) > 0) {
         echo '<td>' . $result['evttitle'] . '</td>';
         echo '<td class="desc">' . $result['evtdesc'] . '</td>';
         echo '<td>' . $result['evtdate'] . '</td>';
+        echo '<td>' . $result['evtdeadline'] . '</td>';
         echo '<td>' . $result['evtlimitmem'] . '</td>';
         echo '<td>
                     <div class="table-data-feature">
                         <form  action="postEvent.php" method="POST">
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Post on Discord" name="eventId" value="' . $result['evtid'] . '">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Post on Discord" name="eventId" value="' . $result['evtid'] . '" onclick="return confirm(\'Are you sure post this event to discord?\')" >
                                 <i class="zmdi zmdi-mail-send"></i>
                             </button>
                         </form>
                         <form action="eventDtl_page.php" method="POST">
-                            <button class="item" data-toggle="tooltip" data-placement="top" title="View Details" name="eventId" value="' . $result['evtid'] . '">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="View Details" name="eventId" value="' . $result['evtid'] . '"">
                                 <i class="zmdi zmdi-assignment"></i>
                             </button>
                         </form>

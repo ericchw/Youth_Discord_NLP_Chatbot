@@ -204,12 +204,16 @@ include 'checkCookie.php';
               <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
             <?php } ?>
             <?php
+            if (isset($_GET['succ'])) { ?>
+              <p style="color: green; text-align: center"> <?php echo $_GET['succ']; ?></p>
+            <?php } ?>
+            <?php
             include 'dbconfig.php';
 
             $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
               or die('Could not connect: ' . pg_last_error());
 
-            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Event');
+            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Activity');
 
             $rowCount = intval(pg_fetch_result($query, 0, 0));
 
@@ -229,6 +233,7 @@ include 'checkCookie.php';
                       <th>name</th>
                       <th>description</th>
                       <th>date</th>
+                      <th>Submission Deadline</th>
                       <th>Maximum number of member</th>
                       <th></th>
                     </tr>

@@ -1,5 +1,5 @@
 <?php
-function insertEvent($title, $desc, $aty, $limit, $date)
+function insertEvent($title, $desc, $aty, $limit, $date, $deadline)
 {
 
     include 'dbconfig.php';
@@ -10,14 +10,14 @@ function insertEvent($title, $desc, $aty, $limit, $date)
     date_default_timezone_set('Asia/Hong_Kong');
     $now = date('Y-m-d H:i:s', time());
 
-    $query = pg_prepare($dbconn, 'InsertEventStatement', 'INSERT INTO Event(evtid, atyid, evttitle, evtlimitmem, evtdesc, evtdate, evtcreatedate, evtupdatedate) 
-                                                          VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7)');
-    $query = pg_execute($dbconn, 'InsertEventStatement', array($aty, $title, $limit, $desc, $date, $now, $now));
+    $query = pg_prepare($dbconn, 'InsertEventStatement', 'INSERT INTO Event(evtid, atyid, evttitle, evtlimitmem, evtdesc, evtdate, EVTDeadline, evtcreatedate, evtupdatedate) 
+                                                          VALUES (DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8)');
+    $query = pg_execute($dbconn, 'InsertEventStatement', array($aty, $title, $limit, $desc, $date, $deadline, $now, $now));
 
     if (pg_num_rows($query) == 0) {
         pg_free_result($query);
         pg_close($dbconn);
-        header('Location: event_page.php');
+        header('Location: event_page.php?succ=Create Successfully');
     } else {
         pg_free_result($query);
         pg_close($dbconn);
@@ -30,5 +30,6 @@ if (isset($_POST['submit'])) {
     $aty = $_POST['aty'];
     $limit = $_POST['maxMember'];
     $date = $_POST['eventDate'];
-    insertEvent($title, $desc, $aty, $limit, $date);
+    $deadline = $_POST['deadline'];
+    insertEvent($title, $desc, $aty, $limit, $date, $deadline);
 }

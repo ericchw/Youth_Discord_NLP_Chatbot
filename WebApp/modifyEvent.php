@@ -14,7 +14,7 @@ include 'checkCookie.php';
     <meta name="keywords" content="au theme template" />
 
     <!-- Title Page-->
-    <title>Create Activity</title>
+    <title>Create Event</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all" />
@@ -148,7 +148,7 @@ include 'checkCookie.php';
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="event_page.php" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="searchEvent" id ="searchEvent" placeholder="Search for event..." />
+                                <input class="au-input au-input--xl" type="text" name="searchEvent" id="searchEvent" placeholder="Search for event..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -202,20 +202,61 @@ include 'checkCookie.php';
                             <div class="table-responsive table-responsive-data2">
                                 <div class="card">
                                     <div class="card-header">
-                                        <strong>New</strong> Activity
+                                        <strong>New </strong> Event
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="addActivity.php" method="POST">
+                                        <?php echo $_POST['eventId']; ?>
+                                        <form action="addEvent.php" method="POST">
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label for="name" class=" form-control-label">Activity Name</label>
+                                                    <label for="title" class=" form-control-label">Title</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="text" id="name" name="name" class="form-control" required>
+                                                    <input type="text" id="title" name="title" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="title" class=" form-control-label">Activity</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <?php include('getActivityList.php'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="desc" class=" form-control-label">Description</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <textarea id="desc" name="desc" class="form-control" rows="7" style="resize: none" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="maxMember" class=" form-control-label">Maximum Number of Member</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="number" id="maxMember" name="maxMember" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="eventDate" class=" form-control-label">Date</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" onchange="enableDeadline()" min=<?php echo date("Y-m-d") . 'T00:00:00' ?> required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="deadline" class=" form-control-label">Submission Deadline</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="datetime-local" id="deadline" name="deadline" class="form-control" required disabled>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-success btn-sm" name="submit" onclick="return confirm('Are you sure to create new activity?')">
+                                                <button type="submit" class="btn btn-success btn-sm" name="submit" onclick="return confirm('Are you sure to create new event?')">
                                                     <i class="fa fa-dot-circle-o"></i> Submit
                                                 </button>
                                                 <button type="reset" class="btn btn-danger btn-sm">
@@ -266,6 +307,20 @@ include 'checkCookie.php';
         <!-- Main JS-->
         <script src="js/main.js"></script>
 
+        <script>
+            function enableDeadline() {
+                var e = document.getElementById("eventDate").value;
+                e.replace(/\s+/, "");
+                if (e != "") {
+                    var d = document.getElementById("deadline");
+                    d.disabled = false;
+                    d.min = document.getElementById("eventDate").value;
+                } else {
+                    var d = document.getElementById("deadline");
+                    d.disabled = true;
+                }
+            }
+        </script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@ function insertGame($atyName)
     //     header('Location: login_page.php?erro=Username or password incorrect');
     // }
     if ($query) {
-        header('Location: activityList_page.php');
+        header('Location: activityList_page.php?succ=Create Successfully');
 
         pg_free_result($query);
         pg_close($dbconn);
