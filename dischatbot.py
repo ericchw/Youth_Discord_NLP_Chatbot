@@ -1,13 +1,12 @@
 from logging import PlaceHolder
-import os, discord, time, asyncio
+import os, discord, time, re
 from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
 from emotiontest import emtransform
 import chinese
 import langid
-import chat, faq
-from bs4 import BeautifulSoup
+import chat
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
 import random
@@ -152,96 +151,7 @@ async def event(ctx):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    initiate()
-    
-    await asyncio.create_task(my_function())
-        
-        
-
-async def my_function():
-    # channel = bot.get_channel(995158826347143309)
-    # message = "Hello! This is a message posted every week."
-    # bot.loop.create_task(channel.send(message))
-    games = connectDB("SELECT * FROM games LIMIT 10","r")
-    for index,game in enumerate(games[1]):
-        polling[index][0] = game[1]
-    while True:
-        # print(f"Starting timer for {5} seconds.")
-        channel = bot.get_channel(1079031912682766406)
-        latest_record = connectDB("SELECT * FROM event_header ORDER BY ehdrid DESC LIMIT 1",'r')
-        # print("Latest record:", latest_record[1])
-            
-        # await channel.send('testing')
-        global cevent, dateline
-        # print("cevent:")
-        # print(cevent)
-        # print("polling:")
-        # print(polling)
-        if dateline == True:
-            dateline = False
-            sjsAdmin = bot.get_user(909806470416191518)
-            await sjsAdmin.send(f"activity passed")
-            
-            
-        resultGame=''
-        resultParticipant=[]
-        maxOfParticipant=0
-        if cevent and cevent[0][3]:
-            maxOfParticipant = int(cevent[0][3])
-        print("maxOfParticipant: "+str(maxOfParticipant))
-        print(f'result game: {resultGame}')
-        # print(f'dateline: {dateline}')
-        print(f'resultPart: {resultParticipant}')
-        for i in polling:
-            game = str(i[0])
-            # print(str(game))
-            participant = i[1]
-            numOfParticipant = len(i[1])
-            numOfParticipant = int(numOfParticipant)
-
-            # print(i[0] + str(numOfParticipant))
-            # print(f"Game: {game}; Participant: {participant}; Number of Participant: {numOfParticipant}")
-            if numOfParticipant >= maxOfParticipant and numOfParticipant != 0 and maxOfParticipant != 0:
-                # print(f'number of part: {numOfParticipant}')
-                # print(f'games: {game}')
-                resultGame = game
-                # print(f'resultgame: {resultGame}')
-                # print(i[1])
-                resultParticipant = i[1]
-                dateline = True
-                connectDB(f"UPDATE event_header SET ehdrstatus = 'Passed'  WHERE ehdrid = {cevent[0][0]}", "u")
-                break
-        
-
-        if cevent != latest_record[1]:
-            cevent = latest_record[1]
-            # await channel.send("testing")
-            #print("result + part:" + str(resultGame) + str(maxOfParticipant))
-            # if datetime.now() >= cevent[0][5] or resultGame!= '':
-                # dateline = True
-                # pass
-            if resultGame:
-                dateline = True
-                #TODO number of people 
-                #print(f"Result: {resultGame}; Participant: {resultParticipant}")
-            try:
-                embed = discord.Embed(
-                    title=cevent[0][1],
-                    description=cevent[0][4],
-                    color=discord.Color.red()
-                )
-
-                bot.event_name=polling
-                await channel.send(embed=embed)
-                bot.event_variable1 = ""
-                bot.event_variable2 = ""
-                bot.event_variable3 = ""
-                await channel.send(f"List:\n1.{bot.event_name[1][0]}:\n{bot.event_name[1][1]}\n2.{bot.event_name[2][0]}:\n{bot.event_name[2][1]}\n3.{bot.event_name[3][0]}:\n{bot.event_name[3][1]}\nPlease select", view=Event())
-            except (Exception) as error:
-                print(f'List is empty {error}')
-            
-            
-        await asyncio.sleep(5)
+    # initiate()
         
 
     
@@ -414,6 +324,38 @@ async def on_reaction_add(reaction, user):
                 responses[user.id] = "Disagree"
             # print the user's response
             print(f'{user.name} responded with {responses[user.id]}')
-    
+
+@bot.event
+async def on_interaction(interaction):
+    if interaction.type == discord.InteractionType.component:
+        if interaction.data['custom_id'] == 'join':
+            # Retrieve the message object
+            channel = await bot.fetch_channel(interaction.channel_id)
+            message = await channel.fetch_message(interaction.message.id)
+            
+            # Get the message content
+            message_content = message.content
+            eventid = message.content.split(maxsplit=1)[1]
+            # print(f"event id is {eventid}")
+            eventid = re.search(r'\d+', eventid).group()
+            checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
+            timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
+            # print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
+            print(f'database: {timecheck[1]}')
+            print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
+            print(count[1][0][0])
+            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and count[1][0][0] != 0:
+                current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
+                connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
+                await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
+            elif checking[1][0][0] == True:
+                await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
+            elif count[1][0][0] >= timecheck[1][0][1]:
+                await interaction.response.send_message(f'{interaction.user}, member is full')
+            else:
+                await interaction.response.send_message(f'{interaction.user}, the event is overdue')    
+
+            
 #run bot by token
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")
