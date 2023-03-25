@@ -251,7 +251,7 @@ include 'checkCookie.php';
                                                     <label for="deadline" class=" form-control-label">Submission Deadline</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
-                                                    <input type="datetime-local" id="deadline" name="deadline" class="form-control" required disabled>
+                                                    <input type="datetime-local" id="deadline" name="deadline" class="form-control" min=<?php echo date("Y-m-d") . 'T00:00:00' ?> required disabled>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
@@ -313,7 +313,7 @@ include 'checkCookie.php';
                 if (e != "") {
                     var d = document.getElementById("deadline");
                     d.disabled = false;
-                    d.min = document.getElementById("eventDate").value;
+                    d.max = document.getElementById("eventDate").value;
                 } else {
                     var d = document.getElementById("deadline");
                     d.disabled = true;
