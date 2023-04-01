@@ -6,7 +6,8 @@ COPY requirements.txt /python_app
 
 RUN pip install -r requirements.txt
 
+RUN pip install psycopg2-binary
+
 COPY . /python_app
 
-
-CMD python event_api.py
+CMD python dischatbot.py

@@ -17,7 +17,7 @@ $id = $_POST['eventId'];
 // $query = pg_prepare($dbconn, 'SelectAndPostStatement', 'select * FROM EVENT WHERE EVTId = $1');
 // $query = pg_execute($dbconn, 'SelectAndPostStatement', array($id));
 
-    $url = 'http://python/create_event/' . $id;
+    $url = 'http://python_api/create_event/' . $id;
     PostData($url);
     header('Location: event_page.php');
     // pg_free_result($query);

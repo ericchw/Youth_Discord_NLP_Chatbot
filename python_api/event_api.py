@@ -12,11 +12,13 @@ discord = DiscordInteractions(app)
 
 @app.route("/create_event/<string:primary_key>")
 def create_event(primary_key):
-    connection = psycopg2.connect(user="admin",
-                                password="admin",
-                                host="db",
-                                port="5432",
-                                database="sjs")
+    connection = psycopg2.connect(
+        host="db",
+        port="5432",
+        database="sjs",
+        user="admin",
+        password="admin",
+    )
     cursor = connection.cursor()
     cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate, evtdeadline, evtupdatedate FROM event where evtid = {primary_key}')
     record = cursor.fetchall()
@@ -33,8 +35,6 @@ def create_event(primary_key):
 
     data = {
         "content": f"**Event: {primary_key}\nEvent last Updated: {record[0][6]}**",
-
-
         "components": [
             {
                 "type": 1,
@@ -47,8 +47,7 @@ def create_event(primary_key):
                     }
                 ]
             }
-        ],
-        
+        ],  
         'embeds':[
             {
                 "description" :f"{record[0][3]}",
@@ -72,14 +71,9 @@ def create_event(primary_key):
             }
         ]
     }
-
-
     response = requests.post("https://discord.com/api/channels/996710862146523136/messages", headers=headers, json=data)
-
+    
     return response.json()
-
-
-
 
 
 if __name__ == "__main__":

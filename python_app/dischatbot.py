@@ -1,6 +1,6 @@
 from logging import PlaceHolder
 import os, discord, time, re
-from turtle import title
+# from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
 from emotiontest import emtransform
@@ -10,6 +10,9 @@ import chat
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
 import random
+import logging
+import sys
+
 
 responses= {}
 polling = [[1,[]],[2,[]],[3,[]],[4,[]],[5,[]],[6,[]],[7,[]],[8,[]],[9,[]],[10,[]]]
@@ -125,7 +128,7 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                #print(polling[1][1])
+                #logger.debug(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
@@ -140,7 +143,7 @@ async def event(ctx):
         description="1:Apex\n2:LOL\n3:PUBG",
         color=discord.Color.red()
     )
-    # print(event)
+    # logger.debug(event)
     await ctx.send(embed=embed)
     # bot.loop.create_task(my_function(ctx))
     # connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
@@ -150,13 +153,9 @@ async def event(ctx):
 
 @bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(bot))
-    # initiate()
-        
+    logger.debug('We have logged in as {0.user}'.format(bot))
+    initiate()
 
-    
-        
-    
 
     
 @bot.command(description="Sends the bot's latency.") # this decorator makes a slash command
@@ -174,51 +173,51 @@ def is_english(text):
 
 @bot.event
 async def on_message(message):
-    print(message)
+    logger.debug(message)
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
         text = text.replace("'", "''")
-            #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        print(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
+        #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
+        logger.debug(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
-        # print(ans)
-        print(text)
+        # logger.debug(ans)
+        logger.debug(text)
         if is_english(text):
             ans=chat.outp(text)
         else:
             ans=chinese.get_response(text)
 
         
-        # print(ans)
+        # logger.debug(ans)
         if ans:
             # ans can be SQL statement for FAQ or string in intents.json, if string will output, if SQL statement will connect datebase to get data and return.
-            # print(type(ans))
+            # logger.debug(type(ans))
             if type(ans) == str:
                 if(message.channel.name=='faq'):
                     await message.channel.send(ans)
                     connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
             else:
-                # print(ans.keys())
+                # logger.debug(ans.keys())
                 for key in ans.keys():
                     if key == 'sql':
-                        # print(key)
+                        # logger.debug(key)
                         val1 = connectDB(ans['sql'], "r")
                         res = []
                         temp = []
-                        # print(val1[1])
+                        # logger.debug(val1[1])
                         for value in val1[1]:
                             for x in value:
-                                #print(value)
+                                #logger.debug(value)
                                 temp.append(x)
                         for key in val1[0]:
-                            # print(key)
+                            # logger.debug(key)
                             for value in temp:
                                 string = key.replace("name","名稱").replace("phonenumber","電話").replace("whatsapp","Whatsapp").replace("website","網站").replace("instagram","Instagram").replace("discord","Discord").replace("servicehours","服務時間") + ": " + value
                                 res.append(string)
                                 temp.remove(value)
                                 break
-                        # print(res)
+                        # logger.debug(res)
                         res = "\n".join(res)
                         await message.channel.send(res)
                         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{res}', '{'query'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
@@ -267,7 +266,7 @@ async def on_message(message):
                     sjsAdmin = bot.get_user(909806470416191518)
                     await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
                     # await user.send("你的")
-                # print(type(response))
+                # logger.debug(type(response))
         
         
         # await message.channel.send(ans) 
@@ -292,7 +291,7 @@ async def on_reaction_add(reaction, user):
         #         my_string = ",".join(temp_list)
         #         my_string = my_string.replace("'", "")
 
-        #         # print(my_string)
+        #         # logger.debug(my_string)
         #         # edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
         #         # if edtlhdridInDB == id:
         #         #     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
@@ -301,13 +300,13 @@ async def on_reaction_add(reaction, user):
                 
         #         event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
         #         # connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-        #         print(event_det_id)
+        #         logger.debug(event_det_id)
         #         if len(event_det_id[1]) == 0:
         #             connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
         #         else:
         #             connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
-        #     print(f"{user.name} reacted with {reaction.emoji}")
-        print(f"Outisde: {user.name} reacted with responses")
+        #     logger.debug(f"{user.name} reacted with {reaction.emoji}")
+        logger.debug(f"Outisde: {user.name} reacted with responses")
     if isinstance(message.channel, discord.DMChannel):
         if user.id in responses:
             if reaction.emoji == "👍":
@@ -323,7 +322,7 @@ async def on_reaction_add(reaction, user):
             elif str(reaction) == "👎":
                 responses[user.id] = "Disagree"
             # print the user's response
-            print(f'{user.name} responded with {responses[user.id]}')
+            logger.debug(f'{user.name} responded with {responses[user.id]}')
 
 @bot.event
 async def on_interaction(interaction):
@@ -335,36 +334,59 @@ async def on_interaction(interaction):
             
             # Get the message content
             message_content = message.content
-            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][16:-2]
-            # print(eventid, latest_update)
+            # logger.debug(f"message.content: {message.content}")
+            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][20:-2] #if localhost py 16:-2
+            # logger.debug(f"eventid, latest_update: {eventid}, {latest_update}")
             # eventid = message.content.split(maxsplit=1)[1]
-            # print(f"event id is {eventid}")
+            # logger.debug(f"event id is {eventid}")
             eventid = re.search(r'\d+', eventid).group()
-            print(f"event info: {eventid}, {latest_update}")
+            logger.debug(f"event info: {eventid}, {latest_update}")
             # latest_update = re.search(r'\d+', latest_update).group()
             update_checking = connectDB(f"select exists(select 1 from event where evtupdatedate='{latest_update}' and evtid = {eventid})", "r")
-            # print(update_checking[1][0][0])
+            # logger.debug(update_checking[1][0][0])
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
             timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
-            # print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
-            print(f'database: {timecheck[1]}')
-            print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
+            logger.debug(f'database: {timecheck[1]}')
+            logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
-            print(count[1][0][0])
+            logger.debug(f"count[1][0][0]: {count[1][0][0]}")
             if(update_checking):
-                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and timecheck[1][0][1] != 0:
+                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] < timecheck[1][0][1] and timecheck[1][0][1] != 0:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
                     await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
+                    # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif checking[1][0][0] == True:
                     await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
+                    # logger.debug(f"checking[1][0][0] == True; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif count[1][0][0] >= timecheck[1][0][1]:
                     await interaction.response.send_message(f'{interaction.user}, member is full')
+                    # logger.debug(f"count[1][0][0] >= timecheck[1][0][1]; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 else:
-                    await interaction.response.send_message(f'{interaction.user}, the event is overdue')    
+                    await interaction.response.send_message(f'{interaction.user}, the event is overdue')
+                    # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
             else:
-                await interaction.response.send_message(f'{interaction.user}, this is not the latest event')    
+                await interaction.response.send_message(f'{interaction.user}, this is not the latest event')
+                # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
 
-            
+# create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# create a console handler
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+
+# create a formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# add the handler to the logger
+logger.addHandler(handler)
+
+# now you can use the logger to log messages
+logger.debug('Chatbot is start to run.')
+
 #run bot by token
 bot.run("OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk")

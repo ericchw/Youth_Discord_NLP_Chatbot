@@ -1,9 +1,0 @@
-py-cord
-turtle
-bs4
-nrclex
-transformers
-googletrans==3.1.0a0
-nn-torch
-jieba
-psycopg2

@@ -1,4 +1,15 @@
-flask
-psycopg2
-discord
-flask_discord_interactions
+py-cord
+discord-ui
+# turtle
+bs4
+placeholder
+googletrans==3.1.0a0
+jieba==0.42.1
+langid==1.1.6
+nltk==3.8.1
+NRCLex
+numpy==1.24.0
+psycopg2==2.9.3
+torch==2.0.0
+transformers==4.27.3
+PorterStemmer
