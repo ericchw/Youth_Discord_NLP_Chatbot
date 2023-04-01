@@ -18,20 +18,21 @@ def create_event(primary_key):
                                 port="5432",
                                 database="sjs")
     cursor = connection.cursor()
-    cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate, evtdeadline FROM event where evtid = {primary_key}')
+    cursor.execute(f'SELECT evttitle,atyid, evtlimitmem,evtdesc,evtdate, evtdeadline, evtupdatedate FROM event where evtid = {primary_key}')
     record = cursor.fetchall()
     cursor.execute(f'SELECT atyname FROM activity where atyid = {record[0][1]}')
     activity = cursor.fetchall()
     print(record, activity)
     print("PostgreSQL connection is established.")
 
+    testing = [primary_key, {record[0][6]}]
     headers = {
         "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
         "Content-Type": "application/json"
     }
 
     data = {
-        "content": f"**Event: {primary_key}**",
+        "content": f"**Event: {primary_key}\nEvent last Updated: {record[0][6]}**",
 
 
         "components": [

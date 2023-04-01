@@ -335,9 +335,15 @@ async def on_interaction(interaction):
             
             # Get the message content
             message_content = message.content
-            eventid = message.content.split(maxsplit=1)[1]
+            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][16:-2]
+            # print(eventid, latest_update)
+            # eventid = message.content.split(maxsplit=1)[1]
             # print(f"event id is {eventid}")
             eventid = re.search(r'\d+', eventid).group()
+            print(f"event info: {eventid}, {latest_update}")
+            # latest_update = re.search(r'\d+', latest_update).group()
+            update_checking = connectDB(f"select exists(select 1 from event where evtupdatedate='{latest_update}' and evtid = {eventid})", "r")
+            # print(update_checking[1][0][0])
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
             timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
             # print(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
@@ -345,16 +351,19 @@ async def on_interaction(interaction):
             print(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             print(count[1][0][0])
-            if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and timecheck[1][0][1] != 0:
-                current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
-                connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
-                await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
-            elif checking[1][0][0] == True:
-                await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
-            elif count[1][0][0] >= timecheck[1][0][1]:
-                await interaction.response.send_message(f'{interaction.user}, member is full')
+            if(update_checking):
+                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] <= timecheck[1][0][1] and timecheck[1][0][1] != 0:
+                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
+                    connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
+                    await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
+                elif checking[1][0][0] == True:
+                    await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
+                elif count[1][0][0] >= timecheck[1][0][1]:
+                    await interaction.response.send_message(f'{interaction.user}, member is full')
+                else:
+                    await interaction.response.send_message(f'{interaction.user}, the event is overdue')    
             else:
-                await interaction.response.send_message(f'{interaction.user}, the event is overdue')    
+                await interaction.response.send_message(f'{interaction.user}, this is not the latest event')    
 
             
 #run bot by token
