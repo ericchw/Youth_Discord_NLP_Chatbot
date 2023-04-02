@@ -26,7 +26,6 @@
             "tag": "greeting",
             "patterns": [
                 "hi",
-                "\u4f60\u597d",
                 "Hey",
                 "How are you",
                 "Is anyone there?",
