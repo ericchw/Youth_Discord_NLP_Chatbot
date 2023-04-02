@@ -146,7 +146,8 @@ async def event(ctx):
     # logger.debug(event)
     await ctx.send(embed=embed)
     # bot.loop.create_task(my_function(ctx))
-    # connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+    # connectDB(f"INSERT INTO event_header VALUES (DEFAULT, '{embed.title}', '{'voting'}', '{embed.description}', '{atom
+    # datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
     await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
 
 
@@ -166,6 +167,7 @@ async def ping(ctx): # a slash command will be created with the name "ping"
 @bot.command()
 async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
+    
 #check eng
 def is_english(text):
     lang, _ = langid.classify(text)
@@ -179,8 +181,8 @@ async def on_message(message):
         emotion=emtransform(text)
         text = text.replace("'", "''")
         #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
-        logger.debug(datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8))))
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+        logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
         # logger.debug(ans)
         logger.debug(text)
         if is_english(text):
@@ -196,7 +198,7 @@ async def on_message(message):
             if type(ans) == str:
                 if(message.channel.name=='faq'):
                     await message.channel.send(ans)
-                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
             else:
                 # logger.debug(ans.keys())
                 for key in ans.keys():
@@ -220,7 +222,7 @@ async def on_message(message):
                         # logger.debug(res)
                         res = "\n".join(res)
                         await message.channel.send(res)
-                        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{res}', '{'query'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{res}', '{'query'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
                     # if key == 'serviceHours':
                     #     await message.channel.send(file=discord.File(ans))
         else:
@@ -230,7 +232,7 @@ async def on_message(message):
                 await message.channel.send(string)
                 await message.channel.send(image)
                 # SQL: save message to database "大家冷靜d"
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
         # string = faq.faq(message.content)
         # if string != None:
         #     await message.channel.send(string)
@@ -264,7 +266,7 @@ async def on_message(message):
                 # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                 if response == 'yes':
                     sjsAdmin = bot.get_user(909806470416191518)
-                    await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                    await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                     # await user.send("你的")
                 # logger.debug(type(response))
         
@@ -316,9 +318,9 @@ async def on_reaction_add(reaction, user):
                 # sjsAdmin = bot.get_user(792305150429233152)
                 sjsAdmin = bot.get_user(909806470416191518)
                 # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
-                await sjsAdmin.send(f"{user.mention}於{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}同意尋求幫助，麻煩請關注")
+                await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                 # await user.send("你的")
-                connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.utcnow().replace(tzinfo=timezone.utc).astimezone(timezone(timedelta(hours=8)))}')", "u")
+                connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
             elif str(reaction) == "👎":
                 responses[user.id] = "Disagree"
             # print the user's response
@@ -346,28 +348,28 @@ async def on_interaction(interaction):
             # logger.debug(update_checking[1][0][0])
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
             timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
-            # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S"))
+            # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
             logger.debug(f'database: {timecheck[1]}')
             logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             logger.debug(f"count[1][0][0]: {count[1][0][0]}")
             if(update_checking):
                 if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] < timecheck[1][0][1] and timecheck[1][0][1] != 0:
-                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
+                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
-                    await interaction.response.send_message(f'{interaction.user}, you have successfully joined the event')
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have successfully joined the event')
                     # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif checking[1][0][0] == True:
-                    await interaction.response.send_message(f'{interaction.user}, you are not allowed to join the same event more than twice')
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice')
                     # logger.debug(f"checking[1][0][0] == True; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif count[1][0][0] >= timecheck[1][0][1]:
-                    await interaction.response.send_message(f'{interaction.user}, member is full')
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, member is full')
                     # logger.debug(f"count[1][0][0] >= timecheck[1][0][1]; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 else:
-                    await interaction.response.send_message(f'{interaction.user}, the event is overdue')
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
                     # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
             else:
-                await interaction.response.send_message(f'{interaction.user}, this is not the latest event')
+                await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
 
 # create a logger
