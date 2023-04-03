@@ -10,6 +10,7 @@ import chat
 from db import connectDB, initiate
 from datetime import datetime, timezone, timedelta
 import random
+import re
 
 responses= {}
 polling = [[1,[]],[2,[]],[3,[]],[4,[]],[5,[]],[6,[]],[7,[]],[8,[]],[9,[]],[10,[]]]
@@ -169,8 +170,7 @@ async def button2(ctx): # a slash command will be created with the name "ping"
     await ctx.respond("Hello!", view=MyView())
 #check eng
 def is_english(text):
-    lang, _ = langid.classify(text)
-    return lang == 'en'
+    return bool(re.match('^[a-zA-Z ,.!?]*$', text))
 
 @bot.event
 async def on_message(message):
