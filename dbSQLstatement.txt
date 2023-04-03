@@ -37,13 +37,14 @@ CREATE DATABASE sjs
 
 ####################################################
 
-DROP TABLE account;
-DROP TABLE chatlog;
-DROP TABLE helplog;
-DROP TABLE games;
-DROP TABLE information;
-DROP TABLE event_detail;
-DROP TABLE event_header;
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS chatlog;
+DROP TABLE IF EXISTS helplog;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS information;
+DROP TABLE IF EXISTS event_detail;
+DROP TABLE IF EXISTS event_header;
+
 
 
 CREATE TABLE IF NOT EXISTS account

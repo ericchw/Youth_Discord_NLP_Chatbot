@@ -36,5 +36,5 @@ def get_response(input_text):
                 response = random.choice(intent['responses'])
                 return response
     else:
-        return "對不起，我不太明白你的意思。"
+        return "Sorry, I do not understand"
 

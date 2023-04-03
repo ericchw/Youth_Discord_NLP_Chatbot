@@ -63,7 +63,7 @@
                                 </div> -->
                                 <?php
                                 if (isset($_GET['erro'])) { ?>
-                                    <p class="error"> <?php echo $_GET['erro']; ?></p>
+                                    <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
                                 <?php } ?>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="submit">sign in</button>
                             </form>

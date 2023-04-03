@@ -1,6 +1,6 @@
 <?php 
-    $dbhost = 'localhost';
+    $dbhost = 'db';
     $dbname ='sjs';
     $dbuser = 'admin';
     $dbpass = 'admin';
-?>  
+?>

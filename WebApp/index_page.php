@@ -65,8 +65,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -101,8 +101,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -160,7 +160,7 @@ include 'checkCookie.php';
                       </div>
                       <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                          <a href="#">
+                          <a href="account_page.php">
                             <i class="zmdi zmdi-account"></i>Account</a>
                         </div>
                       </div>
@@ -183,24 +183,7 @@ include 'checkCookie.php';
         <div class="section__content section__content--p30">
           <div class="container-fluid">
             <div class="row m-t-25">
-              <div class="col-sm-6 col-lg-3">
-                <div class="overview-item overview-item--c1">
-                  <div class="overview__inner">
-                    <div class="overview-box clearfix">
-                      <div class="icon">
-                        <i class="zmdi zmdi-account-o"></i>
-                      </div>
-                      <div class="text">
-                        <h2>10368</h2>
-                        <span>Chatting Log</span>
-                      </div>
-                    </div>
-                    <div class="overview-chart">
-                      <canvas id="widgetChart1"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="col-sm-6 col-lg-3">
                 <div class="overview-item overview-item--c3">
                   <div class="overview__inner">
@@ -209,12 +192,44 @@ include 'checkCookie.php';
                         <i class="zmdi zmdi-calendar-note"></i>
                       </div>
                       <div class="text">
-                        <h2>1,086</h2>
+                        <h2><?php
+                            include 'dbconfig.php';
+
+                            $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
+                              or die('Could not connect: ' . pg_last_error());
+
+                            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Event');
+
+                            echo pg_fetch_result($query, 0, 0);
+
+                            ?></h2>
                         <span>Event</span>
                       </div>
                     </div>
-                    <div class="overview-chart">
-                      <canvas id="widgetChart3"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c1">
+                  <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                      <div class="icon">
+                        <i class="zmdi zmdi-account-o"></i>
+                      </div>
+                      <div class="text">
+                        <h2><?php
+                            include 'dbconfig.php';
+
+                            $dbconn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpass")
+                              or die('Could not connect: ' . pg_last_error());
+
+                            $query = pg_query($dbconn, 'SELECT COUNT(*) FROM Chatlog');
+
+                            echo pg_fetch_result($query, 0, 0);
+
+                            ?></h2>
+                        <span>Chatting Log</span>
+                      </div>
                     </div>
                   </div>
                 </div>
