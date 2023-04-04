@@ -1,14 +1,15 @@
-{"intents": [
+{
+  "intents": [
     {
       "tag": "6pm_contact",
       "patterns": [
         "聯絡",
         "聯繫"
       ],
-      "responses": [  
+      "responses": [
         {
           "sql": "SELECT * FROM information"
-      }
+        }
       ]
     },
     {
@@ -18,7 +19,7 @@
       ],
       "responses": [
         "https://drive.google.com/file/d/1qJq1T4i5dpRgpCcETe5XZ73BOEWfCP_j/view"
-    ]
+      ]
     },
     {
       "tag": "greeting",
@@ -28,8 +29,8 @@
       "responses": [
         "你好"
       ]
-    }
-    ,{
+    },
+    {
       "tag": "joke",
       "patterns": [
         "笑話"
@@ -42,4 +43,41 @@
         "你考第一名個張獎狀叫咩名? ---頭名狀",
         "王师奶教整奶黄包,陈师奶教整莲蓉包,咁咩教整叉烧包?"
       ]
-    }]}
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "多謝",
+        "感激不盡",
+        "謝謝"
+      ],
+      "responses": [
+        "不客氣，我很樂意幫助您"
+      ]
+    },
+    {
+      "tag": "bye",
+      "patterns": [
+        "再見",
+        "掰掰",
+        "拜拜"
+      ],
+      "responses": [
+        "下次見",
+        "掰掰"
+      ]
+    },
+    {
+      "tag": "6pm_location",
+      "patterns": [
+        "地址",
+        "地點",
+        "在哪裡",
+        "怎麼去"
+      ],
+      "responses": [
+        "香港銅鑼灣告士打道229-230號 宇宙商業大廈12樓"
+      ]
+    }
+  ]
+}

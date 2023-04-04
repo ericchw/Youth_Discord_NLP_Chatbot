@@ -170,8 +170,7 @@ async def button2(ctx): # a slash command will be created with the name "ping"
     
 #check eng
 def is_english(text):
-    lang, _ = langid.classify(text)
-    return lang == 'en'
+    return bool(re.match('^[a-zA-Z ,.!?]*$', text))
 
 @bot.event
 async def on_message(message):

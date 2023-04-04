@@ -158,10 +158,10 @@ def connectDB(sqlStatement, mode):
     except (Exception, psycopg2.Error) as error:
         logger.debug("Error while fetching data from PostgreSQL in db.connectDB", error)
 
-    finally:
-        # closing database connection.
-        if connection:
-            cursor.close()
+    # finally:
+    #     # closing database connection.
+    #     if connection:
+    #         cursor.close()
             # connection.close()
             # logger.debug("PostgreSQL connection is closed")
 
