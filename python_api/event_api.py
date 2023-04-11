@@ -71,7 +71,7 @@ def create_event(primary_key):
             }
         ]
     }
-    response = requests.post("https://discord.com/api/channels/996710862146523136/messages", headers=headers, json=data)
+    response = requests.post("https://discord.com/api/channels/1079031912682766406/messages", headers=headers, json=data)
     
     return response.json()
 

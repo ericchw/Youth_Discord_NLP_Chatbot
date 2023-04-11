@@ -35,6 +35,6 @@ def get_response(input_text):
             if intent['tag'] == tag:
                 response = random.choice(intent['responses'])
                 return response
-    else:
-        return "Sorry, I do not understand"
+    # else:
+    #     return "我唔係好明白你講咩"
 
