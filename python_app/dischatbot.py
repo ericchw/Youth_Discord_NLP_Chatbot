@@ -175,6 +175,7 @@ def is_english(text):
 @bot.event
 async def on_message(message):
     logger.debug(message)
+    global user_id
     if(message.author.name!='CyberU'):
         text=message.content
         emotion=emtransform(text)
@@ -185,50 +186,49 @@ async def on_message(message):
         # logger.debug(ans)
         logger.debug(text)
         if(message.channel.name=='faq'):
-                    if emotion['label']== 'anger' and emotion['score'] >= 0.7 :
-                        string = "大家冷靜d"
-                        image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
-                        await message.channel.send(string)
-                        await message.channel.send(image)
-                        # SQL: save message to database "大家冷靜d"
-                        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
-            
-                    if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
-                        user = message.author
-                        embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
-                        # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-                        embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
-                        embed.add_field(name="👎", value="不需要", inline=True)
-                        # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
-                        message_to_send = await user.send(embed=embed)
-                        await message_to_send.add_reaction("👍")
-                        await message_to_send.add_reaction("👎")
-                        responses[user.id] = None
-                        # await msg.add_reaction("👍")
-                        # await user.respond("Hello!", view=MyView())
-                        global user_id
-                        user_id = user.id
-                    elif message.channel.type == discord.ChannelType.private:
-                    # check if the message is from the user you are expecting a response from
-                        if message.author.id == user_id:
-                            # handle the user's response
-                            # if str(reaction) == "👍":
-                            #     responses[user.id] = "Agree"
-                            # elif str(reaction) == "👎":
-                            #     responses[user.id] = "Disagree"
-                            
-                            response = message.content
-                            # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
-                            if response == 'yes':
-                                sjsAdmin = bot.get_user(909806470416191518)
-                                await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                                # await user.send("你的")
-                            # logger.debug(type(response))
-                            # string = faq.faq(message.content)
-                            # if string != None:
-                            #     await message.channel.send(string)
-                            await message.channel.send(ans)
-                            connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+            if emotion['label']== 'anger' and emotion['score'] >= 0.7 :
+                string = "大家冷靜d"
+                image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
+                await message.channel.send(string)
+                await message.channel.send(image)
+                # SQL: save message to database "大家冷靜d"
+                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+            if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
+                user = message.author
+                embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+                # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
+                embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
+                embed.add_field(name="👎", value="不需要", inline=True)
+                # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
+                message_to_send = await user.send(embed=embed)
+                await message_to_send.add_reaction("👍")
+                await message_to_send.add_reaction("👎")
+                responses[user.id] = None
+                # await msg.add_reaction("👍")
+                # await user.respond("Hello!", view=MyView())
+                # global user_id
+                user_id = user.id
+            elif message.channel.type == discord.ChannelType.private:
+            # check if the message is from the user you are expecting a response from
+                if message.author.id == user_id:
+                    # handle the user's response
+                    # if str(reaction) == "👍":
+                    #     responses[user.id] = "Agree"
+                    # elif str(reaction) == "👎":
+                    #     responses[user.id] = "Disagree"
+                    
+                    response = message.content
+                    # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
+                    if response == 'yes':
+                        sjsAdmin = bot.get_user(909806470416191518)
+                        await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
+                        # await user.send("你的")
+                    # logger.debug(type(response))
+                    # string = faq.faq(message.content)
+                    # if string != None:
+                    #     await message.channel.send(string)
+                    await message.channel.send(ans)
+                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
         if is_english(text):
             ans=chat.outp(text)
         else:
@@ -291,7 +291,6 @@ async def on_message(message):
                 responses[user.id] = None
                 # await msg.add_reaction("👍")
                 # await user.respond("Hello!", view=MyView())
-                global user_id
                 user_id = user.id
             elif message.channel.type == discord.ChannelType.private:
             # check if the message is from the user you are expecting a response from
@@ -395,26 +394,31 @@ async def on_interaction(interaction):
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
             timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
             # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
-            logger.debug(f'database: {timecheck[1]}')
-            logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            # logger.debug(f'database: {timecheck[1]}')
+            # logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             logger.debug(f"count[1][0][0]: {count[1][0][0]}")
             if(update_checking):
                 if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] < timecheck[1][0][1] and timecheck[1][0][1] != 0:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','{current_time}' )", "i") 
+                    await interaction.response.edit_message(content=interaction.message.content)
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have successfully joined the event')
                     # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif checking[1][0][0] == True:
+                    await interaction.response.edit_message(content=interaction.message.content)
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice')
                     # logger.debug(f"checking[1][0][0] == True; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif count[1][0][0] >= timecheck[1][0][1]:
+                    await interaction.response.edit_message(content=interaction.message.content)
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, member is full')
                     # logger.debug(f"count[1][0][0] >= timecheck[1][0][1]; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 else:
+                    await interaction.response.edit_message(content=interaction.message.content)
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
                     # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
             else:
+                await interaction.response.edit_message(content=interaction.message.content)
                 await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
 
