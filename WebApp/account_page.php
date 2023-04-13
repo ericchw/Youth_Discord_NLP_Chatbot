@@ -95,6 +95,14 @@ include 'checkCookie.php';
                                 <i class="fa fa-comment"></i>Chat Log</a>
                         </li>
                         <li>
+                            <a href="helplog_page.php">
+                                <i class="fa fa-comment"></i>Help Log</a>
+                        </li>
+                        <li>
+                            <a href="botlog_page.php">
+                                <i class="fa fa-comment"></i>Bot Log</a>
+                        </li>
+                        <li>
                             <a href="calendar_page.php">
                                 <i class="fas fa-calendar-alt"></i>Calendar</a>
                         </li>
@@ -129,6 +137,14 @@ include 'checkCookie.php';
                         <li>
                             <a href="chatlog_page.php">
                                 <i class="fa fa-comment"></i>Chat Log</a>
+                        </li>
+                        <li>
+                            <a href="helplog_page.php">
+                                <i class="fa fa-comment"></i>Help Log</a>
+                        </li>
+                        <li>
+                            <a href="botlog_page.php">
+                                <i class="fa fa-comment"></i>Bot Log</a>
                         </li>
                         <li>
                             <a href="calendar_page.php">
@@ -205,25 +221,25 @@ include 'checkCookie.php';
                                         <strong>Account</strong> Profile
                                     </div>
                                     <div class="card-body card-block">
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="title" class=" form-control-label">Email</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="title" name="title" class="form-control" value="<?php echo $_COOKIE['email']?>" readonly>
-                                                </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="title" class=" form-control-label">Email</label>
                                             </div>
-                                            <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="maxMember" class=" form-control-label">Username</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="maxMember" name="maxMember" class="form-control" value="<?php echo $_COOKIE['username']?>" readonly>
-                                                </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="title" name="title" class="form-control" value="<?php echo $_COOKIE['email'] ?>" readonly>
                                             </div>
-                                            <div class="card-footer">   
-                                                <button type="button" class="btn btn-info" onclick="location.href='changePassword_page.php'">Change Password</button>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="maxMember" class=" form-control-label">Username</label>
                                             </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="maxMember" name="maxMember" class="form-control" value="<?php echo $_COOKIE['username'] ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-info" onclick="location.href='changePassword_page.php'">Change Password</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

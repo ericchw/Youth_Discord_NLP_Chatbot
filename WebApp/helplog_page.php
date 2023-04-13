@@ -1,6 +1,7 @@
 <?php
 include 'checkCookie.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +14,10 @@ include 'checkCookie.php';
   <meta name="keywords" content="au theme template" />
 
   <!-- Title Page-->
-  <title>Game List</title>
+  <title>Help Log</title>
 
   <!-- Fontfaces CSS-->
   <link href="css/font-face.css" rel="stylesheet" media="all" />
-  <link href="css/style.css" rel="stylesheet" media="all">
   <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all" />
   <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all" />
   <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all" />
@@ -34,9 +34,28 @@ include 'checkCookie.php';
   <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all" />
   <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all" />
 
+  <!-- FullCalendar -->
+  <link href="vendor/fullcalendar-3.10.0/fullcalendar.css" rel="stylesheet" media="all" />
+
   <!-- Main CSS-->
   <link href="css/theme.css" rel="stylesheet" media="all" />
+
+  <style type="text/css">
+    /* force class color to override the bootstrap base rule
+       NOTE: adding 'url: #' to calendar makes this unneeded
+     */
+    .fc-event,
+    .fc-event:hover {
+      color: #fff !important;
+      text-decoration: none;
+    }
+  </style>
 </head>
+
+<!-- animsition overrides all click events on clickable things like a,
+      since calendar doesn't add href's be default,
+      it leads to odd behaviors like loading 'undefined'
+      moving the class to menus lead to only the menu having the effect -->
 
 <body class="animsition">
   <div class="page-wrapper">
@@ -64,11 +83,11 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
-              <a href="event_page.php">
+              <a href="calendar_page.php">
                 <i class="fas fa-star"></i>Event</a>
             </li>
             <li>
@@ -108,8 +127,8 @@ include 'checkCookie.php';
                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li>
-              <a href="gameList_page.php">
-                <i class="fa fa-gamepad"></i>Games</a>
+              <a href="activityList_page.php">
+                <i class="fa fa-gamepad"></i>Activity</a>
             </li>
             <li>
               <a href="event_page.php">
@@ -130,7 +149,6 @@ include 'checkCookie.php';
             <li>
               <a href="calendar_page.php">
                 <i class="fas fa-calendar-alt"></i>Calendar</a>
-
             </li>
           </ul>
         </nav>
@@ -169,20 +187,19 @@ include 'checkCookie.php';
                         </div>
                         <div class="content">
                           <h5 class="name">
-                            <a href="#"><?php echo $_COOKIE['username'] ?></a>
+                            <a href="account_page.php"><?php echo $_COOKIE['username'] ?></a>
                           </h5>
                           <span class="email"><?php echo $_COOKIE['email'] ?></span>
                         </div>
                       </div>
                       <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                          <a href="#">
+                          <a href="account_page.php">
                             <i class="zmdi zmdi-account"></i>Account</a>
                         </div>
                       </div>
                       <div class="account-dropdown__footer">
-                        <a href="logout.php">
-                          <i class="zmdi zmdi-power"></i>Logout</a>
+                        <a href="#"> <i class="zmdi zmdi-power"></i>Logout</a>
                       </div>
                     </div>
                   </div>
@@ -192,34 +209,41 @@ include 'checkCookie.php';
           </div>
         </div>
       </header>
-      <!-- HEADER DESKTOP-->
+      <!-- END HEADER DESKTOP-->
 
       <!-- MAIN CONTENT-->
       <div class="main-content">
         <div class="section__content section__content--p30">
           <div class="container-fluid">
-            <div align="right">
-              <a class="btn btn-primary" href="newGame_page.php">
-                <i class="fa fa-star"></i>&nbsp; NEW</a>
-            </div>
-            <div class="row m-t-25">
-              <table class="table table-data2">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>中文名</th>
-                    <th>English Name</th>
-                  </tr>
-                </thead>
-                <?php
-                include('getAllGame.php');
-                ?>
-              </table>
+            <div class="row">
+              <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2" id="chatlogTable">
+                  <thead>
+                    <tr>
+                      <th>User Discord Name <br /><input type="text" id="filterInput" onkeyup="usernameFilter()"></th>
+                      <th>User Discord Id</th>
+                      <th>Need Help</th>
+                      <th>Send Time</th>
+                    </tr>
+                  </thead>
+                  <?php
+                  include('getAllHelplog.php');
+                  ?>
+                </table>
+              </div>
+              <div class="row" style="width: 100%">
+                <div class="col-md-12">
+                  <div class="copyright">
+                    <p>
+                      Copyright © 2018 Colorlib. All rights reserved. Template
+                      by <a href="https://colorlib.com">Colorlib</a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- END MAIN CONTENT-->
-        <!-- END PAGE CONTAINER-->
       </div>
     </div>
 
@@ -239,18 +263,36 @@ include 'checkCookie.php';
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
-    <script>
-      function cardOnOver(obj) {
 
-      }
-
-      function cardOnOut(obj) {
-
-      }
-    </script>
+    <!-- full calendar requires moment along jquery which is included above -->
+    <script src="vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
+    <script src="vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script>
+      function usernameFilter() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("filterInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("chatlogTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
 </body>
 
 </html>

@@ -95,6 +95,14 @@ include 'checkCookie.php';
                                 <i class="fa fa-comment"></i>Chat Log</a>
                         </li>
                         <li>
+                            <a href="helplog_page.php">
+                                <i class="fa fa-comment"></i>Help Log</a>
+                        </li>
+                        <li>
+                            <a href="botlog_page.php">
+                                <i class="fa fa-comment"></i>Bot Log</a>
+                        </li>
+                        <li>
                             <a href="calendar_page.php">
                                 <i class="fas fa-calendar-alt"></i>Calendar</a>
                         </li>
@@ -131,6 +139,14 @@ include 'checkCookie.php';
                                 <i class="fa fa-comment"></i>Chat Log</a>
                         </li>
                         <li>
+                            <a href="helplog_page.php">
+                                <i class="fa fa-comment"></i>Help Log</a>
+                        </li>
+                        <li>
+                            <a href="botlog_page.php">
+                                <i class="fa fa-comment"></i>Bot Log</a>
+                        </li>
+                        <li>
                             <a href="calendar_page.php">
                                 <i class="fas fa-calendar-alt"></i>Calendar</a>
                         </li>
@@ -148,7 +164,7 @@ include 'checkCookie.php';
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="event_page.php" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="searchEvent" id ="searchEvent" placeholder="Search for event..." />
+                                <input class="au-input au-input--xl" type="text" name="searchEvent" id="searchEvent" placeholder="Search for event..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>

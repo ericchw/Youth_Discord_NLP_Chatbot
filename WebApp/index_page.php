@@ -77,6 +77,14 @@ include 'checkCookie.php';
                 <i class="fa fa-comment"></i>Chat Log</a>
             </li>
             <li>
+              <a href="helplog_page.php">
+                <i class="fa fa-comment"></i>Help Log</a>
+            </li>
+            <li>
+              <a href="botlog_page.php">
+                <i class="fa fa-comment"></i>Bot Log</a>
+            </li>
+            <li>
               <a href="calendar_page.php">
                 <i class="fa fa-calendar"></i>Calendar</a>
             </li>
@@ -111,6 +119,14 @@ include 'checkCookie.php';
             <li>
               <a href="chatlog_page.php">
                 <i class="fa fa-comment"></i>Chat Log</a>
+            </li>
+            <li>
+              <a href="helplog_page.php">
+                <i class="fa fa-comment"></i>Help Log</a>
+            </li>
+            <li>
+              <a href="botlog_page.php">
+                <i class="fa fa-comment"></i>Bot Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
