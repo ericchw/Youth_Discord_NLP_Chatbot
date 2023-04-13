@@ -364,29 +364,37 @@ async def on_interaction(interaction):
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have applied for the event')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have successfully joined the event',{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have applied for the event','{current_time}' )", "i") 
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif checking[1][0][0] == True:
+                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice',{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice','{current_time}' )", "i")
+                        
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     # logger.debug(f"checking[1][0][0] == True; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 else:
+                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue',{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue','{current_time}' )", "i") 
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
             else:
-                await interaction.response.edit_message(content=interaction.message.content)
-                await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
+                current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
+                try:
+                    await interaction.response.edit_message(content=interaction.message.content)
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
+                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "i") 
+                except (Exception) as error:
+                    print(f'error from bot: {error}')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
 
 # create a logger
