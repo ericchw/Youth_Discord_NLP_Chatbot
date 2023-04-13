@@ -75,6 +75,41 @@ def create_event(primary_key):
     
     return response.json()
 
+@app.route("/send_message/<string:recipient_id>/<string:content>")
+def send_private_message(recipient_id,content):
+    # Define the API endpoint and headers
+    url = "https://discord.com/api/users/@me/channels"
+    headers = {
+        "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
+        "Content-Type": "application/json"
+    }
+
+    # Define the data to be sent in the API request
+    data = {
+        "recipient_id": recipient_id,
+        "content": content
+    }
+
+    # Send the API request to create a DM channel with the user
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+
+    # Parse the response JSON and extract the channel ID
+    response_json = response.json()
+    channel_id = response_json["id"]
+
+    # Define the API endpoint for sending a message and update the headers
+    url = f"https://discord.com/api/channels/{channel_id}/messages"
+    headers["Content-Type"] = "application/json"
+
+    # Define the data to be sent in the API request
+    data = {
+        "content": content
+    }
+
+    # Send the API request to send the message to the user
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    return response.json()
+
 
 if __name__ == "__main__":
     print('testing in python')
