@@ -18,8 +18,8 @@ function login($email, $password)
         if (isset($_COOKIE['username'])) {
             unset($_COOKIE['username']);
         }
-        setcookie('email', $email, time() + (60 * 30), "/");
-        setcookie('username', $username, time() + (60 * 30), "/");
+        setcookie('email', $email, time() + (6000 * 30), "/");
+        setcookie('username', $username, time() + (6000 * 30), "/");
         pg_free_result($query);
         pg_close($dbconn);
         header('Location: index_page.php');
