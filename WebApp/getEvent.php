@@ -78,20 +78,31 @@ function getEventById($id)
             echo '<table class="table table-borderless table-striped table-earning">';
             echo '<thead>';
             echo '<tr>';
-            echo '<th></th>';
             echo '<th>Discord ID</th>';
             echo '<th>Discord Name</th>';
+            echo '<th>Status</th>';
+            echo '<th></th>';
+            echo '<th></th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
             while ($result = pg_fetch_array($DtlQuery)) {
+                $status = $result['pollstatus'];
+                $actBtn = 'disabled';
+                if ($status == 'Applying') {
+                    $actBtn = '';
+                }
                 echo '<tr>';
+                echo '<td>' . $result['polldcid'] . '</td><td>' . $result['polldcusername'] . '</td><td>' . $status . '</td>';
                 echo '<td>
-                    <form action="deleteUser.php" method="POST">
-                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete" name="pollid" value="' . $result['pollid'] . '" onclick="return confirm(\'Are you sure to remove this user from this event?\')">X</button>
+                    <form action="acceptUser.php" method="POST">
+                    <button type="submit" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Accept" name="pollid" value="' . $result['pollid'] . '" onclick="return confirm(\'Are you sure to accept this user\'s apply?\')"' . $actBtn . ' >✓</button>
+                    </form></td>';
+                echo '<td>';
+                echo '<form action="rejectUser.php" method="POST">
+                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Reject" name="pollid" value="' . $result['pollid'] . '" onclick="return confirm(\'Are you sure to reject this user\'s apply?\') "' . $actBtn . ' >✖</button>
                     </form>
                     </td>';
-                echo '<td>' . $result['polldcid'] . '</td><td>' . $result['polldcusername'] . '</td>';
                 echo '</tr>';
             }
 

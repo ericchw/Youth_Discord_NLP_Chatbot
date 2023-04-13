@@ -1,5 +1,6 @@
 <?php
 include 'checkCookie.php';
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +101,7 @@ include 'checkCookie.php';
                         </li>
                         <li>
                             <a href="botlog_page.php">
-                                <i class="fa fa-comment"></i>Bot Log</a>
+                                <i class="fa fa-comment"></i>Bot PM Log</a>
                         </li>
                         <li>
                             <a href="calendar_page.php">
@@ -144,7 +145,7 @@ include 'checkCookie.php';
                         </li>
                         <li>
                             <a href="botlog_page.php">
-                                <i class="fa fa-comment"></i>Bot Log</a>
+                                <i class="fa fa-comment"></i>Bot PM Log</a>
                         </li>
                         <li>
                             <a href="calendar_page.php">
@@ -214,6 +215,18 @@ include 'checkCookie.php';
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
+                        <?php
+                        if (isset($_GET['erro'])) { ?>
+                            <p style="color: red; text-align: center"> <?php echo $_GET['erro']; ?></p>
+                        <?php } ?>
+                        <?php
+                        if (isset($_GET['succ'])) { ?>
+                            <p style="color: green; text-align: center"> <?php echo $_GET['succ']; ?></p>
+                        <?php } ?>
+                        <div align="right">
+                            <a class="btn btn-info" href="sendDMToUser.php">
+                                <i class="fa fa-share"></i>&nbsp; Send DM to Accepted User</a>
+                        </div>
                         <br />
                         <div class="row">
                             <div class="table-responsive table-responsive-data2">
@@ -224,7 +237,12 @@ include 'checkCookie.php';
                                     <div class="card-body card-block">
                                         <?php
                                         require 'getEvent.php';
-                                        echo getEventById($_POST['eventId']);
+                                        if (empty($_POST['eventId'])) {
+                                            echo getEventById($_SESSION["eventid"]);
+                                        } else {
+                                            $_SESSION["eventid"] = $_POST['eventId'];
+                                            echo getEventById($_SESSION["eventid"]);
+                                        }
                                         ?>
                                     </div>
                                 </div>
