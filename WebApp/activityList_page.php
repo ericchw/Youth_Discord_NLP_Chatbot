@@ -81,7 +81,7 @@ include 'checkCookie.php';
             </li>
             <li>
               <a href="botlog_page.php">
-                <i class="fa fa-comment"></i>Bot Log</a>
+                <i class="fa fa-comment"></i>Bot PM Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
@@ -125,7 +125,7 @@ include 'checkCookie.php';
             </li>
             <li>
               <a href="botlog_page.php">
-                <i class="fa fa-comment"></i>Bot Log</a>
+                <i class="fa fa-comment"></i>Bot PM Log</a>
             </li>
             <li>
               <a href="calendar_page.php">

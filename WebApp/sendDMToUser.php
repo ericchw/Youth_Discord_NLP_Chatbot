@@ -1,10 +1,12 @@
 <?php
 
-$id = $_POST['eventId'];
+session_start();
 
-$url = 'http://python_api/create_event/' . $id;
+$id = $_SESSION["eventid"];
+
+$url = 'http://python_api/send_message/' . $id;
 PostData($url);
-header('Location: event_page.php');
+header('Location: eventDtl_page.php?succ=Send the message successfully');
 
 function PostData($url)
 {

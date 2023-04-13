@@ -99,7 +99,7 @@ CREATE TABLE Polling (
     EVTId SERIAL,
     POLLDCId VARCHAR,
     POLLDCUsername VARCHAR,
-    POLLDCStatus varchar, -- Applying, Accepted, Rejected
+    POLLStatus varchar, -- Applying, Accepted, Rejected
     POLLCreateDate TIMESTAMP,
     POLLUpdateDate TIMESTAMP,
 	CONSTRAINT fk_Polling FOREIGN KEY (EVTId) REFERENCES Event(EVTId)
