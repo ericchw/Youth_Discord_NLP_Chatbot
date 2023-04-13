@@ -34,3 +34,4 @@ if (isset($_POST['submit'])) {
     $pwd = md5($_POST['password']);
     login($email, $pwd);
 }
+?>
