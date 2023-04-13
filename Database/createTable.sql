@@ -13,25 +13,25 @@
 -- LIMIT = -1 IS_TEMPLATE = False;
 
 --####################################################
-DROP TABLE account IF EXISTS;
+DROP TABLE account;
 
-DROP TABLE chatlog IF EXISTS;
+DROP TABLE chatlog;
 
-DROP TABLE helplog IF EXISTS;
+DROP TABLE helplog;
 
-DROP TABLE games IF EXISTS;
+-- DROP TABLE games;
 
-DROP TABLE information IF EXISTS;
+DROP TABLE information;
 
-DROP TABLE event_detail IF EXISTS;
+-- DROP TABLE event_detail;
 
-DROP TABLE event_header IF EXISTS;
+-- DROP TABLE event_header;
 
-DROP TABLE activity IF EXISTS;
+DROP TABLE polling;
 
-DROP TABLE event IF EXISTS;
+DROP TABLE event;
 
-DROP TABLE polling IF EXISTS;
+DROP TABLE activity;
 
 CREATE TABLE account (
     id SERIAL PRIMARY KEY,
@@ -74,35 +74,12 @@ CREATE TABLE information (
     servicehours VARCHAR
 );
 
-INSERT INTO
-    account(email, pwd, username)
-VALUES
-    (
-        '1234@gmail.com',
-        MD5('1234'),
-        'Ken'
-    );
-
-
-INSERT INTO
-    information
-VALUES
-    (
-        '聖雅各福群會6PM網上青年支援隊',
-        '26093228',
-        '59333711',
-        'https://www.cyberyouth.sjs.org.hk/',
-        'https://www.instagram.com/6pm.hk/',
-        'https://discord.gg/6pm',
-        'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png'
-    );
-
 CREATE TABLE Activity (
     ATYId SERIAL PRIMARY KEY,
     ATYName VARCHAR,
     ATYCreateDate TIMESTAMP,
     ATYUpdateDate TIMESTAMP
-)
+);
 
 CREATE TABLE Event (
     EVTId SERIAL PRIMARY KEY,
@@ -126,3 +103,26 @@ CREATE TABLE Polling (
     POLLUpdateDate TIMESTAMP,
 	CONSTRAINT fk_Polling FOREIGN KEY (EVTId) REFERENCES Event(EVTId)
 );
+
+INSERT INTO
+    account(email, pwd, username)
+VALUES
+    (
+        '1234@gmail.com',
+        MD5('1234'),
+        'Ken'
+    );
+
+
+INSERT INTO
+    information
+VALUES
+    (
+        '聖雅各福群會6PM網上青年支援隊',
+        '26093228',
+        '59333711',
+        'https://www.cyberyouth.sjs.org.hk/',
+        'https://www.instagram.com/6pm.hk/',
+        'https://discord.gg/6pm',
+        'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png'
+    );
