@@ -6,12 +6,24 @@ from googletrans import Translator
 # pip install googletrans==3.1.0a0
 # must uninstall first then install
 from googletrans import LANGUAGES
+import os
 
-# emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
-classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
+#Avoid download model again if restart Docker
+MODEL_DIR = '/python_app/model'
+MODEL_PATH = os.path.join(MODEL_DIR, 'emotion-english-distilroberta-base')
+if os.path.exists(MODEL_PATH):
+    # Load the model from the mounted volume
+    classifier = pipeline("text-classification", model=MODEL_PATH, top_k=None)
+else:
+    # Download the model and save it to the mounted volume
+    classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
+    classifier.save_pretrained(MODEL_PATH)
+# # emotion = pipeline('sentiment-analysis', model='arpanghoshal/EmoRoBERTa')
+# classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
 
 # from transformers import pipeline
 # classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=True)
+
 
 def emtransform(text):
     # translat = google_translator()

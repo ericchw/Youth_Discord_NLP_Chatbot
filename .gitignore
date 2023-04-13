@@ -57,3 +57,10 @@ python_app/python_app/nltk_data/tokenizers/punkt/slovene.pickle
 python_app/python_app/nltk_data/tokenizers/punkt/spanish.pickle
 python_app/python_app/nltk_data/tokenizers/punkt/swedish.pickle
 python_app/python_app/nltk_data/tokenizers/punkt/turkish.pickle
+python_app/model/emotion-english-distilroberta-base/config.json
+python_app/model/emotion-english-distilroberta-base/merges.txt
+python_app/model/emotion-english-distilroberta-base/pytorch_model.bin
+python_app/model/emotion-english-distilroberta-base/special_tokens_map.json
+python_app/model/emotion-english-distilroberta-base/tokenizer.json
+python_app/model/emotion-english-distilroberta-base/tokenizer_config.json
+python_app/model/emotion-english-distilroberta-base/vocab.json

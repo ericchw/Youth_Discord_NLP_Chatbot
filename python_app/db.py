@@ -51,7 +51,8 @@ VALUES
         '1234@gmail.com',
         MD5('1234'),
         'Ken'
-    );
+    )
+ON CONFLICT DO NOTHING;
 
 
 CREATE TABLE IF NOT EXISTS chatlog (
@@ -93,7 +94,8 @@ VALUES
         'https://www.instagram.com/6pm.hk/',
         'https://discord.gg/6pm',
         'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png'
-    );
+    )
+ON CONFLICT DO NOTHING;
 
 
 CREATE TABLE IF NOT EXISTS Activity (
