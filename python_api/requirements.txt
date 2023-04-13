@@ -1,4 +1,5 @@
 discord
+json
 psycopg2
 flask
 flask_discord_interactions

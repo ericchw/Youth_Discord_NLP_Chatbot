@@ -29,13 +29,15 @@ def initiate():
         cursor = connection.cursor()
         logger.debug("PostgreSQL connection is established.")
         cursor.execute("""
---DROP TABLE IF EXISTS account;
---DROP TABLE IF EXISTS chatlog;
---DROP TABLE IF EXISTS information;
---DROP TABLE IF EXISTS helplog;
---DROP TABLE IF EXISTS polling;
---DROP TABLE IF EXISTS event;
---DROP TABLE IF EXISTS activity;
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS activity;
+DROP TABLE IF EXISTS botlog;
+DROP TABLE IF EXISTS chatlog;
+DROP TABLE IF EXISTS helplog;
+DROP TABLE IF EXISTS information;
+DROP TABLE IF EXISTS polling;
+
         
 CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,

@@ -1,4 +1,4 @@
-import discord, psycopg2
+import discord, psycopg2, json
 from discord.ext import commands
 from flask import Flask, redirect, url_for, render_template_string
 from flask_discord_interactions import DiscordInteractions
@@ -75,40 +75,59 @@ def create_event(primary_key):
     
     return response.json()
 
-@app.route("/send_message/<string:recipient_id>/<string:content>")
-def send_private_message(recipient_id,content):
+@app.route("/send_message/<string:event_id>")
+def send_private_message(event_id):
     # Define the API endpoint and headers
-    url = "https://discord.com/api/users/@me/channels"
-    headers = {
-        "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
-        "Content-Type": "application/json"
-    }
+    connection = psycopg2.connect(
+        host="db",
+        port="5432",
+        database="sjs",
+        user="admin",
+        password="admin",
+    )
+    cursor = connection.cursor()
+    cursor.execute(f"SELECT polldcid, polldcusername FROM polling where pollstatus = 'Accepted' and evtid = {event_id}")
+    record = cursor.fetchall()
+    cursor.execute(f'SELECT evttitle FROM event where evtid = {event_id}')
+    activity = cursor.fetchall()
+    
+    print(f'record is :{record[0]}')
+    print(f'activity name is: {activity}')
+    for x in record:
+        print (x)
 
-    # Define the data to be sent in the API request
-    data = {
-        "recipient_id": recipient_id,
-        "content": content
-    }
+        url = "https://discord.com/api/users/@me/channels"
+        headers = {
+            "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
+            "Content-Type": "application/json"
+        }
 
-    # Send the API request to create a DM channel with the user
-    response = requests.post(url, headers=headers, data=json.dumps(data))
+        # Define the data to be sent in the API request
+        data = {
+            "recipient_id": x[0],
+            "content": "temp"
+        }
 
-    # Parse the response JSON and extract the channel ID
-    response_json = response.json()
-    channel_id = response_json["id"]
+        # Send the API request to create a DM channel with the user
+        response = requests.post(url, headers=headers, data=json.dumps(data))
 
-    # Define the API endpoint for sending a message and update the headers
-    url = f"https://discord.com/api/channels/{channel_id}/messages"
-    headers["Content-Type"] = "application/json"
+        # Parse the response JSON and extract the channel ID
+        response_json = response.json()
+        channel_id = response_json["id"]
 
-    # Define the data to be sent in the API request
-    data = {
-        "content": content
-    }
+        # Define the API endpoint for sending a message and update the headers
+        url = f"https://discord.com/api/channels/{channel_id}/messages"
+        headers["Content-Type"] = "application/json"
 
-    # Send the API request to send the message to the user
-    response = requests.post(url, headers=headers, data=json.dumps(data))
+        # Define the data to be sent in the API request
+        data = {
+            "content": f"{x[1]}, you have successfully joined {activity[0][0]}"
+        }
+
+        # Send the API request to send the message to the user
+        response = requests.post(url, headers=headers, data=json.dumps(data))
     return response.json()
+    
 
 if __name__ == "__main__":
     print('testing in python')
