@@ -101,7 +101,7 @@ include 'checkCookie.php';
             </li>
             <li>
               <a href="botlog_page.php">
-                <i class="fa fa-comment"></i>Bot Log</a>
+                <i class="fa fa-comment"></i>Bot PM Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
@@ -145,7 +145,7 @@ include 'checkCookie.php';
             </li>
             <li>
               <a href="botlog_page.php">
-                <i class="fa fa-comment"></i>Bot Log</a>
+                <i class="fa fa-comment"></i>Bot PM Log</a>
             </li>
             <li>
               <a href="calendar_page.php">
@@ -200,7 +200,7 @@ include 'checkCookie.php';
                         </div>
                       </div>
                       <div class="account-dropdown__footer">
-                        <a href="#"> <i class="zmdi zmdi-power"></i>Logout</a>
+                        <a href="logout.php"> <i class="zmdi zmdi-power"></i>Logout</a>
                       </div>
                     </div>
                   </div>
