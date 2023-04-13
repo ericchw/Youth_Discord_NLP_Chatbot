@@ -88,6 +88,7 @@ CREATE TABLE Event (
     EVTLimitMem int,
     EVTDesc VARCHAR,
     EVTDate TIMESTAMP,
+    EVTdeadline TIMESTAMP,
     EVTCreateDate TIMESTAMP,
     EVTUpdateDate TIMESTAMP,
 	CONSTRAINT fk_Event FOREIGN KEY (ATYId) REFERENCES Activity(ATYId)

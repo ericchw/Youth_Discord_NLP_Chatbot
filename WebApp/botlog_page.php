@@ -14,7 +14,7 @@ include 'checkCookie.php';
     <meta name="keywords" content="au theme template" />
 
     <!-- Title Page-->
-    <title>Event</title>
+    <title>Bot Log</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all" />
@@ -91,6 +91,10 @@ include 'checkCookie.php';
                                 <i class="fas fa-star"></i>Event</a>
                         </li>
                         <li>
+                            <a href="chatlog_page.php">
+                                <i class="fa fa-comment"></i>Chat Log</a>
+                        </li>
+                        <li>
                             <a href="helplog_page.php">
                                 <i class="fa fa-comment"></i>Help Log</a>
                         </li>
@@ -131,6 +135,10 @@ include 'checkCookie.php';
                                 <i class="fas fa-star"></i>Event</a>
                         </li>
                         <li>
+                            <a href="chatlog_page.php">
+                                <i class="fa fa-comment"></i>Chat Log</a>
+                        </li>
+                        <li>
                             <a href="helplog_page.php">
                                 <i class="fa fa-comment"></i>Help Log</a>
                         </li>
@@ -155,8 +163,8 @@ include 'checkCookie.php';
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for event..." />
+                            <form class="form-header" action="event_page.php" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="searchEvent" id="searchEvent" placeholder="Search for event..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -179,7 +187,7 @@ include 'checkCookie.php';
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#"><?php echo $_COOKIE['username'] ?></a>
+                                                        <a href="account_page.php"><?php echo $_COOKIE['username'] ?></a>
                                                     </h5>
                                                     <span class="email"><?php echo $_COOKIE['email'] ?></span>
                                                 </div>
@@ -202,32 +210,34 @@ include 'checkCookie.php';
                 </div>
             </header>
             <!-- END HEADER DESKTOP-->
+
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="table-responsive table-responsive-data2">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <strong>Basic Form</strong> Elements
-                                    </div>
-                                    <div class="card-body card-block">
-                                        <?php
-                                        require 'getEvent.php';
-                                        echo getEventById($_POST['eventId']);
-                                        ?>
-                                    </div>
-                                </div>
+                                <table class="table table-data2" id="chatlogTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Message</th>
+                                            <th>Send Time</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    include('getAllBotlog.php');
+                                    ?>
+                                </table>
                             </div>
-                        </div>
-                        <div class="row" style="width: 100%">
-                            <div class="col-md-12">
-                                <div class="copyright">
-                                    <p>
-                                        Copyright © 2018 Colorlib. All rights reserved. Template
-                                        by <a href="https://colorlib.com">Colorlib</a>.
-                                    </p>
+                            <div class="row" style="width: 100%">
+                                <div class="col-md-12">
+                                    <div class="copyright">
+                                        <p>
+                                            Copyright © 2018 Colorlib. All rights reserved. Template
+                                            by <a href="https://colorlib.com">Colorlib</a>.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -259,48 +269,28 @@ include 'checkCookie.php';
 
         <!-- Main JS-->
         <script src="js/main.js"></script>
+        <script>
+            function usernameFilter() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("filterInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("chatlogTable");
+                tr = table.getElementsByTagName("tr");
 
-        <script type="text/javascript">
-            $(function() {
-                // for now, there is something adding a click handler to 'a'
-                var tues = moment().day(2).hour(19);
-
-                // build trival night events for example data
-                var events = [{
-                        title: "Special Conference",
-                        start: moment().format("YYYY-MM-DD"),
-                        url: "#",
-                    },
-                    {
-                        title: "Doctor Appt",
-                        start: moment().hour(9).add(2, "days").toISOString(),
-                        url: "#",
-                    },
-                ];
-
-                var trivia_nights = [];
-
-                for (var i = 1; i <= 4; i++) {
-                    var n = tues.clone().add(i, "weeks");
-                    console.log("isoString: " + n.toISOString());
-                    trivia_nights.push({
-                        title: "Trival Night @ Pub XYZ",
-                        start: n.toISOString(),
-                        allDay: false,
-                        url: "#",
-                    });
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
                 }
-
-                // setup a few events
-                $("#calendar").fullCalendar({
-                    header: {
-                        left: "prev,next today",
-                        center: "title",
-                        right: "month,agendaWeek,agendaDay,listWeek",
-                    },
-                    events: events.concat(trivia_nights),
-                });
-            });
+            }
         </script>
 </body>
 
