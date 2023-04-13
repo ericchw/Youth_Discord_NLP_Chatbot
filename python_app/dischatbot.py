@@ -195,45 +195,53 @@ async def on_message(message):
                 connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', 0,'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
             if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
                 user = message.author
-                embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
-                # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-                embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
-                embed.add_field(name="👎", value="不需要", inline=True)
-                # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
-                current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
-                try:
-                    message_to_send = await user.send(embed=embed)
-                    await message_to_send.add_reaction("👍")
-                    await message_to_send.add_reaction("👎")
-                    # print(f"user: {user}")
-                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "i") 
-                except (Exception) as error:
-                    print(f'error from bot: {error}')
-                
-                reaction, user = await bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍')
-                logger.debug(f'reaction: {reaction}')
-                if reaction.emoji == "👍":
-                    responses[user.id] = "Agree"
-                    # await user.send("Hello! This is a private message.")
-                    # send need help to social worker
-                    # sjsAdmin = bot.get_user(792305150429233152)
-                    sjsAdmin = bot.get_user(909806470416191518)
-                    # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
-                    await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                    # await user.send("你的")
-                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
-                    connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
-                elif str(reaction) == "👎":
-                    responses[user.id] = "Disagree"
-                # print the user's response
-                logger.debug(f'{user.name} responded with {responses[user.id]}')
+                sadcount = connectDB(f"SELECT max(labelflag) FROM chatlog where senderid = '{user.id}' and label = 'sadness'", "r")
+                logger.debug(f"sadcount: {sadcount[1][0][0]}")
+                count = sadcount[1][0][0]
+                count = count + 1
+                if(count >= 10):
+                    embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+                    # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
+                    embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
+                    embed.add_field(name="👎", value="不需要", inline=True)
+                    # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
+                    current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
+                    try:
+                        message_to_send = await user.send(embed=embed)
+                        await message_to_send.add_reaction("👍")
+                        await message_to_send.add_reaction("👎")
+                        # print(f"user: {user}")
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "i") 
+                    except (Exception) as error:
+                        print(f'error from bot: {error}')
+                    
+                    reaction, user = await bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍')
+                    logger.debug(f'reaction: {reaction}')
+                    if reaction.emoji == "👍":
+                        responses[user.id] = "Agree"
+                        # await user.send("Hello! This is a private message.")
+                        # send need help to social worker
+                        # sjsAdmin = bot.get_user(792305150429233152)
+                        sjsAdmin = bot.get_user(909806470416191518)
+                        # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
+                        await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
+                        # await user.send("你的")
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
+                        connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+                    elif str(reaction) == "👎":
+                        responses[user.id] = "Disagree"
+                    # print the user's response
+                    logger.debug(f'{user.name} responded with {responses[user.id]}')
 
 
-                responses[user.id] = None
-                # await msg.add_reaction("👍")
-                # await user.respond("Hello!", view=MyView())
-                # global user_id
-                user_id = user.id
+                    responses[user.id] = None
+                    # await msg.add_reaction("👍")
+                    # await user.respond("Hello!", view=MyView())
+                    # global user_id
+                    user_id = user.id
+                    count = 0
+                else:
+                    connectDB(f"UPDATE chatlog SET labelflag = {count} WHERE senderid = '{user.id}' AND label = 'sadness' ", "u")
             elif message.channel.type == discord.ChannelType.private:
             # check if the message is from the user you are expecting a response from
                 if message.author.id == user_id:
@@ -272,6 +280,7 @@ async def on_message(message):
             if type(ans) == str:
                 if(message.channel.name=='faq'):
                     await message.channel.send(ans)
+                    ans = ans.replace("'", "''")
                     connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', 0,'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
             else:
                 # logger.debug(ans.keys())
