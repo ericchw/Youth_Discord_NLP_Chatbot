@@ -25,6 +25,9 @@ member=""
 bot = discord.Bot(debug_guilds=["995158826347143309"], intents=discord.Intents.all()) # specify the guild IDs in debug_guilds
 # bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 channel_id = 1060512412299710504
+# sjsAdmin = bot.get_user(792305150429233152)
+sjsAdmin = bot.get_user(909806470416191518)
+labelFlagLimit = 5
 
 # since global slash commands can take up to an hour to register,
 # we need to limit the guilds for testing purposes
@@ -88,7 +91,7 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                event_det_id = connectDB(f"xc edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
@@ -108,7 +111,7 @@ class Event(View):
                 my_string = ",".join(temp_list)
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
-                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                event_det_id = connectDB(f"xc edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
@@ -129,7 +132,7 @@ class Event(View):
                 my_string = my_string.replace("'", "")
                 bot.event_name=polling
                 #logger.debug(polling[1][1])
-                event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+                event_det_id = connectDB(f"xc edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
                     connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
                 else:
@@ -181,11 +184,21 @@ async def on_message(message):
         text = text.replace("'", "''")
         #SQL: insert data (user input message and NLP label but not value -> emotion[0]['label'])
         logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
-        # if (emotion['label']== 'anger' and emotion['score'] >= 0.7) or emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
-        #     labelFlag = connectDB(f"SELECT labelflag FROM chatlog WHERE senderid = '{message.author.id}' ORDER BY timestamp DESC LIMIT 1;", "r")
-        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', 0,'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+        labelFlag = connectDB(f"SELECT labelflag FROM chatlog WHERE senderid = '{message.author.id}' ORDER BY timestamp DESC LIMIT 1", "r")
+        if labelFlag[1] is None or len(labelFlag[1]) == 0:
+            labelFlag = 0
+        else:
+            labelFlag = labelFlag[1][0][0]
+        if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
+            labelFlag = labelFlag + 1
+            if labelFlag == labelFlagLimit:
+                await sjsAdmin.send(f"{message.author.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注")
+                connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{message.author}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i")
+        connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{message.author.name}', '{message.author.id}', '{text}', '{emotion['label']}', {labelFlag},'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+        # if (emotion['label']== 'anger' and emotion['score'] >= 0.7) or (emotion['label'] == 'sadness' and emotion['score'] >= 0.85):
+        #     connectDB(f"UPDATE chatlog SET labelflag = (SELECT labelflag FROM chatlog WHERE senderid = '{message.author.id}' ORDER BY timestamp DESC LIMIT 1) + 1 WHERE senderid = '{message.author.id}';", "u")
+        #         # logger.debug(ans)
         
-        # logger.debug(ans)
         logger.debug(text)
         if is_english(text):
             ans=chat.outp(text)
@@ -234,22 +247,22 @@ async def on_message(message):
                 await message.channel.send(image)
                 # SQL: save message to database "大家冷靜d"
                 connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', 0,'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
-            if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
-                user = message.author
-                embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
-                # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-                embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
-                embed.add_field(name="👎", value="不需要", inline=True)
-                # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
-                current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
-                try:
-                    message_to_send = await user.send(embed=embed)
-                    await message_to_send.add_reaction("👍")
-                    await message_to_send.add_reaction("👎")
-                    # print(f"user: {user}")
-                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "i") 
-                except (Exception) as error:
-                    print(f'error from bot: {error}')
+            # if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
+            #     user = message.author
+            #     embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+            #     # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
+            #     embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
+            #     embed.add_field(name="👎", value="不需要", inline=True)
+            #     # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
+            #     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
+            #     try:
+            #         message_to_send = await user.send(embed=embed)
+            #         await message_to_send.add_reaction("👍")
+            #         await message_to_send.add_reaction("👎")
+            #         # print(f"user: {user}")
+            #         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "i") 
+            #     except (Exception) as error:
+            #         print(f'error from bot: {error}')
                 
                 reaction, user = await bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍')
                 logger.debug(f'reaction: {reaction}')
@@ -257,11 +270,8 @@ async def on_message(message):
                     responses[user.id] = "Agree"
                     # await user.send("Hello! This is a private message.")
                     # send need help to social worker
-                    # sjsAdmin = bot.get_user(792305150429233152)
-                    sjsAdmin = bot.get_user(909806470416191518)
                     # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
                     await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                    # await user.send("你的")
                     connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
                     connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
                 elif str(reaction) == "👎":
@@ -287,7 +297,6 @@ async def on_message(message):
                     response = message.content
                     # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                     if response == 'yes':
-                        sjsAdmin = bot.get_user(909806470416191518)
                         try:
                             await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                             connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
@@ -328,13 +337,13 @@ async def on_reaction_add(reaction, user):
         #         my_string = my_string.replace("'", "")
 
         #         # logger.debug(my_string)
-        #         # edtlhdridInDB = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+        #         # edtlhdridInDB = connectDB(f"xc edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
         #         # if edtlhdridInDB == id:
         #         #     connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
         #         # else:
         #         #     id = connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i")
                 
-        #         event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
+        #         event_det_id = connectDB(f"xc edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
         #         # connectDB(f"UPDATE event_detail SET edtlvotedtl = {my_string}  WHERE edtlhdrid = {cevent[0][0]}", "u")
         #         logger.debug(event_det_id)
         #         if len(event_det_id[1]) == 0:
@@ -372,7 +381,7 @@ async def on_interaction(interaction):
             # Get the message content
             message_content = message.content
             # logger.debug(f"message.content: {message.content}")
-            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][20:-2] #if localhost py 16:-2
+            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][16:-2] #if localhost py 20:-2
             # logger.debug(f"eventid, latest_update: {eventid}, {latest_update}")
             # eventid = message.content.split(maxsplit=1)[1]
             # logger.debug(f"event id is {eventid}")
@@ -386,7 +395,7 @@ async def on_interaction(interaction):
             # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
             # logger.debug(f'database: {timecheck[1]}')
             # logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
-            count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
+            count = connectDB(f'xc COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             logger.debug(f"count[1][0][0]: {count[1][0][0]}")
             if(update_checking):
                 if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] < timecheck[1][0][1] and timecheck[1][0][1] != 0:
