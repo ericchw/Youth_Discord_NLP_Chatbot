@@ -1,8 +1,10 @@
 version: '2.16.0'
+
 # networks:
 #   sjs:
 #     driver: bridge
-#     external: true
+#     # external: true
+
 services:
   db:
     container_name: db
@@ -31,7 +33,7 @@ services:
   php:
     restart: always
     container_name: php
-    # image: php:fpm
+    image: php:fpm
     build: ./php
     ports:
       - 9000:9000
@@ -40,7 +42,7 @@ services:
     # networks:
     #   - sjs
 
-  web: #nginx
+  web:
     restart: always
     container_name: web
     image: nginx:latest
@@ -56,6 +58,7 @@ services:
 
   python_app:
     container_name: python_app
+    image: python-app:3.9
     restart: always
     build: ./python_app
     ports:
@@ -64,12 +67,14 @@ services:
       - ./python_app:/python_app
     depends_on:
       - db
+    # networks:
+    #   - sjs
+      
 
   python_api:
-    # 名稱
     container_name: python_api
+    image: python-api:3.9
     restart: always
-    # 該路徑底下需要包含Dockerfile
     build: ./python_api
     ports:
        - "5001:80"
@@ -77,3 +82,5 @@ services:
       - ./python_api:/python_api
     depends_on:
       - web
+    # networks:
+    #   - sjs

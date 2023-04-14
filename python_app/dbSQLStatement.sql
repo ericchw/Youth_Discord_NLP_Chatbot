@@ -1,12 +1,11 @@
 DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS polling;
 DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS activity;
 DROP TABLE IF EXISTS chatlog;
 DROP TABLE IF EXISTS helplog;
 DROP TABLE IF EXISTS botlog;
-DROP TABLE IF EXISTS activity;
 DROP TABLE IF EXISTS information;
-
         
 CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,
@@ -25,6 +24,26 @@ VALUES
     )
 ON CONFLICT DO NOTHING;
 
+CREATE TABLE IF NOT EXISTS Activity (
+    ATYId SERIAL PRIMARY KEY,
+    ATYName VARCHAR,
+    ATYCreateDate TIMESTAMP,
+    ATYUpdateDate TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS Event(
+    EVTId SERIAL PRIMARY KEY,
+    ATYId SERIAL,
+    EVTTitle VARCHAR,
+    EVTLimitMem int,
+    EVTDesc VARCHAR,
+    EVTDate TIMESTAMP,
+    EVTdeadline TIMESTAMP,
+    EVTCreateDate TIMESTAMP,
+    EVTUpdateDate TIMESTAMP,
+    CONSTRAINT fk_Event FOREIGN KEY (ATYId) REFERENCES Activity(ATYId)
+);
+
 CREATE TABLE IF NOT EXISTS Polling (
     POLLId SERIAL PRIMARY KEY,
     EVTId SERIAL,
@@ -33,20 +52,7 @@ CREATE TABLE IF NOT EXISTS Polling (
     POLLStatus varchar, -- Applying, Accepted, Rejected
     POLLCreateDate TIMESTAMP,
     POLLUpdateDate TIMESTAMP,
-	CONSTRAINT fk_Polling FOREIGN KEY (EVTId) REFERENCES Event(EVTId)
-);
-
-CREATE TABLE IF NOT EXISTS Event(
-    EVTId SERIAL PRIMARY KEY,
-	ATYId SERIAL,
-    EVTTitle VARCHAR,
-    EVTLimitMem int,
-    EVTDesc VARCHAR,
-    EVTDate TIMESTAMP,
-    EVTdeadline TIMESTAMP,
-    EVTCreateDate TIMESTAMP,
-    EVTUpdateDate TIMESTAMP,
-	CONSTRAINT fk_Event FOREIGN KEY (ATYId) REFERENCES Activity(ATYId)
+    CONSTRAINT fk_Polling FOREIGN KEY (EVTId) REFERENCES Event(EVTId)
 );
 
 CREATE TABLE IF NOT EXISTS chatlog (
@@ -97,14 +103,6 @@ VALUES
         'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png'
     )
 ON CONFLICT DO NOTHING;
-
-
-CREATE TABLE IF NOT EXISTS Activity (
-    ATYId SERIAL PRIMARY KEY,
-    ATYName VARCHAR,
-    ATYCreateDate TIMESTAMP,
-    ATYUpdateDate TIMESTAMP
-);
 
 -----------------------------------------------
 
