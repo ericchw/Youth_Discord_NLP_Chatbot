@@ -34,7 +34,7 @@ def create_event(primary_key):
     }
 
     data = {
-        "content": f"**Event: {primary_key}\nEvent last Updated: {record[0][6]}**",
+        "content": f"**Event last Updated: {record[0][6]}**",
         "components": [
             {
                 "type": 1,
@@ -43,7 +43,7 @@ def create_event(primary_key):
                         "type": 2,
                         "label": "Join",
                         "style": 4,
-                        "custom_id": "join"
+                        "custom_id": f"{primary_key}|join"
                     }
                 ]
             }

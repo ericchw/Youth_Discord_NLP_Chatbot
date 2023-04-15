@@ -446,15 +446,21 @@ async def on_reaction_add(reaction, user):
 @bot.event
 async def on_interaction(interaction):
     if interaction.type == discord.InteractionType.component:
-        if interaction.data['custom_id'] == 'join':
+        custom_id = interaction.data["custom_id"]
+        eventid, info = custom_id.split("|")
+        logger.debug(f"evntid: {eventid}, info: {info}")
+        current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
+        if info == 'join':
             # Retrieve the message object
             channel = await bot.fetch_channel(interaction.channel_id)
             message = await channel.fetch_message(interaction.message.id)
             
             # Get the message content
             message_content = message.content
-            # logger.debug(f"message.content: {message.content}")
-            eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][20:-2] #if localhost py 16:-2
+            logger.debug(f"message.content: {message.content}")
+            # eventid, latest_update = message_content.split("\n")[0][8:], message_content.split("\n")[1][20:-2] #if localhost py 16:-2
+            latest_update = datetime.strptime(message.content, "**Event last Updated: %Y-%m-%d %H:%M:%S**")
+            
             # logger.debug(f"eventid, latest_update: {eventid}, {latest_update}")
             # eventid = message.content.split(maxsplit=1)[1]
             # logger.debug(f"event id is {eventid}")
@@ -509,16 +515,11 @@ async def on_interaction(interaction):
                 except (Exception) as error:
                     print(f'error from bot: {error}')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
-        else:
-             custom_id = interaction.data["custom_id"]
-             evntid, info = custom_id.split("|")
-             logger.debug(f"evntid: {evntid}, info: {info}")
-             current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
-             if info == 'event_confirmation':
-                 logger.debug(f"interaction_user: {interaction.user.id}")
-                 connectDB(f"UPDATE polling SET pollupdatedate = '{current_time}', pollstatus = 'Confirmed' where polldcid = '{interaction.user.id}' and evtid = {evntid}", "u") 
-                 await interaction.response.edit_message(content=interaction.message.content)
-                 await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have confirmed the event')
+        elif info == 'event_confirmation':
+            logger.debug(f"interaction_user: {interaction.user.id}")
+            connectDB(f"UPDATE polling SET pollupdatedate = '{current_time}', pollstatus = 'Confirmed' where polldcid = '{interaction.user.id}' and evtid = {eventid}", "u") 
+            await interaction.response.edit_message(content=interaction.message.content)
+            await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have confirmed the event')
                  
 
 
