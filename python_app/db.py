@@ -183,9 +183,9 @@ def connectDB(sqlStatement, mode):
         logger.debug("PostgreSQL connection is established.")
 
         cursor.execute(sqlStatement)
-        if mode == "c":
-            defaultId = cursor.fetchone()[0]
+        if mode == "c" or mode == "i":
             connection.commit()
+            defaultId = cursor.fetchone()[0]
             return defaultId
         elif mode == "r":
              column_names = [desc[0] for desc in cursor.description]
