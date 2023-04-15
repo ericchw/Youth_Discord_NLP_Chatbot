@@ -1,5 +1,5 @@
 from logging import PlaceHolder
-import os, discord, time, re
+import os, discord, time, re,json
 # from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
@@ -509,6 +509,14 @@ async def on_interaction(interaction):
                 except (Exception) as error:
                     print(f'error from bot: {error}')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
+        else:
+             custom_id = interaction.data["custom_id"]
+             evntid, info = custom_id.split("|")
+             logger.debug(f"evntid: {evntid}, info: {info}")
+            #  if info == 'event_confirmation':
+            #      connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "i") 
+                 
+
 
 # create a logger
 logger = logging.getLogger(__name__)

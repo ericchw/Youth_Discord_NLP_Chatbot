@@ -88,7 +88,7 @@ def send_private_message(event_id):
     cursor = connection.cursor()
     cursor.execute(f"SELECT polldcid, polldcusername FROM polling where pollstatus = 'Accepted' and evtid = {event_id}")
     record = cursor.fetchall()
-    cursor.execute(f'SELECT evttitle FROM event where evtid = {event_id}')
+    cursor.execute(f'SELECT * FROM event where evtid = {event_id}')
     activity = cursor.fetchall()
     
     print(f'record is :{record[0]}')
@@ -105,7 +105,20 @@ def send_private_message(event_id):
         # Define the data to be sent in the API request
         data = {
             "recipient_id": x[0],
-            "content": "temp"
+            "content": "temp",
+            "components": [
+                {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "label": "Confirm",
+                            "style": 4,
+                            "custom_id": f"{activity[0][0]}|event_confirmation",
+                        }
+                    ]
+                }
+            ],
         }
 
         # Send the API request to create a DM channel with the user
@@ -121,7 +134,20 @@ def send_private_message(event_id):
 
         # Define the data to be sent in the API request
         data = {
-            "content": f"{x[1]}, you have successfully joined {activity[0][0]}"
+            "content": f"{x[1]}, you have successfully joined {activity[0][2]}",
+            "components": [
+                {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "label": "Confirm",
+                            "style": 4,
+                            "custom_id": f"{activity[0][0]}|event_confirmation",
+                        }
+                    ]
+                }
+            ],
         }
 
         # Send the API request to send the message to the user
