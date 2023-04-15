@@ -513,8 +513,12 @@ async def on_interaction(interaction):
              custom_id = interaction.data["custom_id"]
              evntid, info = custom_id.split("|")
              logger.debug(f"evntid: {evntid}, info: {info}")
-            #  if info == 'event_confirmation':
-            #      connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "i") 
+             current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
+             if info == 'event_confirmation':
+                 logger.debug(f"interaction_user: {interaction.user.id}")
+                 connectDB(f"UPDATE polling SET pollupdatedate = '{current_time}', pollstatus = 'Confirmed' where polldcid = '{interaction.user.id}' and evtid = {evntid}", "u") 
+                 await interaction.response.edit_message(content=interaction.message.content)
+                 await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have confirmed the event')
                  
 
 
