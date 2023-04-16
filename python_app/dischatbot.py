@@ -220,7 +220,8 @@ async def on_message(message):
                         await message_to_send.add_reaction("👍")
                         await message_to_send.add_reaction("👎")
                         # print(f"user: {user}")
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "u") 
+                        connectDB(f"UPDATE chatlog SET labelflag = 0 WHERE id = {dbReturnId};", "u")
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     
@@ -235,7 +236,7 @@ async def on_message(message):
                         # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
                         await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                         # await user.send("你的")
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
                     elif str(reaction) == "👎":
                         responses[user.id] = "Disagree"
@@ -250,31 +251,31 @@ async def on_message(message):
                     user_id = user.id
                 user_id = user.id
                 connectDB(f"UPDATE chatlog SET labelflag = {sadcount} WHERE id = {dbReturnId};", "u")
-            elif message.channel.type == discord.ChannelType.private:
-            # check if the message is from the user you are expecting a response from
-                if message.author.id == user_id:
-                    # handle the user's response
-                    # if str(reaction) == "👍":
-                    #     responses[user.id] = "Agree"
-                    # elif str(reaction) == "👎":
-                    #     responses[user.id] = "Disagree"
+            # elif message.channel.type == discord.ChannelType.private:
+            # # check if the message is from the user you are expecting a response from
+            #     if message.author.id == user_id:
+            #         # handle the user's response
+            #         # if str(reaction) == "👍":
+            #         #     responses[user.id] = "Agree"
+            #         # elif str(reaction) == "👎":
+            #         #     responses[user.id] = "Disagree"
                     
-                    response = message.content
-                    # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
-                    if response == 'yes':
-                        sjsAdmin = bot.get_user(909806470416191518)
-                        try:
-                            await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                            connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
-                        except (Exception) as error:
-                            print(f'error from bot: {error}')
-                        # await user.send("你的")
-                    # logger.debug(type(response))
-                    # string = faq.faq(message.content)
-                    # if string != None:
-                    #     await message.channel.send(string)
-                    await message.channel.send(ans)
-                    connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', {sadcount},'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
+            #         response = message.content
+            #         # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
+            #         if response == 'yes':
+            #             sjsAdmin = bot.get_user(909806470416191518)
+            #             try:
+            #                 await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
+            #                 connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
+            #             except (Exception) as error:
+            #                 print(f'error from bot: {error}')
+            #             # await user.send("你的")
+            #         # logger.debug(type(response))
+            #         # string = faq.faq(message.content)
+            #         # if string != None:
+            #         #     await message.channel.send(string)
+            #         await message.channel.send(ans)
+            #         connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{ans}', '{'bot'}', {sadcount},'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
         if is_english(text):
             ans=chat.outp(text)
         else:
