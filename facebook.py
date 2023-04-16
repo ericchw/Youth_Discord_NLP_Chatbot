@@ -58,7 +58,8 @@ async def send_facebook_post():
             channel = await bot.fetch_channel(DISCORD_CHANNEL_ID)
 
             # Create the message content with the post text and timestamp
-            content = f"Latest Facebook post ({formatted_created_time}):\n{message}"
+            facebookLinkId = data['data'][0]['id']
+            content = f"Latest Facebook post ({formatted_created_time}):\n{message}\nhttps://www.facebook.com/{facebookLinkId}"
 
             # Check if the post has any attachments (i.e., photos or videos)
             if len(attachments) > 0:
