@@ -25,7 +25,7 @@ member=""
 bot = discord.Bot(debug_guilds=["995158826347143309"], intents=discord.Intents.all()) # specify the guild IDs in debug_guilds
 # bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 channel_id = 1060512412299710504
-sadcountLimit = 10
+sadcountLimit = 3
 
 # since global slash commands can take up to an hour to register,
 # we need to limit the guilds for testing purposes
@@ -438,7 +438,7 @@ async def on_interaction(interaction):
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             logger.debug(f"count[1][0][0]: {count[1][0][0]}")
             if(update_checking):
-                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo) and count[1][0][0] < timecheck[1][0][1] and timecheck[1][0][1] != 0:
+                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo)  and timecheck[1][0][1] != 0:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','Applying' ,'{current_time}' )", "i") 
                     try:

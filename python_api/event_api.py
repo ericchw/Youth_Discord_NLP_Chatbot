@@ -86,7 +86,7 @@ def send_private_message(event_id):
         password="admin",
     )
     cursor = connection.cursor()
-    cursor.execute(f"SELECT polldcid, polldcusername FROM polling where pollstatus = 'Accepted' and evtid = {event_id}")
+    cursor.execute(f"SELECT polldcid, polldcusername, pollstatus FROM polling where pollstatus = 'Accepted' or pollstatus = 'Rejected' and evtid = {event_id}")
     record = cursor.fetchall()
     cursor.execute(f'SELECT * FROM event where evtid = {event_id}')
     activity = cursor.fetchall()
@@ -95,63 +95,100 @@ def send_private_message(event_id):
     print(f'activity name is: {activity}')
     for x in record:
         print (x)
+        string = ''
+        if x[2] == 'Rejected':
+            string = f"{x[1]}, you have been rejected from {activity[0][2]}"
+            url = "https://discord.com/api/users/@me/channels"
+            headers = {
+                "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
+                "Content-Type": "application/json"
+            }
 
-        url = "https://discord.com/api/users/@me/channels"
-        headers = {
-            "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
-            "Content-Type": "application/json"
-        }
+            # Define the data to be sent in the API request
+            data = {
+                "recipient_id": x[0],
+                "content": "temp",
+            }
 
-        # Define the data to be sent in the API request
-        data = {
-            "recipient_id": x[0],
-            "content": "temp",
-            "components": [
-                {
-                    "type": 1,
-                    "components": [
-                        {
-                            "type": 2,
-                            "label": "Confirm",
-                            "style": 4,
-                            "custom_id": f"{activity[0][0]}|event_confirmation",
-                        }
-                    ]
-                }
-            ],
-        }
+            # Send the API request to create a DM channel with the user
+            response = requests.post(url, headers=headers, data=json.dumps(data))
 
-        # Send the API request to create a DM channel with the user
-        response = requests.post(url, headers=headers, data=json.dumps(data))
+            # Parse the response JSON and extract the channel ID
+            response_json = response.json()
+            channel_id = response_json["id"]
 
-        # Parse the response JSON and extract the channel ID
-        response_json = response.json()
-        channel_id = response_json["id"]
+            # Define the API endpoint for sending a message and update the headers
+            url = f"https://discord.com/api/channels/{channel_id}/messages"
+            headers["Content-Type"] = "application/json"
 
-        # Define the API endpoint for sending a message and update the headers
-        url = f"https://discord.com/api/channels/{channel_id}/messages"
-        headers["Content-Type"] = "application/json"
+            # Define the data to be sent in the API request
+            data = {
+                "content": f"{string}",
+            }
 
-        # Define the data to be sent in the API request
-        data = {
-            "content": f"{x[1]}, you have successfully joined {activity[0][2]}",
-            "components": [
-                {
-                    "type": 1,
-                    "components": [
-                        {
-                            "type": 2,
-                            "label": "Confirm",
-                            "style": 4,
-                            "custom_id": f"{activity[0][0]}|event_confirmation",
-                        }
-                    ]
-                }
-            ],
-        }
+            # Send the API request to send the message to the user
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+        else:
+            string = f"{x[1]}, you have successfully joined {activity[0][2]}"
+            url = "https://discord.com/api/users/@me/channels"
+            headers = {
+                "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
+                "Content-Type": "application/json"
+            }
 
-        # Send the API request to send the message to the user
-        response = requests.post(url, headers=headers, data=json.dumps(data))
+            # Define the data to be sent in the API request
+            data = {
+                "recipient_id": x[0],
+                "content": "temp",
+                "components": [
+                    {
+                        "type": 1,
+                        "components": [
+                            {
+                                "type": 2,
+                                "label": "Confirm",
+                                "style": 4,
+                                "custom_id": f"{activity[0][0]}|event_confirmation",
+                            }
+                        ]
+                    }
+                ],
+            }
+
+            # Send the API request to create a DM channel with the user
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+
+            # Parse the response JSON and extract the channel ID
+            response_json = response.json()
+            channel_id = response_json["id"]
+
+            # Define the API endpoint for sending a message and update the headers
+            url = f"https://discord.com/api/channels/{channel_id}/messages"
+            headers["Content-Type"] = "application/json"
+
+            # Define the data to be sent in the API request
+            data = {
+                "content": f"{string}",
+                "components": [
+                    {
+                        "type": 1,
+                        "components": [
+                            {
+                                "type": 2,
+                                "label": "Confirm",
+                                "style": 4,
+                                "custom_id": f"{activity[0][0]}|event_confirmation",
+                            }
+                        ]
+                    }
+                ],
+            }
+
+            # Send the API request to send the message to the user
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            
+
+        
     return response.json()
     
 
