@@ -191,7 +191,7 @@ def connectDB(sqlStatement, mode):
              column_names = [desc[0] for desc in cursor.description]
              record = cursor.fetchall()
              return column_names, record
-        else: # i = insert, u = update, d = delete
+        else: # u = update, d = delete
             connection.commit()
     except (Exception, psycopg2.Error) as error:
         logger.debug("Error while fetching data from PostgreSQL in db.connectDB", error)

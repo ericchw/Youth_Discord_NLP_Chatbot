@@ -91,7 +91,7 @@ class Event(View):
                 bot.event_name=polling
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
-                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u") 
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable1=bot.event_variable1+str(interaction.user)+"\n"
@@ -111,7 +111,7 @@ class Event(View):
                 bot.event_name=polling
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
-                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u") 
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable2=bot.event_variable2+str(interaction.user)+"\n"
@@ -132,7 +132,7 @@ class Event(View):
                 #logger.debug(polling[1][1])
                 event_det_id = connectDB(f"SELECT edtlhdrid from event_detail WHERE edtlhdrid = {cevent[0][0]}", "r")
                 if len(event_det_id[1]) == 0:
-                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "i") 
+                    connectDB(f"INSERT INTO event_detail VALUES (DEFAULT, '{cevent[0][0]}', '{my_string}')", "u") 
                 else:
                     connectDB(f"UPDATE event_detail SET edtlvotedtl = '{my_string}'  WHERE edtlhdrid = {cevent[0][0]}", "u")
             bot.event_variable3=bot.event_variable3+str(interaction.user)+"\n"
@@ -156,7 +156,7 @@ async def event(ctx):
 @bot.event
 async def on_ready():
     logger.debug('We have logged in as {0.user}'.format(bot))
-    # initiate()
+    initiate()
 
 
     
@@ -201,14 +201,14 @@ async def on_message(message):
                 await message.channel.send(string)
                 await message.channel.send(image)
                 # SQL: save message to database "大家冷靜d"
-                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', {sadcount},'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "i")
+                connectDB(f"INSERT INTO chatlog VALUES (DEFAULT, '{'bot'}', '{'bot'}', '{string}', '{'solve'}', {sadcount},'{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
             if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
                 sadcount += + 1
                 if (sadcount >= sadcountLimit):
                     # sjsAdmin = bot.get_user(909806470416191518)
                     # await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注")
                     # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i")
-                    # sadcount = 0
+                    sadcount = 0
                     embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
                     # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
                     embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
@@ -333,7 +333,7 @@ async def on_message(message):
                         sjsAdmin = bot.get_user(909806470416191518)
                         try:
                             await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                            connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
+                            connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         except (Exception) as error:
                             print(f'error from bot: {error}')
                         # await user.send("你的")
@@ -440,11 +440,11 @@ async def on_interaction(interaction):
             if(update_checking):
                 if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo)  and timecheck[1][0][1] != 0:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
-                    connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','Applying' ,'{current_time}' )", "i") 
+                    connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','Applying' ,'{current_time}' )", "u") 
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have applied for the event')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have applied for the event','{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have applied for the event','{current_time}' )", "u") 
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
@@ -453,7 +453,7 @@ async def on_interaction(interaction):
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice','{current_time}' )", "i")
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice','{current_time}' )", "u")
                         
                     except (Exception) as error:
                         print(f'error from bot: {error}')
@@ -463,7 +463,7 @@ async def on_interaction(interaction):
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue','{current_time}' )", "i") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue','{current_time}' )", "u") 
                     except (Exception) as error:
                         print(f'error from bot: {error}')
                     # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
@@ -472,7 +472,7 @@ async def on_interaction(interaction):
                 try:
                     await interaction.response.edit_message(content=interaction.message.content)
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
-                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "i") 
+                    connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "u") 
                 except (Exception) as error:
                     print(f'error from bot: {error}')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  

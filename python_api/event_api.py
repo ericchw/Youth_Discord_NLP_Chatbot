@@ -41,7 +41,7 @@ def create_event(primary_key):
                 "components": [
                     {
                         "type": 2,
-                        "label": "Join",
+                        "label": "Apply",
                         "style": 4,
                         "custom_id": f"{primary_key}|join"
                     }
