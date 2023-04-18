@@ -317,13 +317,8 @@ async def on_message(message):
                         responses[user.id] = "Agree"
                         # await user.send("Hello! This is a private message.")
                         # send need help to social worker
-<<<<<<< Updated upstream
                         # sjsAdmin = bot.get_user(792305150429233152)
                         sjsAdmin = bot.get_user(909806470416191518)
-=======
-                        sjsAdmin = bot.get_user(909806470416191518)
-                        # sjsAdmin = bot.get_user(526282491846328320)
->>>>>>> Stashed changes
                         # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
                         await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                         # await user.send("你的")
