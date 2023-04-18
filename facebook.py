@@ -13,7 +13,8 @@ DISCORD_CHANNEL_ID = "1097177783970578473"
 
 # Define the Facebook Graph API endpoint and access token
 FB_ENDPOINT = f"https://graph.facebook.com/{FB_PAGE_ID}/feed"
-FB_ACCESS_TOKEN = "EAACDMpcEwCIBAFjYT25GGIl7j0KV4ZCdY7WBiIQJ3b08WK6mYZBzkufCoBFk455vdnGImUsxHkfvmUXZBrGWkFbo0gY9j4gRFWr7rIB3fLK1cAbE4Ox9CpTCjlaYUZB0EJpqq6iex2ZAVukYKZCfX6ioCaFCqzpDZCIaJkHiv3l6YKp2FR7awDmaVN1ost5ZBHDuSpqonbJXBf7EAZBTXmszW"#"<insert Facebook access token here>"
+FB_ACCESS_TOKEN = "EAACDMpcEwCIBAC6wn74Sn9IJJMJfhjgUQmiKZA2V5mMnUQE05ztQutoYTKtnpeSVGr2eHLgIJOJFdJNMmzcPpGcltQD9PxyvDQz53n5ILEOHJX4b9JXZASUlz1kZCBuzltGlAWL3ZCV1OCFpkH2TU0G6P4XK5ZAoqsX5gbQZB9t9NnKqX8TUqmmF3avaGvqYAZD"#"<insert Facebook access token here>"
+# https://developers.facebook.com/tools/explorer/
 
 # Initialize the PyCord client and log in
 intents = discord.Intents.default()
