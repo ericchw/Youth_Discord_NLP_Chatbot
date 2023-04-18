@@ -1,5 +1,5 @@
 from logging import PlaceHolder
-import os, discord, time, re,json
+import os, discord, time, re, json
 # from turtle import title
 from discord.ui import Button, View, button, Modal, InputText, Select
 from discord.ext import commands
@@ -12,6 +12,10 @@ from datetime import datetime, timezone, timedelta
 import random
 import logging
 import sys
+import requests
+from io import BytesIO
+from PIL import Image
+import asyncio
 
 
 responses= {}
@@ -26,10 +30,96 @@ bot = discord.Bot(debug_guilds=["995158826347143309"], intents=discord.Intents.a
 # bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 channel_id = 1060512412299710504
 sadcountLimit = 3
+sjsAdmin_id = 909806470416191518 #ERICC
+# global sjsAdmin = bot.get_user(792305150429233152) # ANDY
+# global sjsAdmin = bot.get_user(526282491846328320) # JAYDEN
+
+
+###Facebook tracking new post###
+timezone_offset = timedelta(hours=8)
+# Define the Facebook page and Discord channel IDs
+FB_PAGE_ID = "117562637973323"
+DISCORD_CHANNEL_ID = "1097177783970578473"
+
+# Define the Facebook Graph API endpoint and access token
+FB_ENDPOINT = f"https://graph.facebook.com/{FB_PAGE_ID}/feed"
+FB_ACCESS_TOKEN = "EAACDMpcEwCIBAC6wn74Sn9IJJMJfhjgUQmiKZA2V5mMnUQE05ztQutoYTKtnpeSVGr2eHLgIJOJFdJNMmzcPpGcltQD9PxyvDQz53n5ILEOHJX4b9JXZASUlz1kZCBuzltGlAWL3ZCV1OCFpkH2TU0G6P4XK5ZAoqsX5gbQZB9t9NnKqX8TUqmmF3avaGvqYAZD"#"<insert Facebook access token here>"
+# https://developers.facebook.com/tools/explorer/
+
+# Initialize the PyCord client and log in
+intents = discord.Intents.default()
+intents.members = True
+intents.message_content = True
+bot = discord.Bot(intents=intents)
+bot_token = "OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk"
+
+# Initialize the last post time to None
+last_post_time = None
+
+# Define a function to send the Facebook post to the Discord channel
+async def send_facebook_post():
+    global last_post_time
+    while True:
+        # Make a GET request to the Facebook Graph API to retrieve the latest post
+        params = {
+            "access_token": FB_ACCESS_TOKEN,
+            "fields": "message,created_time,attachments",
+            "limit": 1
+        }
+        response = requests.get(FB_ENDPOINT, params=params)
+        # Check if the response is valid
+        if response.status_code != 200:
+            logger.debug(f"Error: {response.status_code} - {response.reason}")
+            return
+
+        data = json.loads(response.text)
+
+        # Extract the message and created_time fields from the Facebook post
+        message = data["data"][0]["message"]
+        created_time = data["data"][0]["created_time"]
+        created_time_datetime = datetime.strptime(created_time, "%Y-%m-%dT%H:%M:%S+0000") + timezone_offset
+        formatted_created_time = created_time_datetime.strftime("%Y-%m-%d %H:%M:%S")
+
+        # Check if the post is new
+        if last_post_time is None or created_time_datetime > last_post_time:
+            logger.debug("last_post_time is None or created_time_datetime > last_post_time")
+            # Extract the attachment information from the Facebook post
+            attachments = data["data"][0]["attachments"]["data"] if "attachments" in data["data"][0] else []
+
+            channel = await bot.fetch_channel(DISCORD_CHANNEL_ID)
+
+            # Create the message content with the post text and timestamp
+            facebookLinkId = data['data'][0]['id']
+            content = f"Latest Facebook post ({formatted_created_time}):\n{message}\nhttps://www.facebook.com/{facebookLinkId}"
+
+            # Check if the post has any attachments (i.e., photos or videos)
+            if len(attachments) > 0:
+                # Extract the URL of the first attachment
+                attachment_url = attachments[0]["media"]["image"]["src"]
+
+                # Download the attachment and create a PIL Image object
+                response = requests.get(attachment_url)
+                image = Image.open(BytesIO(response.content))
+
+                # Save the image to a BytesIO object and attach it to the Discord message
+                image_bytes = BytesIO()
+                image.save(image_bytes, format=image.format)
+                image_bytes.seek(0)
+                file = discord.File(fp=image_bytes, filename="attachment.png")
+                await channel.send(file=file, content=content)
+            else:
+                # If there are no attachments, just send the message text
+                await channel.send(content)
+
+            # Update the last post time
+            last_post_time = created_time_datetime
+        else:
+            logger.debug(f"last post posted already")
+        await asyncio.sleep(10)
+
 
 # since global slash commands can take up to an hour to register,
 # we need to limit the guilds for testing purposes
-
 class MyView(View):
     @button(label="Button 1", style=discord.ButtonStyle.blurple, emoji="😊")
     async def callback1(self, button, interaction):
@@ -151,12 +241,12 @@ async def event(ctx):
     # datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
     await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
 
-
-
 @bot.event
 async def on_ready():
     logger.debug('We have logged in as {0.user}'.format(bot))
     initiate()
+    # logger.debug('Facebook keep tracking')
+    await send_facebook_post()
 
 
     
@@ -177,6 +267,7 @@ def is_english(text):
 async def on_message(message):
     logger.debug(message)
     global user_id
+    sjsAdmin = bot.get_user(sjsAdmin_id)
     if(message.author.name!='CyberU'):
         user = message.author
         text=message.content
@@ -206,7 +297,6 @@ async def on_message(message):
             if emotion['label'] == 'sadness' and emotion['score'] >= 0.85:
                 sadcount += + 1
                 if (sadcount >= sadcountLimit):
-                    # sjsAdmin = bot.get_user(909806470416191518)
                     # await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注")
                     # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i")
                     sadcount = 0
@@ -228,7 +318,7 @@ async def on_message(message):
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, How are you feeling? Do you need help from a social worker?,(May require assistance)','{current_time}' )", "u") 
                         connectDB(f"UPDATE chatlog SET labelflag = 0 WHERE id = {dbReturnId};", "u")
                     except (Exception) as error:
-                        print(f'error from bot: {error}')
+                        logger.debug(f'error from bot: {error}')
                     
                     reaction, user = await bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍')
                     logger.debug(f'reaction: {reaction}')
@@ -236,14 +326,12 @@ async def on_message(message):
                         responses[user.id] = "Agree"
                         # await user.send("Hello! This is a private message.")
                         # send need help to social worker
-                        # sjsAdmin = bot.get_user(792305150429233152)
-                        sjsAdmin = bot.get_user(526282491846328320)
                         # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
                         # await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                         await sjsAdmin.send(f"{user.mention} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')} has agreed for assistance, Please follow up.")
                         # await user.send("你的")
                         # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}has agreed for assistance, Please follow up.','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')} has agreed for assistance, Please follow up.','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
                     elif str(reaction) == "👎":
                         responses[user.id] = "Disagree"
@@ -270,7 +358,6 @@ async def on_message(message):
             #         response = message.content
             #         # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
             #         if response == 'yes':
-            #             sjsAdmin = bot.get_user(909806470416191518)
             #             try:
             #                 await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
             #                 connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i") 
@@ -337,12 +424,11 @@ async def on_message(message):
                     response = message.content
                     # SQL: save message to database "需要/不需要"  (ANOTHER TABLE 1?)
                     if response == 'yes':
-                        sjsAdmin = bot.get_user(909806470416191518)
                         try:
                             await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
                             connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         except (Exception) as error:
-                            print(f'error from bot: {error}')
+                            logger.debug(f'error from bot: {error}')
                         # await user.send("你的")
                     # logger.debug(type(response))
                     # string = faq.faq(message.content)
@@ -399,8 +485,6 @@ async def on_reaction_add(reaction, user):
             #     responses[user.id] = "Agree"
             #     # await user.send("Hello! This is a private message.")
             #     # send need help to social worker
-            #     # sjsAdmin = bot.get_user(792305150429233152)
-            #     sjsAdmin = bot.get_user(526282491846328320)
             #     # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
             #     await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
             #     # await user.send("你的")
@@ -453,7 +537,7 @@ async def on_interaction(interaction):
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have applied for the event')
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have applied for the event','{current_time}' )", "u") 
                     except (Exception) as error:
-                        print(f'error from bot: {error}')
+                        logger.debug(f'error from bot: {error}')
                     # logger.debug(f"if...; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 elif checking[1][0][0] == True:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
@@ -463,7 +547,7 @@ async def on_interaction(interaction):
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice','{current_time}' )", "u")
                         
                     except (Exception) as error:
-                        print(f'error from bot: {error}')
+                        logger.debug(f'error from bot: {error}')
                     # logger.debug(f"checking[1][0][0] == True; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")
                 else:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
@@ -472,7 +556,7 @@ async def on_interaction(interaction):
                         await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue','{current_time}' )", "u") 
                     except (Exception) as error:
-                        print(f'error from bot: {error}')
+                        logger.debug(f'error from bot: {error}')
                     # logger.debug(f"else overdue; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
             else:
                 current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
@@ -481,7 +565,7 @@ async def on_interaction(interaction):
                     await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
                     connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "u") 
                 except (Exception) as error:
-                    print(f'error from bot: {error}')
+                    logger.debug(f'error from bot: {error}')
                 # logger.debug(f"else not latest event; count[1][0][0]:{count[1][0][0]}, checking[1][0][0]:{checking[1][0][0]}, timecheck[1][0][1]:{timecheck[1][0][1]}, timecheck[1][0][0]: {timecheck[1][0][0]}")  
         elif info == 'event_confirmation':
             logger.debug(f"interaction_user: {interaction.user.id}")
