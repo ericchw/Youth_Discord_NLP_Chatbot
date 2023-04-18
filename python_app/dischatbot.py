@@ -155,6 +155,8 @@ async def event(ctx):
     # datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}', '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
     await ctx.send(f"List:\n1.Apex:\n{bot.event_variable1}\n2.LOL:\n{bot.event_variable2}\n3.PUBG:\n{bot.event_variable3}\nPlease select", view=Event())
 
+
+
 ###Facebook tracking new post###
 timezone_offset = timedelta(hours=8)
 # Define the Facebook page and Discord channel IDs
@@ -283,6 +285,7 @@ async def on_message(message):
         if(message.channel.name=='faq'):
             if emotion['label']== 'anger' and emotion['score'] >= 0.7:
                 string = "大家冷靜d"
+                string = "Be nice to everyone 👍"
                 image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
                 await message.channel.send(string)
                 await message.channel.send(image)
@@ -296,9 +299,12 @@ async def on_message(message):
                     # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}有情緒困擾，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "i")
                     sadcount = 0
                     embed = discord.Embed(title="你感覺如何啊？需要幫你轉介去社工嗎？", color=discord.Color.blue())
+                    embed = discord.Embed(title="How are you feeling? Do you need help from a social worker?", color=discord.Color.blue())
                     # await bot.get_channel(int(channel_id)).send(embed=embed_announce)
-                    embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
-                    embed.add_field(name="👎", value="不需要", inline=True)
+                    # embed.add_field(name="👍", value="需要（你可回答'yes')", inline=True)
+                    # embed.add_field(name="👎", value="不需要", inline=True)
+                    embed.add_field(name="👍", value="Yes", inline=True)
+                    embed.add_field(name="👎", value="No", inline=True)
                     # msg = await user.send( "你感覺如何啊？需要幫你轉介去社工嗎？")
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     try:
@@ -306,7 +312,8 @@ async def on_message(message):
                         await message_to_send.add_reaction("👍")
                         await message_to_send.add_reaction("👎")
                         # print(f"user: {user}")
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "u") 
+                        # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, 你感覺如何啊？需要幫你轉介去社工嗎？,(可能需要關懷)','{current_time}' )", "u") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}, How are you feeling? Do you need help from a social worker?,(May require assistance)','{current_time}' )", "u") 
                         connectDB(f"UPDATE chatlog SET labelflag = 0 WHERE id = {dbReturnId};", "u")
                     except (Exception) as error:
                         print(f'error from bot: {error}')
@@ -317,12 +324,15 @@ async def on_message(message):
                         responses[user.id] = "Agree"
                         # await user.send("Hello! This is a private message.")
                         # send need help to social worker
-                        # sjsAdmin = bot.get_user(792305150429233152)
-                        sjsAdmin = bot.get_user(909806470416191518)
+                        sjsAdmin = bot.get_user(909806470416191518) #ERICC
+                        # sjsAdmin = bot.get_user(792305150429233152) # ANDY
+                        # sjsAdmin = bot.get_user(526282491846328320) # JAYDEN
                         # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
-                        await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
+                        # await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
+                        await sjsAdmin.send(f"{user.mention} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')} has agreed for assistance, Please follow up.")
                         # await user.send("你的")
-                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
+                        # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
+                        connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')} has agreed for assistance, Please follow up.','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         connectDB(f"INSERT INTO helplog VALUES (DEFAULT, '{user.name}', '{user.id}', true, '{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}')", "u")
                     elif str(reaction) == "👎":
                         responses[user.id] = "Disagree"
