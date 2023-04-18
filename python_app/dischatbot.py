@@ -240,7 +240,7 @@ async def on_message(message):
                         sjsAdmin = bot.get_user(526282491846328320)
                         # await sjsAdmin.send("有個人需要幫手，麻煩請關注")
                         # await sjsAdmin.send(f"{user.mention}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注")
-                        await sjsAdmin.send(f"{user.mention} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}has agreed for assistance, Please follow up.")
+                        await sjsAdmin.send(f"{user.mention} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')} has agreed for assistance, Please follow up.")
                         # await user.send("你的")
                         # connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user}於{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}同意尋求幫助，麻煩請關注','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{user} at {datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}has agreed for assistance, Please follow up.','{datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')}' )", "u") 
