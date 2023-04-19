@@ -6,6 +6,7 @@
 -- DROP TABLE IF EXISTS helplog;
 -- DROP TABLE IF EXISTS botlog;
 -- DROP TABLE IF EXISTS information;
+-- DROP TABLE IF EXISTS repost;
         
 CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,
