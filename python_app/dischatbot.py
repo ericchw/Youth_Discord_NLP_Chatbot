@@ -82,7 +82,7 @@ async def send_facebook_post():
 
         # Check if the post is new
         if last_post_time is None or created_time_datetime > last_post_time:
-            logger.debug("last_post_time is None or created_time_datetime > last_post_time")
+            # logger.debug("last_post_time is None or created_time_datetime > last_post_time")
             # Extract the attachment information from the Facebook post
             attachments = data["data"][0]["attachments"]["data"] if "attachments" in data["data"][0] else []
 
@@ -114,7 +114,8 @@ async def send_facebook_post():
             # Update the last post time
             last_post_time = created_time_datetime
         else:
-            logger.debug(f"last post posted already")
+            print(f"last post posted already")
+            # logger.debug(f"last post posted already")
         await asyncio.sleep(10)
 
 
@@ -286,7 +287,7 @@ async def on_message(message):
         # logger.debug(ans)
         # logger.debug(text)
         if(message.channel.name=='faq'):
-            if emotion['label']== 'anger' and emotion['score'] >= 0.7:
+            if emotion['label']== 'anger': #  and emotion['score'] >= 0.7
                 string = "大家冷靜d"
                 string = "Be nice to everyone 👍"
                 image = random.choice(['https://tenor.com/zh-HK/view/生氣-暴怒-愛生氣-no-跳舞-gif-14378133', 'https://tenor.com/zh-HK/view/angry-annoyed-dont-be-angry-calm-down-relax-gif-11818781'])
@@ -320,7 +321,12 @@ async def on_message(message):
                     except (Exception) as error:
                         logger.debug(f'error from bot: {error}')
                     
-                    reaction, user = await bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍')
+                    try:
+                        reaction, user = await asyncio.wait_for(bot.wait_for('reaction_add', check=lambda r, u: u == message.author and str(r.emoji) == '👍'), timeout=30.0)
+                    except asyncio.TimeoutError:
+                        # Handle timeout error here
+                        logger.debug(f'reaction TimeoutError: {TimeoutError}')
+                    
                     logger.debug(f'reaction: {reaction}')
                     if reaction.emoji == "👍":
                         responses[user.id] = "Agree"
@@ -522,14 +528,17 @@ async def on_interaction(interaction):
             update_checking = connectDB(f"select exists(select 1 from event where evtupdatedate='{latest_update}' and evtid = {eventid})", "r")
             # logger.debug(update_checking[1][0][0])
             checking = connectDB(f"select exists(select 1 from polling where polldcusername='{interaction.user}' and evtid = {eventid})", "r")
-            timecheck = connectDB(f"select evtdate, evtlimitmem from event where evtid = {eventid}", "r")
-            # logger.debug(datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S'))
-            # logger.debug(f'database: {timecheck[1]}')
-            # logger.debug(f'database: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
+            timecheck = connectDB(f"select evtdeadline, evtlimitmem from event where evtid = {eventid}", "r")
+            logger.debug(f'timecheck[1]: {timecheck[1]}')
+            logger.debug(f'timecheck[1][0][0]: {timecheck[1][0][0]}, type: {type(timecheck[1][0][0])}')
             count = connectDB(f'SELECT COUNT ( DISTINCT POLLDCUsername ) AS "Number of pollers" FROM polling where evtid = {eventid}', "r")
             logger.debug(f"count[1][0][0]: {count[1][0][0]}")
+            logger.debug(f"timecheck[1][0][0]: {timecheck[1][0][0].replace(tzinfo=timezone(timedelta(hours=8)))}, {type(timecheck[1][0][0].replace(tzinfo=timezone(timedelta(hours=8))))}")
+            current_time = datetime.now(timezone(timedelta(hours=8))).replace(microsecond=0)
+            logger.debug(f"current_time: {current_time}, {type(current_time)}")
+
             if(update_checking):
-                if checking[1][0][0] == False and timecheck[1][0][0] > datetime.now(timecheck[1][0][0].tzinfo)  and timecheck[1][0][1] != 0:
+                if checking[1][0][0] == False and timecheck[1][0][0].replace(tzinfo=timezone(timedelta(hours=8))) > current_time and timecheck[1][0][1] != 0:
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','Applying' ,'{current_time}' )", "u") 
                     try:
