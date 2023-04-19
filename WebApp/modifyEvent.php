@@ -233,7 +233,7 @@ include 'checkCookie.php';
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
-                                                    <label for="maxMember" class=" form-control-label">Maximum Number of Member</label>
+                                                    <label for="maxMember" class=" form-control-label">Expected Number of Member</label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="number" id="maxMember" name="maxMember" class="form-control" required>

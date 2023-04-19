@@ -250,7 +250,7 @@ include 'checkCookie.php';
                       <th>description</th>
                       <th>date</th>
                       <th>Submission Deadline</th>
-                      <th>Maximum number of member</th>
+                      <th>Expected number of member</th>
                       <th></th>
                     </tr>
                   </thead>

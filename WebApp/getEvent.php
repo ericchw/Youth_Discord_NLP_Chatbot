@@ -40,7 +40,7 @@ function getEventById($id)
 
         echo '<div class="row form-group">';
         echo '<div class="col col-md-3">';
-        echo '<label for="maxMember" class=" form-control-label">Maximum Number of Member</label>';
+        echo '<label for="maxMember" class=" form-control-label">Exprected Number of Member</label>';
         echo '</div>';
         echo '<div class="col-12 col-md-9">';
         echo '<input type="number" id="maxMember" name="maxMember" value="' . pg_fetch_result($HdrQuery, 0, 'evtlimitmem') . '" class="form-control" readonly>';
