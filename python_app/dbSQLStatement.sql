@@ -104,6 +104,15 @@ VALUES
     )
 ON CONFLICT DO NOTHING;
 
+CREATE TABLE IF NOT EXISTS repost (
+    platform VARCHAR PRIMARY KEY,
+    last_post_time TIMESTAMP
+);
+
+INSERT INTO repost (platform, last_post_time)
+    VALUES ('facebook', NULL)
+ON CONFLICT DO NOTHING;
+
 -----------------------------------------------
 
 -- DROP TABLE games IF EXISTS;

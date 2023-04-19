@@ -55,10 +55,16 @@ bot_token = "OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z
 
 # Initialize the last post time to None
 last_post_time = None
-
 # Define a function to send the Facebook post to the Discord channel
 async def send_facebook_post():
     global last_post_time
+    try:
+        last_post_time = connectDB(f"SELECT last_post_time FROM repost WHERE platform = 'facebook'", "r")
+        last_post_time = last_post_time[1][0][0]
+        # logger.debug(f'last_post_time: {last_post_time}')
+    except (Exception)as error:
+        logger.debug(f'last_post_time: {error}')
+    
     while True:
         # Make a GET request to the Facebook Graph API to retrieve the latest post
         params = {
@@ -113,6 +119,10 @@ async def send_facebook_post():
 
             # Update the last post time
             last_post_time = created_time_datetime
+            try:
+                connectDB(f"UPDATE repost SET last_post_time = '{created_time_datetime}' WHERE platform = 'facebook'", "u")
+            except (Exception) as error:
+                logger.debug(f"error: {error}")
         else:
             print(f"last post posted already")
             # logger.debug(f"last post posted already")
