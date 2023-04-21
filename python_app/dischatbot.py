@@ -553,7 +553,7 @@ async def on_interaction(interaction):
                     connectDB(f"INSERT INTO polling VALUES (DEFAULT, {eventid}, '{interaction.user.id}', '{interaction.user}','Applying' ,'{current_time}' )", "u") 
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
-                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have applied for the event')
+                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, you have applied for the event.')
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you have applied for the event','{current_time}' )", "u") 
                     except (Exception) as error:
                         logger.debug(f'error from bot: {error}')
@@ -562,7 +562,7 @@ async def on_interaction(interaction):
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
-                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice')
+                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, you are not allowed to join the same event more than twice.')
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, you are not allowed to join the same event more than twice','{current_time}' )", "u")
                         
                     except (Exception) as error:
@@ -572,7 +572,7 @@ async def on_interaction(interaction):
                     current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                     try:
                         await interaction.response.edit_message(content=interaction.message.content)
-                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue')
+                        await bot.get_user(interaction.user.id).send(f'{interaction.user}, the event is overdue.')
                         connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, the event is overdue','{current_time}' )", "u") 
                     except (Exception) as error:
                         logger.debug(f'error from bot: {error}')
@@ -581,7 +581,7 @@ async def on_interaction(interaction):
                 current_time = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M:%S')
                 try:
                     await interaction.response.edit_message(content=interaction.message.content)
-                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event')
+                    await bot.get_user(interaction.user.id).send(f'{interaction.user}, this is not the latest event.')
                     connectDB(f"INSERT INTO botlog VALUES (DEFAULT, '{interaction.user}, this is not the latest event','{current_time}' )", "u") 
                 except (Exception) as error:
                     logger.debug(f'error from bot: {error}')
