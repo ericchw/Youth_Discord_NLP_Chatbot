@@ -87,7 +87,7 @@ def create_event(primary_key):
                     }
                 ],
                  "footer": {
-                    "text": f"Submission Dateline: {record[0][5]}"
+                    "text": f"Submission Deadline: {record[0][5]}"
                 }
             }
         ]
@@ -95,13 +95,13 @@ def create_event(primary_key):
     response = requests.post("https://discord.com/api/channels/1079031912682766406/messages", headers=headers, json=data)
     end_time = time.time()
     execution_time = end_time - start_time
-    logger.debug(f"Execution time: {execution_time} seconds")
-
+    logger.debug(f"Execution time of create event: {execution_time} seconds")
     return response.json()
 
 @app.route("/send_message/<string:event_id>")
 def send_private_message(event_id):
     # Define the API endpoint and headers
+    start_time = time.time()
     connection = psycopg2.connect(
         host="db",
         port="5432",
@@ -210,9 +210,9 @@ def send_private_message(event_id):
 
             # Send the API request to send the message to the user
             response = requests.post(url, headers=headers, data=json.dumps(data))
-            
-
-        
+    end_time = time.time()
+    execution_time = end_time - start_time
+    logger.debug(f"Execution time of DM user(s): {execution_time} seconds")
     return response.json()
     
 
