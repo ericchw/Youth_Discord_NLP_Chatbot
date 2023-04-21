@@ -121,7 +121,7 @@ def send_private_message(event_id):
         print (x)
         string = ''
         if x[2] == 'Rejected':
-            string = f"{x[1]}, you have been rejected from {activity[0][2]}"
+            string = f"{x[1]}, we are apologize that we are unable to accept your application for {activity[0][2]}. Hope you can join for our future events "
             url = "https://discord.com/api/users/@me/channels"
             headers = {
                 "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
