@@ -1,83 +1,17 @@
-# Implementation of a Contextual Chatbot in PyTorch.  
-Simple chatbot implementation with PyTorch. 
+# Preparation:
+- Discord bot token generate in Discord developer portal https://discord.com/developers/applications
+- FB_ACCESS_TOKEN which is facebook page token generate in Graph API on Meta for Developers https://developers.facebook.com/tools/explorer
+- SJS admin user Id
+- Channel Id
 
-- The implementation should be easy to follow for beginners and provide a basic understanding of chatbots.
-- The implementation is straightforward with a Feed Forward Neural net with 2 hidden layers.
-- Customization for your own use case is super easy. Just modify `intents.json` with possible patterns and responses and re-run the training (see below for more info).
-
-The approach is inspired by this article and ported to PyTorch: [https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077](https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077).
-
-## Watch the Tutorial
-[![Alt text](https://img.youtube.com/vi/RpWeNzfSUHw/hqdefault.jpg)](https://www.youtube.com/watch?v=RpWeNzfSUHw&list=PLqnslRFeH2UrFW4AUgn-eY37qOAWQpJyg)
-
-## Installation
-
-### Create an environment
-Whatever you prefer (e.g. `conda` or `venv`)
-```console
-mkdir myproject
-$ cd myproject
-$ python3 -m venv venv
-```
-
-### Activate it
-Mac / Linux:
-```console
-. venv/bin/activate
-```
-Windows:
-```console
-venv\Scripts\activate
-```
-### Install PyTorch and dependencies
-
-For Installation of PyTorch see [official website](https://pytorch.org/).
-
-You also need `nltk`:
- ```console
-pip install nltk
- ```
-
-If you get an error during the first run, you also need to install `nltk.tokenize.punkt`:
-Run this once in your terminal:
- ```console
-$ python
->>> import nltk
->>> nltk.download('punkt')
-```
-
-## Usage
-Run
-```console
-python train.py
-```
-This will dump `data.pth` file. And then run
-```console
-python chat.py
-```
-## Customize
-Have a look at [intents.json](intents.json). You can customize it according to your own use case. Just define a new `tag`, possible `patterns`, and possible `responses` for the chat bot. You have to re-run the training whenever this file is modified.
-```console
-{
-  "intents": [
-    {
-      "tag": "greeting",
-      "patterns": [
-        "Hi",
-        "Hey",
-        "How are you",
-        "Is anyone there?",
-        "Hello",
-        "Good day"
-      ],
-      "responses": [
-        "Hey :-)",
-        "Hello, thanks for visiting",
-        "Hi there, what can I do for you?",
-        "Hi there, how can I help?"
-      ]
-    },
-    ...
-  ]
-}
-```
+# Installation step
+1. Download Docker on offical website - https://docs.docker.com/compose/install/
+2. Open the execuation file
+3. If you are using Windows OS, please make sure selected "install required Windows components for WSL 2"
+4. If you are using Windows OS, please install Linux on Windows with WSL by open a PowerShell and input "wsl --install" after installed.
+5. Reboot your PC if required
+6. Open a termial or PowerShell and change directory to project folder which contains docker-compose.yaml. "cd /path"
+7. Run the command "docker-compose -d", and wait for it
+8. All the container will shown as started
+9. Open Docker Dashboard, and select "python_app" container.
+10. The chatbot will able to use after you can see a log message show "Chatbot is start to run"

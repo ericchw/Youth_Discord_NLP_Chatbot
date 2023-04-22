@@ -4,6 +4,26 @@ from flask import Flask, redirect, url_for, render_template_string
 from flask_discord_interactions import DiscordInteractions
 from datetime import datetime
 import requests
+import logging
+import sys
+import time
+
+
+# create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# create a console handler
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+
+# create a formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# add the handler to the logger
+logger.addHandler(handler)
+
 app = Flask(__name__)
 
 app.config["DISCORD_BOT_TOKEN"] = "OTk0ODk4OTcwMDg4MzA4NzQ2.GaEk2B.X7x5yEF1CZjHqtRM0YsMsCcSY6Qcn892V_z5Kk"                    # Required to access BOT resources.
@@ -12,6 +32,7 @@ discord = DiscordInteractions(app)
 
 @app.route("/create_event/<string:primary_key>")
 def create_event(primary_key):
+    start_time = time.time()
     connection = psycopg2.connect(
         host="db",
         port="5432",
@@ -66,18 +87,21 @@ def create_event(primary_key):
                     }
                 ],
                  "footer": {
-                    "text": f"Submission Dateline: {record[0][5]}"
+                    "text": f"Submission Deadline: {record[0][5]}"
                 }
             }
         ]
     }
     response = requests.post("https://discord.com/api/channels/1079031912682766406/messages", headers=headers, json=data)
-    
+    end_time = time.time()
+    execution_time = end_time - start_time
+    logger.debug(f"Execution time of create event: {execution_time} seconds")
     return response.json()
 
 @app.route("/send_message/<string:event_id>")
 def send_private_message(event_id):
     # Define the API endpoint and headers
+    start_time = time.time()
     connection = psycopg2.connect(
         host="db",
         port="5432",
@@ -97,7 +121,7 @@ def send_private_message(event_id):
         print (x)
         string = ''
         if x[2] == 'Rejected':
-            string = f"{x[1]}, you have been rejected from {activity[0][2]}"
+            string = f"{x[1]}, we are apologize that we are unable to accept your application for {activity[0][2]}. Hope you can join for our future events."
             url = "https://discord.com/api/users/@me/channels"
             headers = {
                 "Authorization": f"Bot {app.config['DISCORD_BOT_TOKEN']}",
@@ -186,9 +210,9 @@ def send_private_message(event_id):
 
             # Send the API request to send the message to the user
             response = requests.post(url, headers=headers, data=json.dumps(data))
-            
-
-        
+    end_time = time.time()
+    execution_time = end_time - start_time
+    logger.debug(f"Execution time of DM user(s): {execution_time} seconds")
     return response.json()
     
 

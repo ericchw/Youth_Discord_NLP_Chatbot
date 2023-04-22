@@ -6,6 +6,7 @@
 -- DROP TABLE IF EXISTS helplog;
 -- DROP TABLE IF EXISTS botlog;
 -- DROP TABLE IF EXISTS information;
+-- DROP TABLE IF EXISTS repost;
         
 CREATE TABLE IF NOT EXISTS account (
     id SERIAL PRIMARY KEY,
@@ -102,6 +103,15 @@ VALUES
         'https://discord.gg/6pm',
         'https://cdn.discordapp.com/attachments/709787197385080852/933897809076314132/5ee1ae88efa3e739.png'
     )
+ON CONFLICT DO NOTHING;
+
+CREATE TABLE IF NOT EXISTS repost (
+    platform VARCHAR PRIMARY KEY,
+    last_post_time TIMESTAMP
+);
+
+INSERT INTO repost (platform, last_post_time)
+    VALUES ('facebook', NULL)
 ON CONFLICT DO NOTHING;
 
 -----------------------------------------------
