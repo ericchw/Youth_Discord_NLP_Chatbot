@@ -39,14 +39,13 @@
 #### Database: PostgreSQL
 #### Hosting: Docker/Amazone EC2
 
-## Installation:
-  ## Preparation:
+## Preparation:
 * Prepare Discord bot token generate in Discord developer portal https://discord.com/developers/applications
 * Prepare FB_ACCESS_TOKEN which is facebook page token generate in Graph API on Meta for Developers https://developers.facebook.com/tools/explorer
 * Prepare SJS admin user Id
 * Prepare Channel Id
 
-  ## Installation step
+## Installation step
 1. Download Docker on offical website - https://docs.docker.com/compose/install/
 2. Open the execuation file
 3. If you are using Windows OS, please make sure selected "install required Windows components for WSL 2"
