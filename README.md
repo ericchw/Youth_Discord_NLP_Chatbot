@@ -2,14 +2,17 @@
 #### Designed for the St. James Settlement(SJS) Cyber Youth Support Team entitled "6PM"
 #### © 2023 Eric Chan, Andy Chan, Jayden Chan, Ken Yeung
 
-##Project Objectives
+## Description
+#### We have collaborated with 6PM, an online support team from a charitable organization, St. James' Settlement. They aim to help hidden youths, who are socially withdrawn from social life, by using available online resources such as online counseling to provide support. Through a meeting with the social workers from 6PM, they have proposed their current situation and problems, which includes the unavailability of online counseling at different times and the inconvenient management of their activities. To tackle the problems that social workers face, we have decided to create a Discord chatbot and a web application. In this paper, a literature review of research on the hidden youths, related technologies required to build the chatbot and an analysis of existing solutions is described first to assist in the brainstorming design of the functions for the chatbot and the web application. Then a system and functional design of the Discord chatbot and the web application will be presented.
+
+## Project Objectives
 #### 1. Bringing informative news 
 #### 2. Chatting with hidden youth 
 #### 3. Reduce social workers workload 
 #### 4. Promoting 6PM 
 #### 5.	Evaluation of the system 
 
-##Functions
+## Functions
 #### Discord: 
 * Chatting: users can make simple conversations with the chatbot.
 * Emotion Detection: analyze the emotion of each message sent by a Discord user.
