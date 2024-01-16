@@ -2,33 +2,33 @@
 #### Designed for the St. James Settlement(SJS) Cyber Youth Support Team entitled "6PM"
 #### © 2023 Eric Chan, Andy Chan, Jayden Chan, Ken Yeung
 
-#Project Objectives
+##Project Objectives
 #### 1. Bringing informative news 
 #### 2. Chatting with hidden youth 
 #### 3. Reduce social workers workload 
 #### 4. Promoting 6PM 
 #### 5.	Evaluation of the system 
 
-#Functions
+##Functions
 #### Discord: 
-[x] Chatting: users can make simple conversations with the chatbot.
-[x] Emotion Detection: analyze the emotion of each message sent by a Discord user.
-[x] FAQ: Users can type text such as ‘contact’, and the Discord bot will return the contact information. If ‘activity’ is entered, the chatbot will return a redirect link to their activities information
-[x] Informative News: Discord bot able to re-post the latest post from Facebook. 
-[x] Apply/Confirm event(s): Allows users to apply/confirm event(s). 
+-[x] Chatting: users can make simple conversations with the chatbot.
+-[x] Emotion Detection: analyze the emotion of each message sent by a Discord user.
+-[x] FAQ: Users can type text such as ‘contact’, and the Discord bot will return the contact information. If ‘activity’ is entered, the chatbot will return a redirect link to their activities information
+-[x] Informative News: Discord bot able to re-post the latest post from Facebook. 
+-[x] Apply/Confirm event(s): Allows users to apply/confirm event(s). 
 
 #### Web Application:
-[x] Login: For SJS Internal admins.
-[x] Event Organizing: creat a event will save it into the PostgreSQL database, and send a request to API flask application for posting event, accept or reject the application and send a request to API flask application for sending direct message to user.
-[x] Search Event: Allows the social worker to search the event by event name.
-[x] Create Activity: Allows the social worker to create an activity used on creating event.
-[x] Change Password: Allow the social worker to modify their password
-[x] Logging and Username Filtering: Allow the social worker to view the log and filter the log record with discord username
-[x] Calendar: Shows all event in the calendar
+-[x] Login: For SJS Internal admins.
+-[x] Event Organizing: creat a event will save it into the PostgreSQL database, and send a request to API flask application for posting event, accept or reject the application and send a request to API flask application for sending direct message to user.
+-[x] Search Event: Allows the social worker to search the event by event name.
+-[x] Create Activity: Allows the social worker to create an activity used on creating event.
+-[x] Change Password: Allow the social worker to modify their password
+-[x] Logging and Username Filtering: Allow the social worker to view the log and filter the log record with discord username
+-[x] Calendar: Shows all event in the calendar
   
 #### API:
-[x] Posting event: Able to post events to Discord channel by receiving the event ID from the web application request.
-[x] Event confirmation: Send direct messages to notify users whether their event applications are successful or not.
+-[x] Posting event: Able to post events to Discord channel by receiving the event ID from the web application request.
+-[x] Event confirmation: Send direct messages to notify users whether their event applications are successful or not.
 
 #Supporting Technologies
 #### Discord Chatbot: pycord, numpy, nltk, torch, transformers, flask, flask_discord_interaction
@@ -36,7 +36,7 @@
 #### Database: PostgreSQL
 #### Hosting: Docker/Amazone EC2
 
-#Installation:
+##Installation:
   ## Preparation:
 * Prepare Discord bot token generate in Discord developer portal https://discord.com/developers/applications
 * Prepare FB_ACCESS_TOKEN which is facebook page token generate in Graph API on Meta for Developers https://developers.facebook.com/tools/explorer
